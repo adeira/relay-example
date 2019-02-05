@@ -1,0 +1,20 @@
+{
+  "name": "relay-example",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@kiwicom/relay": "^0",
+    "next": "^7.0.2",
+    "next-plugin-custom-babel-config": "^1.0.0",
+    "next-plugin-transpile-modules": "^1.1.0",
+    "react": "^16.7.0",
+    "react-relay": "^1.7.0"
+  },
+  "devDependencies": {
+    "relay-compiler": "^1.7.0"
+  },
+  "scripts": {
+    "start": "next",
+    "relay": "relay-compiler --src ./pages --schema ../graphql/graphql-schema-snapshot.graphql"
+  }
+}
