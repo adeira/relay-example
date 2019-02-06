@@ -8,26 +8,26 @@
 
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
-import type { Location$ref } from "./Location.graphql";
+import type { Location_location$ref } from "./Location_location.graphql";
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type AllLocations$ref: FragmentReference;
-export type AllLocations = {|
+declare export opaque type AllLocations_data$ref: FragmentReference;
+export type AllLocations_data = {|
   +allLocations: ?{|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
         +id: string,
-        +$fragmentRefs: Location$ref,
+        +$fragmentRefs: Location_location$ref,
       |}
     |}>
   |},
-  +$refType: AllLocations$ref,
+  +$refType: AllLocations_data$ref,
 |};
 */
 
 
 const node/*: ConcreteFragment*/ = {
   "kind": "Fragment",
-  "name": "AllLocations",
+  "name": "AllLocations_data",
   "type": "RootQuery",
   "metadata": null,
   "argumentDefinitions": [],
@@ -82,7 +82,7 @@ const node/*: ConcreteFragment*/ = {
                 },
                 {
                   "kind": "FragmentSpread",
-                  "name": "Location",
+                  "name": "Location_location",
                   "args": null
                 }
               ]
@@ -94,5 +94,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '7d8243631f157c1530a239dec348a473';
+(node/*: any*/).hash = '7c03478c725378682369cd823cc0cb12';
 module.exports = node;

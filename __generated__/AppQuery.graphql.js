@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f148cdda0d7a100444fd1e577ea197e5
+ * @relayHash ac43d07c53fc460e5fd917b7cf11886f
  */
 
 /* eslint-disable */
@@ -9,10 +9,10 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-import type { AllLocations$ref } from "./AllLocations.graphql";
+import type { AllLocations_data$ref } from "./AllLocations_data.graphql";
 export type AppQueryVariables = {||};
 export type AppQueryResponse = {|
-  +$fragmentRefs: AllLocations$ref
+  +$fragmentRefs: AllLocations_data$ref
 |};
 export type AppQuery = {|
   variables: AppQueryVariables,
@@ -23,21 +23,21 @@ export type AppQuery = {|
 
 /*
 query AppQuery {
-  ...AllLocations
+  ...AllLocations_data
 }
 
-fragment AllLocations on RootQuery {
+fragment AllLocations_data on RootQuery {
   allLocations(first: 10) {
     edges {
       node {
         id(opaque: false)
-        ...Location
+        ...Location_location
       }
     }
   }
 }
 
-fragment Location on Location {
+fragment Location_location on Location {
   name
 }
 */
@@ -47,7 +47,7 @@ const node/*: ConcreteRequest*/ = {
   "operationKind": "query",
   "name": "AppQuery",
   "id": null,
-  "text": "query AppQuery {\n  ...AllLocations\n}\n\nfragment AllLocations on RootQuery {\n  allLocations(first: 10) {\n    edges {\n      node {\n        id(opaque: false)\n        ...Location\n      }\n    }\n  }\n}\n\nfragment Location on Location {\n  name\n}\n",
+  "text": "query AppQuery {\n  ...AllLocations_data\n}\n\nfragment AllLocations_data on RootQuery {\n  allLocations(first: 10) {\n    edges {\n      node {\n        id(opaque: false)\n        ...Location_location\n      }\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -58,7 +58,7 @@ const node/*: ConcreteRequest*/ = {
     "selections": [
       {
         "kind": "FragmentSpread",
-        "name": "AllLocations",
+        "name": "AllLocations_data",
         "args": null
       }
     ]
@@ -133,5 +133,5 @@ const node/*: ConcreteRequest*/ = {
   }
 };
 // prettier-ignore
-(node/*: any*/).hash = '2d8794c6301fac13633bb22380e42632';
+(node/*: any*/).hash = '8715d26a9e2c3f366f84258b927bafc3';
 module.exports = node;

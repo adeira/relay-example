@@ -1,9 +1,8 @@
 // @flow
 
 import React, { Component } from 'react';
-// TODO: import createFragmentContainer from '@kiwicom/relay'
-import { graphql, createFragmentContainer } from 'react-relay';
-import type { AllLocations as AllLocationsDataType } from '__generated__/AllLocations.graphql';
+import { graphql, createFragmentContainer } from '@kiwicom/relay';
+import type { AllLocations_data as AllLocationsDataType } from '__generated__/AllLocations_data.graphql';
 
 import Location from './Location';
 
@@ -18,7 +17,7 @@ class AllLocations extends Component<Props> {
       <ol>
         {edges.map(edge => {
           if (edge) {
-            return <Location key={edge.node?.id} data={edge.node} />;
+            return <Location key={edge.node?.id} location={edge.node} />;
           }
           return null; // or some failure placeholder
         })}
@@ -27,18 +26,17 @@ class AllLocations extends Component<Props> {
   }
 }
 
-export default createFragmentContainer(
-  AllLocations,
-  graphql`
-    fragment AllLocations on RootQuery {
+export default createFragmentContainer(AllLocations, {
+  data: graphql`
+    fragment AllLocations_data on RootQuery {
       allLocations(first: 10) {
         edges {
           node {
             id(opaque: false)
-            ...Location
+            ...Location_location
           }
         }
       }
     }
   `,
-);
+});

@@ -1,21 +1,20 @@
 // @flow
 
 import React, { Component } from 'react';
-import { graphql, QueryRenderer } from 'react-relay';
+import { graphql, QueryRenderer } from '@kiwicom/relay';
+import type { AppQueryResponse } from '__generated__/AppQuery.graphql';
 
 import Environment from './Environment';
 import AllLocations from './locations/AllLocations';
 
-type Props = {||};
-
-// TODO: distribute in '@kiwicom/relay'
+// TODO: distribute in '@kiwicom/relay' (distribute the while QueryRenderer properly set?)
 type ReadyState = {|
   +error: ?Error,
-  +props: ?Object,
+  +props: ?AppQueryResponse,
   +retry: ?() => void,
 |};
 
-export default class App extends Component<Props> {
+export default class App extends Component<{||}> {
   renderQueryRendererResponse = ({ error, props }: ReadyState) => {
     if (error) {
       return <div>Error!</div>;
@@ -34,7 +33,7 @@ export default class App extends Component<Props> {
         environment={Environment}
         query={graphql`
           query AppQuery {
-            ...AllLocations
+            ...AllLocations_data
           }
         `}
         render={this.renderQueryRendererResponse}
