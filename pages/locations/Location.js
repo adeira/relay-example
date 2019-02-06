@@ -1,17 +1,15 @@
 // @flow
 
-import React, { Component } from 'react';
-import { graphql, createFragmentContainer } from '@kiwicom/relay';
+import React from 'react';
+import { createFragmentContainer, graphql } from '@kiwicom/relay';
 import type { Location_location as LocationDataType } from '__generated__/Location_location.graphql';
 
 type Props = {|
   +location: ?LocationDataType,
 |};
 
-class Location extends Component<Props> {
-  render() {
-    return <li>{this.props.location?.name}</li>;
-  }
+function Location(props: Props) {
+  return <li>{props.location?.name}</li>;
 }
 
 export default createFragmentContainer(Location, {

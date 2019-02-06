@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash ac43d07c53fc460e5fd917b7cf11886f
+ * @relayHash 55bc7246cf062ed4ab173cef16870ff8
  */
 
 /* eslint-disable */
@@ -44,11 +44,6 @@ fragment Location_location on Location {
 
 const node/*: ConcreteRequest*/ = {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "AppQuery",
-  "id": null,
-  "text": "query AppQuery {\n  ...AllLocations_data\n}\n\nfragment AllLocations_data on RootQuery {\n  allLocations(first: 10) {\n    edges {\n      node {\n        id(opaque: false)\n        ...Location_location\n      }\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "AppQuery",
@@ -130,6 +125,13 @@ const node/*: ConcreteRequest*/ = {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "AppQuery",
+    "id": null,
+    "text": "query AppQuery {\n  ...AllLocations_data\n}\n\nfragment AllLocations_data on RootQuery {\n  allLocations(first: 10) {\n    edges {\n      node {\n        id(opaque: false)\n        ...Location_location\n      }\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n}\n",
+    "metadata": {}
   }
 };
 // prettier-ignore

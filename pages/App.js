@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react';
+import React from 'react';
 import { graphql, QueryRenderer } from '@kiwicom/relay';
 import type { AppQueryResponse } from '__generated__/AppQuery.graphql';
 
@@ -14,30 +14,33 @@ type ReadyState = {|
   +retry: ?() => void,
 |};
 
-export default class App extends Component<{||}> {
-  renderQueryRendererResponse = ({ error, props }: ReadyState) => {
-    if (error) {
-      return <div>Error!</div>;
-    }
-
-    if (!props) {
-      return <div>Loading...</div>;
-    }
-
-    return <AllLocations data={props} />;
-  };
-
-  render() {
-    return (
-      <QueryRenderer
-        environment={Environment}
-        query={graphql`
-          query AppQuery {
-            ...AllLocations_data
-          }
-        `}
-        render={this.renderQueryRendererResponse}
-      />
-    );
+function renderQueryRendererResponse({ error, props, retry }: ReadyState) {
+  if (error) {
+    return <div>Error!</div>;
   }
+
+  if (!props) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <>
+      <button onClick={retry}>Refresh</button>
+      <AllLocations data={props} />
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <QueryRenderer
+      environment={Environment}
+      query={graphql`
+        query AppQuery {
+          ...AllLocations_data
+        }
+      `}
+      render={renderQueryRendererResponse}
+    />
+  );
 }
