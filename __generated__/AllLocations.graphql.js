@@ -8,7 +8,7 @@
 
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
-type Location$ref = any;
+import type { Location$ref } from "./Location.graphql";
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type AllLocations$ref: FragmentReference;
 export type AllLocations = {|

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8c5ddbf5e063eca9cb84dbfd900355b5
+ * @relayHash f148cdda0d7a100444fd1e577ea197e5
  */
 
 /* eslint-disable */
@@ -9,7 +9,7 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-type AllLocations$ref = any;
+import type { AllLocations$ref } from "./AllLocations.graphql";
 export type AppQueryVariables = {||};
 export type AppQueryResponse = {|
   +$fragmentRefs: AllLocations$ref

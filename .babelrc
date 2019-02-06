@@ -1,4 +1,11 @@
 {
   "presets": ["@kiwicom/babel-preset-kiwicom", "next/babel"],
-  "plugins": []
+  "plugins": [
+    [
+      "relay",
+      {
+        "artifactDirectory": "./__generated__"
+      }
+    ]
+  ]
 }

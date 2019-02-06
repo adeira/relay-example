@@ -3,9 +3,9 @@
 import React, { Component } from 'react';
 // TODO: import createFragmentContainer from '@kiwicom/relay'
 import { graphql, createFragmentContainer } from 'react-relay';
+import type { AllLocations as AllLocationsDataType } from '__generated__/AllLocations.graphql';
 
 import Location from './Location';
-import type { AllLocations as AllLocationsDataType } from './__generated__/AllLocations.graphql';
 
 type Props = {|
   +data: AllLocationsDataType,

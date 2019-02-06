@@ -3,8 +3,7 @@
 import React, { Component } from 'react';
 // TODO: import createFragmentContainer from '@kiwicom/relay'
 import { graphql, createFragmentContainer } from 'react-relay';
-
-import type { Location as LocationDataType } from './__generated__/Location.graphql';
+import type { Location as LocationDataType } from '__generated__/Location.graphql';
 
 type Props = {|
   +data: LocationDataType,

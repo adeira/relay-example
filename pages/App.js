@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { graphql, QueryRenderer } from 'react-relay';
 
 import Environment from './Environment';
-import AllLocations from './AllLocations';
+import AllLocations from './locations/AllLocations';
 
 type Props = {||};
 

@@ -15,6 +15,6 @@
   },
   "scripts": {
     "start": "next",
-    "relay": "relay-compiler --src ./pages --schema ../graphql/graphql-schema-snapshot.graphql"
+    "relay": "relay-compiler --src=./pages --schema=../graphql/graphql-schema-snapshot.graphql --artifactDirectory=./__generated__"
   }
 }
