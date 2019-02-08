@@ -8,14 +8,24 @@ type Props = {|
   +location: ?LocationDataType,
 |};
 
-function Location(props: Props) {
-  return <li>{props.location?.name}</li>;
+function Location({ location }: Props) {
+  if (!location) {
+    return null; // or some failure placeholder
+  }
+
+  const { countryFlagURL, name } = location;
+  return (
+    <li>
+      <img width={12} src={countryFlagURL} /> {name}
+    </li>
+  );
 }
 
 export default createFragmentContainer(Location, {
   location: graphql`
     fragment Location_location on Location {
       name
+      countryFlagURL
     }
   `,
 });

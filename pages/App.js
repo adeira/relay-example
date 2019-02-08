@@ -16,19 +16,22 @@ type ReadyState = {|
 
 function renderQueryRendererResponse({ error, props, retry }: ReadyState) {
   if (error) {
-    return <div>Error!</div>;
+    return (
+      <div>
+        Error!{' '}
+        <a onClick={retry} href="#">
+          Retry
+        </a>
+        ?
+      </div>
+    );
   }
 
   if (!props) {
     return <div>Loading...</div>;
   }
 
-  return (
-    <>
-      <button onClick={retry}>Refresh</button>
-      <AllLocations data={props} />
-    </>
-  );
+  return <AllLocations data={props} />;
 }
 
 export default function App() {

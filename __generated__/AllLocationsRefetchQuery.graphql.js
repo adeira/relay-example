@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 373670c3b377c2c25f800b686acfb9a6
+ * @relayHash 428a1aa4beadebe7af2bb8b67e4473e9
  */
 
 /* eslint-disable */
@@ -10,24 +10,34 @@
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
 import type { AllLocations_data$ref } from "./AllLocations_data.graphql";
-export type AppQueryVariables = {||};
-export type AppQueryResponse = {|
+export type AllLocationsRefetchQueryVariables = {|
+  first?: ?number,
+  last?: ?number,
+  after?: ?string,
+  before?: ?string,
+|};
+export type AllLocationsRefetchQueryResponse = {|
   +$fragmentRefs: AllLocations_data$ref
 |};
-export type AppQuery = {|
-  variables: AppQueryVariables,
-  response: AppQueryResponse,
+export type AllLocationsRefetchQuery = {|
+  variables: AllLocationsRefetchQueryVariables,
+  response: AllLocationsRefetchQueryResponse,
 |};
 */
 
 
 /*
-query AppQuery {
-  ...AllLocations_data
+query AllLocationsRefetchQuery(
+  $first: Int
+  $last: Int
+  $after: String
+  $before: String
+) {
+  ...AllLocations_data_pbnwq
 }
 
-fragment AllLocations_data on RootQuery {
-  allLocations(first: 20) {
+fragment AllLocations_data_pbnwq on RootQuery {
+  allLocations(first: $first, last: $last, after: $after, before: $before) {
     edges {
       node {
         id
@@ -49,37 +59,107 @@ fragment Location_location on Location {
 }
 */
 
-const node/*: ConcreteRequest*/ = {
+const node/*: ConcreteRequest*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "first",
+    "type": "Int",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "last",
+    "type": "Int",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "after",
+    "type": "String",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "before",
+    "type": "String",
+    "defaultValue": null
+  }
+];
+return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "AppQuery",
+    "name": "AllLocationsRefetchQuery",
     "type": "RootQuery",
     "metadata": null,
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "FragmentSpread",
         "name": "AllLocations_data",
-        "args": null
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "after",
+            "variableName": "after",
+            "type": null
+          },
+          {
+            "kind": "Variable",
+            "name": "before",
+            "variableName": "before",
+            "type": null
+          },
+          {
+            "kind": "Variable",
+            "name": "first",
+            "variableName": "first",
+            "type": null
+          },
+          {
+            "kind": "Variable",
+            "name": "last",
+            "variableName": "last",
+            "type": null
+          }
+        ]
       }
     ]
   },
   "operation": {
     "kind": "Operation",
-    "name": "AppQuery",
-    "argumentDefinitions": [],
+    "name": "AllLocationsRefetchQuery",
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "allLocations",
-        "storageKey": "allLocations(first:20)",
+        "storageKey": null,
         "args": [
           {
-            "kind": "Literal",
+            "kind": "Variable",
+            "name": "after",
+            "variableName": "after",
+            "type": "String"
+          },
+          {
+            "kind": "Variable",
+            "name": "before",
+            "variableName": "before",
+            "type": "String"
+          },
+          {
+            "kind": "Variable",
             "name": "first",
-            "value": 20,
+            "variableName": "first",
+            "type": "Int"
+          },
+          {
+            "kind": "Variable",
+            "name": "last",
+            "variableName": "last",
             "type": "Int"
           }
         ],
@@ -174,12 +254,13 @@ const node/*: ConcreteRequest*/ = {
   },
   "params": {
     "operationKind": "query",
-    "name": "AppQuery",
+    "name": "AllLocationsRefetchQuery",
     "id": null,
-    "text": "query AppQuery {\n  ...AllLocations_data\n}\n\nfragment AllLocations_data on RootQuery {\n  allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n}\n",
+    "text": "query AllLocationsRefetchQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n) {\n  ...AllLocations_data_pbnwq\n}\n\nfragment AllLocations_data_pbnwq on RootQuery {\n  allLocations(first: $first, last: $last, after: $after, before: $before) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n}\n",
     "metadata": {}
   }
 };
+})();
 // prettier-ignore
-(node/*: any*/).hash = '8715d26a9e2c3f366f84258b927bafc3';
+(node/*: any*/).hash = '8679af920ad1307ced163451fd5e39e4';
 module.exports = node;

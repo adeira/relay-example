@@ -18,7 +18,13 @@ export type AllLocations_data = {|
         +id: string,
         +$fragmentRefs: Location_location$ref,
       |}
-    |}>
+    |}>,
+    +pageInfo: {|
+      +hasNextPage: boolean,
+      +hasPreviousPage: boolean,
+      +startCursor: ?string,
+      +endCursor: ?string,
+    |},
   |},
   +$refType: AllLocations_data$ref,
 |};
@@ -30,18 +36,61 @@ const node/*: ReaderFragment*/ = {
   "name": "AllLocations_data",
   "type": "RootQuery",
   "metadata": null,
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "first",
+      "type": "Int",
+      "defaultValue": 20
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "last",
+      "type": "Int",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "after",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "before",
+      "type": "String",
+      "defaultValue": null
+    }
+  ],
   "selections": [
     {
       "kind": "LinkedField",
       "alias": null,
       "name": "allLocations",
-      "storageKey": "allLocations(first:10)",
+      "storageKey": null,
       "args": [
         {
-          "kind": "Literal",
+          "kind": "Variable",
+          "name": "after",
+          "variableName": "after",
+          "type": "String"
+        },
+        {
+          "kind": "Variable",
+          "name": "before",
+          "variableName": "before",
+          "type": "String"
+        },
+        {
+          "kind": "Variable",
           "name": "first",
-          "value": 10,
+          "variableName": "first",
+          "type": "Int"
+        },
+        {
+          "kind": "Variable",
+          "name": "last",
+          "variableName": "last",
           "type": "Int"
         }
       ],
@@ -70,15 +119,8 @@ const node/*: ReaderFragment*/ = {
                   "kind": "ScalarField",
                   "alias": null,
                   "name": "id",
-                  "args": [
-                    {
-                      "kind": "Literal",
-                      "name": "opaque",
-                      "value": false,
-                      "type": "Boolean"
-                    }
-                  ],
-                  "storageKey": "id(opaque:false)"
+                  "args": null,
+                  "storageKey": null
                 },
                 {
                   "kind": "FragmentSpread",
@@ -88,11 +130,50 @@ const node/*: ReaderFragment*/ = {
               ]
             }
           ]
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "pageInfo",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "PageInfo",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "hasNextPage",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "hasPreviousPage",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "startCursor",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "endCursor",
+              "args": null,
+              "storageKey": null
+            }
+          ]
         }
       ]
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '7c03478c725378682369cd823cc0cb12';
+(node/*: any*/).hash = 'ca26fd7a565ee865ea8e4a8c4d11b769';
 module.exports = node;
