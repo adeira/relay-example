@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 373670c3b377c2c25f800b686acfb9a6
+ * @relayHash 0511b0f6214159463e8fc3627fc154af
  */
 
 /* eslint-disable */
@@ -9,10 +9,12 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-import type { AllLocations_data$ref } from "./AllLocations_data.graphql";
+import type { LocationsPaginatedBidirectional_data$ref } from "./LocationsPaginatedBidirectional_data.graphql";
+import type { LocationsPaginatedRefetch_data$ref } from "./LocationsPaginatedRefetch_data.graphql";
+import type { LocationsPaginated_data$ref } from "./LocationsPaginated_data.graphql";
 export type AppQueryVariables = {||};
 export type AppQueryResponse = {|
-  +$fragmentRefs: AllLocations_data$ref
+  +$fragmentRefs: LocationsPaginatedBidirectional_data$ref & LocationsPaginatedRefetch_data$ref & LocationsPaginated_data$ref
 |};
 export type AppQuery = {|
   variables: AppQueryVariables,
@@ -23,10 +25,12 @@ export type AppQuery = {|
 
 /*
 query AppQuery {
-  ...AllLocations_data
+  ...LocationsPaginatedBidirectional_data
+  ...LocationsPaginatedRefetch_data
+  ...LocationsPaginated_data
 }
 
-fragment AllLocations_data on RootQuery {
+fragment LocationsPaginatedBidirectional_data on RootQuery {
   allLocations(first: 20) {
     edges {
       node {
@@ -43,13 +47,145 @@ fragment AllLocations_data on RootQuery {
   }
 }
 
+fragment LocationsPaginatedRefetch_data on RootQuery {
+  incrementalPagination: allLocations(first: 20) {
+    edges {
+      node {
+        id
+        ...Location_location
+        __typename
+      }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
+fragment LocationsPaginated_data on RootQuery {
+  incrementalPagination2: allLocations(first: 20) {
+    edges {
+      node {
+        id
+        ...Location_location
+        __typename
+      }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
 fragment Location_location on Location {
   name
   countryFlagURL
 }
 */
 
-const node/*: ConcreteRequest*/ = {
+const node/*: ConcreteRequest*/ = (function(){
+var v0 = [
+  {
+    "kind": "Literal",
+    "name": "first",
+    "value": 20,
+    "type": "Int"
+  }
+],
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "countryFlagURL",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "hasNextPage",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "endCursor",
+  "args": null,
+  "storageKey": null
+},
+v6 = [
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "edges",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "LocationEdge",
+    "plural": true,
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "node",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Location",
+        "plural": false,
+        "selections": [
+          (v1/*: any*/),
+          (v2/*: any*/),
+          (v3/*: any*/),
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "__typename",
+            "args": null,
+            "storageKey": null
+          }
+        ]
+      },
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "cursor",
+        "args": null,
+        "storageKey": null
+      }
+    ]
+  },
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "pageInfo",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "PageInfo",
+    "plural": false,
+    "selections": [
+      (v5/*: any*/),
+      (v4/*: any*/)
+    ]
+  }
+];
+return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
@@ -60,7 +196,17 @@ const node/*: ConcreteRequest*/ = {
     "selections": [
       {
         "kind": "FragmentSpread",
-        "name": "AllLocations_data",
+        "name": "LocationsPaginatedBidirectional_data",
+        "args": null
+      },
+      {
+        "kind": "FragmentSpread",
+        "name": "LocationsPaginatedRefetch_data",
+        "args": null
+      },
+      {
+        "kind": "FragmentSpread",
+        "name": "LocationsPaginated_data",
         "args": null
       }
     ]
@@ -75,14 +221,7 @@ const node/*: ConcreteRequest*/ = {
         "alias": null,
         "name": "allLocations",
         "storageKey": "allLocations(first:20)",
-        "args": [
-          {
-            "kind": "Literal",
-            "name": "first",
-            "value": 20,
-            "type": "Int"
-          }
-        ],
+        "args": (v0/*: any*/),
         "concreteType": "LocationConnection",
         "plural": false,
         "selections": [
@@ -104,27 +243,9 @@ const node/*: ConcreteRequest*/ = {
                 "concreteType": "Location",
                 "plural": false,
                 "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "id",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "name",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "countryFlagURL",
-                    "args": null,
-                    "storageKey": null
-                  }
+                  (v1/*: any*/),
+                  (v2/*: any*/),
+                  (v3/*: any*/)
                 ]
               }
             ]
@@ -138,13 +259,7 @@ const node/*: ConcreteRequest*/ = {
             "concreteType": "PageInfo",
             "plural": false,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "hasNextPage",
-                "args": null,
-                "storageKey": null
-              },
+              (v4/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -159,16 +274,48 @@ const node/*: ConcreteRequest*/ = {
                 "args": null,
                 "storageKey": null
               },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "endCursor",
-                "args": null,
-                "storageKey": null
-              }
+              (v5/*: any*/)
             ]
           }
         ]
+      },
+      {
+        "kind": "LinkedField",
+        "alias": "incrementalPagination",
+        "name": "allLocations",
+        "storageKey": "allLocations(first:20)",
+        "args": (v0/*: any*/),
+        "concreteType": "LocationConnection",
+        "plural": false,
+        "selections": (v6/*: any*/)
+      },
+      {
+        "kind": "LinkedHandle",
+        "alias": "incrementalPagination",
+        "name": "allLocations",
+        "args": (v0/*: any*/),
+        "handle": "connection",
+        "key": "allLocations_incrementalPagination",
+        "filters": null
+      },
+      {
+        "kind": "LinkedField",
+        "alias": "incrementalPagination2",
+        "name": "allLocations",
+        "storageKey": "allLocations(first:20)",
+        "args": (v0/*: any*/),
+        "concreteType": "LocationConnection",
+        "plural": false,
+        "selections": (v6/*: any*/)
+      },
+      {
+        "kind": "LinkedHandle",
+        "alias": "incrementalPagination2",
+        "name": "allLocations",
+        "args": (v0/*: any*/),
+        "handle": "connection",
+        "key": "allLocations_incrementalPagination2",
+        "filters": null
       }
     ]
   },
@@ -176,10 +323,11 @@ const node/*: ConcreteRequest*/ = {
     "operationKind": "query",
     "name": "AppQuery",
     "id": null,
-    "text": "query AppQuery {\n  ...AllLocations_data\n}\n\nfragment AllLocations_data on RootQuery {\n  allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n}\n",
+    "text": "query AppQuery {\n  ...LocationsPaginatedBidirectional_data\n  ...LocationsPaginatedRefetch_data\n  ...LocationsPaginated_data\n}\n\nfragment LocationsPaginatedBidirectional_data on RootQuery {\n  allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment LocationsPaginated_data on RootQuery {\n  incrementalPagination2: allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n}\n",
     "metadata": {}
   }
 };
+})();
 // prettier-ignore
-(node/*: any*/).hash = '8715d26a9e2c3f366f84258b927bafc3';
+(node/*: any*/).hash = '10f0aa5bc300a9e2a5c582b2e2ff1d90';
 module.exports = node;

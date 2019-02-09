@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 428a1aa4beadebe7af2bb8b67e4473e9
+ * @relayHash 4c0685fbdff541d31d60fd41de1dc193
  */
 
 /* eslint-disable */
@@ -9,34 +9,34 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-import type { AllLocations_data$ref } from "./AllLocations_data.graphql";
-export type AllLocationsRefetchQueryVariables = {|
+import type { LocationsPaginatedBidirectional_data$ref } from "./LocationsPaginatedBidirectional_data.graphql";
+export type LocationsPaginatedBidirectionalRefetchQueryVariables = {|
   first?: ?number,
   last?: ?number,
   after?: ?string,
   before?: ?string,
 |};
-export type AllLocationsRefetchQueryResponse = {|
-  +$fragmentRefs: AllLocations_data$ref
+export type LocationsPaginatedBidirectionalRefetchQueryResponse = {|
+  +$fragmentRefs: LocationsPaginatedBidirectional_data$ref
 |};
-export type AllLocationsRefetchQuery = {|
-  variables: AllLocationsRefetchQueryVariables,
-  response: AllLocationsRefetchQueryResponse,
+export type LocationsPaginatedBidirectionalRefetchQuery = {|
+  variables: LocationsPaginatedBidirectionalRefetchQueryVariables,
+  response: LocationsPaginatedBidirectionalRefetchQueryResponse,
 |};
 */
 
 
 /*
-query AllLocationsRefetchQuery(
+query LocationsPaginatedBidirectionalRefetchQuery(
   $first: Int
   $last: Int
   $after: String
   $before: String
 ) {
-  ...AllLocations_data_pbnwq
+  ...LocationsPaginatedBidirectional_data_pbnwq
 }
 
-fragment AllLocations_data_pbnwq on RootQuery {
+fragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {
   allLocations(first: $first, last: $last, after: $after, before: $before) {
     edges {
       node {
@@ -90,14 +90,14 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "AllLocationsRefetchQuery",
+    "name": "LocationsPaginatedBidirectionalRefetchQuery",
     "type": "RootQuery",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "FragmentSpread",
-        "name": "AllLocations_data",
+        "name": "LocationsPaginatedBidirectional_data",
         "args": [
           {
             "kind": "Variable",
@@ -129,7 +129,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "AllLocationsRefetchQuery",
+    "name": "LocationsPaginatedBidirectionalRefetchQuery",
     "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
@@ -254,13 +254,13 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "AllLocationsRefetchQuery",
+    "name": "LocationsPaginatedBidirectionalRefetchQuery",
     "id": null,
-    "text": "query AllLocationsRefetchQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n) {\n  ...AllLocations_data_pbnwq\n}\n\nfragment AllLocations_data_pbnwq on RootQuery {\n  allLocations(first: $first, last: $last, after: $after, before: $before) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n}\n",
+    "text": "query LocationsPaginatedBidirectionalRefetchQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n) {\n  ...LocationsPaginatedBidirectional_data_pbnwq\n}\n\nfragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {\n  allLocations(first: $first, last: $last, after: $after, before: $before) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '8679af920ad1307ced163451fd5e39e4';
+(node/*: any*/).hash = 'b477875859d7890a09eedf906ddcb30a';
 module.exports = node;

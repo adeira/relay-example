@@ -10,8 +10,8 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { Location_location$ref } from "./Location_location.graphql";
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type AllLocations_data$ref: FragmentReference;
-export type AllLocations_data = {|
+declare export opaque type LocationsPaginatedBidirectional_data$ref: FragmentReference;
+export type LocationsPaginatedBidirectional_data = {|
   +allLocations: ?{|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
@@ -26,14 +26,14 @@ export type AllLocations_data = {|
       +endCursor: ?string,
     |},
   |},
-  +$refType: AllLocations_data$ref,
+  +$refType: LocationsPaginatedBidirectional_data$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "AllLocations_data",
+  "name": "LocationsPaginatedBidirectional_data",
   "type": "RootQuery",
   "metadata": null,
   "argumentDefinitions": [
@@ -175,5 +175,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'ca26fd7a565ee865ea8e4a8c4d11b769';
+(node/*: any*/).hash = '1682c612b1c5f85ee4ab4d65f7f07e02';
 module.exports = node;

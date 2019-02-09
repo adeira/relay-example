@@ -6,18 +6,18 @@ import {
   graphql,
   type RelayProp,
 } from '@kiwicom/relay';
-import type { AllLocations_data as AllLocationsDataType } from '__generated__/AllLocations_data.graphql';
+import type { LocationsPaginatedBidirectional_data as LocationsDataType } from '__generated__/LocationsPaginatedBidirectional_data.graphql';
 
 import Location from './Location';
 
 type Props = {|
-  +data: AllLocationsDataType,
+  +data: LocationsDataType,
   +relay: RelayProp,
 |};
 
 const ITEMS = 20;
 
-function AllLocations(props: Props) {
+function LocationsPaginatedBidirectional(props: Props) {
   const [start, setStart] = useState(1);
 
   const pageInfo = props.data.allLocations?.pageInfo;
@@ -63,29 +63,21 @@ function AllLocations(props: Props) {
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>
-      <button
-        onClick={openPreviousPage}
-        style={{ background: pageInfo.hasPreviousPage ? 'lightgreen' : 'none' }}
-        disabled={!pageInfo.hasPreviousPage}
-      >
-        Previous page
+      <button onClick={openPreviousPage} disabled={!pageInfo.hasPreviousPage}>
+        {pageInfo.hasPreviousPage ? 'Previous page' : <s>Previous page</s>}
       </button>
-      <button
-        onClick={openNextPage}
-        style={{ background: pageInfo.hasNextPage ? 'lightgreen' : 'none' }}
-        disabled={!pageInfo.hasNextPage}
-      >
-        Next page
+      <button onClick={openNextPage} disabled={!pageInfo.hasNextPage}>
+        {pageInfo.hasNextPage ? 'Next page' : <s>Next page</s>}
       </button>
     </>
   );
 }
 
 export default createRefetchContainer(
-  AllLocations,
+  LocationsPaginatedBidirectional,
   {
     data: graphql`
-      fragment AllLocations_data on RootQuery
+      fragment LocationsPaginatedBidirectional_data on RootQuery
         @argumentDefinitions(
           first: { type: "Int", defaultValue: 20 }
           last: { type: "Int" }
@@ -115,13 +107,13 @@ export default createRefetchContainer(
     `,
   },
   graphql`
-    query AllLocationsRefetchQuery(
+    query LocationsPaginatedBidirectionalRefetchQuery(
       $first: Int
       $last: Int
       $after: String
       $before: String
     ) {
-      ...AllLocations_data
+      ...LocationsPaginatedBidirectional_data
         @arguments(first: $first, last: $last, after: $after, before: $before)
     }
   `,
