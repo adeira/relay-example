@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 0511b0f6214159463e8fc3627fc154af
+ * @relayHash 7e9fdd1e543ab2675dab1071728143ab
  */
 
 /* eslint-disable */
@@ -83,7 +83,17 @@ fragment LocationsPaginated_data on RootQuery {
 
 fragment Location_location on Location {
   name
-  countryFlagURL
+  ...CountryFlag_location
+}
+
+fragment CountryFlag_location on Location {
+  country {
+    code
+    name
+  }
+  code
+  name
+  type
 }
 */
 
@@ -113,25 +123,45 @@ v2 = {
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "countryFlagURL",
+  "name": "code",
   "args": null,
   "storageKey": null
 },
 v4 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "country",
+  "storageKey": null,
+  "args": null,
+  "concreteType": "LocationArea",
+  "plural": false,
+  "selections": [
+    (v3/*: any*/),
+    (v2/*: any*/)
+  ]
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "type",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "hasNextPage",
   "args": null,
   "storageKey": null
 },
-v5 = {
+v7 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "endCursor",
   "args": null,
   "storageKey": null
 },
-v6 = [
+v8 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -152,7 +182,9 @@ v6 = [
         "selections": [
           (v1/*: any*/),
           (v2/*: any*/),
+          (v4/*: any*/),
           (v3/*: any*/),
+          (v5/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -180,8 +212,8 @@ v6 = [
     "concreteType": "PageInfo",
     "plural": false,
     "selections": [
-      (v5/*: any*/),
-      (v4/*: any*/)
+      (v7/*: any*/),
+      (v6/*: any*/)
     ]
   }
 ];
@@ -245,7 +277,9 @@ return {
                 "selections": [
                   (v1/*: any*/),
                   (v2/*: any*/),
-                  (v3/*: any*/)
+                  (v4/*: any*/),
+                  (v3/*: any*/),
+                  (v5/*: any*/)
                 ]
               }
             ]
@@ -259,7 +293,7 @@ return {
             "concreteType": "PageInfo",
             "plural": false,
             "selections": [
-              (v4/*: any*/),
+              (v6/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -274,7 +308,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              (v5/*: any*/)
+              (v7/*: any*/)
             ]
           }
         ]
@@ -287,7 +321,7 @@ return {
         "args": (v0/*: any*/),
         "concreteType": "LocationConnection",
         "plural": false,
-        "selections": (v6/*: any*/)
+        "selections": (v8/*: any*/)
       },
       {
         "kind": "LinkedHandle",
@@ -306,7 +340,7 @@ return {
         "args": (v0/*: any*/),
         "concreteType": "LocationConnection",
         "plural": false,
-        "selections": (v6/*: any*/)
+        "selections": (v8/*: any*/)
       },
       {
         "kind": "LinkedHandle",
@@ -323,7 +357,7 @@ return {
     "operationKind": "query",
     "name": "AppQuery",
     "id": null,
-    "text": "query AppQuery {\n  ...LocationsPaginatedBidirectional_data\n  ...LocationsPaginatedRefetch_data\n  ...LocationsPaginated_data\n}\n\nfragment LocationsPaginatedBidirectional_data on RootQuery {\n  allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment LocationsPaginated_data on RootQuery {\n  incrementalPagination2: allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n}\n",
+    "text": "query AppQuery {\n  ...LocationsPaginatedBidirectional_data\n  ...LocationsPaginatedRefetch_data\n  ...LocationsPaginated_data\n}\n\nfragment LocationsPaginatedBidirectional_data on RootQuery {\n  allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment LocationsPaginated_data on RootQuery {\n  incrementalPagination2: allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
     "metadata": {}
   }
 };

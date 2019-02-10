@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 3e5f297353e4cdc901c32a43a32781f8
+ * @relayHash 1565e86fce09cb460e24d3626c6f7369
  */
 
 /* eslint-disable */
@@ -51,7 +51,17 @@ fragment LocationsPaginated_data_kPtUz on RootQuery {
 
 fragment Location_location on Location {
   name
-  countryFlagURL
+  ...CountryFlag_location
+}
+
+fragment CountryFlag_location on Location {
+  country {
+    code
+    name
+  }
+  code
+  name
+  type
 }
 */
 
@@ -83,7 +93,21 @@ v1 = [
     "variableName": "count",
     "type": "Int"
   }
-];
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "code",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
   "fragment": {
@@ -152,17 +176,25 @@ return {
                     "args": null,
                     "storageKey": null
                   },
+                  (v2/*: any*/),
                   {
-                    "kind": "ScalarField",
+                    "kind": "LinkedField",
                     "alias": null,
-                    "name": "name",
+                    "name": "country",
+                    "storageKey": null,
                     "args": null,
-                    "storageKey": null
+                    "concreteType": "LocationArea",
+                    "plural": false,
+                    "selections": [
+                      (v3/*: any*/),
+                      (v2/*: any*/)
+                    ]
                   },
+                  (v3/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "name": "countryFlagURL",
+                    "name": "type",
                     "args": null,
                     "storageKey": null
                   },
@@ -226,7 +258,7 @@ return {
     "operationKind": "query",
     "name": "LocationsPaginatedRefetchQuery",
     "id": null,
-    "text": "query LocationsPaginatedRefetchQuery(\n  $count: Int\n  $cursor: String\n) {\n  ...LocationsPaginated_data_kPtUz\n}\n\nfragment LocationsPaginated_data_kPtUz on RootQuery {\n  incrementalPagination2: allLocations(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n}\n",
+    "text": "query LocationsPaginatedRefetchQuery(\n  $count: Int\n  $cursor: String\n) {\n  ...LocationsPaginated_data_kPtUz\n}\n\nfragment LocationsPaginated_data_kPtUz on RootQuery {\n  incrementalPagination2: allLocations(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
     "metadata": {}
   }
 };

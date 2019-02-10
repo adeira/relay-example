@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 4c0685fbdff541d31d60fd41de1dc193
+ * @relayHash 144a7fbd0601842dbe2ff6c0cc9549b9
  */
 
 /* eslint-disable */
@@ -55,7 +55,17 @@ fragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {
 
 fragment Location_location on Location {
   name
-  countryFlagURL
+  ...CountryFlag_location
+}
+
+fragment CountryFlag_location on Location {
+  country {
+    code
+    name
+  }
+  code
+  name
+  type
 }
 */
 
@@ -85,7 +95,21 @@ var v0 = [
     "type": "String",
     "defaultValue": null
   }
-];
+],
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "code",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
   "fragment": {
@@ -191,17 +215,25 @@ return {
                     "args": null,
                     "storageKey": null
                   },
+                  (v1/*: any*/),
                   {
-                    "kind": "ScalarField",
+                    "kind": "LinkedField",
                     "alias": null,
-                    "name": "name",
+                    "name": "country",
+                    "storageKey": null,
                     "args": null,
-                    "storageKey": null
+                    "concreteType": "LocationArea",
+                    "plural": false,
+                    "selections": [
+                      (v2/*: any*/),
+                      (v1/*: any*/)
+                    ]
                   },
+                  (v2/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "name": "countryFlagURL",
+                    "name": "type",
                     "args": null,
                     "storageKey": null
                   }
@@ -256,7 +288,7 @@ return {
     "operationKind": "query",
     "name": "LocationsPaginatedBidirectionalRefetchQuery",
     "id": null,
-    "text": "query LocationsPaginatedBidirectionalRefetchQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n) {\n  ...LocationsPaginatedBidirectional_data_pbnwq\n}\n\nfragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {\n  allLocations(first: $first, last: $last, after: $after, before: $before) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n}\n",
+    "text": "query LocationsPaginatedBidirectionalRefetchQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n) {\n  ...LocationsPaginatedBidirectional_data_pbnwq\n}\n\nfragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {\n  allLocations(first: $first, last: $last, after: $after, before: $before) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
     "metadata": {}
   }
 };

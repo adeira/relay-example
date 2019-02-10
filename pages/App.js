@@ -2,6 +2,9 @@
 
 import React from 'react';
 import { graphql, QueryRenderer } from '@kiwicom/relay';
+import Head from 'next/head';
+import Heading from '@kiwicom/orbit-components/lib/Heading';
+import Text from '@kiwicom/orbit-components/lib/Text';
 import type { AppQueryResponse } from '__generated__/AppQuery.graphql';
 
 import LocationsPaginatedBidirectional from './locations/LocationsPaginatedBidirectional';
@@ -11,10 +14,10 @@ import LocationsPaginated from './locations/LocationsPaginated';
 function Demo(props) {
   return (
     <>
-      <h2>{props.title}</h2>
-      <p>
+      <Heading type="title2">{props.title}</Heading>
+      <Text>
         See: <a href={props.link}>{props.linkTitle}</a>
-      </p>
+      </Text>
       {props.component}
     </>
   );
@@ -65,15 +68,21 @@ function renderQueryRendererResponse(props: AppQueryResponse) {
 
 export default function App() {
   return (
-    <QueryRenderer
-      query={graphql`
-        query AppQuery {
-          ...LocationsPaginatedBidirectional_data
-          ...LocationsPaginatedRefetch_data
-          ...LocationsPaginated_data
-        }
-      `}
-      onResponse={renderQueryRendererResponse}
-    />
+    <>
+      <Head>
+        <title>Relay example project</title>
+      </Head>
+      <Heading>Relay pagination showcase</Heading>
+      <QueryRenderer
+        query={graphql`
+          query AppQuery {
+            ...LocationsPaginatedBidirectional_data
+            ...LocationsPaginatedRefetch_data
+            ...LocationsPaginated_data
+          }
+        `}
+        onResponse={renderQueryRendererResponse}
+      />
+    </>
   );
 }
