@@ -4,7 +4,7 @@ import React from 'react';
 import {
   createPaginationContainer,
   graphql,
-  type RelayProp,
+  type PaginationRelayProp,
 } from '@kiwicom/relay';
 import type { LocationsPaginated_data as LocationsDataType } from '__generated__/LocationsPaginated_data.graphql';
 
@@ -12,7 +12,7 @@ import Location from './Location';
 
 type Props = {|
   +data: LocationsDataType,
-  +relay: RelayProp,
+  +relay: PaginationRelayProp,
 |};
 
 function LocationsPaginated(props: Props) {

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import {
   createRefetchContainer,
   graphql,
-  type RelayProp,
+  type RefetchRelayProp,
 } from '@kiwicom/relay';
 import type { LocationsPaginatedBidirectional_data as LocationsDataType } from '__generated__/LocationsPaginatedBidirectional_data.graphql';
 
@@ -12,7 +12,7 @@ import Location from './Location';
 
 type Props = {|
   +data: LocationsDataType,
-  +relay: RelayProp,
+  +relay: RefetchRelayProp,
 |};
 
 const ITEMS = 20;
