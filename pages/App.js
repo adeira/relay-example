@@ -4,35 +4,23 @@ import React from 'react';
 import { graphql, QueryRenderer } from '@kiwicom/relay';
 import type { AppQueryResponse } from '__generated__/AppQuery.graphql';
 
-import Environment from './Environment';
 import LocationsPaginatedBidirectional from './locations/LocationsPaginatedBidirectional';
 import LocationsPaginatedRefetch from './locations/LocationsPaginatedRefetch';
 import LocationsPaginated from './locations/LocationsPaginated';
 
-// TODO: distribute in '@kiwicom/relay' (distribute the while QueryRenderer properly set?)
-type ReadyState = {|
-  +error: ?Error,
-  +props: ?AppQueryResponse,
-  +retry: ?() => void,
-|};
+function Demo(props) {
+  return (
+    <>
+      <h2>{props.title}</h2>
+      <p>
+        See: <a href={props.link}>{props.linkTitle}</a>
+      </p>
+      {props.component}
+    </>
+  );
+}
 
-function renderQueryRendererResponse({ error, props, retry }: ReadyState) {
-  if (error) {
-    return (
-      <div>
-        Error!{' '}
-        <a onClick={retry} href="#">
-          Retry
-        </a>
-        ?
-      </div>
-    );
-  }
-
-  if (!props) {
-    return <div>Loading...</div>;
-  }
-
+function renderQueryRendererResponse(props: AppQueryResponse) {
   return (
     <div className="row">
       <style jsx>{`
@@ -46,36 +34,30 @@ function renderQueryRendererResponse({ error, props, retry }: ReadyState) {
       `}</style>
 
       <div className="column">
-        <h2>Bi-directional pagination</h2>
-        <p>
-          See:{' '}
-          <a href="https://facebook.github.io/relay/docs/en/refetch-container.html">
-            Refetch Container
-          </a>
-        </p>
-        <LocationsPaginatedBidirectional data={props} />
+        <Demo
+          title="Bi-directional pagination"
+          link="https://facebook.github.io/relay/docs/en/refetch-container.html"
+          linkTitle="Refetch Container"
+          component={<LocationsPaginatedBidirectional data={props} />}
+        />
       </div>
 
       <div className="column">
-        <h2>Incremental pagination 1</h2>
-        <p>
-          See:{' '}
-          <a href="https://facebook.github.io/relay/docs/en/refetch-container.html">
-            Refetch Container
-          </a>
-        </p>
-        <LocationsPaginatedRefetch data={props} />
+        <Demo
+          title="Incremental pagination 1"
+          link="https://facebook.github.io/relay/docs/en/refetch-container.html"
+          linkTitle="Refetch Container"
+          component={<LocationsPaginatedRefetch data={props} />}
+        />
       </div>
 
       <div className="column">
-        <h2>Incremental pagination 2</h2>
-        <p>
-          See:{' '}
-          <a href="https://facebook.github.io/relay/docs/en/pagination-container.html">
-            Pagination Container
-          </a>
-        </p>
-        <LocationsPaginated data={props} />
+        <Demo
+          title="Incremental pagination 2"
+          link="https://facebook.github.io/relay/docs/en/pagination-container.html"
+          linkTitle="Pagination Container"
+          component={<LocationsPaginated data={props} />}
+        />
       </div>
     </div>
   );
@@ -84,7 +66,6 @@ function renderQueryRendererResponse({ error, props, retry }: ReadyState) {
 export default function App() {
   return (
     <QueryRenderer
-      environment={Environment}
       query={graphql`
         query AppQuery {
           ...LocationsPaginatedBidirectional_data
@@ -92,7 +73,7 @@ export default function App() {
           ...LocationsPaginated_data
         }
       `}
-      render={renderQueryRendererResponse}
+      onResponse={renderQueryRendererResponse}
     />
   );
 }
