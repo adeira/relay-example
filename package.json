@@ -14,8 +14,7 @@
   },
   "devDependencies": {
     "@kiwicom/babel-preset-kiwicom": "^2.0.0",
-    "graphql": "^14.1.1",
-    "relay-compiler": "^2.0.0"
+    "graphql": "^14.1.1"
   },
   "scripts": {
     "start": "next",
