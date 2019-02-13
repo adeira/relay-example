@@ -7,7 +7,7 @@
     "@kiwicom/relay": "^0",
     "next": "^8.0.0",
     "next-plugin-custom-babel-config": "^1.0.0",
-    "next-plugin-transpile-modules": "^1.1.0",
+    "next-plugin-transpile-modules": "^2.0.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "styled-components": "^4.1.3"
