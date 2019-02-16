@@ -6,6 +6,10 @@ import {
   graphql,
   type RefetchRelayProp,
 } from '@kiwicom/relay';
+import Button from '@kiwicom/orbit-components/lib/Button';
+import ButtonGroup from '@kiwicom/orbit-components/lib/ButtonGroup';
+import ChevronLeft from '@kiwicom/orbit-components/lib/icons/ChevronLeft';
+import ChevronRight from '@kiwicom/orbit-components/lib/icons/ChevronRight';
 import type { LocationsPaginatedBidirectional_data as LocationsDataType } from '__generated__/LocationsPaginatedBidirectional_data.graphql';
 
 import Location from './Location';
@@ -63,12 +67,24 @@ function LocationsPaginatedBidirectional(props: Props) {
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>
-      <button onClick={openPreviousPage} disabled={!pageInfo.hasPreviousPage}>
-        {pageInfo.hasPreviousPage ? 'Previous page' : <s>Previous page</s>}
-      </button>
-      <button onClick={openNextPage} disabled={!pageInfo.hasNextPage}>
-        {pageInfo.hasNextPage ? 'Next page' : <s>Next page</s>}
-      </button>
+      <ButtonGroup connected={true}>
+        <Button
+          onClick={openPreviousPage}
+          disabled={!pageInfo.hasPreviousPage}
+          size="small"
+          iconLeft={<ChevronLeft />}
+        >
+          Previous page
+        </Button>
+        <Button
+          onClick={openNextPage}
+          disabled={!pageInfo.hasNextPage}
+          size="small"
+          iconRight={<ChevronRight />}
+        >
+          Next page
+        </Button>
+      </ButtonGroup>
     </>
   );
 }

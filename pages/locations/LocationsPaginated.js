@@ -6,6 +6,7 @@ import {
   graphql,
   type PaginationRelayProp,
 } from '@kiwicom/relay';
+import Button from '@kiwicom/orbit-components/lib/Button';
 import type { LocationsPaginated_data as LocationsDataType } from '__generated__/LocationsPaginated_data.graphql';
 
 import Location from './Location';
@@ -36,7 +37,9 @@ function LocationsPaginated(props: Props) {
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>
-      <button onClick={loadMore}>Load more!</button>
+      <Button onClick={loadMore} size="small">
+        Load more!
+      </Button>
     </>
   );
 }

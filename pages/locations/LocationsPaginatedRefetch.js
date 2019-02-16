@@ -6,6 +6,7 @@ import {
   graphql,
   type RefetchRelayProp,
 } from '@kiwicom/relay';
+import Button from '@kiwicom/orbit-components/lib/Button';
 import type { LocationsPaginatedRefetch_data as LocationsDataType } from '__generated__/LocationsPaginatedRefetch_data.graphql';
 
 import Location from './Location';
@@ -41,7 +42,9 @@ function LocationsPaginatedRefetch(props: Props) {
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>
-      <button onClick={loadMore}>Load more!</button>
+      <Button onClick={loadMore} size="small">
+        Load more!
+      </Button>
     </>
   );
 }
