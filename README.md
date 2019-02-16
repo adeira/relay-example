@@ -8,6 +8,21 @@ This repository contains examples of common patterns used in real-world applicat
 - _"load more"_ pagination using `createRefetchContainer`
 - _"load more"_ pagination using `createPaginationContainer`
 
+# Install and run
+
+```text
+yarn install
+yarn start
+```
+
+You should regenerate Relay files in case you are changing Relay fragments:
+
+```text
+yarn relay
+```
+
+This is necessary because Relay is not working with the GraphQL code you write directly. Instead, it generates optimized metafiles to the `__generated__` folder and it's working with these files. It's a good idea to check what files are being regenerated and sometimes even look inside and read them. You'll eventually learn a lot about how it actually works and what optimizations are actually being done.
+
 # Bi-directional pagination
 
 The best fit for bi-directional (sometimes known as "window" or "next/prev" pagination) is `createRefetchContainer`. This container is the best when you are changing variables in the component fragment (which is exactly our use-case). Pagination in GraphQL world works like this (try in https://graphql.kiwi.com/):
