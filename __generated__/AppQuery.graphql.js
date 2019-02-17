@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7e9fdd1e543ab2675dab1071728143ab
+ * @relayHash 86ac49088824ca10ead60de514aa457d
  */
 
 /* eslint-disable */
@@ -12,7 +12,9 @@ import type { ConcreteRequest } from 'relay-runtime';
 import type { LocationsPaginatedBidirectional_data$ref } from "./LocationsPaginatedBidirectional_data.graphql";
 import type { LocationsPaginatedRefetch_data$ref } from "./LocationsPaginatedRefetch_data.graphql";
 import type { LocationsPaginated_data$ref } from "./LocationsPaginated_data.graphql";
-export type AppQueryVariables = {||};
+export type AppQueryVariables = {|
+  count: number
+|};
 export type AppQueryResponse = {|
   +$fragmentRefs: LocationsPaginatedBidirectional_data$ref & LocationsPaginatedRefetch_data$ref & LocationsPaginated_data$ref
 |};
@@ -24,14 +26,16 @@ export type AppQuery = {|
 
 
 /*
-query AppQuery {
-  ...LocationsPaginatedBidirectional_data
+query AppQuery(
+  $count: Int!
+) {
+  ...LocationsPaginatedBidirectional_data_1TJkD9
   ...LocationsPaginatedRefetch_data
   ...LocationsPaginated_data
 }
 
-fragment LocationsPaginatedBidirectional_data on RootQuery {
-  allLocations(first: 20) {
+fragment LocationsPaginatedBidirectional_data_1TJkD9 on RootQuery {
+  allLocations(first: $count) {
     edges {
       node {
         id
@@ -100,10 +104,10 @@ fragment CountryFlag_location on Location {
 const node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
-    "kind": "Literal",
-    "name": "first",
-    "value": 20,
-    "type": "Int"
+    "kind": "LocalArgument",
+    "name": "count",
+    "type": "Int!",
+    "defaultValue": null
   }
 ],
 v1 = {
@@ -162,6 +166,14 @@ v7 = {
   "storageKey": null
 },
 v8 = [
+  {
+    "kind": "Literal",
+    "name": "first",
+    "value": 20,
+    "type": "Int"
+  }
+],
+v9 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -224,12 +236,19 @@ return {
     "name": "AppQuery",
     "type": "RootQuery",
     "metadata": null,
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "FragmentSpread",
         "name": "LocationsPaginatedBidirectional_data",
-        "args": null
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "first",
+            "variableName": "count",
+            "type": null
+          }
+        ]
       },
       {
         "kind": "FragmentSpread",
@@ -246,14 +265,21 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "AppQuery",
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "allLocations",
-        "storageKey": "allLocations(first:20)",
-        "args": (v0/*: any*/),
+        "storageKey": null,
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "first",
+            "variableName": "count",
+            "type": "Int"
+          }
+        ],
         "concreteType": "LocationConnection",
         "plural": false,
         "selections": [
@@ -318,16 +344,16 @@ return {
         "alias": "incrementalPagination",
         "name": "allLocations",
         "storageKey": "allLocations(first:20)",
-        "args": (v0/*: any*/),
+        "args": (v8/*: any*/),
         "concreteType": "LocationConnection",
         "plural": false,
-        "selections": (v8/*: any*/)
+        "selections": (v9/*: any*/)
       },
       {
         "kind": "LinkedHandle",
         "alias": "incrementalPagination",
         "name": "allLocations",
-        "args": (v0/*: any*/),
+        "args": (v8/*: any*/),
         "handle": "connection",
         "key": "allLocations_incrementalPagination",
         "filters": null
@@ -337,16 +363,16 @@ return {
         "alias": "incrementalPagination2",
         "name": "allLocations",
         "storageKey": "allLocations(first:20)",
-        "args": (v0/*: any*/),
+        "args": (v8/*: any*/),
         "concreteType": "LocationConnection",
         "plural": false,
-        "selections": (v8/*: any*/)
+        "selections": (v9/*: any*/)
       },
       {
         "kind": "LinkedHandle",
         "alias": "incrementalPagination2",
         "name": "allLocations",
-        "args": (v0/*: any*/),
+        "args": (v8/*: any*/),
         "handle": "connection",
         "key": "allLocations_incrementalPagination2",
         "filters": null
@@ -357,11 +383,11 @@ return {
     "operationKind": "query",
     "name": "AppQuery",
     "id": null,
-    "text": "query AppQuery {\n  ...LocationsPaginatedBidirectional_data\n  ...LocationsPaginatedRefetch_data\n  ...LocationsPaginated_data\n}\n\nfragment LocationsPaginatedBidirectional_data on RootQuery {\n  allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment LocationsPaginated_data on RootQuery {\n  incrementalPagination2: allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
+    "text": "query AppQuery(\n  $count: Int!\n) {\n  ...LocationsPaginatedBidirectional_data_1TJkD9\n  ...LocationsPaginatedRefetch_data\n  ...LocationsPaginated_data\n}\n\nfragment LocationsPaginatedBidirectional_data_1TJkD9 on RootQuery {\n  allLocations(first: $count) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment LocationsPaginated_data on RootQuery {\n  incrementalPagination2: allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '10f0aa5bc300a9e2a5c582b2e2ff1d90';
+(node/*: any*/).hash = '0498f7c949b5251acad55be93ac901ea';
 module.exports = node;

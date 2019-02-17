@@ -15,11 +15,10 @@ import type { LocationsPaginatedBidirectional_data as LocationsDataType } from '
 import Location from './Location';
 
 type Props = {|
+  +itemsCount: number,
   +data: LocationsDataType,
   +relay: RefetchRelayProp,
 |};
-
-const ITEMS = 20;
 
 function LocationsPaginatedBidirectional(props: Props) {
   const [start, setStart] = useState(1);
@@ -32,9 +31,9 @@ function LocationsPaginatedBidirectional(props: Props) {
   function _refetch({ after, before }: Object, callback) {
     props.relay.refetch(
       {
-        first: after ? ITEMS : null,
+        first: after ? props.itemsCount : null,
         after,
-        last: before ? ITEMS : null,
+        last: before ? props.itemsCount : null,
         before,
       },
       null,
@@ -49,13 +48,13 @@ function LocationsPaginatedBidirectional(props: Props) {
 
   function openPreviousPage() {
     _refetch({ before: pageInfo.startCursor }, () =>
-      setStart(start => start - ITEMS),
+      setStart(start => start - props.itemsCount),
     );
   }
 
   function openNextPage() {
     _refetch({ after: pageInfo.endCursor }, () =>
-      setStart(start => start + ITEMS),
+      setStart(start => start + props.itemsCount),
     );
   }
 
@@ -95,7 +94,7 @@ export default createRefetchContainer(
     data: graphql`
       fragment LocationsPaginatedBidirectional_data on RootQuery
         @argumentDefinitions(
-          first: { type: "Int", defaultValue: 20 }
+          first: { type: "Int" }
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }

@@ -23,6 +23,8 @@ function Demo(props) {
   );
 }
 
+const ITEMS_COUNT = 20; // change me
+
 function renderQueryRendererResponse(props: AppQueryResponse) {
   return (
     <div className="row">
@@ -41,7 +43,12 @@ function renderQueryRendererResponse(props: AppQueryResponse) {
           title="Bi-directional pagination"
           link="https://facebook.github.io/relay/docs/en/refetch-container.html"
           linkTitle="Refetch Container"
-          component={<LocationsPaginatedBidirectional data={props} />}
+          component={
+            <LocationsPaginatedBidirectional
+              data={props}
+              itemsCount={ITEMS_COUNT}
+            />
+          }
         />
       </div>
 
@@ -67,20 +74,26 @@ function renderQueryRendererResponse(props: AppQueryResponse) {
 }
 
 export default function App() {
+  const queryVariables = {
+    count: ITEMS_COUNT,
+  };
+
   return (
     <>
       <Head>
         <title>Relay example project</title>
       </Head>
       <Heading>Relay pagination showcase</Heading>
+      {/* $FlowExpectedError: https://gitlab.skypicker.com/incubator/universe/merge_requests/1024 */}
       <QueryRenderer
         query={graphql`
-          query AppQuery {
-            ...LocationsPaginatedBidirectional_data
+          query AppQuery($count: Int!) {
+            ...LocationsPaginatedBidirectional_data @arguments(first: $count)
             ...LocationsPaginatedRefetch_data
             ...LocationsPaginated_data
           }
         `}
+        variables={queryVariables}
         onResponse={renderQueryRendererResponse}
       />
     </>

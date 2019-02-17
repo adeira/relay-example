@@ -66,12 +66,7 @@ export default createPaginationContainer(
     `,
   },
   {
-    getVariables: (props, { count, cursor }, fragmentVariables) => {
-      return {
-        count,
-        cursor,
-      };
-    },
+    getVariables: (props, paginationInfo, fragmentVariables) => paginationInfo,
     query: graphql`
       query LocationsPaginatedRefetchQuery($count: Int, $cursor: String) {
         ...LocationsPaginated_data @arguments(count: $count, after: $cursor)
