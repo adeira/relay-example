@@ -84,7 +84,6 @@ export default function App() {
         <title>Relay example project</title>
       </Head>
       <Heading>Relay pagination showcase</Heading>
-      {/* $FlowExpectedError: https://gitlab.skypicker.com/incubator/universe/merge_requests/1024 */}
       <QueryRenderer
         query={graphql`
           query AppQuery($count: Int!) {
