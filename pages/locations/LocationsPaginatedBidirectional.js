@@ -1,18 +1,15 @@
 // @flow
 
-import React, { useState } from 'react';
+import React from 'react';
 import {
   createRefetchContainer,
   graphql,
   type RefetchRelayProp,
 } from '@kiwicom/relay';
-import Button from '@kiwicom/orbit-components/lib/Button';
-import ButtonGroup from '@kiwicom/orbit-components/lib/ButtonGroup';
-import ChevronLeft from '@kiwicom/orbit-components/lib/icons/ChevronLeft';
-import ChevronRight from '@kiwicom/orbit-components/lib/icons/ChevronRight';
 import type { LocationsPaginatedBidirectional_data as LocationsDataType } from '__generated__/LocationsPaginatedBidirectional_data.graphql';
 
-import Location from './Location';
+import LocationsPaginatedBidirectionalConnection from './LocationsPaginatedBidirectionalConnection';
+import HTTPError from './HTTPError';
 
 type Props = {|
   +itemsCount: number,
@@ -21,20 +18,16 @@ type Props = {|
 |};
 
 function LocationsPaginatedBidirectional(props: Props) {
-  const [start, setStart] = useState(1);
-
-  const pageInfo = props.data.allLocations?.pageInfo;
-  if (!pageInfo) {
-    return null; // or some failure placeholder
-  }
-
-  function _refetch({ after, before }: Object, callback) {
+  function handlePageChange(
+    args: {| before?: ?string, after?: ?string |},
+    callback: () => void,
+  ) {
     props.relay.refetch(
       {
-        first: after ? props.itemsCount : null,
-        after,
-        last: before ? props.itemsCount : null,
-        before,
+        first: args.after ? props.itemsCount : null,
+        after: args.after,
+        last: args.before ? props.itemsCount : null,
+        before: args.before,
       },
       null,
       error => {
@@ -46,53 +39,29 @@ function LocationsPaginatedBidirectional(props: Props) {
     );
   }
 
-  function openPreviousPage() {
-    _refetch({ before: pageInfo.startCursor }, () =>
-      setStart(start => start - props.itemsCount),
-    );
+  const locations = props.data.allLocations;
+  if (locations) {
+    if (locations.__typename === 'DangerZone_HTTPErrorType') {
+      return <HTTPError error={locations} />;
+    } else if (locations.__typename === 'LocationConnection') {
+      return (
+        <LocationsPaginatedBidirectionalConnection
+          connection={locations}
+          onPageChange={handlePageChange}
+          itemsCount={props.itemsCount}
+        />
+      );
+    }
   }
 
-  function openNextPage() {
-    _refetch({ after: pageInfo.endCursor }, () =>
-      setStart(start => start + props.itemsCount),
-    );
-  }
-
-  const edges = props.data.allLocations?.edges ?? [];
-  return (
-    <>
-      <ol start={start}>
-        {edges.map(edge => (
-          <Location key={edge?.node?.id} location={edge?.node} />
-        ))}
-      </ol>
-      <ButtonGroup connected={true}>
-        <Button
-          onClick={openPreviousPage}
-          disabled={!pageInfo.hasPreviousPage}
-          size="small"
-          iconLeft={<ChevronLeft />}
-        >
-          Previous page
-        </Button>
-        <Button
-          onClick={openNextPage}
-          disabled={!pageInfo.hasNextPage}
-          size="small"
-          iconRight={<ChevronRight />}
-        >
-          Next page
-        </Button>
-      </ButtonGroup>
-    </>
-  );
+  return null; // TODO: some generic error component maybe
 }
 
 export default createRefetchContainer(
   LocationsPaginatedBidirectional,
   {
     data: graphql`
-      fragment LocationsPaginatedBidirectional_data on RootQuery
+      fragment LocationsPaginatedBidirectional_data on DangerZone_RootQuery
         @argumentDefinitions(
           first: { type: "Int" }
           last: { type: "Int" }
@@ -100,22 +69,18 @@ export default createRefetchContainer(
           before: { type: "String" }
         ) {
         allLocations(
+          forceFail: false # change this to force BE fail
           first: $first
           last: $last
           after: $after
           before: $before
         ) {
-          edges {
-            node {
-              id
-              ...Location_location
-            }
+          __typename
+          ... on LocationConnection {
+            ...LocationsPaginatedBidirectionalConnection_connection
           }
-          pageInfo {
-            hasNextPage
-            hasPreviousPage
-            startCursor
-            endCursor
+          ... on DangerZone_HTTPErrorType {
+            ...HTTPError_error
           }
         }
       }
@@ -128,8 +93,10 @@ export default createRefetchContainer(
       $after: String
       $before: String
     ) {
-      ...LocationsPaginatedBidirectional_data
-        @arguments(first: $first, last: $last, after: $after, before: $before)
+      dangerZone {
+        ...LocationsPaginatedBidirectional_data
+          @arguments(first: $first, last: $last, after: $after, before: $before)
+      }
     }
   `,
 );

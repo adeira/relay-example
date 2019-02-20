@@ -8,24 +8,22 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
-import type { Location_location$ref } from "./Location_location.graphql";
+import type { HTTPError_error$ref } from "./HTTPError_error.graphql";
+import type { LocationsPaginatedBidirectionalConnection_connection$ref } from "./LocationsPaginatedBidirectionalConnection_connection.graphql";
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type LocationsPaginatedBidirectional_data$ref: FragmentReference;
 export type LocationsPaginatedBidirectional_data = {|
-  +allLocations: ?{|
-    +edges: ?$ReadOnlyArray<?{|
-      +node: ?{|
-        +id: string,
-        +$fragmentRefs: Location_location$ref,
-      |}
-    |}>,
-    +pageInfo: {|
-      +hasNextPage: boolean,
-      +hasPreviousPage: boolean,
-      +startCursor: ?string,
-      +endCursor: ?string,
-    |},
-  |},
+  +allLocations: ?({|
+    +__typename: "LocationConnection",
+    +$fragmentRefs: LocationsPaginatedBidirectionalConnection_connection$ref,
+  |} | {|
+    +__typename: "DangerZone_HTTPErrorType",
+    +$fragmentRefs: HTTPError_error$ref,
+  |} | {|
+    // This will never be '%other', but we need some
+    // value in case none of the concrete values match.
+    +__typename: "%other"
+  |}),
   +$refType: LocationsPaginatedBidirectional_data$ref,
 |};
 */
@@ -34,7 +32,7 @@ export type LocationsPaginatedBidirectional_data = {|
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "LocationsPaginatedBidirectional_data",
-  "type": "RootQuery",
+  "type": "DangerZone_RootQuery",
   "metadata": null,
   "argumentDefinitions": [
     {
@@ -88,85 +86,47 @@ const node/*: ReaderFragment*/ = {
           "type": "Int"
         },
         {
+          "kind": "Literal",
+          "name": "forceFail",
+          "value": false,
+          "type": "Boolean"
+        },
+        {
           "kind": "Variable",
           "name": "last",
           "variableName": "last",
           "type": "Int"
         }
       ],
-      "concreteType": "LocationConnection",
+      "concreteType": null,
       "plural": false,
       "selections": [
         {
-          "kind": "LinkedField",
+          "kind": "ScalarField",
           "alias": null,
-          "name": "edges",
-          "storageKey": null,
+          "name": "__typename",
           "args": null,
-          "concreteType": "LocationEdge",
-          "plural": true,
+          "storageKey": null
+        },
+        {
+          "kind": "InlineFragment",
+          "type": "LocationConnection",
           "selections": [
             {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "node",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "Location",
-              "plural": false,
-              "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "id",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "FragmentSpread",
-                  "name": "Location_location",
-                  "args": null
-                }
-              ]
+              "kind": "FragmentSpread",
+              "name": "LocationsPaginatedBidirectionalConnection_connection",
+              "args": null
             }
           ]
         },
         {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "pageInfo",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "PageInfo",
-          "plural": false,
+          "kind": "InlineFragment",
+          "type": "DangerZone_HTTPErrorType",
           "selections": [
             {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "hasNextPage",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "hasPreviousPage",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "startCursor",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "endCursor",
-              "args": null,
-              "storageKey": null
+              "kind": "FragmentSpread",
+              "name": "HTTPError_error",
+              "args": null
             }
           ]
         }
@@ -175,5 +135,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '75afce31dc28d17ce744bf23b598704b';
+(node/*: any*/).hash = '75c6425a94eebeadd5492fd53e6a7b7a';
 module.exports = node;

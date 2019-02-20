@@ -45,7 +45,7 @@ function renderQueryRendererResponse(props: AppQueryResponse) {
           linkTitle="Refetch Container"
           component={
             <LocationsPaginatedBidirectional
-              data={props}
+              data={props.dangerZone}
               itemsCount={ITEMS_COUNT}
             />
           }
@@ -87,7 +87,9 @@ export default function App() {
       <QueryRenderer
         query={graphql`
           query AppQuery($count: Int!) {
-            ...LocationsPaginatedBidirectional_data @arguments(first: $count)
+            dangerZone {
+              ...LocationsPaginatedBidirectional_data @arguments(first: $count)
+            }
             ...LocationsPaginatedRefetch_data
             ...LocationsPaginated_data
           }
