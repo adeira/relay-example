@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@kiwicom/orbit-components": "^0.31.0",
+    "@kiwicom/orbit-components": "^0.32.0",
     "@kiwicom/relay": "^0",
     "next": "^8.0.0",
     "next-plugin-custom-babel-config": "^1.0.0",
