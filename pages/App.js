@@ -85,6 +85,7 @@ export default function App() {
       </Head>
       <Heading>Relay pagination showcase</Heading>
       <QueryRenderer
+        clientID="https://github.com/kiwicom/relay-example"
         query={graphql`
           query AppQuery($count: Int!) {
             dangerZone {
