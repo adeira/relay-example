@@ -7,6 +7,7 @@ This repository contains examples of common patterns used in real-world applicat
 - bi-directional (also known as window) pagination using `createRefetchContainer`
 - _"load more"_ pagination using `createRefetchContainer`
 - _"load more"_ pagination using `createPaginationContainer`
+- query polling (live queries)
 
 This example project also uses single directory for artifacts which means that all the generated metafiles are stored in single `__generated__` directory. It improves Flow types as a side-effect.
 
@@ -161,10 +162,10 @@ The best fit for bi-directional (sometimes known as "window" or "next/prev" pagi
 
 This query returns 5 results and let'say the middle one has ID `YXJyYXljb25uZWN0aW9uOjI=`. To get page after this page you have to query it with `first/after` combo. To get previous page you have to use `last/before` combo. It can be a bit burdensome to work with the cursor manually so you can also use `pageInfo` field (that's exactly how it works in our Relay example). There are only few steps you have to do in order to make it work in Relay:
 
-1) Export component using `createRefetchContainer`. This component accept the raw React component as a first argument, regular GraphQL fragment as a second argument (start with the same fragment as from the `createFragmentContainer`) and last argument is a query which is going to  be called during the refetch.
-2) Describe what variables your fragment needs using `@argumentDefinitions(argName: { type: "Int!", defaultValue: null })`.
-3) Pass down all the variables from the query to the fragment using `@arguments(argName: $argName)` and finally:
-4) Call `props.relay.refetch` with the variables necessary for the refetch query.
+1. Export component using `createRefetchContainer`. This component accept the raw React component as a first argument, regular GraphQL fragment as a second argument (start with the same fragment as from the `createFragmentContainer`) and last argument is a query which is going to be called during the refetch.
+2. Describe what variables your fragment needs using `@argumentDefinitions(argName: { type: "Int!", defaultValue: null })`.
+3. Pass down all the variables from the query to the fragment using `@arguments(argName: $argName)` and finally:
+4. Call `props.relay.refetch` with the variables necessary for the refetch query.
 
 Tip: you don't have to specify the `defaultValue` in arguments definition. It can be a bit difficult because GraphQL strings cannot contain string substitutions. It's a good idea to pass it down from the parent component using `@arguments` just like you do in the refetch query.
 
@@ -183,12 +184,52 @@ To do this we can easily use `createRefetchContainer` as well and just annotate 
 
 There is also `createPaginationContainer` which simplifies this one particular flow so you don't have to manage `pageInfo` manually. The difference is minimal and all the containers are to some extend interchangeable. These steps are necessary in order to make the `createPaginationContainer` work:
 
-1) Export component using `createPaginationContainer` with standard API: first argument is the raw React component and second argument is a fragment.
-2) Add object to the 3rd argument with two fields: refetch `query` and `getVariables` which is a function to get the variables for this query.
-3) Annotate the fragment with `@argumentDefinitions` and refetch query with `@arguments`.
-4) And lastly add `@connection(key: " ... ")` to the fragment to signify that we want to append the records and not replace them.
+1. Export component using `createPaginationContainer` with standard API: first argument is the raw React component and second argument is a fragment.
+2. Add object to the 3rd argument with two fields: refetch `query` and `getVariables` which is a function to get the variables for this query.
+3. Annotate the fragment with `@argumentDefinitions` and refetch query with `@arguments`.
+4. And lastly add `@connection(key: " ... ")` to the fragment to signify that we want to append the records and not replace them.
 
 Check these examples for the actual implementation:
 
 - [`LocationsPaginated.js`](./pages/locations/LocationsPaginated.js)
 - [`LocationsPaginatedRefetch.js`](./pages/locations/LocationsPaginatedRefetch.js)
+
+# Query polling
+
+Relay supports subscriptions and experimental live queries via polling to allow modifications to the store whenever a payload is received. Query polling is a simple (but very powerful) way how to achieve live data updates without any change to infrastructure or complicated changes to your code. All you need to do is to instruct your query renderer to update Relay cache every few seconds using `cacheConfig.poll`:
+
+```js
+import React from 'react';
+import { graphql, QueryRenderer } from '@kiwicom/relay';
+
+export default function Polling() {
+  return (
+    <QueryRenderer
+      clientID="https://github.com/kiwicom/relay-example"
+      query={graphql`
+        query PollingQuery {
+          currency(code: "czk") {
+            code
+            rate
+          }
+        }
+      `}
+      cacheConfig={{
+        poll: 5000, // update UI every 5 seconds
+      }}
+      onResponse={data => {
+        // this callback is gonna be called every time your data change
+        console.log(data);
+      }}
+    />
+  );
+}
+```
+
+This is preferable solution over subscriptions in many cases because:
+
+- it's extremely simple (we added only one property and it's good to go)
+- there is no need to update the server code
+- auth works by default correctly since it's the same like query fetching
+- it reconnects to the failed server by design
+- it doesn't open expensive persistent websockets (and you don't need such an infrastructure)
