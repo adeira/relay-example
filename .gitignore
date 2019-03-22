@@ -1,4 +1,2 @@
-.next
-node_modules
-
-yarn.lock
+.next/
+node_modules/
