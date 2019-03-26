@@ -11,7 +11,11 @@ This repository contains examples of common patterns used in real-world applicat
 
 This example project also uses single directory for artifacts which means that all the generated metafiles are stored in single `__generated__` directory. It improves Flow types as a side-effect.
 
-<!-- AUTOMATOR:HIRING_BANNER --><!-- /AUTOMATOR:HIRING_BANNER -->
+<!-- AUTOMATOR:HIRING_BANNER -->
+
+> Do you like our open source? We are looking for skilled JavaScript developers to help us build it. Check our open positions: https://jobs.kiwi.com/
+
+<!-- /AUTOMATOR:HIRING_BANNER -->
 
 # Install and run
 
