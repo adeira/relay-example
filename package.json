@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@kiwicom/babel-preset-kiwicom": "^2.0.0",
-    "graphql": "^14.1.1"
+    "graphql": "^14.2.1"
   },
   "scripts": {
     "start": "next",
