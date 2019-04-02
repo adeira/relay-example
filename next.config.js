@@ -1,7 +1,7 @@
 // @flow
 
 const path = require('path');
-const withTranspileModules = require('next-plugin-transpile-modules');
+const withTranspileModules = require('next-transpile-modules');
 const withCustomBabelConfigFile = require('next-plugin-custom-babel-config');
 
 module.exports = withCustomBabelConfigFile(
