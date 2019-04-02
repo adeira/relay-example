@@ -6,7 +6,7 @@
   "dependencies": {
     "@kiwicom/orbit-components": "^0.37.0",
     "@kiwicom/relay": "^1.0.0",
-    "next": "^8.0.0",
+    "next": "^8.0.4",
     "next-plugin-custom-babel-config": "^1.0.0",
     "next-plugin-transpile-modules": "^2.0.0",
     "react": "^16.8.6",
