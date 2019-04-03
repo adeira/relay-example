@@ -3,6 +3,7 @@
 import React from 'react';
 import { createFragmentContainer, graphql } from '@kiwicom/relay';
 import Text from '@kiwicom/orbit-components/lib/Text';
+import Stack from '@kiwicom/orbit-components/lib/Stack';
 import type { Location_location as LocationDataType } from '__generated__/Location_location.graphql';
 
 import CountryFlag from './CountryFlag';
@@ -16,12 +17,13 @@ function Location({ location }: Props) {
     return null; // or some failure placeholder
   }
 
-  const { name } = location;
+  const name = location.name ?? '';
   return (
     <li>
-      <Text>
-        <CountryFlag location={location} /> {name}
-      </Text>
+      <Stack direction="row" spacing="compact">
+        <CountryFlag location={location} />
+        <Text element="div">{name}</Text>
+      </Stack>
     </li>
   );
 }
