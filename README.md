@@ -135,6 +135,8 @@ export default function App(props) {
 
 And that's it - we have two components and they describe what data they need exactly. Our first component needs to iterate all locations and requires `id` and `name`. Our second component requires data for `AllLocations` but doesn't care more about what data is it actually. This is very important concept in Relay and in GraphQL in general: _always describe what you need in the component itself_. It is important because it's 1) very explicit and you can be sure that you are not gonna greak anything when refactoring the component and 2) you can easily use the component somewhere and just spread the requirements using `...AllLocations`. This is crucial for composing UI from many many React components.
 
+[![Watch the video](https://img.youtube.com/vi/yUhl6A5T7fQ/sddefault.jpg)](https://youtu.be/yUhl6A5T7fQ)
+
 # Bi-directional pagination
 
 [Relay docs](https://facebook.github.io/relay/docs/en/refetch-container.html)
@@ -177,6 +179,8 @@ Tip: you don't have to specify the `defaultValue` in arguments definition. It ca
 
 Check [`LocationsPaginatedBidirectional.js`](./pages/locations/LocationsPaginatedBidirectional.js) for the implementation.
 
+[![Watch the video](https://img.youtube.com/vi/jZeIcR-1yVA/sddefault.jpg)](https://youtu.be/jZeIcR-1yVA)
+
 # Load more pagination
 
 [Relay docs](https://facebook.github.io/relay/docs/en/pagination-container.html)
@@ -199,6 +203,8 @@ Check these examples for the actual implementation:
 
 - [`LocationsPaginated.js`](./pages/locations/LocationsPaginated.js)
 - [`LocationsPaginatedRefetch.js`](./pages/locations/LocationsPaginatedRefetch.js)
+
+[![Watch the video](https://img.youtube.com/vi/otivgvB6m9A/sddefault.jpg)](https://youtu.be/otivgvB6m9A)
 
 # Query polling
 
@@ -239,3 +245,33 @@ This is preferable solution over subscriptions in many cases because:
 - auth works by default correctly since it's the same like query fetching
 - it reconnects to the failed server by design
 - it doesn't open expensive persistent websockets (and you don't need such an infrastructure)
+
+# Relay mutations basics
+
+_We currently do not have docs or example in this repository. Would you like to contribute?_
+
+[![Watch the video](https://img.youtube.com/vi/g1p9ad_MkNQ/sddefault.jpg)](https://youtu.be/g1p9ad_MkNQ)
+
+# Relay range add mutation
+
+_We currently do not have docs or example in this repository. Would you like to contribute?_
+
+[![Watch the video](https://img.youtube.com/vi/B65fwwiEepE/sddefault.jpg)](https://youtu.be/B65fwwiEepE)
+
+# Relay range delete mutation
+
+_We currently do not have docs or example in this repository. Would you like to contribute?_
+
+[![Watch the video](https://img.youtube.com/vi/dq_dxJaI_g0/sddefault.jpg)](https://youtu.be/dq_dxJaI_g0)
+
+# Relay updater
+
+_We currently do not have docs or example in this repository. Would you like to contribute?_
+
+[![Watch the video](https://img.youtube.com/vi/g3mv9-yEwzk/sddefault.jpg)](https://youtu.be/g3mv9-yEwzk)
+
+# Relay local updates
+
+_We currently do not have docs or example in this repository. Would you like to contribute?_
+
+[![Watch the video](https://img.youtube.com/vi/Ei1nlUJ3e2I/sddefault.jpg)](https://youtu.be/Ei1nlUJ3e2I)
