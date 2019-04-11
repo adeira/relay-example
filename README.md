@@ -11,6 +11,12 @@ This repository contains examples of common patterns used in real-world applicat
 
 This example project also uses single directory for artifacts which means that all the generated metafiles are stored in single `__generated__` directory. It improves Flow types as a side-effect.
 
+Additional learning resources:
+
+- official documentation: https://facebook.github.io/relay/docs/en/next/introduction-to-relay.html
+- advanced and experimental features: https://github.com/mrtnzlml/meta/blob/master/relay.md
+- source-code: https://github.com/facebook/relay
+
 <!-- AUTOMATOR:HIRING_BANNER -->
 
 > Do you like our open source? We are looking for skilled JavaScript developers to help us build it. Check our open positions: https://jobs.kiwi.com/
@@ -272,6 +278,47 @@ _We currently do not have docs or example in this repository. Would you like to 
 
 # Relay local updates
 
-_We currently do not have docs or example in this repository. Would you like to contribute?_
+_We currently do not have example in this repository. Would you like to contribute?_
+
+[Detailed information](https://github.com/mrtnzlml/meta/blob/master/relay.md#local-schema)
+
+Local updates are handy in cases you'd like to extend GraphQL schema provided by server and add some additional fields relevant only for your client application. First, you have to define your local schema in file with extension `*.graphql`. This file must be located somewhere in the scope of Relay Compiler:
+
+```graphql
+"""
+Extend type: https://graphql.github.io/graphql-spec/draft/#sec-Object-Extensions
+"""
+extend type Article {
+  draft: String!
+}
+
+"""
+Or add new query: https://github.com/facebook/relay/issues/1656#issuecomment-382461183
+"""
+extend type Query {
+  errors: [Error!]
+}
+
+type Error {
+  id: ID!
+  message: String!
+}
+```
+
+Now, just use `commitLocalUpdate` from `@kiwicom/relay` to update the local store:
+
+```js
+Relay.commitLocalUpdate(environment, store => {
+  const articleID = 'f9496862-4fb7-4a09-bc05-a9a3ce2cb7b3'; // ID of the `Article` type you want to update
+  store.get(articleID).setValue('My custom draft text', 'draft');
+
+  // or create new types:
+  const root = store.getRoot();
+  const errRecord = store.create('ID_1', 'Error');
+  errRecord.setValue('ID_1', 'id');
+  errRecord.setValue('My custom error message', 'message');
+  root.setLinkedRecords([errRecord, ...], 'errors');
+});
+```
 
 [![Watch the video](https://img.youtube.com/vi/Ei1nlUJ3e2I/sddefault.jpg)](https://youtu.be/Ei1nlUJ3e2I)
