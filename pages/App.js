@@ -46,7 +46,7 @@ function renderQueryRendererResponse(props: AppQueryResponse) {
           linkTitle="Refetch Container"
           component={
             <LocationsPaginatedBidirectional
-              data={props.dangerZone}
+              data={props}
               itemsCount={ITEMS_COUNT}
             />
           }
@@ -92,9 +92,7 @@ export default function App() {
         clientID="https://github.com/kiwicom/relay-example"
         query={graphql`
           query AppQuery($count: Int!) {
-            dangerZone {
-              ...LocationsPaginatedBidirectional_data @arguments(first: $count)
-            }
+            ...LocationsPaginatedBidirectional_data @arguments(first: $count)
             ...LocationsPaginatedRefetch_data
             ...LocationsPaginated_data
           }

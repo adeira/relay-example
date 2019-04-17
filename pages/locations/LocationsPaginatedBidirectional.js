@@ -1,15 +1,18 @@
 // @flow
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   createRefetchContainer,
   graphql,
   type RefetchRelayProp,
 } from '@kiwicom/relay';
+import Button from '@kiwicom/orbit-components/lib/Button';
+import ButtonGroup from '@kiwicom/orbit-components/lib/ButtonGroup';
+import ChevronLeft from '@kiwicom/orbit-components/lib/icons/ChevronLeft';
+import ChevronRight from '@kiwicom/orbit-components/lib/icons/ChevronRight';
 import type { LocationsPaginatedBidirectional_data as LocationsDataType } from '__generated__/LocationsPaginatedBidirectional_data.graphql';
 
-import LocationsPaginatedBidirectionalConnection from './LocationsPaginatedBidirectionalConnection';
-import HTTPError from './HTTPError';
+import Location from './Location';
 
 type Props = {|
   +itemsCount: number,
@@ -18,6 +21,13 @@ type Props = {|
 |};
 
 function LocationsPaginatedBidirectional(props: Props) {
+  const [start, setStart] = useState(1);
+
+  const pageInfo = props.data.allLocations?.pageInfo;
+  if (!pageInfo) {
+    return null; // or some failure placeholder
+  }
+
   function handlePageChange(
     args: {| before?: ?string, after?: ?string |},
     callback: () => void,
@@ -39,29 +49,53 @@ function LocationsPaginatedBidirectional(props: Props) {
     );
   }
 
-  const locations = props.data.allLocations;
-  if (locations) {
-    if (locations.__typename === 'DangerZone_HTTPErrorType') {
-      return <HTTPError error={locations} />;
-    } else if (locations.__typename === 'LocationConnection') {
-      return (
-        <LocationsPaginatedBidirectionalConnection
-          connection={locations}
-          onPageChange={handlePageChange}
-          itemsCount={props.itemsCount}
-        />
-      );
-    }
+  function openPreviousPage() {
+    handlePageChange({ before: pageInfo.startCursor }, () =>
+      setStart(start => start - props.itemsCount),
+    );
   }
 
-  return null; // TODO: some generic error component maybe
+  function openNextPage() {
+    handlePageChange({ after: pageInfo.endCursor }, () =>
+      setStart(start => start + props.itemsCount),
+    );
+  }
+
+  const edges = props.data.allLocations?.edges ?? [];
+  return (
+    <>
+      <ol start={start}>
+        {edges.map(edge => (
+          <Location key={edge?.node?.id} location={edge?.node} />
+        ))}
+      </ol>
+      <ButtonGroup connected={true}>
+        <Button
+          onClick={openPreviousPage}
+          disabled={!pageInfo.hasPreviousPage}
+          size="small"
+          iconLeft={<ChevronLeft />}
+        >
+          Previous page
+        </Button>
+        <Button
+          onClick={openNextPage}
+          disabled={!pageInfo.hasNextPage}
+          size="small"
+          iconRight={<ChevronRight />}
+        >
+          Next page
+        </Button>
+      </ButtonGroup>
+    </>
+  );
 }
 
 export default createRefetchContainer(
   LocationsPaginatedBidirectional,
   {
     data: graphql`
-      fragment LocationsPaginatedBidirectional_data on DangerZone_RootQuery
+      fragment LocationsPaginatedBidirectional_data on RootQuery
         @argumentDefinitions(
           first: { type: "Int" }
           last: { type: "Int" }
@@ -69,18 +103,22 @@ export default createRefetchContainer(
           before: { type: "String" }
         ) {
         allLocations(
-          forceFail: false # change this to force BE fail
           first: $first
           last: $last
           after: $after
           before: $before
         ) {
-          __typename
-          ... on LocationConnection {
-            ...LocationsPaginatedBidirectionalConnection_connection
+          edges {
+            node {
+              id
+              ...Location_location
+            }
           }
-          ... on DangerZone_HTTPErrorType {
-            ...HTTPError_error
+          pageInfo {
+            hasNextPage
+            hasPreviousPage
+            startCursor
+            endCursor
           }
         }
       }
@@ -93,10 +131,8 @@ export default createRefetchContainer(
       $after: String
       $before: String
     ) {
-      dangerZone {
-        ...LocationsPaginatedBidirectional_data
-          @arguments(first: $first, last: $last, after: $after, before: $before)
-      }
+      ...LocationsPaginatedBidirectional_data
+        @arguments(first: $first, last: $last, after: $after, before: $before)
     }
   `,
 );
