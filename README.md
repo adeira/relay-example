@@ -183,7 +183,7 @@ This query returns 5 results and let'say the middle one has ID `YXJyYXljb25uZWN0
 
 Tip: you don't have to specify the `defaultValue` in arguments definition. It can be a bit difficult because GraphQL strings cannot contain string substitutions. It's a good idea to pass it down from the parent component using `@arguments` just like you do in the refetch query.
 
-Check [`LocationsPaginatedBidirectional.js`](./pages/locations/LocationsPaginatedBidirectional.js) for the implementation.
+Check [`LocationsPaginatedBidirectional.js`](src/locations/LocationsPaginatedBidirectional.js) for the implementation.
 
 [![Watch the video](https://img.youtube.com/vi/jZeIcR-1yVA/sddefault.jpg)](https://youtu.be/jZeIcR-1yVA)
 
@@ -207,8 +207,8 @@ There is also `createPaginationContainer` which simplifies this one particular f
 
 Check these examples for the actual implementation:
 
-- [`LocationsPaginated.js`](./pages/locations/LocationsPaginated.js)
-- [`LocationsPaginatedRefetch.js`](./pages/locations/LocationsPaginatedRefetch.js)
+- [`LocationsPaginated.js`](src/locations/LocationsPaginated.js)
+- [`LocationsPaginatedRefetch.js`](src/locations/LocationsPaginatedRefetch.js)
 
 [![Watch the video](https://img.youtube.com/vi/otivgvB6m9A/sddefault.jpg)](https://youtu.be/otivgvB6m9A)
 

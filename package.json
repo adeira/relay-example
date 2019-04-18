@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "@kiwicom/orbit-components": "^0.39.0",
-    "@kiwicom/relay": "^1.2.0",
+    "@kiwicom/relay": "^1.2.1",
     "next": "^8.1.0",
     "next-plugin-custom-babel-config": "^1.0.0",
     "next-transpile-modules": "^2.3.1",
@@ -14,11 +14,11 @@
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
-    "@kiwicom/babel-preset-kiwicom": "^2.0.0",
+    "@kiwicom/babel-preset-kiwicom": "^2.7.0",
     "graphql": "^14.2.1"
   },
   "scripts": {
     "start": "next",
-    "relay": "relay-compiler --src=./pages --schema=../graphql.kiwi.com.schema --artifactDirectory=./__generated__"
+    "relay": "relay-compiler --src=./src --schema=../graphql.kiwi.com.schema --artifactDirectory=./__generated__"
   }
 }
