@@ -4,7 +4,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@kiwicom/orbit-components": "^0.39.0",
+    "@kiwicom/orbit-components": "^0.39.1",
     "@kiwicom/relay": "^1.2.1",
     "next": "^8.1.0",
     "next-plugin-custom-babel-config": "^1.0.0",
