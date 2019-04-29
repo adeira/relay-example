@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 04d4f6e99a691348faee98062c62be1b
+ * @relayHash 8f6096246f9f8aefafcdd535219f4670
  */
 
 /* eslint-disable */
@@ -38,8 +38,7 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "code",
-    "value": "usd",
-    "type": "String!"
+    "value": "usd"
   }
 ],
 v1 = {

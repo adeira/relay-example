@@ -11,6 +11,7 @@ import type { ReaderFragment } from 'relay-runtime';
 import type { Location_location$ref } from "./Location_location.graphql";
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type LocationsPaginatedRefetch_data$ref: FragmentReference;
+declare export opaque type LocationsPaginatedRefetch_data$fragmentType: LocationsPaginatedRefetch_data$ref;
 export type LocationsPaginatedRefetch_data = {|
   +incrementalPagination: ?{|
     +edges: ?$ReadOnlyArray<?{|
@@ -25,6 +26,11 @@ export type LocationsPaginatedRefetch_data = {|
   |},
   +$refType: LocationsPaginatedRefetch_data$ref,
 |};
+export type LocationsPaginatedRefetch_data$data = LocationsPaginatedRefetch_data;
+export type LocationsPaginatedRefetch_data$key = {
+  +$data?: LocationsPaginatedRefetch_data$data,
+  +$fragmentRefs: LocationsPaginatedRefetch_data$ref,
+};
 */
 
 
@@ -94,16 +100,16 @@ const node/*: ReaderFragment*/ = {
                   "storageKey": null
                 },
                 {
-                  "kind": "FragmentSpread",
-                  "name": "Location_location",
-                  "args": null
-                },
-                {
                   "kind": "ScalarField",
                   "alias": null,
                   "name": "__typename",
                   "args": null,
                   "storageKey": null
+                },
+                {
+                  "kind": "FragmentSpread",
+                  "name": "Location_location",
+                  "args": null
                 }
               ]
             },

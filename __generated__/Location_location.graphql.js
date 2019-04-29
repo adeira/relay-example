@@ -11,11 +11,17 @@ import type { ReaderFragment } from 'relay-runtime';
 import type { CountryFlag_location$ref } from "./CountryFlag_location.graphql";
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type Location_location$ref: FragmentReference;
+declare export opaque type Location_location$fragmentType: Location_location$ref;
 export type Location_location = {|
   +name: ?string,
   +$fragmentRefs: CountryFlag_location$ref,
   +$refType: Location_location$ref,
 |};
+export type Location_location$data = Location_location;
+export type Location_location$key = {
+  +$data?: Location_location$data,
+  +$fragmentRefs: Location_location$ref,
+};
 */
 
 

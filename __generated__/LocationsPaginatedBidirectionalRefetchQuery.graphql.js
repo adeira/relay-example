@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 144a7fbd0601842dbe2ff6c0cc9549b9
+ * @relayHash 7f8e9480ca00dd8b868a83a0e4d7a152
  */
 
 /* eslint-disable */
@@ -96,14 +96,36 @@ var v0 = [
     "defaultValue": null
   }
 ],
-v1 = {
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "after",
+    "variableName": "after"
+  },
+  {
+    "kind": "Variable",
+    "name": "before",
+    "variableName": "before"
+  },
+  {
+    "kind": "Variable",
+    "name": "first",
+    "variableName": "first"
+  },
+  {
+    "kind": "Variable",
+    "name": "last",
+    "variableName": "last"
+  }
+],
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v2 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "code",
@@ -122,32 +144,7 @@ return {
       {
         "kind": "FragmentSpread",
         "name": "LocationsPaginatedBidirectional_data",
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "after",
-            "variableName": "after",
-            "type": null
-          },
-          {
-            "kind": "Variable",
-            "name": "before",
-            "variableName": "before",
-            "type": null
-          },
-          {
-            "kind": "Variable",
-            "name": "first",
-            "variableName": "first",
-            "type": null
-          },
-          {
-            "kind": "Variable",
-            "name": "last",
-            "variableName": "last",
-            "type": null
-          }
-        ]
+        "args": (v1/*: any*/)
       }
     ]
   },
@@ -161,32 +158,7 @@ return {
         "alias": null,
         "name": "allLocations",
         "storageKey": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "after",
-            "variableName": "after",
-            "type": "String"
-          },
-          {
-            "kind": "Variable",
-            "name": "before",
-            "variableName": "before",
-            "type": "String"
-          },
-          {
-            "kind": "Variable",
-            "name": "first",
-            "variableName": "first",
-            "type": "Int"
-          },
-          {
-            "kind": "Variable",
-            "name": "last",
-            "variableName": "last",
-            "type": "Int"
-          }
-        ],
+        "args": (v1/*: any*/),
         "concreteType": "LocationConnection",
         "plural": false,
         "selections": [
@@ -215,7 +187,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  (v1/*: any*/),
+                  (v2/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -225,11 +197,11 @@ return {
                     "concreteType": "LocationArea",
                     "plural": false,
                     "selections": [
-                      (v2/*: any*/),
-                      (v1/*: any*/)
+                      (v3/*: any*/),
+                      (v2/*: any*/)
                     ]
                   },
-                  (v2/*: any*/),
+                  (v3/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,

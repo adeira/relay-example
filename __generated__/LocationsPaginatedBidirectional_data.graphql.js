@@ -11,6 +11,7 @@ import type { ReaderFragment } from 'relay-runtime';
 import type { Location_location$ref } from "./Location_location.graphql";
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type LocationsPaginatedBidirectional_data$ref: FragmentReference;
+declare export opaque type LocationsPaginatedBidirectional_data$fragmentType: LocationsPaginatedBidirectional_data$ref;
 export type LocationsPaginatedBidirectional_data = {|
   +allLocations: ?{|
     +edges: ?$ReadOnlyArray<?{|
@@ -28,6 +29,11 @@ export type LocationsPaginatedBidirectional_data = {|
   |},
   +$refType: LocationsPaginatedBidirectional_data$ref,
 |};
+export type LocationsPaginatedBidirectional_data$data = LocationsPaginatedBidirectional_data;
+export type LocationsPaginatedBidirectional_data$key = {
+  +$data?: LocationsPaginatedBidirectional_data$data,
+  +$fragmentRefs: LocationsPaginatedBidirectional_data$ref,
+};
 */
 
 
@@ -72,26 +78,22 @@ const node/*: ReaderFragment*/ = {
         {
           "kind": "Variable",
           "name": "after",
-          "variableName": "after",
-          "type": "String"
+          "variableName": "after"
         },
         {
           "kind": "Variable",
           "name": "before",
-          "variableName": "before",
-          "type": "String"
+          "variableName": "before"
         },
         {
           "kind": "Variable",
           "name": "first",
-          "variableName": "first",
-          "type": "Int"
+          "variableName": "first"
         },
         {
           "kind": "Variable",
           "name": "last",
-          "variableName": "last",
-          "type": "Int"
+          "variableName": "last"
         }
       ],
       "concreteType": "LocationConnection",

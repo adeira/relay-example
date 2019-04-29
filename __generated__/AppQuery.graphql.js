@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 86ac49088824ca10ead60de514aa457d
+ * @relayHash bbe8ca345427cb2365116d60246fb7ed
  */
 
 /* eslint-disable */
@@ -110,28 +110,35 @@ var v0 = [
     "defaultValue": null
   }
 ],
-v1 = {
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "first",
+    "variableName": "count"
+  }
+],
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v2 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v3 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "code",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v5 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "country",
@@ -140,40 +147,39 @@ v4 = {
   "concreteType": "LocationArea",
   "plural": false,
   "selections": [
-    (v3/*: any*/),
-    (v2/*: any*/)
+    (v4/*: any*/),
+    (v3/*: any*/)
   ]
 },
-v5 = {
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "type",
   "args": null,
   "storageKey": null
 },
-v6 = {
+v7 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "hasNextPage",
   "args": null,
   "storageKey": null
 },
-v7 = {
+v8 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "endCursor",
   "args": null,
   "storageKey": null
 },
-v8 = [
+v9 = [
   {
     "kind": "Literal",
     "name": "first",
-    "value": 20,
-    "type": "Int"
+    "value": 20
   }
 ],
-v9 = [
+v10 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -192,11 +198,11 @@ v9 = [
         "concreteType": "Location",
         "plural": false,
         "selections": [
-          (v1/*: any*/),
           (v2/*: any*/),
-          (v4/*: any*/),
           (v3/*: any*/),
           (v5/*: any*/),
+          (v4/*: any*/),
+          (v6/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -224,8 +230,8 @@ v9 = [
     "concreteType": "PageInfo",
     "plural": false,
     "selections": [
-      (v7/*: any*/),
-      (v6/*: any*/)
+      (v8/*: any*/),
+      (v7/*: any*/)
     ]
   }
 ];
@@ -241,14 +247,7 @@ return {
       {
         "kind": "FragmentSpread",
         "name": "LocationsPaginatedBidirectional_data",
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "first",
-            "variableName": "count",
-            "type": null
-          }
-        ]
+        "args": (v1/*: any*/)
       },
       {
         "kind": "FragmentSpread",
@@ -272,14 +271,7 @@ return {
         "alias": null,
         "name": "allLocations",
         "storageKey": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "first",
-            "variableName": "count",
-            "type": "Int"
-          }
-        ],
+        "args": (v1/*: any*/),
         "concreteType": "LocationConnection",
         "plural": false,
         "selections": [
@@ -301,11 +293,11 @@ return {
                 "concreteType": "Location",
                 "plural": false,
                 "selections": [
-                  (v1/*: any*/),
                   (v2/*: any*/),
-                  (v4/*: any*/),
                   (v3/*: any*/),
-                  (v5/*: any*/)
+                  (v5/*: any*/),
+                  (v4/*: any*/),
+                  (v6/*: any*/)
                 ]
               }
             ]
@@ -319,7 +311,7 @@ return {
             "concreteType": "PageInfo",
             "plural": false,
             "selections": [
-              (v6/*: any*/),
+              (v7/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -334,7 +326,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              (v7/*: any*/)
+              (v8/*: any*/)
             ]
           }
         ]
@@ -344,16 +336,16 @@ return {
         "alias": "incrementalPagination",
         "name": "allLocations",
         "storageKey": "allLocations(first:20)",
-        "args": (v8/*: any*/),
+        "args": (v9/*: any*/),
         "concreteType": "LocationConnection",
         "plural": false,
-        "selections": (v9/*: any*/)
+        "selections": (v10/*: any*/)
       },
       {
         "kind": "LinkedHandle",
         "alias": "incrementalPagination",
         "name": "allLocations",
-        "args": (v8/*: any*/),
+        "args": (v9/*: any*/),
         "handle": "connection",
         "key": "allLocations_incrementalPagination",
         "filters": null
@@ -363,16 +355,16 @@ return {
         "alias": "incrementalPagination2",
         "name": "allLocations",
         "storageKey": "allLocations(first:20)",
-        "args": (v8/*: any*/),
+        "args": (v9/*: any*/),
         "concreteType": "LocationConnection",
         "plural": false,
-        "selections": (v9/*: any*/)
+        "selections": (v10/*: any*/)
       },
       {
         "kind": "LinkedHandle",
         "alias": "incrementalPagination2",
         "name": "allLocations",
-        "args": (v8/*: any*/),
+        "args": (v9/*: any*/),
         "handle": "connection",
         "key": "allLocations_incrementalPagination2",
         "filters": null

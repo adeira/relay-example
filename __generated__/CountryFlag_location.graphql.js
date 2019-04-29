@@ -10,6 +10,7 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type CountryFlag_location$ref: FragmentReference;
+declare export opaque type CountryFlag_location$fragmentType: CountryFlag_location$ref;
 export type CountryFlag_location = {|
   +country: ?{|
     +code: ?string,
@@ -20,6 +21,11 @@ export type CountryFlag_location = {|
   +type: ?string,
   +$refType: CountryFlag_location$ref,
 |};
+export type CountryFlag_location$data = CountryFlag_location;
+export type CountryFlag_location$key = {
+  +$data?: CountryFlag_location$data,
+  +$fragmentRefs: CountryFlag_location$ref,
+};
 */
 
 

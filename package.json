@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "@kiwicom/orbit-components": "^0.39.1",
-    "@kiwicom/relay": "^1.2.1",
+    "@kiwicom/relay": "^2.0.0",
     "next": "^8.1.0",
     "next-plugin-custom-babel-config": "^1.0.0",
     "next-transpile-modules": "^2.3.1",

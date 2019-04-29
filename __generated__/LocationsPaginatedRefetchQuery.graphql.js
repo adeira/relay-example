@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 1565e86fce09cb460e24d3626c6f7369
+ * @relayHash 58195db34d5b6b69872d19af755c3a85
  */
 
 /* eslint-disable */
@@ -80,28 +80,27 @@ var v0 = [
     "defaultValue": null
   }
 ],
-v1 = [
-  {
-    "kind": "Variable",
-    "name": "after",
-    "variableName": "cursor",
-    "type": "String"
-  },
+v1 = {
+  "kind": "Variable",
+  "name": "after",
+  "variableName": "cursor"
+},
+v2 = [
+  (v1/*: any*/),
   {
     "kind": "Variable",
     "name": "first",
-    "variableName": "count",
-    "type": "Int"
+    "variableName": "count"
   }
 ],
-v2 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v3 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "code",
@@ -121,17 +120,11 @@ return {
         "kind": "FragmentSpread",
         "name": "LocationsPaginated_data",
         "args": [
-          {
-            "kind": "Variable",
-            "name": "after",
-            "variableName": "cursor",
-            "type": null
-          },
+          (v1/*: any*/),
           {
             "kind": "Variable",
             "name": "count",
-            "variableName": "count",
-            "type": null
+            "variableName": "count"
           }
         ]
       }
@@ -147,7 +140,7 @@ return {
         "alias": "incrementalPagination2",
         "name": "allLocations",
         "storageKey": null,
-        "args": (v1/*: any*/),
+        "args": (v2/*: any*/),
         "concreteType": "LocationConnection",
         "plural": false,
         "selections": [
@@ -176,7 +169,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  (v2/*: any*/),
+                  (v3/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -186,11 +179,11 @@ return {
                     "concreteType": "LocationArea",
                     "plural": false,
                     "selections": [
-                      (v3/*: any*/),
-                      (v2/*: any*/)
+                      (v4/*: any*/),
+                      (v3/*: any*/)
                     ]
                   },
-                  (v3/*: any*/),
+                  (v4/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -247,7 +240,7 @@ return {
         "kind": "LinkedHandle",
         "alias": "incrementalPagination2",
         "name": "allLocations",
-        "args": (v1/*: any*/),
+        "args": (v2/*: any*/),
         "handle": "connection",
         "key": "allLocations_incrementalPagination2",
         "filters": null
