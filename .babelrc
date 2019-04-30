@@ -1,3 +1,0 @@
-{
-  "presets": ["@kiwicom/babel-preset-kiwicom", "next/babel"]
-}

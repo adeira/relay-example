@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@kiwicom/babel-preset-kiwicom": "^2.7.0",
+    "babel-jest": "^24.7.1",
     "flow-bin": "^0.98.0",
     "graphql": "^14.2.1"
   },
