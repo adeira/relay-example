@@ -10,19 +10,23 @@ type Props = {|
   +location: ?CountryFlagDataType,
 |};
 
+function AnywhereFlag() {
+  return <Flag dataTest="flag-anywhere" code="anywhere" />;
+}
+
 function CountryFlag({ location }: Props) {
   if (!location) {
-    return <Flag code="anywhere" />;
+    return <AnywhereFlag />;
   }
 
   const { country, code, type, name } = location;
   const countryCode = country ? country.code : code;
   if (type === 'special' || !countryCode) {
-    return <Flag code="anywhere" />;
+    return <AnywhereFlag />;
   }
 
   const countryName = country?.name ?? (name ?? 'Anywhere');
-  return <Flag code={countryCode} name={countryName} />;
+  return <Flag dataTest="flag-success" code={countryCode} name={countryName} />;
 }
 
 export default createFragmentContainer(CountryFlag, {
