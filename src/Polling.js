@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { graphql, QueryRenderer } from '@kiwicom/relay';
-import type { PollingQueryResponse } from '__generated__/PollingQuery.graphql';
+
+import type { PollingQueryResponse } from './__generated__/PollingQuery.graphql';
 
 function renderPollingResponse({ currency }: PollingQueryResponse) {
   if (!currency) {

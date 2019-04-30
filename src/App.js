@@ -5,12 +5,12 @@ import { graphql, QueryRenderer } from '@kiwicom/relay';
 import Head from 'next/head';
 import Heading from '@kiwicom/orbit-components/lib/Heading';
 import Text from '@kiwicom/orbit-components/lib/Text';
-import type { AppQueryResponse } from '__generated__/AppQuery.graphql';
 
 import Polling from './Polling';
 import LocationsPaginatedBidirectional from './locations/LocationsPaginatedBidirectional';
 import LocationsPaginatedRefetch from './locations/LocationsPaginatedRefetch';
 import LocationsPaginated from './locations/LocationsPaginated';
+import type { AppQueryResponse } from './__generated__/AppQuery.graphql';
 
 function Demo(props) {
   return (

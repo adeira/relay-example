@@ -10,9 +10,9 @@ import Button from '@kiwicom/orbit-components/lib/Button';
 import ButtonGroup from '@kiwicom/orbit-components/lib/ButtonGroup';
 import ChevronLeft from '@kiwicom/orbit-components/lib/icons/ChevronLeft';
 import ChevronRight from '@kiwicom/orbit-components/lib/icons/ChevronRight';
-import type { LocationsPaginatedBidirectional_data as LocationsDataType } from '__generated__/LocationsPaginatedBidirectional_data.graphql';
 
 import Location from './Location';
+import type { LocationsPaginatedBidirectional_data as LocationsDataType } from './__generated__/LocationsPaginatedBidirectional_data.graphql';
 
 type Props = {|
   +itemsCount: number,

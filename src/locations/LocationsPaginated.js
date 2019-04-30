@@ -7,9 +7,9 @@ import {
   type PaginationRelayProp,
 } from '@kiwicom/relay';
 import Button from '@kiwicom/orbit-components/lib/Button';
-import type { LocationsPaginated_data as LocationsDataType } from '__generated__/LocationsPaginated_data.graphql';
 
 import Location from './Location';
+import type { LocationsPaginated_data as LocationsDataType } from './__generated__/LocationsPaginated_data.graphql';
 
 type Props = {|
   +data: LocationsDataType,

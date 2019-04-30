@@ -8,32 +8,35 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
-import type { Location_location$ref } from "./Location_location.graphql";
+type Location_location$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type LocationsPaginated_data$ref: FragmentReference;
-declare export opaque type LocationsPaginated_data$fragmentType: LocationsPaginated_data$ref;
-export type LocationsPaginated_data = {|
-  +incrementalPagination2: ?{|
+declare export opaque type LocationsPaginatedRefetch_data$ref: FragmentReference;
+declare export opaque type LocationsPaginatedRefetch_data$fragmentType: LocationsPaginatedRefetch_data$ref;
+export type LocationsPaginatedRefetch_data = {|
+  +incrementalPagination: ?{|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
         +id: string,
         +$fragmentRefs: Location_location$ref,
       |}
-    |}>
+    |}>,
+    +pageInfo: {|
+      +endCursor: ?string
+    |},
   |},
-  +$refType: LocationsPaginated_data$ref,
+  +$refType: LocationsPaginatedRefetch_data$ref,
 |};
-export type LocationsPaginated_data$data = LocationsPaginated_data;
-export type LocationsPaginated_data$key = {
-  +$data?: LocationsPaginated_data$data,
-  +$fragmentRefs: LocationsPaginated_data$ref,
+export type LocationsPaginatedRefetch_data$data = LocationsPaginatedRefetch_data;
+export type LocationsPaginatedRefetch_data$key = {
+  +$data?: LocationsPaginatedRefetch_data$data,
+  +$fragmentRefs: LocationsPaginatedRefetch_data$ref,
 };
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "LocationsPaginated_data",
+  "name": "LocationsPaginatedRefetch_data",
   "type": "RootQuery",
   "metadata": {
     "connection": [
@@ -42,7 +45,7 @@ const node/*: ReaderFragment*/ = {
         "cursor": "after",
         "direction": "forward",
         "path": [
-          "incrementalPagination2"
+          "incrementalPagination"
         ]
       }
     ]
@@ -64,8 +67,8 @@ const node/*: ReaderFragment*/ = {
   "selections": [
     {
       "kind": "LinkedField",
-      "alias": "incrementalPagination2",
-      "name": "__allLocations_incrementalPagination2_connection",
+      "alias": "incrementalPagination",
+      "name": "__allLocations_incrementalPagination_connection",
       "storageKey": null,
       "args": null,
       "concreteType": "LocationConnection",
@@ -149,5 +152,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '6b4d0edb4dfba4a6ae85db6a90e6ccbb';
+(node/*: any*/).hash = '1da9e9761d3244b214709ffe696d4106';
 module.exports = node;

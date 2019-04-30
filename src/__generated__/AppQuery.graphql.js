@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash bbe8ca345427cb2365116d60246fb7ed
+ * @relayHash 3c7570533d03cb108a4a6fe9b9d55692
  */
 
 /* eslint-disable */
@@ -9,9 +9,9 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-import type { LocationsPaginatedBidirectional_data$ref } from "./LocationsPaginatedBidirectional_data.graphql";
-import type { LocationsPaginatedRefetch_data$ref } from "./LocationsPaginatedRefetch_data.graphql";
-import type { LocationsPaginated_data$ref } from "./LocationsPaginated_data.graphql";
+type LocationsPaginatedBidirectional_data$ref = any;
+type LocationsPaginatedRefetch_data$ref = any;
+type LocationsPaginated_data$ref = any;
 export type AppQueryVariables = {|
   count: number
 |};

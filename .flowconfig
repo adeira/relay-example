@@ -12,8 +12,6 @@ include_warnings=true
 esproposal.optional_chaining=enable
 esproposal.nullish_coalescing=enable
 
-module.name_mapper='^__generated__/\(.+\)$' -> '<PROJECT_ROOT>/__generated__/\1'
-
 suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError: .+
 
 [strict]

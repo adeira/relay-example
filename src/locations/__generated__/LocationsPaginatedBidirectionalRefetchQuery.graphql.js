@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7f8e9480ca00dd8b868a83a0e4d7a152
+ * @relayHash 4d86ade81f2c5ef4cdbd28f253618e07
  */
 
 /* eslint-disable */
@@ -9,7 +9,7 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-import type { LocationsPaginatedBidirectional_data$ref } from "./LocationsPaginatedBidirectional_data.graphql";
+type LocationsPaginatedBidirectional_data$ref = any;
 export type LocationsPaginatedBidirectionalRefetchQueryVariables = {|
   first?: ?number,
   last?: ?number,

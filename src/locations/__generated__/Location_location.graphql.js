@@ -8,7 +8,7 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
-import type { CountryFlag_location$ref } from "./CountryFlag_location.graphql";
+type CountryFlag_location$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type Location_location$ref: FragmentReference;
 declare export opaque type Location_location$fragmentType: Location_location$ref;

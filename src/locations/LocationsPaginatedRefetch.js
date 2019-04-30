@@ -7,9 +7,9 @@ import {
   type RefetchRelayProp,
 } from '@kiwicom/relay';
 import Button from '@kiwicom/orbit-components/lib/Button';
-import type { LocationsPaginatedRefetch_data as LocationsDataType } from '__generated__/LocationsPaginatedRefetch_data.graphql';
 
 import Location from './Location';
+import type { LocationsPaginatedRefetch_data as LocationsDataType } from './__generated__/LocationsPaginatedRefetch_data.graphql';
 
 type Props = {|
   +data: LocationsDataType,

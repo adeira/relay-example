@@ -20,6 +20,6 @@
   },
   "scripts": {
     "start": "next",
-    "relay": "relay-compiler --src=./src --schema=../graphql.kiwi.com.schema --artifactDirectory=./__generated__"
+    "relay": "relay-compiler --src=./src --schema=../graphql.kiwi.com.schema"
   }
 }

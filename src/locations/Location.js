@@ -4,9 +4,9 @@ import React from 'react';
 import { createFragmentContainer, graphql } from '@kiwicom/relay';
 import Text from '@kiwicom/orbit-components/lib/Text';
 import Stack from '@kiwicom/orbit-components/lib/Stack';
-import type { Location_location as LocationDataType } from '__generated__/Location_location.graphql';
 
 import CountryFlag from './CountryFlag';
+import type { Location_location as LocationDataType } from './__generated__/Location_location.graphql';
 
 type Props = {|
   +location: ?LocationDataType,

@@ -8,7 +8,7 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
-import type { Location_location$ref } from "./Location_location.graphql";
+type Location_location$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type LocationsPaginatedBidirectional_data$ref: FragmentReference;
 declare export opaque type LocationsPaginatedBidirectional_data$fragmentType: LocationsPaginatedBidirectional_data$ref;
