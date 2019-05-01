@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "@kiwicom/orbit-components": "^0.40.0",
-    "@kiwicom/relay": "^2.0.0",
+    "@kiwicom/relay": "^2.1.0",
     "next": "^8.1.0",
     "next-plugin-custom-babel-config": "^1.0.0",
     "next-transpile-modules": "^2.3.1",
@@ -14,7 +14,7 @@
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
-    "@kiwicom/babel-preset-kiwicom": "^2.7.0",
+    "@kiwicom/babel-preset-kiwicom": "^3.0.0",
     "babel-jest": "^24.7.1",
     "flow-bin": "^0.98.0",
     "graphql": "^14.2.1",
