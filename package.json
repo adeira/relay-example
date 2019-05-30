@@ -19,10 +19,11 @@
     "flow-bin": "^0.99.1",
     "graphql": "^14.3.1",
     "react-test-renderer": "^16.8.6",
-    "relay-test-utils": "^4.0.0"
+    "relay-test-utils": "^4.0.0",
+    "relay-compiler-language-kiwicom": "^0.0.0"
   },
   "scripts": {
     "start": "next",
-    "relay": "relay-compiler --src=./src --schema=../graphql.kiwi.com.schema --exclude='**/node_modules/**','**/__mocks__/**','**/__generated__/**'"
+    "relay": "relay-compiler --src=./src --schema=../graphql.kiwi.com.schema --exclude='**/node_modules/**','**/__mocks__/**','**/__generated__/**' --verbose --language=kiwicom"
   }
 }
