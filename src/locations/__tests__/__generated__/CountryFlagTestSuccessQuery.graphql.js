@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 79fc7ada09e01d4388c469c57395ba38
+ * @relayHash c775a68c9b9aafe25da301ea360efddb
  */
 
 /* eslint-disable */
@@ -149,8 +149,8 @@ return {
   "params": {
     "operationKind": "query",
     "name": "CountryFlagTestSuccessQuery",
-    "id": null,
-    "text": "query CountryFlagTestSuccessQuery {\n  location(input: {locationId: \"test-location-id\"}) {\n    ...CountryFlag_location\n    id\n  }\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
+    "id": "ed188ee8330f67fde8dc61c2c0eea717",
+    "text": null,
     "metadata": {
       "relayTestingSelectionTypeInfo": {
         "location": {
@@ -183,4 +183,7 @@ return {
 })();
 // prettier-ignore
 (node/*: any*/).hash = 'f9068b37180c98367f5204294c452894';
+if (__DEV__) {
+  (node/*: any*/).params.text = "query CountryFlagTestSuccessQuery {\n  location(input: {locationId: \"test-location-id\"}) {\n    ...CountryFlag_location\n    id\n  }\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n";
+}
 module.exports = node;
