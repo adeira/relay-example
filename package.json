@@ -16,11 +16,11 @@
   "devDependencies": {
     "@kiwicom/babel-preset-kiwicom": "^3.0.0",
     "babel-jest": "^24.8.0",
-    "flow-bin": "^0.99.1",
+    "flow-bin": "^0.100.0",
     "graphql": "^14.3.1",
     "react-test-renderer": "^16.8.6",
-    "relay-test-utils": "^4.0.0",
-    "relay-compiler-language-kiwicom": "^0.0.0"
+    "relay-compiler-language-kiwicom": "^0.0.0",
+    "relay-test-utils": "^4.0.0"
   },
   "scripts": {
     "start": "next",
