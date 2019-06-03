@@ -19,7 +19,7 @@ Additional learning resources:
 
 <!-- AUTOMATOR:HIRING_BANNER -->
 
-> Do you like our open source? We are looking for skilled JavaScript developers to help us build it. Check our open positions: https://jobs.kiwi.com/
+> Do you like our open source? We are looking for skilled JavaScript developers to help us build it. Check our open positions at https://jobs.kiwi.com/ or get some new skills during our annual Summer Camp: https://summercamp.cz/
 
 <!-- /AUTOMATOR:HIRING_BANNER -->
 
