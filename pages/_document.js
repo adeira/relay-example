@@ -6,7 +6,7 @@ import Document, { Head, Main, NextScript } from 'next/document';
 class MyDocument extends Document {
   render() {
     return (
-      <html>
+      <html lang="en-US">
         <Head>
           <link
             href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700"
