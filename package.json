@@ -23,6 +23,6 @@
   },
   "scripts": {
     "start": "next",
-    "relay": "yarn monorepo-babel-node ../../packages/relay/src/compiler/compiler.js"
+    "relay": "yarn monorepo-babel-node ../../packages/relay/bin/kiwicom-relay-compiler.js --src=./src --schema=../graphql.kiwi.com.schema"
   }
 }
