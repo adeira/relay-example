@@ -117,6 +117,7 @@ return {
 })();
 // prettier-ignore
 (node/*: any*/).hash = '204ab3f8f9271cfa6ff288d192478ae5';
+/*:: declare var __DEV__: boolean; */
 if (__DEV__) {
   (node/*: any*/).params.text = "query PollingQuery {\n  currency(code: \"usd\") {\n    code\n    rate\n    id\n  }\n}\n";
 }

@@ -183,6 +183,7 @@ return {
 })();
 // prettier-ignore
 (node/*: any*/).hash = '0337e5f549a01ebba95f25c2ad21067c';
+/*:: declare var __DEV__: boolean; */
 if (__DEV__) {
   (node/*: any*/).params.text = "query CountryFlagTestAnywhere1Query {\n  location(input: {locationId: \"test-location-id\"}) {\n    ...CountryFlag_location\n    id\n  }\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n";
 }
