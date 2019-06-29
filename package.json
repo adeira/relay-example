@@ -17,7 +17,7 @@
     "@kiwicom/babel-preset-kiwicom": "^3.0.0",
     "babel-jest": "^24.8.0",
     "flow-bin": "^0.102.0",
-    "graphql": "^14.4.0",
+    "graphql": "^14.4.1",
     "react-test-renderer": "^16.8.6",
     "relay-test-utils": "^5.0.0"
   },
