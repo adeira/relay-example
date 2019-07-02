@@ -69,7 +69,7 @@ function LocationsPaginatedBidirectional(props: Props) {
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>
-      <ButtonGroup connected={true}>
+      <ButtonGroup>
         <Button
           onClick={openPreviousPage}
           disabled={!pageInfo.hasPreviousPage}
