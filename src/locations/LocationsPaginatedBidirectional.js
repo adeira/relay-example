@@ -1,11 +1,7 @@
 // @flow
 
 import React, { useState } from 'react';
-import {
-  createRefetchContainer,
-  graphql,
-  type RefetchRelayProp,
-} from '@kiwicom/relay';
+import { createRefetchContainer, graphql, type RefetchRelayProp } from '@kiwicom/relay';
 import Button from '@kiwicom/orbit-components/lib/Button';
 import ButtonGroup from '@kiwicom/orbit-components/lib/ButtonGroup';
 import ChevronLeft from '@kiwicom/orbit-components/lib/icons/ChevronLeft';
@@ -28,10 +24,7 @@ function LocationsPaginatedBidirectional(props: Props) {
     return null; // or some failure placeholder
   }
 
-  function handlePageChange(
-    args: {| before?: ?string, after?: ?string |},
-    callback: () => void,
-  ) {
+  function handlePageChange(args: {| before?: ?string, after?: ?string |}, callback: () => void) {
     props.relay.refetch(
       {
         first: args.after ? props.itemsCount : null,
@@ -102,12 +95,7 @@ export default createRefetchContainer(
           after: { type: "String" }
           before: { type: "String" }
         ) {
-        allLocations(
-          first: $first
-          last: $last
-          after: $after
-          before: $before
-        ) {
+        allLocations(first: $first, last: $last, after: $after, before: $before) {
           edges {
             node {
               id

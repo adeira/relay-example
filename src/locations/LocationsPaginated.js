@@ -1,11 +1,7 @@
 // @flow
 
 import React from 'react';
-import {
-  createPaginationContainer,
-  graphql,
-  type PaginationRelayProp,
-} from '@kiwicom/relay';
+import { createPaginationContainer, graphql, type PaginationRelayProp } from '@kiwicom/relay';
 import Button from '@kiwicom/orbit-components/lib/Button';
 
 import Location from './Location';
@@ -49,10 +45,7 @@ export default createPaginationContainer(
   {
     data: graphql`
       fragment LocationsPaginated_data on RootQuery
-        @argumentDefinitions(
-          count: { type: "Int", defaultValue: 20 }
-          after: { type: "String" }
-        ) {
+        @argumentDefinitions(count: { type: "Int", defaultValue: 20 }, after: { type: "String" }) {
         incrementalPagination2: allLocations(first: $count, after: $after)
           @connection(key: "allLocations_incrementalPagination2") {
           edges {

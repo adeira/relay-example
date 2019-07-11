@@ -1,11 +1,7 @@
 // @flow
 
 import React from 'react';
-import {
-  createRefetchContainer,
-  graphql,
-  type RefetchRelayProp,
-} from '@kiwicom/relay';
+import { createRefetchContainer, graphql, type RefetchRelayProp } from '@kiwicom/relay';
 import Button from '@kiwicom/orbit-components/lib/Button';
 
 import Location from './Location';
@@ -54,10 +50,7 @@ export default createRefetchContainer(
   {
     data: graphql`
       fragment LocationsPaginatedRefetch_data on RootQuery
-        @argumentDefinitions(
-          count: { type: "Int", defaultValue: 20 }
-          after: { type: "String" }
-        ) {
+        @argumentDefinitions(count: { type: "Int", defaultValue: 20 }, after: { type: "String" }) {
         incrementalPagination: allLocations(first: $count, after: $after)
           @connection(key: "allLocations_incrementalPagination") {
           edges {

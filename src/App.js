@@ -44,12 +44,7 @@ function renderQueryRendererResponse(props: AppQueryResponse) {
           title="Bi-directional pagination"
           link="https://facebook.github.io/relay/docs/en/refetch-container.html"
           linkTitle="Refetch Container"
-          component={
-            <LocationsPaginatedBidirectional
-              data={props}
-              itemsCount={ITEMS_COUNT}
-            />
-          }
+          component={<LocationsPaginatedBidirectional data={props} itemsCount={ITEMS_COUNT} />}
         />
       </div>
 
