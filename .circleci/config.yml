@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: node:12.7.0
+      - image: node:12.8.0
     steps:
       - checkout
       - run:
