@@ -9,8 +9,8 @@
     "next": "^9.0.3",
     "next-plugin-custom-babel-config": "^1.0.2",
     "next-transpile-modules": "^2.3.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
@@ -18,7 +18,7 @@
     "babel-jest": "^24.8.0",
     "flow-bin": "^0.104.0",
     "graphql": "^14.4.2",
-    "react-test-renderer": "^16.8.6",
+    "react-test-renderer": "^16.9.0",
     "relay-test-utils": "^5.0.0"
   },
   "scripts": {
