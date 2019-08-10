@@ -38,6 +38,12 @@ yarn relay
 
 This is necessary because Relay is not working with the GraphQL code you write directly. Instead, it generates optimized metafiles to the `__generated__` folder and it's working with these files. It's a good idea to check what files are being regenerated and sometimes even look inside and read them. You'll eventually learn a lot about how it actually works and what optimizations are actually being done.
 
+Run this command to get fresh GraphQL schema::
+
+```text
+yarn schema
+```
+
 # Using `@kiwicom/relay`
 
 [Docs](https://github.com/kiwicom/relay)
