@@ -17,12 +17,6 @@ Additional learning resources:
 - advanced and experimental features: https://github.com/mrtnzlml/meta/blob/master/relay.md
 - source-code: https://github.com/facebook/relay
 
-<!-- AUTOMATOR:HIRING_BANNER -->
-
-
-
-<!-- /AUTOMATOR:HIRING_BANNER -->
-
 # Install and run
 
 ```text
@@ -165,12 +159,7 @@ The best fit for bi-directional (sometimes known as "window" or "next/prev" pagi
       }
     }
   }
-  page: allLocations(
-    first: 1
-    after: "YXJyYXljb25uZWN0aW9uOjI="
-    last: null
-    before: null
-  ) {
+  page: allLocations(first: 1, after: "YXJyYXljb25uZWN0aW9uOjI=", last: null, before: null) {
     edges {
       node {
         name
