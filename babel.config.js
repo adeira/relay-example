@@ -17,5 +17,6 @@ module.exports = function(api /*: ApiType */) {
 
   return {
     presets: [['@kiwicom/babel-preset-kiwicom']],
+    plugins: ["relay"],
   };
 };
