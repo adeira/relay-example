@@ -1,0 +1,8 @@
+extend type RootQuery {
+  localForm: LocalForm
+}
+
+type LocalForm {
+  subject: String
+  message: String
+}
