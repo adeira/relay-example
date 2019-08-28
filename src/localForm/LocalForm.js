@@ -23,15 +23,15 @@ const environment = createEnvironment({
 
 const commitIntoRelay = (name, value) => {
   return commitLocalUpdate(environment, store => {
-    const localForm = store.get('local:LocalForm') || store.create('local:LocalForm', 'LocalForm');
+    const localForm = store.get('local:LocalForm') ?? store.create('local:LocalForm', 'LocalForm');
     localForm.setValue(value, name);
-    const root = store.get(ROOT_ID) || store.getRoot();
+    const root = store.get(ROOT_ID) ?? store.getRoot();
     root.setLinkedRecord(localForm, 'localForm');
   });
 };
 
 const persistInStorage = (name, value) => {
-  const stored = JSON.parse(window.localStorage.getItem('LocalForm')) || {};
+  const stored = JSON.parse(window.localStorage.getItem('LocalForm')) ?? {};
   stored[name] = value;
   window.localStorage.setItem('LocalForm', JSON.stringify(stored));
 };
@@ -42,7 +42,7 @@ const commitUpdate = (name, value) => {
 };
 
 if (typeof window !== 'undefined') {
-  const stored = JSON.parse(window.localStorage.getItem('LocalForm')) || {};
+  const stored = JSON.parse(window.localStorage.getItem('LocalForm')) ?? {};
   commitIntoRelay('subject', stored.subject);
   commitIntoRelay('message', stored.message);
 }
@@ -78,9 +78,10 @@ export default function App() {
 
       <QueryRenderer
         clientID="https://github.com/kiwicom/relay-example"
+        environment={environment}
         query={graphql`
           query LocalFormQuery {
-            __typename # Relay compiler still requires a server schema field :-(
+            __typename # https://github.com/facebook/relay/issues/2471
             localForm {
               subject
               message
