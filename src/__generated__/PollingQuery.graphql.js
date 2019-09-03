@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 409659c20b4e68994668bedb0a200926
+ * @relayHash 8f6096246f9f8aefafcdd535219f4670
  */
 
 /* eslint-disable */
@@ -109,16 +109,12 @@ return {
   "params": {
     "operationKind": "query",
     "name": "PollingQuery",
-    "id": "d37229d14fa8caef41ae9c69de99cc3f",
-    "text": null,
+    "id": null,
+    "text": "query PollingQuery {\n  currency(code: \"usd\") {\n    code\n    rate\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
 (node/*: any*/).hash = '204ab3f8f9271cfa6ff288d192478ae5';
-/*:: declare var __DEV__: boolean; */
-if (__DEV__) {
-  (node/*: any*/).params.text = "query PollingQuery {\n  currency(code: \"usd\") {\n    code\n    rate\n    id\n  }\n}\n";
-}
 module.exports = node;

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 3629567132b3840061bfc9e0c8cf8f7b
+ * @relayHash 4d86ade81f2c5ef4cdbd28f253618e07
  */
 
 /* eslint-disable */
@@ -259,16 +259,12 @@ return {
   "params": {
     "operationKind": "query",
     "name": "LocationsPaginatedBidirectionalRefetchQuery",
-    "id": "9491a79936fdd45fd33c38c27a9dfff5",
-    "text": null,
+    "id": null,
+    "text": "query LocationsPaginatedBidirectionalRefetchQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n) {\n  ...LocationsPaginatedBidirectional_data_pbnwq\n}\n\nfragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {\n  allLocations(first: $first, last: $last, after: $after, before: $before) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
 (node/*: any*/).hash = 'b477875859d7890a09eedf906ddcb30a';
-/*:: declare var __DEV__: boolean; */
-if (__DEV__) {
-  (node/*: any*/).params.text = "query LocationsPaginatedBidirectionalRefetchQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n) {\n  ...LocationsPaginatedBidirectional_data_pbnwq\n}\n\nfragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {\n  allLocations(first: $first, last: $last, after: $after, before: $before) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n";
-}
 module.exports = node;

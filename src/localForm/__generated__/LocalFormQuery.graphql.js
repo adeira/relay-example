@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 35de10ffa5a0bdd7b3d1464a61f4883f
+ * @relayHash f956d44c49bd759275aff72f074a500f
  */
 
 /* eslint-disable */
@@ -89,16 +89,12 @@ return {
   "params": {
     "operationKind": "query",
     "name": "LocalFormQuery",
-    "id": "0d99b879d458f565ba2e90754bb6673f",
-    "text": null,
+    "id": null,
+    "text": "query LocalFormQuery {\n  __typename\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
 (node/*: any*/).hash = 'a80e31cfd4b804fdc5e841826e42d46b';
-/*:: declare var __DEV__: boolean; */
-if (__DEV__) {
-  (node/*: any*/).params.text = "query LocalFormQuery {\n  __typename\n}\n";
-}
 module.exports = node;
