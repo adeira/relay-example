@@ -4,9 +4,6 @@
 
 /* eslint-disable */
 
-'use strict';
-
-/*::
 import type { ReaderFragment } from 'relay-runtime';
 type CountryFlag_location$ref = any;
 import type { FragmentReference } from "relay-runtime";
@@ -22,10 +19,9 @@ export type Location_location$key = {
   +$data?: Location_location$data,
   +$fragmentRefs: Location_location$ref,
 };
-*/
 
 
-const node/*: ReaderFragment*/ = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "Location_location",
   "type": "Location",
@@ -47,5 +43,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '90b49a75389a827efd865272010594b8';
-module.exports = node;
+(node: any).hash = '90b49a75389a827efd865272010594b8';
+export default node;

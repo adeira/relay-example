@@ -1,13 +1,10 @@
 /**
  * @flow
- * @relayHash 6a523c0202335304c10ccb65c09b86f0
+ * @relayHash 8e698a7fcf5ee02cc72d9440d7135d60
  */
 
 /* eslint-disable */
 
-'use strict';
-
-/*::
 import type { ConcreteRequest } from 'relay-runtime';
 type CountryFlag_location$ref = any;
 export type CountryFlagTestAnywhere2QueryVariables = {||};
@@ -20,8 +17,6 @@ export type CountryFlagTestAnywhere2Query = {|
   variables: CountryFlagTestAnywhere2QueryVariables,
   response: CountryFlagTestAnywhere2QueryResponse,
 |};
-*/
-
 
 /*
 query CountryFlagTestAnywhere2Query {
@@ -42,7 +37,7 @@ fragment CountryFlag_location on Location {
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
+const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "Literal",
@@ -149,8 +144,8 @@ return {
   "params": {
     "operationKind": "query",
     "name": "CountryFlagTestAnywhere2Query",
-    "id": "2739172db8792adb8a19d47526785743",
-    "text": null,
+    "id": null,
+    "text": "query CountryFlagTestAnywhere2Query {\n  location(input: {locationId: \"test-location-id\"}) {\n    ...CountryFlag_location\n    id\n  }\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
     "metadata": {
       "relayTestingSelectionTypeInfo": {
         "location": {
@@ -182,9 +177,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '1fda0ea84c49dd00e11a36711fcc63bc';
-/*:: declare var __DEV__: boolean; */
-if (__DEV__) {
-  (node/*: any*/).params.text = "query CountryFlagTestAnywhere2Query {\n  location(input: {locationId: \"test-location-id\"}) {\n    ...CountryFlag_location\n    id\n  }\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n";
-}
-module.exports = node;
+(node: any).hash = '1fda0ea84c49dd00e11a36711fcc63bc';
+export default node;

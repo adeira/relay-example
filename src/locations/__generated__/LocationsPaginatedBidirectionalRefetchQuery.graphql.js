@@ -5,9 +5,6 @@
 
 /* eslint-disable */
 
-'use strict';
-
-/*::
 import type { ConcreteRequest } from 'relay-runtime';
 type LocationsPaginatedBidirectional_data$ref = any;
 export type LocationsPaginatedBidirectionalRefetchQueryVariables = {|
@@ -23,8 +20,6 @@ export type LocationsPaginatedBidirectionalRefetchQuery = {|
   variables: LocationsPaginatedBidirectionalRefetchQueryVariables,
   response: LocationsPaginatedBidirectionalRefetchQueryResponse,
 |};
-*/
-
 
 /*
 query LocationsPaginatedBidirectionalRefetchQuery(
@@ -69,7 +64,7 @@ fragment CountryFlag_location on Location {
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
+const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
@@ -266,5 +261,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'b477875859d7890a09eedf906ddcb30a';
-module.exports = node;
+(node: any).hash = 'b477875859d7890a09eedf906ddcb30a';
+export default node;

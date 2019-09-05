@@ -5,9 +5,6 @@
 
 /* eslint-disable */
 
-'use strict';
-
-/*::
 import type { ConcreteRequest } from 'relay-runtime';
 export type PollingQueryVariables = {||};
 export type PollingQueryResponse = {|
@@ -20,8 +17,6 @@ export type PollingQuery = {|
   variables: PollingQueryVariables,
   response: PollingQueryResponse,
 |};
-*/
-
 
 /*
 query PollingQuery {
@@ -33,7 +28,7 @@ query PollingQuery {
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
+const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "Literal",
@@ -116,5 +111,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '204ab3f8f9271cfa6ff288d192478ae5';
-module.exports = node;
+(node: any).hash = '204ab3f8f9271cfa6ff288d192478ae5';
+export default node;

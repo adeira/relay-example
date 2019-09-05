@@ -5,9 +5,6 @@
 
 /* eslint-disable */
 
-'use strict';
-
-/*::
 import type { ConcreteRequest } from 'relay-runtime';
 export type LocalFormQueryVariables = {||};
 export type LocalFormQueryResponse = {|
@@ -21,8 +18,6 @@ export type LocalFormQuery = {|
   variables: LocalFormQueryVariables,
   response: LocalFormQueryResponse,
 |};
-*/
-
 
 /*
 query LocalFormQuery {
@@ -30,7 +25,7 @@ query LocalFormQuery {
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
+const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "ScalarField",
@@ -96,5 +91,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'a80e31cfd4b804fdc5e841826e42d46b';
-module.exports = node;
+(node: any).hash = 'a80e31cfd4b804fdc5e841826e42d46b';
+export default node;

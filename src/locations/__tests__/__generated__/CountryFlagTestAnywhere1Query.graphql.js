@@ -1,13 +1,10 @@
 /**
  * @flow
- * @relayHash 941ceb15cb08efa935c00cb590d9b791
+ * @relayHash ff696d0722e29affbbec392fb0f5d865
  */
 
 /* eslint-disable */
 
-'use strict';
-
-/*::
 import type { ConcreteRequest } from 'relay-runtime';
 type CountryFlag_location$ref = any;
 export type CountryFlagTestAnywhere1QueryVariables = {||};
@@ -20,8 +17,6 @@ export type CountryFlagTestAnywhere1Query = {|
   variables: CountryFlagTestAnywhere1QueryVariables,
   response: CountryFlagTestAnywhere1QueryResponse,
 |};
-*/
-
 
 /*
 query CountryFlagTestAnywhere1Query {
@@ -42,7 +37,7 @@ fragment CountryFlag_location on Location {
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
+const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "Literal",
@@ -149,8 +144,8 @@ return {
   "params": {
     "operationKind": "query",
     "name": "CountryFlagTestAnywhere1Query",
-    "id": "f137a1355eabcfcceaa24ca7041c8d16",
-    "text": null,
+    "id": null,
+    "text": "query CountryFlagTestAnywhere1Query {\n  location(input: {locationId: \"test-location-id\"}) {\n    ...CountryFlag_location\n    id\n  }\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
     "metadata": {
       "relayTestingSelectionTypeInfo": {
         "location": {
@@ -182,9 +177,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '0337e5f549a01ebba95f25c2ad21067c';
-/*:: declare var __DEV__: boolean; */
-if (__DEV__) {
-  (node/*: any*/).params.text = "query CountryFlagTestAnywhere1Query {\n  location(input: {locationId: \"test-location-id\"}) {\n    ...CountryFlag_location\n    id\n  }\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n";
-}
-module.exports = node;
+(node: any).hash = '0337e5f549a01ebba95f25c2ad21067c';
+export default node;

@@ -1,13 +1,10 @@
 /**
  * @flow
- * @relayHash c775a68c9b9aafe25da301ea360efddb
+ * @relayHash 79fc7ada09e01d4388c469c57395ba38
  */
 
 /* eslint-disable */
 
-'use strict';
-
-/*::
 import type { ConcreteRequest } from 'relay-runtime';
 type CountryFlag_location$ref = any;
 export type CountryFlagTestSuccessQueryVariables = {||};
@@ -20,8 +17,6 @@ export type CountryFlagTestSuccessQuery = {|
   variables: CountryFlagTestSuccessQueryVariables,
   response: CountryFlagTestSuccessQueryResponse,
 |};
-*/
-
 
 /*
 query CountryFlagTestSuccessQuery {
@@ -42,7 +37,7 @@ fragment CountryFlag_location on Location {
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
+const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "Literal",
@@ -149,8 +144,8 @@ return {
   "params": {
     "operationKind": "query",
     "name": "CountryFlagTestSuccessQuery",
-    "id": "ed188ee8330f67fde8dc61c2c0eea717",
-    "text": null,
+    "id": null,
+    "text": "query CountryFlagTestSuccessQuery {\n  location(input: {locationId: \"test-location-id\"}) {\n    ...CountryFlag_location\n    id\n  }\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
     "metadata": {
       "relayTestingSelectionTypeInfo": {
         "location": {
@@ -182,9 +177,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'f9068b37180c98367f5204294c452894';
-/*:: declare var __DEV__: boolean; */
-if (__DEV__) {
-  (node/*: any*/).params.text = "query CountryFlagTestSuccessQuery {\n  location(input: {locationId: \"test-location-id\"}) {\n    ...CountryFlag_location\n    id\n  }\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n";
-}
-module.exports = node;
+(node: any).hash = 'f9068b37180c98367f5204294c452894';
+export default node;

@@ -4,9 +4,6 @@
 
 /* eslint-disable */
 
-'use strict';
-
-/*::
 import type { ReaderFragment } from 'relay-runtime';
 type Location_location$ref = any;
 import type { FragmentReference } from "relay-runtime";
@@ -34,10 +31,9 @@ export type LocationsPaginatedBidirectional_data$key = {
   +$data?: LocationsPaginatedBidirectional_data$data,
   +$fragmentRefs: LocationsPaginatedBidirectional_data$ref,
 };
-*/
 
 
-const node/*: ReaderFragment*/ = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "LocationsPaginatedBidirectional_data",
   "type": "RootQuery",
@@ -177,5 +173,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '75afce31dc28d17ce744bf23b598704b';
-module.exports = node;
+(node: any).hash = '75afce31dc28d17ce744bf23b598704b';
+export default node;

@@ -4,9 +4,6 @@
 
 /* eslint-disable */
 
-'use strict';
-
-/*::
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type CountryFlag_location$ref: FragmentReference;
@@ -26,10 +23,9 @@ export type CountryFlag_location$key = {
   +$data?: CountryFlag_location$data,
   +$fragmentRefs: CountryFlag_location$ref,
 };
-*/
 
 
-const node/*: ReaderFragment*/ = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -77,5 +73,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '75035d3c7ae80a08669ff2179e0dc9e6';
-module.exports = node;
+(node: any).hash = '75035d3c7ae80a08669ff2179e0dc9e6';
+export default node;
