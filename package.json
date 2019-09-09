@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "next",
-    "relay": "kiwicom-relay-compiler --src=./src --schema=schema.graphql",
+    "relay": "kiwicom-relay-compiler",
     "schema": "kiwicom-fetch-schema --filename schema.graphql"
   }
 }

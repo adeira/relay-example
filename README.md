@@ -1,9 +1,3 @@
-Examples TODO:
-
-- server side rendering (possibly with fetch policies)
-- custom independent GraphQL schema (so we can show more advanced techniques not implemented on server)
-- `@match`, `@module`
-
 # Relay examples
 
 This repository contains examples of common patterns used in real-world applications so you don't have to re-invent the wheel every time. It currently contains following examples:
