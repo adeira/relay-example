@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import ReactTestRenderer from 'react-test-renderer';
-import { createMockEnvironment, MockPayloadGenerator } from 'relay-test-utils';
+import { createMockEnvironment, MockPayloadGenerator, unwrapContainer } from 'relay-test-utils';
 import { QueryRenderer, graphql } from '@kiwicom/relay';
 
 import CountryFlag from '../CountryFlag';
@@ -51,7 +51,7 @@ it('renders Flag with code "anywhere" for special type', () => {
     <QueryRenderer
       environment={environment}
       query={graphql`
-        query CountryFlagTestAnywhere1Query @relay_test_operation {
+        query CountryFlagTestAnywhereQuery @relay_test_operation {
           location(input: { locationId: "test-location-id" }) {
             ...CountryFlag_location
           }
@@ -76,28 +76,8 @@ it('renders Flag with code "anywhere" for special type', () => {
 });
 
 it('renders Flag with code "anywhere" if location is missing', () => {
-  const renderer = ReactTestRenderer.create(
-    <QueryRenderer
-      environment={environment}
-      query={graphql`
-        query CountryFlagTestAnywhere2Query @relay_test_operation {
-          location(input: { locationId: "test-location-id" }) {
-            ...CountryFlag_location
-          }
-        }
-      `}
-      onResponse={onResponse}
-    />,
-  );
-
-  // Alternatively we could just unwrap the component and pass null directly
-  // without calling QueryRenderer with environment.
-  environment.mock.resolveMostRecentOperation(operation =>
-    MockPayloadGenerator.generate(operation, {
-      Location: () => null,
-    }),
-  );
-
+  const UnwrappedCountryFlag = unwrapContainer(CountryFlag);
+  const renderer = ReactTestRenderer.create(<UnwrappedCountryFlag location={null} />);
   const flag = renderer.root.findByProps({ dataTest: 'flag-anywhere' });
   expect(flag).toBeDefined();
   expect(flag.props.code).toBe('anywhere');

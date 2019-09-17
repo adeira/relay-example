@@ -1,25 +1,25 @@
 /**
  * @flow
- * @relayHash 8e698a7fcf5ee02cc72d9440d7135d60
+ * @relayHash c1ab9d9daa652f2a929e4e72d60f4034
  */
 
 /* eslint-disable */
 
 import type { ConcreteRequest } from 'relay-runtime';
 type CountryFlag_location$ref = any;
-export type CountryFlagTestAnywhere2QueryVariables = {||};
-export type CountryFlagTestAnywhere2QueryResponse = {|
+export type CountryFlagTestAnywhereQueryVariables = {||};
+export type CountryFlagTestAnywhereQueryResponse = {|
   +location: ?{|
     +$fragmentRefs: CountryFlag_location$ref
   |}
 |};
-export type CountryFlagTestAnywhere2Query = {|
-  variables: CountryFlagTestAnywhere2QueryVariables,
-  response: CountryFlagTestAnywhere2QueryResponse,
+export type CountryFlagTestAnywhereQuery = {|
+  variables: CountryFlagTestAnywhereQueryVariables,
+  response: CountryFlagTestAnywhereQueryResponse,
 |};
 
 /*
-query CountryFlagTestAnywhere2Query {
+query CountryFlagTestAnywhereQuery {
   location(input: {locationId: "test-location-id"}) {
     ...CountryFlag_location
     id
@@ -71,7 +71,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "CountryFlagTestAnywhere2Query",
+    "name": "CountryFlagTestAnywhereQuery",
     "type": "RootQuery",
     "metadata": null,
     "argumentDefinitions": [],
@@ -96,7 +96,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "CountryFlagTestAnywhere2Query",
+    "name": "CountryFlagTestAnywhereQuery",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -143,9 +143,9 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "CountryFlagTestAnywhere2Query",
+    "name": "CountryFlagTestAnywhereQuery",
     "id": null,
-    "text": "query CountryFlagTestAnywhere2Query {\n  location(input: {locationId: \"test-location-id\"}) {\n    ...CountryFlag_location\n    id\n  }\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
+    "text": "query CountryFlagTestAnywhereQuery {\n  location(input: {locationId: \"test-location-id\"}) {\n    ...CountryFlag_location\n    id\n  }\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
     "metadata": {
       "relayTestingSelectionTypeInfo": {
         "location": {
@@ -177,5 +177,5 @@ return {
 };
 })();
 // prettier-ignore
-(node: any).hash = '1fda0ea84c49dd00e11a36711fcc63bc';
+(node: any).hash = '9facb0d14e3f34a90ad570053e5e077b';
 export default node;

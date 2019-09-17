@@ -19,7 +19,7 @@
     "flow-bin": "^0.107.0",
     "graphql": "^14.5.6",
     "react-test-renderer": "^16.9.0",
-    "relay-test-utils": "^5.0.0"
+    "relay-test-utils": "^6.0.0"
   },
   "scripts": {
     "start": "next",
