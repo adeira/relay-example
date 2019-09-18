@@ -4,11 +4,10 @@
 
 import React from 'react';
 import {
+  commitLocalUpdate,
+  createLocalEnvironment,
   graphql,
   LocalQueryRenderer,
-  commitLocalUpdate,
-  createEnvironment,
-  createNetworkFetcher,
 } from '@kiwicom/relay';
 import { ROOT_ID } from 'relay-runtime'; // eslint-disable-line import/no-extraneous-dependencies
 import {
@@ -23,12 +22,7 @@ import {
 
 import type { LocalFormQueryResponse } from './__generated__/LocalFormQuery.graphql';
 
-const environment = createEnvironment({
-  // TODO: this seems to be unnecessary for local fields?
-  fetchFn: createNetworkFetcher('https://graphql.kiwi.com', {
-    'X-Client': 'relay-example',
-  }),
-});
+const environment = createLocalEnvironment();
 
 const commitIntoRelay = (name, value) => {
   // eslint-disable-next-line no-console
