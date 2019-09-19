@@ -4,9 +4,9 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@kiwicom/orbit-components": "^0.59.0",
+    "@kiwicom/orbit-components": "^0.60.0",
     "@kiwicom/relay": "^4.0.0",
-    "next": "^9.0.5",
+    "next": "^9.0.6",
     "next-plugin-custom-babel-config": "^1.0.2",
     "next-transpile-modules": "^2.3.1",
     "react": "^16.9.0",
@@ -16,7 +16,7 @@
   "devDependencies": {
     "@kiwicom/babel-preset-kiwicom": "^3.0.0",
     "babel-jest": "^24.9.0",
-    "flow-bin": "^0.107.0",
+    "flow-bin": "^0.108.0",
     "graphql": "^14.5.6",
     "react-test-renderer": "^16.9.0",
     "relay-test-utils": "^6.0.0"
