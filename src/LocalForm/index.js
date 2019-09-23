@@ -10,18 +10,11 @@ import {
   LocalQueryRenderer,
 } from '@kiwicom/relay';
 import { ROOT_ID } from 'relay-runtime'; // eslint-disable-line import/no-extraneous-dependencies
-import {
-  InputField,
-  Textarea,
-  Heading,
-  Text,
-  Separator,
-  Stack,
-  Alert,
-} from '@kiwicom/orbit-components';
+import { InputField, Textarea, Heading, Text, Separator, Stack } from '@kiwicom/orbit-components';
 
 import type { LocalFormQueryResponse } from './__generated__/LocalFormQuery.graphql';
 
+// We are overwriting here the application env context and replacing it with our custom local env.
 const environment = createLocalEnvironment();
 
 const commitIntoRelay = (name, value) => {
@@ -71,7 +64,6 @@ function handleResponse({ props: rendererProps }: {| +props: ?LocalFormQueryResp
 
   return (
     <>
-      <Alert>TIP: Open a console to see what&apos;s going on behind the scenes.</Alert>
       <InputField
         value={rendererProps.localForm?.subject ?? ''}
         label="Subject"
@@ -86,7 +78,7 @@ function handleResponse({ props: rendererProps }: {| +props: ?LocalFormQueryResp
   );
 }
 
-export default function App() {
+export default function LocalForm() {
   return (
     <Stack>
       <Heading>Persisted form</Heading>

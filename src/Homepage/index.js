@@ -2,15 +2,13 @@
 
 import React from 'react';
 import { graphql, QueryRenderer } from '@kiwicom/relay';
-import Head from 'next/head';
 import Heading from '@kiwicom/orbit-components/lib/Heading';
 import Text from '@kiwicom/orbit-components/lib/Text';
 
-import Polling from './Polling';
 import LocationsPaginatedBidirectional from './locations/LocationsPaginatedBidirectional';
 import LocationsPaginatedRefetch from './locations/LocationsPaginatedRefetch';
 import LocationsPaginated from './locations/LocationsPaginated';
-import type { AppQueryResponse } from './__generated__/AppQuery.graphql';
+import type { HomepageQueryResponse } from './__generated__/HomepageQuery.graphql';
 
 function Demo(props) {
   return (
@@ -26,7 +24,7 @@ function Demo(props) {
 
 const ITEMS_COUNT = 20; // change me
 
-function renderQueryRendererResponse(props: AppQueryResponse) {
+function renderQueryRendererResponse(props: HomepageQueryResponse) {
   return (
     <div className="row">
       <style jsx>{`
@@ -69,32 +67,22 @@ function renderQueryRendererResponse(props: AppQueryResponse) {
   );
 }
 
-export default function App() {
+export default function Homepage() {
   const queryVariables = {
     count: ITEMS_COUNT,
   };
 
   return (
-    <>
-      <Head>
-        <title>Relay example project</title>
-      </Head>
-
-      <Polling />
-
-      <Heading>Relay pagination showcase</Heading>
-      <QueryRenderer
-        clientID="https://github.com/kiwicom/relay-example"
-        query={graphql`
-          query AppQuery($count: Int!) {
-            ...LocationsPaginatedBidirectional_data @arguments(first: $count)
-            ...LocationsPaginatedRefetch_data
-            ...LocationsPaginated_data
-          }
-        `}
-        variables={queryVariables}
-        onResponse={renderQueryRendererResponse}
-      />
-    </>
+    <QueryRenderer
+      query={graphql`
+        query HomepageQuery($count: Int!) {
+          ...LocationsPaginatedBidirectional_data @arguments(first: $count)
+          ...LocationsPaginatedRefetch_data
+          ...LocationsPaginated_data
+        }
+      `}
+      variables={queryVariables}
+      onResponse={renderQueryRendererResponse}
+    />
   );
 }

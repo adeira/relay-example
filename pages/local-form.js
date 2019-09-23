@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import LocalForm from '../src/localForm/LocalForm';
+import LocalForm from '../src/LocalForm';
 
 export default function Root() {
   return <LocalForm />;

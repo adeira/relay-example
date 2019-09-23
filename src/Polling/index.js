@@ -27,7 +27,6 @@ export default function Polling() {
 
   return (
     <QueryRenderer
-      clientID="https://github.com/kiwicom/relay-example"
       query={graphql`
         query PollingQuery {
           currency(code: "usd") {
