@@ -22,7 +22,7 @@ function renderPollingResponse({ currency }: PollingQueryResponse) {
 
 export default function Polling() {
   const cacheConfig = {
-    poll: 5000,
+    poll: 1000, // 1 second
   };
 
   return (

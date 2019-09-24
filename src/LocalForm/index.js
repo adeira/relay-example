@@ -2,83 +2,75 @@
 
 /* global window */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   commitLocalUpdate,
   createLocalEnvironment,
   graphql,
   LocalQueryRenderer,
 } from '@kiwicom/relay';
-import { ROOT_ID } from 'relay-runtime'; // eslint-disable-line import/no-extraneous-dependencies
 import { InputField, Textarea, Heading, Text, Separator, Stack } from '@kiwicom/orbit-components';
 
 import type { LocalFormQueryResponse } from './__generated__/LocalFormQuery.graphql';
 
 // We are overwriting here the application env context and replacing it with our custom local env.
 const environment = createLocalEnvironment();
+const consoleStyle = 'color: green; background-color: lightgreen;';
 
-const commitIntoRelay = (name, value) => {
-  // eslint-disable-next-line no-console
-  console.log(
-    "Commit '%s' into relay: %c'%s'",
-    name,
-    'color: green; background-color: lightgreen',
-    value,
-  );
-  return commitLocalUpdate(environment, store => {
-    const localForm = store.get('local:LocalForm') ?? store.create('local:LocalForm', 'LocalForm');
-    localForm.setValue(value, name);
-    const root = store.get(ROOT_ID) ?? store.getRoot();
-    root.setLinkedRecord(localForm, 'localForm');
-  });
-};
+type LocalData = {|
+  +subject?: string,
+  +message?: string,
+|};
 
-const persistInStorage = (name, value) => {
-  // eslint-disable-next-line no-console
-  console.log(
-    "Commit '%s' into local storage: %c'%s'",
-    name,
-    'color: green; background-color: lightgreen',
-    value,
-  );
-  const stored = JSON.parse(window.localStorage.getItem('LocalForm')) ?? {};
-  stored[name] = value;
-  window.localStorage.setItem('LocalForm', JSON.stringify(stored));
-};
-
-const commitUpdate = (name, value) => {
-  commitIntoRelay(name, value);
-  persistInStorage(name, value);
-};
-
-if (typeof window !== 'undefined') {
-  const stored = JSON.parse(window.localStorage.getItem('LocalForm')) ?? {};
-  commitIntoRelay('subject', stored.subject);
-  commitIntoRelay('message', stored.message);
+function getLocalStorageData(): LocalData {
+  return JSON.parse(window.localStorage.getItem('LocalForm')) ?? {};
 }
 
-function handleResponse({ props: rendererProps }: {| +props: ?LocalFormQueryResponse |}) {
-  if (!rendererProps) {
-    return <div>Loading local state...</div>;
-  }
+function persist(data: LocalData) {
+  return commitLocalUpdate(environment, store => {
+    const dataID = 'local:LocalForm';
+    const record = store.get(dataID) ?? store.create(dataID, 'LocalForm');
+    for (const [key, value] of Object.entries(data)) {
+      // eslint-disable-next-line no-console
+      console.log("Persisting '%s': %c'%s'", key, consoleStyle, value);
+      record.setValue(value, key);
+    }
+    store.getRoot().setLinkedRecord(record, 'localForm');
 
+    // Also persist to the local store.
+    // TODO: should we observe Relay store and save it into local state instead?
+    window.localStorage.setItem(
+      'LocalForm',
+      JSON.stringify({
+        ...getLocalStorageData(),
+        ...data,
+      }),
+    );
+  });
+}
+
+function handleResponse(rendererProps: LocalFormQueryResponse) {
   return (
     <>
       <InputField
         value={rendererProps.localForm?.subject ?? ''}
         label="Subject"
-        onChange={e => commitUpdate('subject', e.target.value)}
+        onChange={e => persist({ subject: e.target.value })}
       />
       <Textarea
         value={rendererProps.localForm?.message ?? ''}
         label="Message"
-        onChange={e => commitUpdate('message', e.target.value)}
+        onChange={e => persist({ message: e.target.value })}
       />
     </>
   );
 }
 
 export default function LocalForm() {
+  useEffect(() => {
+    persist(getLocalStorageData());
+  });
+
   return (
     <Stack>
       <Heading>Persisted form</Heading>
@@ -101,7 +93,7 @@ export default function LocalForm() {
             }
           }
         `}
-        render={handleResponse}
+        onResponse={handleResponse}
       />
     </Stack>
   );
