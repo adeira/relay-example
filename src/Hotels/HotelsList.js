@@ -1,4 +1,4 @@
-// @flow strict
+// @flow
 
 import React from 'react';
 import { createFragmentContainer, graphql } from '@kiwicom/relay';
@@ -7,7 +7,7 @@ import type { HotelsList_hotels as Hotels } from './__generated__/HotelsList_hot
 import HotelListItem from './HotelListItem';
 
 type Props = {|
-  +hotels: Hotels,
+  +hotels: ?Hotels,
 |};
 
 const HotelsList = (props: Props) => {
@@ -20,6 +20,7 @@ export default createFragmentContainer(HotelsList, {
     fragment HotelsList_hotels on AllHotelAvailabilityHotelConnection {
       edges {
         node {
+          id
           ...HotelListItem_hotel
         }
       }

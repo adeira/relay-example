@@ -1,11 +1,13 @@
-// @flow strict
+// @flow
 
 import React from 'react';
-import { QueryRenderer, graphql } from '@kiwicom/relay';
+import { graphql } from '@kiwicom/relay';
 import { Heading } from '@kiwicom/orbit-components';
+import { format, addDays } from 'date-fns';
 
 import HotelsList from './HotelsList';
 import type { HotelsQueryResponse } from './__generated__/HotelsQuery.graphql';
+import QueryRenderer from './SSRQueryRenderer';
 
 export const query = graphql`
   query HotelsQuery($search: HotelsSearchInput!) {
@@ -15,24 +17,30 @@ export const query = graphql`
   }
 `;
 
-export default function HotelsQuery() {
+export const variables = {
+  search: {
+    cityId: 'SG90ZWxDaXR5Oi0zNzI0OTA=',
+    checkin: format(addDays(new Date(), 7), 'YYYY-MM-DD'),
+    checkout: format(addDays(new Date(), 9), 'YYYY-MM-DD'),
+    roomsConfiguration: [{ adultsCount: 2 }],
+  },
+};
+
+type Props = {|
+  +ssrData: $FlowFixMe,
+|};
+
+export default function HotelsQuery(props: Props) {
   return (
     <>
       <Heading element="h1">Hotels in Barcelona</Heading>
       <QueryRenderer
         query={query}
-        clientID="relay-example"
-        variables={{
-          search: {
-            cityId: 'SG90ZWxDaXR5Oi0zNzI0OTA=',
-            checkin: '2019-10-01',
-            checkout: '2019-10-02',
-            roomsConfiguration: [{ adultsCount: 2 }],
-          },
+        variables={variables}
+        onResponse={(renderProps: ?HotelsQueryResponse) => {
+          return <HotelsList hotels={renderProps?.allAvailableBookingComHotels} />;
         }}
-        onResponse={(renderProps: HotelsQueryResponse) => (
-          <HotelsList hotels={renderProps.allAvailableBookingComHotels} />
-        )}
+        ssrData={props.ssrData}
       />
     </>
   );

@@ -1,4 +1,4 @@
-// @flow strict
+// @flow
 
 import React from 'react';
 import { createFragmentContainer, graphql } from '@kiwicom/relay';

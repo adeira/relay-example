@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash aaf518000158e2627715ed30878794b7
+ * @relayHash 8b5bcd52149729cdf45b788122cd47a3
  */
 
 /* eslint-disable */
@@ -50,8 +50,8 @@ query HotelsQuery(
 fragment HotelsList_hotels on AllHotelAvailabilityHotelConnection {
   edges {
     node {
-      ...HotelListItem_hotel
       id
+      ...HotelListItem_hotel
     }
   }
 }
@@ -139,14 +139,14 @@ return {
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "name": "name",
+                    "name": "id",
                     "args": null,
                     "storageKey": null
                   },
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "name": "id",
+                    "name": "name",
                     "args": null,
                     "storageKey": null
                   }
@@ -162,7 +162,7 @@ return {
     "operationKind": "query",
     "name": "HotelsQuery",
     "id": null,
-    "text": "query HotelsQuery(\n  $search: HotelsSearchInput!\n) {\n  allAvailableBookingComHotels(search: $search) {\n    ...HotelsList_hotels\n  }\n}\n\nfragment HotelsList_hotels on AllHotelAvailabilityHotelConnection {\n  edges {\n    node {\n      ...HotelListItem_hotel\n      id\n    }\n  }\n}\n\nfragment HotelListItem_hotel on AllHotelAvailabilityHotel {\n  name\n}\n",
+    "text": "query HotelsQuery(\n  $search: HotelsSearchInput!\n) {\n  allAvailableBookingComHotels(search: $search) {\n    ...HotelsList_hotels\n  }\n}\n\nfragment HotelsList_hotels on AllHotelAvailabilityHotelConnection {\n  edges {\n    node {\n      id\n      ...HotelListItem_hotel\n    }\n  }\n}\n\nfragment HotelListItem_hotel on AllHotelAvailabilityHotel {\n  name\n}\n",
     "metadata": {}
   }
 };

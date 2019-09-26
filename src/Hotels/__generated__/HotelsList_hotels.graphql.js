@@ -12,7 +12,8 @@ declare export opaque type HotelsList_hotels$fragmentType: HotelsList_hotels$ref
 export type HotelsList_hotels = {|
   +edges: ?$ReadOnlyArray<?{|
     +node: ?{|
-      +$fragmentRefs: HotelListItem_hotel$ref
+      +id: string,
+      +$fragmentRefs: HotelListItem_hotel$ref,
     |}
   |}>,
   +$refType: HotelsList_hotels$ref,
@@ -50,6 +51,13 @@ const node: ReaderFragment = {
           "plural": false,
           "selections": [
             {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "id",
+              "args": null,
+              "storageKey": null
+            },
+            {
               "kind": "FragmentSpread",
               "name": "HotelListItem_hotel",
               "args": null
@@ -61,5 +69,5 @@ const node: ReaderFragment = {
   ]
 };
 // prettier-ignore
-(node: any).hash = 'df3e2c15eff5de7b0c572de05831e1af';
+(node: any).hash = '55db5d184d19a0b136d61b52a82c17d7';
 export default node;
