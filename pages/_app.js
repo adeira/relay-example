@@ -38,6 +38,9 @@ export default class MyApp extends App {
             <Link href="/local-form">
               <Button size="small">Local schema example</Button>
             </Link>
+            <Link href="/ssr">
+              <Button size="small">Server side rendering example</Button>
+            </Link>
           </ButtonGroup>
           <Alert>TIP: Open a console to see what&apos;s going on behind the scenes.</Alert>
           <Component {...pageProps} />
