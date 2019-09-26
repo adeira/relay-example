@@ -3,13 +3,34 @@
 import * as React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
+import Link from 'next/link';
+import Router from 'next/router';
+import NProgress from 'nprogress';
 import { RelayEnvironmentProvider } from '@kiwicom/relay';
 import { Alert, Button, ButtonGroup, Stack } from '@kiwicom/orbit-components';
-import Link from 'next/link';
 
 import createRelayEnvironment from '../src/createRelayEnvironment';
 
 export default class MyApp extends App {
+  componentDidMount = () => {
+    Router.events.on('routeChangeStart', this.handleRouteChangeStart);
+    Router.events.on('routeChangeComplete', this.handleRouteChangeComplete);
+    Router.events.on('routeChangeError', this.handleRouteChangeComplete);
+  };
+
+  componentWillUnmount = () => {
+    Router.events.off('routeChangeStart', this.handleRouteChangeStart);
+  };
+
+  handleRouteChangeStart = (url: string) => {
+    console.log(`Loading: ${url}`); // eslint-disable-line no-console
+    NProgress.start();
+  };
+
+  handleRouteChangeComplete = () => {
+    NProgress.done();
+  };
+
   render() {
     const { Component, pageProps } = this.props;
     return (

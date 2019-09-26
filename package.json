@@ -9,6 +9,7 @@
     "next": "^9.0.6",
     "next-plugin-custom-babel-config": "^1.0.2",
     "next-transpile-modules": "^2.3.1",
+    "nprogress": "^0.2.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "styled-components": "^4.4.0",
