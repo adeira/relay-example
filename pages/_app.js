@@ -3,27 +3,17 @@
 import * as React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
-import { createEnvironment, createNetworkFetcher, RelayEnvironmentProvider } from '@kiwicom/relay';
+import { RelayEnvironmentProvider } from '@kiwicom/relay';
 import { Alert, Button, ButtonGroup, Stack } from '@kiwicom/orbit-components';
 import Link from 'next/link';
 
-const resource = 'https://graphql.kiwi.com';
-const environment = createEnvironment({
-  fetchFn: createNetworkFetcher(resource, {
-    'X-Client': 'https://github.com/kiwicom/relay-example',
-  }),
-  graphiQLPrinter: (request, variables) => {
-    return `${resource}/?query=${encodeURIComponent(request.text)}&variables=${encodeURIComponent(
-      JSON.stringify(variables),
-    )}`;
-  },
-});
+import createRelayEnvironment from '../src/createRelayEnvironment';
 
 export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <RelayEnvironmentProvider environment={environment}>
+      <RelayEnvironmentProvider environment={createRelayEnvironment(undefined)}>
         <Head>
           <title>My new cool app</title>
         </Head>

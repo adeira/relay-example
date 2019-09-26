@@ -3,19 +3,19 @@
 import React from 'react';
 import { fetchQuery } from '@kiwicom/relay';
 
+import createRelayEnvironment from '../src/createRelayEnvironment';
 import HotelsQuery, { query, variables } from '../src/Hotels/HotelsQuery';
-import { createRelayEnvironment } from '../src/Hotels/SSRQueryRenderer';
 
 type Props = {|
   +ssrData: $FlowFixMe, // What is it exactly 🤔
 |};
 
-export default function Ssr(props: Props) {
+function Ssr(props: Props) {
   return <HotelsQuery ssrData={props.ssrData} />;
 }
 
 Ssr.getInitialProps = async () => {
-  const environment = createRelayEnvironment();
+  const environment = createRelayEnvironment(undefined);
   await fetchQuery(environment, query, variables);
   const ssrData = environment
     .getStore()
@@ -24,3 +24,5 @@ Ssr.getInitialProps = async () => {
 
   return { ssrData };
 };
+
+export default Ssr;

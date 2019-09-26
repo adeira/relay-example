@@ -6,7 +6,6 @@
   "dependencies": {
     "@kiwicom/orbit-components": "^0.61.2",
     "@kiwicom/relay": "^4.0.0",
-    "@kiwicom/fetch": "^2.5.1",
     "next": "^9.0.6",
     "next-plugin-custom-babel-config": "^1.0.2",
     "next-transpile-modules": "^2.3.1",
@@ -24,7 +23,7 @@
     "relay-test-utils": "^6.0.0"
   },
   "peerDependencies": {
-    "relay-runtime": ""
+    "relay-runtime": "^6.0.0"
   },
   "scripts": {
     "start": "next",

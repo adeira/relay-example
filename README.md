@@ -5,10 +5,10 @@ This repository contains examples of common patterns used in real-world applicat
 - `@kiwicom/relay` package usage
 - simple fetching using `createFragmentContainer`
 - bi-directional (also known as window) pagination using `createRefetchContainer`
-- _"load more"_ pagination using `createRefetchContainer`
-- _"load more"_ pagination using `createPaginationContainer`
+- _"load more"_ pagination using `createRefetchContainer` AND `createPaginationContainer`
 - query polling (live queries)
 - example of local schema via `commitLocalUpdate` with local storage
+- server side rendering
 
 This example project also uses single directory for artifacts which means that all the generated metafiles are stored in single `__generated__` directory. It improves Flow types as a side-effect.
 
