@@ -8,6 +8,7 @@ import { createOperationDescriptor, getRequest } from 'relay-runtime';
 // We should probably extend @kiwicom/relay with some functionality to do this.
 
 import createRelayEnvironment from '../createRelayEnvironment';
+import isBrowser from '../isBrowser';
 
 type RendererProps = {| +[key: string]: any |};
 
@@ -23,7 +24,7 @@ export default function SSRQueryRenderer(props: Props) {
   const environment = createRelayEnvironment(props.ssrData);
 
   const getSSRData = () => {
-    if (typeof window === 'undefined') {
+    if (!isBrowser) {
       const store = environment.getStore();
       const operation = createOperationDescriptor(getRequest(props.query), props.variables);
       return store.lookup(operation.root);

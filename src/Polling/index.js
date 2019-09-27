@@ -4,6 +4,7 @@ import React from 'react';
 import { graphql, QueryRenderer } from '@kiwicom/relay';
 
 import type { PollingQueryResponse } from './__generated__/PollingQuery.graphql';
+import isBrowser from '../isBrowser';
 
 function renderPollingResponse({ currency }: PollingQueryResponse) {
   if (!currency) {
@@ -25,6 +26,9 @@ export default function Polling() {
     poll: 1000, // 1 second
   };
 
+  // If we add the polling config on server, the server also keeps polling, which is unnecessary
+  const cacheConfigProps = isBrowser ? { cacheConfig } : {};
+
   return (
     <QueryRenderer
       query={graphql`
@@ -35,8 +39,8 @@ export default function Polling() {
           }
         }
       `}
-      cacheConfig={cacheConfig}
       onResponse={renderPollingResponse}
+      {...cacheConfigProps}
     />
   );
 }
