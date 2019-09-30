@@ -6,21 +6,21 @@
   "dependencies": {
     "@kiwicom/orbit-components": "^0.61.2",
     "@kiwicom/relay": "^4.0.0",
+    "date-fns": "^1.30.1",
     "next": "^9.0.6",
     "next-plugin-custom-babel-config": "^1.0.2",
     "next-transpile-modules": "^2.3.1",
     "nprogress": "^0.2.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "styled-components": "^4.4.0",
-    "date-fns": "^1.30.1"
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1",
+    "styled-components": "^4.4.0"
   },
   "devDependencies": {
     "@kiwicom/babel-preset-kiwicom": "^3.0.0",
     "babel-jest": "^24.9.0",
     "flow-bin": "^0.108.0",
     "graphql": "^14.5.8",
-    "react-test-renderer": "^16.9.0",
+    "react-test-renderer": "^16.10.1",
     "relay-test-utils": "^6.0.0"
   },
   "peerDependencies": {
