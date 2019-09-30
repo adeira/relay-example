@@ -27,9 +27,9 @@ function LocationsPaginatedBidirectional(props: Props) {
   function handlePageChange(args: {| before?: ?string, after?: ?string |}, callback: () => void) {
     props.relay.refetch(
       {
-        first: args.after ? props.itemsCount : null,
+        first: args.after != null ? props.itemsCount : null,
         after: args.after,
-        last: args.before ? props.itemsCount : null,
+        last: args.before != null ? props.itemsCount : null,
         before: args.before,
       },
       null,

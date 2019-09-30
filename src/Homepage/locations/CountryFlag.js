@@ -21,7 +21,7 @@ function CountryFlag({ location }: Props) {
 
   const { country, code, type, name } = location;
   const countryCode = country ? country.code : code;
-  if (type === 'special' || !countryCode) {
+  if (type === 'special' || countryCode == null) {
     return <AnywhereFlag />;
   }
 
