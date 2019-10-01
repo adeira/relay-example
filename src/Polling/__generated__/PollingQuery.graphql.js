@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8f6096246f9f8aefafcdd535219f4670
+ * @relayHash 409659c20b4e68994668bedb0a200926
  */
 
 /* eslint-disable */
@@ -104,8 +104,8 @@ return {
   "params": {
     "operationKind": "query",
     "name": "PollingQuery",
-    "id": null,
-    "text": "query PollingQuery {\n  currency(code: \"usd\") {\n    code\n    rate\n    id\n  }\n}\n",
+    "id": "d37229d14fa8caef41ae9c69de99cc3f",
+    "text": null,
     "metadata": {}
   }
 };

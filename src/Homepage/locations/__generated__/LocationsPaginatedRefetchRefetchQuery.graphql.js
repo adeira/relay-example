@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a32eba98017a6755bbc09ea66ee869b0
+ * @relayHash a375c78c08e8ad26af7c96b9ed348177
  */
 
 /* eslint-disable */
@@ -245,8 +245,8 @@ return {
   "params": {
     "operationKind": "query",
     "name": "LocationsPaginatedRefetchRefetchQuery",
-    "id": null,
-    "text": "query LocationsPaginatedRefetchRefetchQuery(\n  $count: Int\n  $after: String\n) {\n  ...LocationsPaginatedRefetch_data_2QE1um\n}\n\nfragment LocationsPaginatedRefetch_data_2QE1um on RootQuery {\n  incrementalPagination: allLocations(first: $count, after: $after) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
+    "id": "d0503c5197065effea2f8ff5b951ac78",
+    "text": null,
     "metadata": {}
   }
 };

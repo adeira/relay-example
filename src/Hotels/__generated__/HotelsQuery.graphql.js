@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8b5bcd52149729cdf45b788122cd47a3
+ * @relayHash e4c3698c1fd3a7e5cd12287104c70882
  */
 
 /* eslint-disable */
@@ -161,8 +161,8 @@ return {
   "params": {
     "operationKind": "query",
     "name": "HotelsQuery",
-    "id": null,
-    "text": "query HotelsQuery(\n  $search: HotelsSearchInput!\n) {\n  allAvailableBookingComHotels(search: $search) {\n    ...HotelsList_hotels\n  }\n}\n\nfragment HotelsList_hotels on AllHotelAvailabilityHotelConnection {\n  edges {\n    node {\n      id\n      ...HotelListItem_hotel\n    }\n  }\n}\n\nfragment HotelListItem_hotel on AllHotelAvailabilityHotel {\n  name\n}\n",
+    "id": "c69f74074a9818a47026e024db0e6bd2",
+    "text": null,
     "metadata": {}
   }
 };

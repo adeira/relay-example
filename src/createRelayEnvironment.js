@@ -1,12 +1,29 @@
 // @flow
 
-import { createEnvironment, createNetworkFetcher, type Environment } from '@kiwicom/relay';
+import { createEnvironment, type Environment } from '@kiwicom/relay';
+import fetchWithRetries from '@kiwicom/fetch';
+
+import queryMap from '../persisted-queries.json';
 
 export default function createRelayEnvironment(initialData: ?{ ... }): Environment {
   const resource = 'https://graphql.kiwi.com';
-  const fetchFn = createNetworkFetcher(resource, {
-    'X-Client': 'https://github.com/kiwicom/relay-example',
-  });
+
+  // THIS IS ONLY FOR DEMO PURPOSES! Normally, we'd use 'createNetworkFetcher' from '@kiwicom/relay'.
+  // However, we need to get the query map here manually since we are not persisting it to the server.
+  // TODO: This won't be needed once we replace the remote server with our in-memory implementation.
+  const fetchFn = (request, variables) => {
+    return fetchWithRetries(resource, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: queryMap[request.id],
+        variables,
+      }),
+    }).then(response => response.json());
+  };
 
   const graphiQLPrinter = (request, variables) => {
     return `${resource}/?query=${encodeURIComponent(request.text)}&variables=${encodeURIComponent(

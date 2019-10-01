@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash c1ab9d9daa652f2a929e4e72d60f4034
+ * @relayHash a0eb773f5db78aa27a58a3f77f092206
  */
 
 /* eslint-disable */
@@ -144,8 +144,8 @@ return {
   "params": {
     "operationKind": "query",
     "name": "CountryFlagTestAnywhereQuery",
-    "id": null,
-    "text": "query CountryFlagTestAnywhereQuery {\n  location(input: {locationId: \"test-location-id\"}) {\n    ...CountryFlag_location\n    id\n  }\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
+    "id": "2afc26dc8308caa5c2f27da54f1fcaa8",
+    "text": null,
     "metadata": {
       "relayTestingSelectionTypeInfo": {
         "location": {

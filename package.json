@@ -4,6 +4,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@kiwicom/fetch": "^2.5.1",
     "@kiwicom/orbit-components": "^0.61.2",
     "@kiwicom/relay": "^4.0.0",
     "date-fns": "^1.30.1",
@@ -29,7 +30,7 @@
   "scripts": {
     "start": "next",
     "build": "next build",
-    "relay": "kiwicom-relay-compiler",
+    "relay": "kiwicom-relay-compiler --persist-mode=fs",
     "schema": "kiwicom-fetch-schema --filename schema.graphql"
   }
 }

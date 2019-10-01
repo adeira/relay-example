@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f956d44c49bd759275aff72f074a500f
+ * @relayHash 35de10ffa5a0bdd7b3d1464a61f4883f
  */
 
 /* eslint-disable */
@@ -84,8 +84,8 @@ return {
   "params": {
     "operationKind": "query",
     "name": "LocalFormQuery",
-    "id": null,
-    "text": "query LocalFormQuery {\n  __typename\n}\n",
+    "id": "0d99b879d458f565ba2e90754bb6673f",
+    "text": null,
     "metadata": {}
   }
 };
