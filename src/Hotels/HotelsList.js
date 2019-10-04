@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react';
+import * as React from 'react';
 import { createFragmentContainer, graphql } from '@kiwicom/relay';
 
 import type { HotelsList_hotels as Hotels } from './__generated__/HotelsList_hotels.graphql';
@@ -10,7 +10,7 @@ type Props = {|
   +hotels: ?Hotels,
 |};
 
-const HotelsList = (props: Props) => {
+const HotelsList = (props: Props): React.Node => {
   const edges = props.hotels?.edges ?? [];
   return edges.map(edge => <HotelListItem key={edge?.node?.id} hotel={edge?.node} />);
 };
