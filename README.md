@@ -6,7 +6,7 @@ This repository contains examples of common patterns used in real-world applicat
 - simple fetching using `createFragmentContainer`
 - bi-directional (also known as window) pagination using `createRefetchContainer`
 - _"load more"_ pagination using `createRefetchContainer` AND `createPaginationContainer`
-- query polling (live queries)
+- query polling (live queries) with simple A/B test
 - example of local schema via `commitLocalUpdate` with local storage
 - server side rendering
 

@@ -1,17 +1,20 @@
 /**
  * @flow
- * @relayHash 409659c20b4e68994668bedb0a200926
+ * @relayHash 105d284e3a0ee22c05116f3643a2684f
  */
 
 /* eslint-disable */
 // flowlint untyped-type-import:off
 
 import type { ConcreteRequest } from 'relay-runtime';
-export type PollingQueryVariables = {||};
+export type PollingQueryVariables = {|
+  abTestEnabled: boolean
+|};
 export type PollingQueryResponse = {|
   +currency: ?{|
-    +code: ?string,
     +rate: ?number,
+    +code?: ?string,
+    +format?: ?string,
   |}
 |};
 export type PollingQuery = {|
@@ -20,10 +23,13 @@ export type PollingQuery = {|
 |};
 
 /*
-query PollingQuery {
+query PollingQuery(
+  $abTestEnabled: Boolean!
+) {
   currency(code: "usd") {
-    code
     rate
+    code @include(if: $abTestEnabled)
+  format @include(if: $abTestEnabled)
     id
   }
 }
@@ -32,24 +38,46 @@ query PollingQuery {
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
+    "kind": "LocalArgument",
+    "name": "abTestEnabled",
+    "type": "Boolean!",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
     "kind": "Literal",
     "name": "code",
     "value": "usd"
   }
 ],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "code",
-  "args": null,
-  "storageKey": null
-},
 v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "rate",
   "args": null,
   "storageKey": null
+},
+v3 = {
+  "kind": "Condition",
+  "passingValue": true,
+  "condition": "abTestEnabled",
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "code",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "format",
+      "args": null,
+      "storageKey": null
+    }
+  ]
 };
 return {
   "kind": "Request",
@@ -58,19 +86,19 @@ return {
     "name": "PollingQuery",
     "type": "RootQuery",
     "metadata": null,
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "currency",
         "storageKey": "currency(code:\"usd\")",
-        "args": (v0/*: any*/),
+        "args": (v1/*: any*/),
         "concreteType": "CurrencyDetail",
         "plural": false,
         "selections": [
-          (v1/*: any*/),
-          (v2/*: any*/)
+          (v2/*: any*/),
+          (v3/*: any*/)
         ]
       }
     ]
@@ -78,18 +106,17 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "PollingQuery",
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "currency",
         "storageKey": "currency(code:\"usd\")",
-        "args": (v0/*: any*/),
+        "args": (v1/*: any*/),
         "concreteType": "CurrencyDetail",
         "plural": false,
         "selections": [
-          (v1/*: any*/),
           (v2/*: any*/),
           {
             "kind": "ScalarField",
@@ -97,7 +124,8 @@ return {
             "name": "id",
             "args": null,
             "storageKey": null
-          }
+          },
+          (v3/*: any*/)
         ]
       }
     ]
@@ -105,12 +133,12 @@ return {
   "params": {
     "operationKind": "query",
     "name": "PollingQuery",
-    "id": "d37229d14fa8caef41ae9c69de99cc3f",
+    "id": "523eaab722a497406537537ec3f79687",
     "text": null,
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node: any).hash = '204ab3f8f9271cfa6ff288d192478ae5';
+(node: any).hash = '4fe8e121396058d93ef63050a2f5b555';
 export default node;
