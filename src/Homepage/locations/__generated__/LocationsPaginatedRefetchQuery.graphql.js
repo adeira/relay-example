@@ -4,6 +4,7 @@
  */
 
 /* eslint-disable */
+// flowlint untyped-type-import:off
 
 import type { ConcreteRequest } from 'relay-runtime';
 type LocationsPaginated_data$ref = any;

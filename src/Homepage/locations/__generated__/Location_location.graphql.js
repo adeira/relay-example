@@ -3,6 +3,7 @@
  */
 
 /* eslint-disable */
+// flowlint untyped-type-import:off
 
 import type { ReaderFragment } from 'relay-runtime';
 type CountryFlag_location$ref = any;

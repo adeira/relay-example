@@ -3,6 +3,7 @@
  */
 
 /* eslint-disable */
+// flowlint untyped-type-import:off
 
 import type { ReaderFragment } from 'relay-runtime';
 type HotelListItem_hotel$ref = any;
