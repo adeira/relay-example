@@ -1,4 +1,4 @@
-// @flow
+// @flow strict
 
 // This configuration is merged with the project configuration defined
 // in this monorepo root.
