@@ -2,10 +2,8 @@
 
 import * as React from 'react';
 import { QueryRenderer, type GraphQLTaggedNode } from '@kiwicom/relay';
-import { createOperationDescriptor, getRequest } from 'relay-runtime'; // TODO: get from `@kiwicom/relay`
 
 import createRelayEnvironment from '../createRelayEnvironment';
-import isBrowser from '../isBrowser';
 
 type RendererProps = {| +[key: string]: any |};
 
@@ -20,30 +18,12 @@ export default function SSRQueryRenderer(props: Props) {
   // We have to re-create the environment here with initialized store for SSR.
   const environment = createRelayEnvironment(props.ssrData);
 
-  const getSSRData = () => {
-    if (!isBrowser) {
-      const store = environment.getStore();
-      const operation = createOperationDescriptor(getRequest(props.query), props.variables);
-      return store.lookup(operation.root);
-    }
-    return null;
-  };
-
-  const ssrData = getSSRData();
-  function render({ props: rendererProps }) {
-    const data = rendererProps ?? ssrData?.data;
-    if (data) {
-      return props.onResponse(data);
-    }
-    return <div>Loading...</div>;
-  }
-
   return (
     <QueryRenderer
       environment={environment}
       query={props.query}
       variables={props.variables}
-      render={render}
+      onResponse={props.onResponse}
       fetchPolicy="store-and-network" // this effectively sends second identical query which is probably unnecessary
     />
   );

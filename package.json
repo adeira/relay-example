@@ -24,9 +24,6 @@
     "react-test-renderer": "^16.10.2",
     "relay-test-utils": "^6.0.0"
   },
-  "peerDependencies": {
-    "relay-runtime": "^6.0.0"
-  },
   "scripts": {
     "start": "next",
     "build": "next build",
