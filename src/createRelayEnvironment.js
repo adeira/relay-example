@@ -1,11 +1,11 @@
 // @flow
 
-import { createEnvironment, type Environment } from '@kiwicom/relay';
+import { createEnvironment, type Environment, type RecordMap } from '@kiwicom/relay';
 import fetchWithRetries from '@kiwicom/fetch';
 
 import queryMap from '../persisted-queries.json';
 
-export default function createRelayEnvironment(initialData: ?{ ... }): Environment {
+export default function createRelayEnvironment(initialData: ?RecordMap): Environment {
   const resource = 'https://graphql.kiwi.com';
 
   // THIS IS ONLY FOR DEMO PURPOSES! Normally, we'd use 'createNetworkFetcher' from '@kiwicom/relay'.

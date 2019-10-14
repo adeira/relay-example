@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { graphql } from '@kiwicom/relay';
+import { graphql, type RecordMap } from '@kiwicom/relay';
 import { Heading } from '@kiwicom/orbit-components';
 import { format, addDays } from 'date-fns';
 
@@ -27,7 +27,7 @@ export const variables = {
 };
 
 type Props = {|
-  +ssrData: $FlowFixMe,
+  +ssrData: RecordMap,
 |};
 
 export default function HotelsQuery(props: Props) {

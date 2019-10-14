@@ -1,13 +1,13 @@
 // @flow
 
 import React from 'react';
-import { fetchQuery } from '@kiwicom/relay';
+import { fetchQuery, type RecordMap } from '@kiwicom/relay';
 
 import createRelayEnvironment from '../src/createRelayEnvironment';
 import HotelsQuery, { query, variables } from '../src/Hotels/HotelsQuery';
 
 type Props = {|
-  +ssrData: $FlowFixMe, // What is it exactly 🤔
+  +ssrData: RecordMap,
 |};
 
 function Ssr(props: Props) {
