@@ -2,10 +2,7 @@
 
 import * as React from 'react';
 import { QueryRenderer, type GraphQLTaggedNode } from '@kiwicom/relay';
-import { createOperationDescriptor, getRequest } from 'relay-runtime';
-
-// I know you don't want us to use this package, but for now we have to, to make SSR work I think.
-// We should probably extend @kiwicom/relay with some functionality to do this.
+import { createOperationDescriptor, getRequest } from 'relay-runtime'; // TODO: get from `@kiwicom/relay`
 
 import createRelayEnvironment from '../createRelayEnvironment';
 import isBrowser from '../isBrowser';
