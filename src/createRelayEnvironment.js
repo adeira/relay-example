@@ -13,15 +13,8 @@ export default function createRelayEnvironment(initialData: ?RecordMap): Environ
     'X-Client': 'https://github.com/kiwicom/relay-example',
   });
 
-  const graphiQLPrinter = (request, variables) => {
-    return `${resource}/?query=${encodeURIComponent(request.text)}&variables=${encodeURIComponent(
-      JSON.stringify(variables),
-    )}`;
-  };
-
   return createEnvironment({
     fetchFn,
-    graphiQLPrinter,
     records: initialData,
   });
 }

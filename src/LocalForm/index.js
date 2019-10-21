@@ -9,6 +9,8 @@ import {
   graphql,
   LocalQueryRenderer,
 } from '@kiwicom/relay';
+// FIXME:
+import { generateClientID } from 'relay-runtime'; // eslint-disable-line import/no-extraneous-dependencies
 import { InputField, Textarea, Heading, Text, Separator, Stack } from '@kiwicom/orbit-components';
 
 import type { LocalFormQueryResponse } from './__generated__/LocalFormQuery.graphql';
@@ -28,7 +30,7 @@ function getLocalStorageData(): LocalData {
 
 function persist(data: LocalData) {
   return commitLocalUpdate(environment, store => {
-    const dataID = 'local:LocalForm';
+    const dataID = generateClientID('local', 'form');
     const record = store.get(dataID) ?? store.create(dataID, 'LocalForm');
     for (const [key, value] of Object.entries(data)) {
       // eslint-disable-next-line no-console
