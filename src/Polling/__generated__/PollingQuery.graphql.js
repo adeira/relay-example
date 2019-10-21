@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 105d284e3a0ee22c05116f3643a2684f
+ * @relayHash aac8796e7ea4f59612a5b628ab939c54
  */
 
 /* eslint-disable */
@@ -133,8 +133,8 @@ return {
   "params": {
     "operationKind": "query",
     "name": "PollingQuery",
-    "id": "523eaab722a497406537537ec3f79687",
-    "text": null,
+    "id": null,
+    "text": "query PollingQuery(\n  $abTestEnabled: Boolean!\n) {\n  currency(code: \"usd\") {\n    rate\n    code @include(if: $abTestEnabled)\n  format @include(if: $abTestEnabled)\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

@@ -27,7 +27,7 @@
   "scripts": {
     "start": "next",
     "build": "next build",
-    "relay": "kiwicom-relay-compiler --persist-mode=fs",
+    "relay": "kiwicom-relay-compiler",
     "schema": "kiwicom-fetch-schema --filename schema.graphql"
   }
 }
