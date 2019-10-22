@@ -22,7 +22,9 @@ function Location({ location }: Props) {
     <li>
       <Stack direction="row" spacing="compact">
         <CountryFlag location={location} />
-        <Text element="div">{name}</Text>
+        <Text dataTest={`location-${name}`} element="div">
+          {name}
+        </Text>
       </Stack>
     </li>
   );

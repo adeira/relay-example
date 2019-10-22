@@ -38,7 +38,7 @@ function LocationsPaginatedRefetch(props: Props) {
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>
-      <Button onClick={loadMore} size="small">
+      <Button dataTest="loadMore" onClick={loadMore} size="small">
         Load more!
       </Button>
     </>
