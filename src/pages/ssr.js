@@ -3,8 +3,8 @@
 import React from 'react';
 import { fetchQuery, type RecordMap } from '@kiwicom/relay';
 
-import createRelayEnvironment from '../src/createRelayEnvironment';
-import HotelsQuery, { query, variables } from '../src/Hotels/HotelsQuery';
+import createRelayEnvironment from '../createRelayEnvironment';
+import HotelsQuery, { query, variables } from '../Hotels/HotelsQuery';
 
 type Props = {|
   +ssrData: RecordMap,

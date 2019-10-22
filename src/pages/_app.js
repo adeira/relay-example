@@ -9,7 +9,7 @@ import NProgress from 'nprogress';
 import { RelayEnvironmentProvider } from '@kiwicom/relay';
 import { Alert, Button, ButtonGroup, Stack } from '@kiwicom/orbit-components';
 
-import createRelayEnvironment from '../src/createRelayEnvironment';
+import createRelayEnvironment from '../createRelayEnvironment';
 
 export default class MyApp extends App {
   componentDidMount = () => {

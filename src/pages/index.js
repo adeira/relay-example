@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import Polling from '../src/Polling';
+import Homepage from '../Homepage';
 
 export default function Root() {
-  return <Polling />;
+  return <Homepage />;
 }

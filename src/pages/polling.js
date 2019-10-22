@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import LocalForm from '../src/LocalForm';
+import Polling from '../Polling';
 
 export default function Root() {
-  return <LocalForm />;
+  return <Polling />;
 }
