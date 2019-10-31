@@ -19,7 +19,7 @@
   "devDependencies": {
     "@kiwicom/babel-preset-kiwicom": "^3.0.0",
     "babel-jest": "^24.9.0",
-    "flow-bin": "^0.110.1",
+    "flow-bin": "^0.111.0",
     "graphql": "^14.5.8",
     "react-test-renderer": "^16.11.0",
     "relay-test-utils": "^7.0.0"
