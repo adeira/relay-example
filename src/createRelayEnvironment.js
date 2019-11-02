@@ -5,7 +5,7 @@ import {
   createNetworkFetcher,
   type Environment,
   type RecordMap,
-} from '@kiwicom/relay';
+} from '@adeira/relay';
 
 export default function createRelayEnvironment(initialData: ?RecordMap): Environment {
   const resource = 'https://graphql.kiwi.com';

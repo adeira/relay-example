@@ -3,7 +3,7 @@
 import * as React from 'react';
 import ReactTestRenderer from 'react-test-renderer';
 import { createMockEnvironment, MockPayloadGenerator, unwrapContainer } from 'relay-test-utils';
-import { QueryRenderer, graphql } from '@kiwicom/relay';
+import { QueryRenderer, graphql } from '@adeira/relay';
 
 import CountryFlag from '../CountryFlag';
 

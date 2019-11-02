@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { QueryRenderer, type GraphQLTaggedNode } from '@kiwicom/relay';
+import { QueryRenderer, type GraphQLTaggedNode } from '@adeira/relay';
 
 import createRelayEnvironment from '../createRelayEnvironment';
 

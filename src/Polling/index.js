@@ -1,7 +1,7 @@
 // @flow
 
 import React, { useState } from 'react';
-import { graphql, QueryRenderer } from '@kiwicom/relay';
+import { graphql, QueryRenderer } from '@adeira/relay';
 
 import isBrowser from '../isBrowser';
 import useInterval from './useInterval';

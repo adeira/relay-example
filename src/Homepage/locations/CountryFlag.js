@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { createFragmentContainer, graphql } from '@kiwicom/relay';
+import { createFragmentContainer, graphql } from '@adeira/relay';
 import Flag from '@kiwicom/orbit-components/lib/CountryFlag';
 
 import type { CountryFlag_location as CountryFlagDataType } from './__generated__/CountryFlag_location.graphql';

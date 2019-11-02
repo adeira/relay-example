@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { fetchQuery, type RecordMap } from '@kiwicom/relay';
+import { fetchQuery, type RecordMap } from '@adeira/relay';
 
 import createRelayEnvironment from '../createRelayEnvironment';
 import HotelsQuery, { query, variables } from '../Hotels/HotelsQuery';

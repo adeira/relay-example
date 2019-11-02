@@ -8,7 +8,7 @@ import {
   createLocalEnvironment,
   graphql,
   LocalQueryRenderer,
-} from '@kiwicom/relay';
+} from '@adeira/relay';
 // FIXME:
 import { generateClientID } from 'relay-runtime'; // eslint-disable-line import/no-extraneous-dependencies
 import { InputField, Textarea, Heading, Text, Separator, Stack } from '@kiwicom/orbit-components';

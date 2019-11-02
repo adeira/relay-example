@@ -6,7 +6,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import { RelayEnvironmentProvider } from '@kiwicom/relay';
+import { RelayEnvironmentProvider } from '@adeira/relay';
 import { Alert, Button, ButtonGroup, Stack } from '@kiwicom/orbit-components';
 
 import createRelayEnvironment from '../createRelayEnvironment';

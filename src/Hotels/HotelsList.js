@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { createFragmentContainer, graphql } from '@kiwicom/relay';
+import { createFragmentContainer, graphql } from '@adeira/relay';
 
 import type { HotelsList_hotels as Hotels } from './__generated__/HotelsList_hotels.graphql';
 import HotelListItem from './HotelListItem';

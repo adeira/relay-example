@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { createRefetchContainer, graphql, type RefetchRelayProp } from '@kiwicom/relay';
+import { createRefetchContainer, graphql, type RefetchRelayProp } from '@adeira/relay';
 import Button from '@kiwicom/orbit-components/lib/Button';
 
 import Location from './Location';

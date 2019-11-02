@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { createPaginationContainer, graphql, type PaginationRelayProp } from '@kiwicom/relay';
+import { createPaginationContainer, graphql, type PaginationRelayProp } from '@adeira/relay';
 import Button from '@kiwicom/orbit-components/lib/Button';
 
 import Location from './Location';

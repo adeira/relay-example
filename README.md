@@ -4,7 +4,7 @@ _This project was initially developed at Kiwi.com for education purposes and was
 
 This repository contains examples of common patterns used in real-world applications so you don't have to re-invent the wheel every time. It currently contains following examples:
 
-- `@kiwicom/relay` package usage
+- `@adeira/relay` package usage
 - simple fetching using `createFragmentContainer`
 - bi-directional (also known as window) pagination using `createRefetchContainer`
 - _"load more"_ pagination using `createRefetchContainer` AND `createPaginationContainer`
@@ -41,15 +41,15 @@ Run this command to get fresh GraphQL schema::
 yarn schema
 ```
 
-# Using `@kiwicom/relay`
+# Using `@adeira/relay`
 
 [Docs](https://github.com/kiwicom/relay)
 
-We use `@kiwicom/relay` internally to help with some difficult Relay tasks and to share knowledge via code across all our teams. It exposes high-level (and to some extend compatible) API very similar to Relay. The key element is so called Query Renderer. This renderer expects root query which will be automatically fetched and function to call (with the new data) to render some UI:
+We use `@adeira/relay` internally to help with some difficult Relay tasks and to share knowledge via code across all our teams. It exposes high-level (and to some extend compatible) API very similar to Relay. The key element is so called Query Renderer. This renderer expects root query which will be automatically fetched and function to call (with the new data) to render some UI:
 
 ```js
 import * as React from 'react';
-import { graphql, QueryRenderer } from '@kiwicom/relay';
+import { graphql, QueryRenderer } from '@adeira/relay';
 import type { AppQueryResponse } from '__generated__/AppQuery.graphql';
 
 function handleResponse(props: AppQueryResponse) {
@@ -84,7 +84,7 @@ export default function App(props) {
 }
 ```
 
-The package `@kiwicom/relay` exposes correct Flow types so you can just require it and use it. There are other key elements helping us to build the applications well: `@adeira/eslint-config` and `@kiwicom/babel-preset-kiwicom`. The eslint config prevents you from using Relay incorrectly and the Babel preset helps us to write modern JS including the `graphql ...` syntax and using optional chain (`a?.b`) which is very common in our applications.
+The package `@adeira/relay` exposes correct Flow types so you can just require it and use it. There are other key elements helping us to build the applications well: `@adeira/eslint-config` and `@kiwicom/babel-preset-kiwicom`. The eslint config prevents you from using Relay incorrectly and the Babel preset helps us to write modern JS including the `graphql ...` syntax and using optional chain (`a?.b`) which is very common in our applications.
 
 # Fragment compositions
 
@@ -119,7 +119,7 @@ Now, we have to modify the original application to use our new component:
 
 ```js
 import * as React from 'react';
-import { graphql, QueryRenderer } from '@kiwicom/relay';
+import { graphql, QueryRenderer } from '@adeira/relay';
 import type { AppQueryResponse } from '__generated__/AppQuery.graphql';
 
 import AllLocations from './AllLocations';
@@ -216,7 +216,7 @@ Relay supports subscriptions and experimental live queries via polling to allow 
 
 ```js
 import React from 'react';
-import { graphql, QueryRenderer } from '@kiwicom/relay';
+import { graphql, QueryRenderer } from '@adeira/relay';
 
 export default function Polling() {
   return (
@@ -303,7 +303,7 @@ type Error {
 }
 ```
 
-Now, just use `commitLocalUpdate` from `@kiwicom/relay` to update the local store:
+Now, just use `commitLocalUpdate` from `@adeira/relay` to update the local store:
 
 ```js
 Relay.commitLocalUpdate(environment, store => {

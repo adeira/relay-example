@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { graphql, QueryRenderer } from '@kiwicom/relay';
+import { graphql, QueryRenderer } from '@adeira/relay';
 import Heading from '@kiwicom/orbit-components/lib/Heading';
 import Text from '@kiwicom/orbit-components/lib/Text';
 

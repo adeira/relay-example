@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { graphql, type RecordMap } from '@kiwicom/relay';
+import { graphql, type RecordMap } from '@adeira/relay';
 import { Heading } from '@kiwicom/orbit-components';
 import { format, addDays } from 'date-fns';
 

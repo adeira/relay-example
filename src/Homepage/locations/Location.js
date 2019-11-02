@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { createFragmentContainer, graphql } from '@kiwicom/relay';
+import { createFragmentContainer, graphql } from '@adeira/relay';
 import Text from '@kiwicom/orbit-components/lib/Text';
 import Stack from '@kiwicom/orbit-components/lib/Stack';
 
