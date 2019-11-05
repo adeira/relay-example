@@ -17,7 +17,7 @@
     "styled-components": "^4.4.0"
   },
   "devDependencies": {
-    "@kiwicom/babel-preset-kiwicom": "^3.0.0",
+    "@adeira/babel-preset-adeira": "^0.1.0",
     "babel-jest": "^24.9.0",
     "flow-bin": "^0.111.0",
     "graphql": "^14.5.8",

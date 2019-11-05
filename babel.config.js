@@ -16,7 +16,7 @@ module.exports = function(api /*: ApiType */) {
   api.cache.forever();
 
   return {
-    presets: ['@kiwicom/babel-preset-kiwicom', 'next/babel'],
+    presets: ['@adeira/babel-preset-adeira', 'next/babel'],
     plugins: ['relay'],
   };
 };

@@ -84,7 +84,7 @@ export default function App(props) {
 }
 ```
 
-The package `@adeira/relay` exposes correct Flow types so you can just require it and use it. There are other key elements helping us to build the applications well: `@adeira/eslint-config` and `@kiwicom/babel-preset-kiwicom`. The eslint config prevents you from using Relay incorrectly and the Babel preset helps us to write modern JS including the `graphql ...` syntax and using optional chain (`a?.b`) which is very common in our applications.
+The package `@adeira/relay` exposes correct Flow types so you can just require it and use it. There are other key elements helping us to build the applications well: `@adeira/eslint-config` and `@adeira/babel-preset-adeira`. The eslint config prevents you from using Relay incorrectly and the Babel preset helps us to write modern JS including the `graphql ...` syntax and using optional chain (`a?.b`) which is very common in our applications.
 
 # Fragment compositions
 
