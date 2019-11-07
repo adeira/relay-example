@@ -20,8 +20,8 @@ export const query = graphql`
 export const variables = {
   search: {
     cityId: 'SG90ZWxDaXR5Oi0zNzI0OTA=',
-    checkin: format(addDays(new Date(), 7), 'YYYY-MM-DD'),
-    checkout: format(addDays(new Date(), 9), 'YYYY-MM-DD'),
+    checkin: format(addDays(new Date(), 7), 'yyyy-MM-dd'),
+    checkout: format(addDays(new Date(), 9), 'yyyy-MM-dd'),
     roomsConfiguration: [{ adultsCount: 2 }],
   },
 };
