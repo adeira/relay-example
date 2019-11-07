@@ -1,4 +1,4 @@
-# @generated SignedSource<<2cce6590299431586cd915596b58dd55>>
+# @generated SignedSource<<9fabb730ed531fdac7cc476447c15f67>>
 
 schema {
   query: RootQuery
@@ -25,7 +25,7 @@ type Airline {
   code: String
 
   """Airline is low cost carrier."""
-  isLowCost: Boolean
+  isLowCost: Boolean @deprecated(reason: "This field has been deprecated by BE and doesn't have any replacement.")
   logoUrl: String
   name: String
 }
@@ -591,6 +591,8 @@ type BookingContactDetails {
 }
 
 type BookingCustomerSupport {
+  CSPhoneNumbers: CSPhoneNumbersResponse
+
   """
   Is Guarantee Chat allowed to provide direct contact to customer service.
   """
@@ -599,7 +601,7 @@ type BookingCustomerSupport {
   """
   Localised phone number of customer service. Null if not available for that locale.
   """
-  phoneNumber: String
+  phoneNumber: String @deprecated(reason: "Use \"CSPhoneNumbers\" field instead.")
 }
 
 enum BookingDestinationImageDimensions {
@@ -988,7 +990,7 @@ type Carrier {
   id: ID!
 
   """Indicates whether it is low cost carrier."""
-  isLowCost: Boolean
+  isLowCost: Boolean @deprecated(reason: "This field has been deprecated by BE and doesn't have any replacement.")
   name: String
 }
 
@@ -1112,26 +1114,63 @@ type CreateStoredOperation {
   createdOperations: [StoredOperation]
 }
 
+type CSPhoneAvailabilityAllWeek implements CSPhoneAvailabilityInterface {
+  """Customer support availability type"""
+  type: CSPhoneAvailabilityType @deprecated(reason: "Use \"__typename\" field instead.")
+  weekend: OpeningHours
+  workingDays: OpeningHours
+}
+
+type CSPhoneAvailabilityCustom implements CSPhoneAvailabilityInterface {
+  """Customer support availability type"""
+  type: CSPhoneAvailabilityType @deprecated(reason: "Use \"__typename\" field instead.")
+}
+
 interface CSPhoneAvailabilityInterface {
   """Customer support availability type"""
-  type: CSPhoneAvailabilityType
+  type: CSPhoneAvailabilityType @deprecated(reason: "Use \"__typename\" field instead.")
+}
+
+type CSPhoneAvailabilityNonstop implements CSPhoneAvailabilityInterface {
+  """Customer support availability type"""
+  type: CSPhoneAvailabilityType @deprecated(reason: "Use \"__typename\" field instead.")
 }
 
 """Possible customer support availabilites types"""
 enum CSPhoneAvailabilityType {
+  ALL_WEEK
+  CUSTOM
   NONSTOP
   WORKING_DAYS
 }
 
 type CSPhoneAvailabilityWorkingDays implements CSPhoneAvailabilityInterface {
   """Opening hour"""
-  from: String
+  from: String @deprecated(reason: "Use \"workingDays\" field instead.")
 
   """Closing hour"""
-  to: String
+  to: String @deprecated(reason: "Use \"workingDays\" field instead.")
 
   """Customer support availability type"""
-  type: CSPhoneAvailabilityType
+  type: CSPhoneAvailabilityType @deprecated(reason: "Use \"__typename\" field instead.")
+  workingDays: OpeningHours
+}
+
+type CSPhoneNumbers {
+  phoneNumbers(after: String, before: String, first: Int, last: Int): CustomerSupportNumberConnection
+}
+
+type CSPhoneNumbersError {
+  code: CSPhonesErrorCode
+}
+
+union CSPhoneNumbersResponse = CSPhoneNumbers | CSPhoneNumbersError
+
+"""Possible types of error that may occur while getting CS phone numbers."""
+enum CSPhonesErrorCode {
+  NOT_FOUND
+  NOT_SUPPORTED_LOCALE
+  UNKNOWN
 }
 
 enum Currency {
@@ -1393,6 +1432,24 @@ type CustomerSupportNumber {
   supportedLanguages: [SupportedLanguage]
 }
 
+"""A connection to a list of items."""
+type CustomerSupportNumberConnection {
+  """A list of edges."""
+  edges: [CustomerSupportNumberEdge]
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+}
+
+"""An edge in a connection."""
+type CustomerSupportNumberEdge {
+  """A cursor for use in pagination"""
+  cursor: String!
+
+  """The item at the end of the edge"""
+  node: CustomerSupportNumber
+}
+
 """
 A date string, such as 2007-12-03, compliant with the `full-date` format
 outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
@@ -1641,6 +1698,9 @@ type FAQArticle implements FAQItemInterface {
   """Perex of the FAQ article or category."""
   perex: String
 
+  """Slug for friendly urls"""
+  slug: String
+
   """Title of the FAQ article or category."""
   title: String
 
@@ -1673,7 +1733,7 @@ type FAQCategory implements FAQItemInterface {
   ancestors: [FAQCategory]
 
   """List of FAQ categories & articles ordered by relevancy."""
-  children: [FAQItemInterface]
+  children(after: String, before: String, first: Int, last: Int): FAQItemInterfaceConnection
 
   """List of FAQ articles"""
   FAQs: [FAQArticle] @deprecated(reason: "Use \"children\" field instead.")
@@ -1690,6 +1750,9 @@ type FAQCategory implements FAQItemInterface {
 
   """Perex of the FAQ article or category."""
   perex: String
+
+  """Slug for friendly urls"""
+  slug: String
 
   """List of subcategories"""
   subcategories: [FAQCategory] @deprecated(reason: "Use \"children\" field instead.")
@@ -1766,6 +1829,24 @@ interface FAQItemInterface {
 
   """Title of the FAQ article or category."""
   title: String
+}
+
+"""A connection to a list of items."""
+type FAQItemInterfaceConnection {
+  """A list of edges."""
+  edges: [FAQItemInterfaceEdge]
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+}
+
+"""An edge in a connection."""
+type FAQItemInterfaceEdge {
+  """A cursor for use in pagination"""
+  cursor: String!
+
+  """The item at the end of the edge"""
+  node: FAQItemInterface
 }
 
 enum FAQSection {
@@ -2426,7 +2507,7 @@ input HotelsSearchInput {
   """Max 365 days in the future, and max 30 days greater than checkin date."""
   checkout: Date!
 
-  """Opaque ID of the city."""
+  """Opaque ID of the city. Use the hotelCities query to find this ID."""
   cityId: String
   language: Language
 
@@ -2766,6 +2847,18 @@ enum LocationType {
   subdivision
 }
 
+type LoginActionError {
+  code: LoginActionErrorCode
+  message: String
+}
+
+enum LoginActionErrorCode {
+  INVALID_LOGIN
+
+  """User email was not verified."""
+  NOT_VERIFIED
+}
+
 type LoungeService {
   relevantAirports: [LoungeServiceRelevantAirports]
 }
@@ -2818,6 +2911,12 @@ interface Node {
 type NoMoreEditsTimelineEvent implements TimelineEvent {
   """Time of appearance in the timeline."""
   timestamp: DateTime
+}
+
+"""Time of day when phone line provides support in given language."""
+type OpeningHours {
+  from: Time
+  to: Time
 }
 
 type OperatingAirline {
@@ -3044,7 +3143,7 @@ type RootQuery {
   allAvailableStay22Hotels(after: String, before: String, filter: HotelsFilterInput, first: Int = 50, last: Int, search: Stay22HotelsSearchInput!): AllAvailableStay22HotelConnection
 
   """Get all customer support numbers"""
-  allCustomerSupportNumbers: AllCustomerSupportNumbers
+  allCustomerSupportNumbers: AllCustomerSupportNumbers @deprecated(reason: "Use \"selfService.customerSupportNumbers\" query instead.")
 
   """Search for the urls of public documents"""
   allDocuments(after: String, before: String, first: Int, last: Int): DocumentInterfaceConnection
@@ -3187,7 +3286,7 @@ type RootQuery {
   """
   Get CS number by your locale in "Accept-Language" HTTP header. Null if not CS phone is unavailable.
   """
-  customerSupportNumber: CustomerSupportNumber
+  customerSupportNumber: CustomerSupportNumber @deprecated(reason: "Use \"selfService.customerSupportNumbers\" query instead.")
 
   """Retrieve single FAQ article."""
   FAQArticle(
@@ -3358,7 +3457,8 @@ type Services {
 }
 
 type SignInResponse {
-  success: Boolean
+  error: LoginActionError
+  success: Boolean @deprecated(reason: "Use \"error\" field instead.")
   user: User
 }
 
@@ -3529,6 +3629,11 @@ input StoredOperationInput {
 }
 
 type SupportedLanguage {
+  """
+  Opening hours of phone line during which you get support in a given language.
+  """
+  availability: CSPhoneAvailabilityInterface
+
   """Customer support language"""
   language: String
 
@@ -3536,8 +3641,15 @@ type SupportedLanguage {
   languageCode: String
 
   """Customer support availability schedule"""
-  phoneLanguageAvailability: CSPhoneAvailabilityWorkingDays
+  phoneLanguageAvailability: CSPhoneAvailabilityWorkingDays @deprecated(reason: "Use \"availability\" field instead.")
 }
+
+"""
+A time string at UTC, such as 10:15:30Z, compliant with the `full-time` format
+outlined in section 5.6 of the RFC 3339profile of the ISO 8601 standard for
+representation of dates and times using the Gregorian calendar.
+"""
+scalar Time
 
 interface TimelineEvent {
   """Time of appearance in the timeline."""

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash e7cb09a20809ea02cc28863a74f6cb70
+ * @relayHash e5f88cdbc9c9dccccd9d3c124f460b9b
  */
 
 /* eslint-disable */
@@ -22,6 +22,21 @@ query LocationsPaginatedRefetchTestQuery {
   ...LocationsPaginatedRefetch_data
 }
 
+fragment CountryFlag_location on Location {
+  country {
+    code
+    name
+  }
+  code
+  name
+  type
+}
+
+fragment Location_location on Location {
+  name
+  ...CountryFlag_location
+}
+
 fragment LocationsPaginatedRefetch_data on RootQuery {
   incrementalPagination: allLocations(first: 20) {
     edges {
@@ -37,21 +52,6 @@ fragment LocationsPaginatedRefetch_data on RootQuery {
       hasNextPage
     }
   }
-}
-
-fragment Location_location on Location {
-  name
-  ...CountryFlag_location
-}
-
-fragment CountryFlag_location on Location {
-  country {
-    code
-    name
-  }
-  code
-  name
-  type
 }
 */
 
@@ -225,8 +225,8 @@ return {
   "params": {
     "operationKind": "query",
     "name": "LocationsPaginatedRefetchTestQuery",
-    "id": "7dac747c20a08f073be11029d6b9f5cd",
-    "text": null,
+    "id": null,
+    "text": "query LocationsPaginatedRefetchTestQuery {\n  ...LocationsPaginatedRefetch_data\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
     "metadata": {
       "relayTestingSelectionTypeInfo": {
         "incrementalPagination": {

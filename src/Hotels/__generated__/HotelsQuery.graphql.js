@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8b5bcd52149729cdf45b788122cd47a3
+ * @relayHash ef93420cd124a75c98f2879feb8ad35a
  */
 
 /* eslint-disable */
@@ -48,6 +48,10 @@ query HotelsQuery(
   }
 }
 
+fragment HotelListItem_hotel on AllHotelAvailabilityHotel {
+  name
+}
+
 fragment HotelsList_hotels on AllHotelAvailabilityHotelConnection {
   edges {
     node {
@@ -55,10 +59,6 @@ fragment HotelsList_hotels on AllHotelAvailabilityHotelConnection {
       ...HotelListItem_hotel
     }
   }
-}
-
-fragment HotelListItem_hotel on AllHotelAvailabilityHotel {
-  name
 }
 */
 
@@ -163,7 +163,7 @@ return {
     "operationKind": "query",
     "name": "HotelsQuery",
     "id": null,
-    "text": "query HotelsQuery(\n  $search: HotelsSearchInput!\n) {\n  allAvailableBookingComHotels(search: $search) {\n    ...HotelsList_hotels\n  }\n}\n\nfragment HotelsList_hotels on AllHotelAvailabilityHotelConnection {\n  edges {\n    node {\n      id\n      ...HotelListItem_hotel\n    }\n  }\n}\n\nfragment HotelListItem_hotel on AllHotelAvailabilityHotel {\n  name\n}\n",
+    "text": "query HotelsQuery(\n  $search: HotelsSearchInput!\n) {\n  allAvailableBookingComHotels(search: $search) {\n    ...HotelsList_hotels\n  }\n}\n\nfragment HotelListItem_hotel on AllHotelAvailabilityHotel {\n  name\n}\n\nfragment HotelsList_hotels on AllHotelAvailabilityHotelConnection {\n  edges {\n    node {\n      id\n      ...HotelListItem_hotel\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

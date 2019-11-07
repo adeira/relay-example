@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 70728c0ff4cf6ea6d515a38750d5d03b
+ * @relayHash 9eceec42dbe90feb4552dd7cbe6c09cb
  */
 
 /* eslint-disable */
@@ -28,6 +28,21 @@ query LocationsPaginatedRefetchQuery(
   ...LocationsPaginated_data_kPtUz
 }
 
+fragment CountryFlag_location on Location {
+  country {
+    code
+    name
+  }
+  code
+  name
+  type
+}
+
+fragment Location_location on Location {
+  name
+  ...CountryFlag_location
+}
+
 fragment LocationsPaginated_data_kPtUz on RootQuery {
   incrementalPagination2: allLocations(first: $count, after: $cursor) {
     edges {
@@ -43,21 +58,6 @@ fragment LocationsPaginated_data_kPtUz on RootQuery {
       hasNextPage
     }
   }
-}
-
-fragment Location_location on Location {
-  name
-  ...CountryFlag_location
-}
-
-fragment CountryFlag_location on Location {
-  country {
-    code
-    name
-  }
-  code
-  name
-  type
 }
 */
 
@@ -247,7 +247,7 @@ return {
     "operationKind": "query",
     "name": "LocationsPaginatedRefetchQuery",
     "id": null,
-    "text": "query LocationsPaginatedRefetchQuery(\n  $count: Int\n  $cursor: String\n) {\n  ...LocationsPaginated_data_kPtUz\n}\n\nfragment LocationsPaginated_data_kPtUz on RootQuery {\n  incrementalPagination2: allLocations(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
+    "text": "query LocationsPaginatedRefetchQuery(\n  $count: Int\n  $cursor: String\n) {\n  ...LocationsPaginated_data_kPtUz\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment LocationsPaginated_data_kPtUz on RootQuery {\n  incrementalPagination2: allLocations(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

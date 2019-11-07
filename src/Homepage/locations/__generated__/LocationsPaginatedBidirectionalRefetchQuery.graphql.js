@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 4d86ade81f2c5ef4cdbd28f253618e07
+ * @relayHash 71095e9aad0302f59f87de0f94bacbc7
  */
 
 /* eslint-disable */
@@ -32,6 +32,21 @@ query LocationsPaginatedBidirectionalRefetchQuery(
   ...LocationsPaginatedBidirectional_data_pbnwq
 }
 
+fragment CountryFlag_location on Location {
+  country {
+    code
+    name
+  }
+  code
+  name
+  type
+}
+
+fragment Location_location on Location {
+  name
+  ...CountryFlag_location
+}
+
 fragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {
   allLocations(first: $first, last: $last, after: $after, before: $before) {
     edges {
@@ -47,21 +62,6 @@ fragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {
       endCursor
     }
   }
-}
-
-fragment Location_location on Location {
-  name
-  ...CountryFlag_location
-}
-
-fragment CountryFlag_location on Location {
-  country {
-    code
-    name
-  }
-  code
-  name
-  type
 }
 */
 
@@ -256,7 +256,7 @@ return {
     "operationKind": "query",
     "name": "LocationsPaginatedBidirectionalRefetchQuery",
     "id": null,
-    "text": "query LocationsPaginatedBidirectionalRefetchQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n) {\n  ...LocationsPaginatedBidirectional_data_pbnwq\n}\n\nfragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {\n  allLocations(first: $first, last: $last, after: $after, before: $before) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
+    "text": "query LocationsPaginatedBidirectionalRefetchQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n) {\n  ...LocationsPaginatedBidirectional_data_pbnwq\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {\n  allLocations(first: $first, last: $last, after: $after, before: $before) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
