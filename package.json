@@ -25,7 +25,8 @@
     "relay-test-utils": "^7.1.0"
   },
   "scripts": {
-    "start": "next",
+    "start": "next dev",
+    "start-production": "next start",
     "build": "next build",
     "relay": "adeira-relay-compiler",
     "schema": "adeira-fetch-schema --filename schema.graphql"

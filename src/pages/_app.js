@@ -53,7 +53,15 @@ export default class MyApp extends App {
               <Button size="small">Server side rendering example</Button>
             </Link>
           </ButtonGroup>
-          <Alert>TIP: Open a console to see what&apos;s going on behind the scenes.</Alert>
+          {__DEV__ ? (
+            <Alert type="info">
+              TIP: Open a console to see what&apos;s going on behind the scenes.
+            </Alert>
+          ) : (
+            <Alert type="warning">
+              It&apos;s better to clone this repository and try it in development more.
+            </Alert>
+          )}
           <Component {...pageProps} />
         </Stack>
       </RelayEnvironmentProvider>

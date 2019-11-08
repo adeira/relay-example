@@ -43,7 +43,7 @@ yarn schema
 
 # Using `@adeira/relay`
 
-[Docs](https://github.com/kiwicom/relay)
+[Docs](https://github.com/adeira/universe/tree/master/src/relay)
 
 We use `@adeira/relay` internally to help with some difficult Relay tasks and to share knowledge via code across all our teams. It exposes high-level (and to some extend compatible) API very similar to Relay. The key element is so called Query Renderer. This renderer expects root query which will be automatically fetched and function to call (with the new data) to render some UI:
 
@@ -221,7 +221,6 @@ import { graphql, QueryRenderer } from '@adeira/relay';
 export default function Polling() {
   return (
     <QueryRenderer
-      clientID="https://github.com/kiwicom/relay-example"
       query={graphql`
         query PollingQuery {
           currency(code: "czk") {
