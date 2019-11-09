@@ -25,7 +25,7 @@ function CountryFlag({ location }: Props) {
     return <AnywhereFlag />;
   }
 
-  const countryName = country?.name ?? (name ?? 'Anywhere');
+  const countryName = country?.name ?? name ?? 'Anywhere';
   return <Flag dataTest="flag-success" code={countryCode} name={countryName} />;
 }
 
