@@ -1,4 +1,4 @@
-# @generated SignedSource<<9fabb730ed531fdac7cc476447c15f67>>
+# @generated SignedSource<<26974252aad70ea3b969bad8c78a7c4a>>
 
 schema {
   query: RootQuery
@@ -1058,6 +1058,35 @@ enum CheckInStatuses {
 type ChildrenType {
   age: Int
 }
+
+type ContactReason {
+  """Articles associated with the ContactReason"""
+  articles: [FAQArticleResponse]
+  reasonId: Int
+
+  """Slug for friendly urls"""
+  slug: String
+}
+
+"""A connection to a list of items."""
+type ContactReasonConnection {
+  """A list of edges."""
+  edges: [ContactReasonEdge]
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+}
+
+"""An edge in a connection."""
+type ContactReasonEdge {
+  """A cursor for use in pagination"""
+  cursor: String!
+
+  """The item at the end of the edge"""
+  node: ContactReason
+}
+
+union ContactReasonResponse = ContactReason | FAQError
 
 type Coordinates {
   """Latitude."""
@@ -3039,7 +3068,8 @@ input RadiusInput {
 }
 
 type ResetPasswordResponse {
-  success: Boolean
+  error: LoginActionError
+  success: Boolean @deprecated(reason: "Use \"error\" field instead.")
 }
 
 input RoomConfigInput {
@@ -3440,6 +3470,15 @@ type RouteStop {
 
 """All the queries related to Self Service. The FAQ queries are here"""
 type SelfServiceQueries {
+  """Retrieve categories by contact reason"""
+  AllContactReasons: ContactReasonConnection
+
+  """Retrieve categories by contact reason"""
+  ContactReason(
+    """Contact reason ID for which to fetch articles"""
+    reasonId: Int!
+  ): ContactReasonResponse
+
   """Retrieve single FAQ article."""
   FAQArticle(findBy: FAQInputQuery!): FAQArticleResponse
 
