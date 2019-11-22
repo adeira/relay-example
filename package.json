@@ -7,7 +7,7 @@
     "@adeira/fetch": "^1.0.0",
     "@adeira/relay": "^0.3.0",
     "@kiwicom/orbit-components": "^0.67.1",
-    "date-fns": "^2.8.0",
+    "date-fns": "^2.8.1",
     "next": "^9.1.4",
     "next-plugin-custom-babel-config": "^1.0.2",
     "next-transpile-modules": "^2.3.1",
