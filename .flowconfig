@@ -1,10 +1,28 @@
 [ignore]
 
+[untyped]
+
+[declarations]
+.+/node_modules/.+
+
 [include]
 
 [libs]
 
 [lints]
+all=error
+ambiguous-object-type=off
+dynamic-export=off
+non-array-spread=off
+sketchy-null-bool=off
+unclear-type=off
+untyped-import=off
+
+[strict]
+ambiguous-object-type
+sketchy-null-bool
+unclear-type
+untyped-import
 
 [options]
 include_warnings=true
@@ -13,5 +31,3 @@ esproposal.optional_chaining=enable
 esproposal.nullish_coalescing=enable
 
 suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError: .+
-
-[strict]
