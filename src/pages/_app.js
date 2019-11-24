@@ -59,7 +59,7 @@ export default class MyApp extends App {
             </Alert>
           ) : (
             <Alert type="warning">
-              It&apos;s better to clone this repository and try it in development more.
+              It&apos;s better to clone this repository and try it in development mode.
             </Alert>
           )}
           <Component {...pageProps} />
