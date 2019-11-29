@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { graphql, QueryRenderer } from '@adeira/relay';
+import { isBrowser } from '@adeira/js';
 
-import isBrowser from '../isBrowser';
 import useInterval from './useInterval';
 import type { PollingQueryResponse } from './__generated__/PollingQuery.graphql';
 
@@ -11,7 +11,7 @@ export default function Polling() {
   const [abTestEnabled, setAbTest] = useState(false);
 
   // If we add the polling config on server, the server also keeps polling, which is unnecessary
-  const cacheConfig = isBrowser
+  const cacheConfig = isBrowser()
     ? { poll: 1000 } // 1 second
     : {};
 
