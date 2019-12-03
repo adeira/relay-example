@@ -20,7 +20,7 @@
   "devDependencies": {
     "@adeira/babel-preset-adeira": "^0.1.0",
     "babel-jest": "^24.9.0",
-    "flow-bin": "^0.112.0",
+    "flow-bin": "^0.113.0",
     "graphql": "^14.5.8",
     "jest": "^24.9.0",
     "react-test-renderer": "^16.12.0",
