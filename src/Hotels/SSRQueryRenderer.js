@@ -4,8 +4,7 @@ import * as React from 'react';
 import {
   QueryRenderer,
   type GraphQLTaggedNode,
-  getRequest,
-  createOperationDescriptor,
+  getDataFromRequest,
   RelayEnvironmentProvider,
 } from '@adeira/relay';
 import { isBrowser } from '@adeira/js';
@@ -29,15 +28,14 @@ export default function SSRQueryRenderer(props: Props) {
     // When we get here on the server, we have already fetched data
     // Using the QueryRenderer will dispatch a new request to BE from the server, so just return
     // The data from the store instead.
-    const request = getRequest(props.query);
-    const operation = createOperationDescriptor(request, props.variables);
-
-    const res = environment.lookup(operation.fragment);
-    const data = res.data;
+    const data = getDataFromRequest(
+      { query: props.query, variables: props.variables },
+      environment,
+    );
 
     return (
       <RelayEnvironmentProvider environment={environment}>
-        {data != null ? props.onResponse(data) : <div>lol loading...</div>}
+        {data != null ? props.onResponse(data) : <div>loading...</div>}
       </RelayEnvironmentProvider>
     );
   }
