@@ -31,6 +31,7 @@ export type LocationsPaginatedBidirectional_data$data = LocationsPaginatedBidire
 export type LocationsPaginatedBidirectional_data$key = {
   +$data?: LocationsPaginatedBidirectional_data$data,
   +$fragmentRefs: LocationsPaginatedBidirectional_data$ref,
+  ...
 };
 
 

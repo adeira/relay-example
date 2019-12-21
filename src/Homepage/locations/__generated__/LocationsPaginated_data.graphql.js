@@ -25,6 +25,7 @@ export type LocationsPaginated_data$data = LocationsPaginated_data;
 export type LocationsPaginated_data$key = {
   +$data?: LocationsPaginated_data$data,
   +$fragmentRefs: LocationsPaginated_data$ref,
+  ...
 };
 
 

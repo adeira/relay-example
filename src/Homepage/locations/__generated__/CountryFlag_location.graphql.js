@@ -23,6 +23,7 @@ export type CountryFlag_location$data = CountryFlag_location;
 export type CountryFlag_location$key = {
   +$data?: CountryFlag_location$data,
   +$fragmentRefs: CountryFlag_location$ref,
+  ...
 };
 
 

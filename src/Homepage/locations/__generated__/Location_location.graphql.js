@@ -19,6 +19,7 @@ export type Location_location$data = Location_location;
 export type Location_location$key = {
   +$data?: Location_location$data,
   +$fragmentRefs: Location_location$ref,
+  ...
 };
 
 

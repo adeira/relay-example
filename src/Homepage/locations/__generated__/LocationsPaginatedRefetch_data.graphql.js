@@ -28,6 +28,7 @@ export type LocationsPaginatedRefetch_data$data = LocationsPaginatedRefetch_data
 export type LocationsPaginatedRefetch_data$key = {
   +$data?: LocationsPaginatedRefetch_data$data,
   +$fragmentRefs: LocationsPaginatedRefetch_data$ref,
+  ...
 };
 
 
