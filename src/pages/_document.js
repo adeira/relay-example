@@ -8,12 +8,14 @@ import { type Context } from 'next';
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: Context) {
     const sheet = new ServerStyleSheet();
-    /* $FlowFixMe This comment suppresses an error when enabling exact_by_default=true option.
+    /* $FlowExpectedError: This comment suppresses an error as we use incomplete flow declarations for next.
+     * Document context has additional property, see https://github.com/flow-typed/flow-typed/pull/3699
      * To see the error delete this comment and run Flow. */
     const originalRenderPage = ctx.renderPage;
 
     try {
-      /* $FlowFixMe This comment suppresses an error when enabling exact_by_default=true option.
+      /* $FlowExpectedError: This comment suppresses an error as we use incomplete flow declarations for next.
+       * Document context has additional property, see https://github.com/flow-typed/flow-typed/pull/3699
        * To see the error delete this comment and run Flow. */
       ctx.renderPage = () =>
         originalRenderPage({
