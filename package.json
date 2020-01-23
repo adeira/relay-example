@@ -11,7 +11,7 @@
     "date-fns": "^2.9.0",
     "next": "^9.2.0",
     "next-plugin-custom-babel-config": "^1.0.2",
-    "next-transpile-modules": "^3.0.1",
+    "next-transpile-modules": "^3.0.2",
     "nprogress": "^0.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
