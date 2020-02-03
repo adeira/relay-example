@@ -6,7 +6,7 @@
   "dependencies": {
     "@adeira/fetch": "^1.0.0",
     "@adeira/relay": "^0.12.0",
-    "@adeira/js": "^0.2.0",
+    "@adeira/js": "^1.0.0",
     "@kiwicom/orbit-components": "^0.72.0",
     "date-fns": "^2.9.0",
     "next": "^9.2.1",
