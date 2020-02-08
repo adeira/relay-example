@@ -6,31 +6,31 @@
 // flowlint untyped-type-import:off
 
 import type { ReaderFragment } from 'relay-runtime';
-type HotelListItem_hotel$ref = any;
+type LocationListItem_location$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type HotelsList_hotels$ref: FragmentReference;
-declare export opaque type HotelsList_hotels$fragmentType: HotelsList_hotels$ref;
-export type HotelsList_hotels = {|
+declare export opaque type LocationsList_locations$ref: FragmentReference;
+declare export opaque type LocationsList_locations$fragmentType: LocationsList_locations$ref;
+export type LocationsList_locations = {|
   +edges: ?$ReadOnlyArray<?{|
     +node: ?{|
       +id: string,
-      +$fragmentRefs: HotelListItem_hotel$ref,
+      +$fragmentRefs: LocationListItem_location$ref,
     |}
   |}>,
-  +$refType: HotelsList_hotels$ref,
+  +$refType: LocationsList_locations$ref,
 |};
-export type HotelsList_hotels$data = HotelsList_hotels;
-export type HotelsList_hotels$key = {
-  +$data?: HotelsList_hotels$data,
-  +$fragmentRefs: HotelsList_hotels$ref,
+export type LocationsList_locations$data = LocationsList_locations;
+export type LocationsList_locations$key = {
+  +$data?: LocationsList_locations$data,
+  +$fragmentRefs: LocationsList_locations$ref,
   ...
 };
 
 
 const node: ReaderFragment = {
   "kind": "Fragment",
-  "name": "HotelsList_hotels",
-  "type": "AllHotelAvailabilityHotelConnection",
+  "name": "LocationsList_locations",
+  "type": "LocationConnection",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -40,7 +40,7 @@ const node: ReaderFragment = {
       "name": "edges",
       "storageKey": null,
       "args": null,
-      "concreteType": "AllHotelAvailabilityHotelEdge",
+      "concreteType": "LocationEdge",
       "plural": true,
       "selections": [
         {
@@ -49,7 +49,7 @@ const node: ReaderFragment = {
           "name": "node",
           "storageKey": null,
           "args": null,
-          "concreteType": "AllHotelAvailabilityHotel",
+          "concreteType": "Location",
           "plural": false,
           "selections": [
             {
@@ -61,7 +61,7 @@ const node: ReaderFragment = {
             },
             {
               "kind": "FragmentSpread",
-              "name": "HotelListItem_hotel",
+              "name": "LocationListItem_location",
               "args": null
             }
           ]
@@ -71,5 +71,5 @@ const node: ReaderFragment = {
   ]
 };
 // prettier-ignore
-(node: any).hash = '55db5d184d19a0b136d61b52a82c17d7';
+(node: any).hash = 'c52e566c5b829069868d00f531eb22d7';
 export default node;

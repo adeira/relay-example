@@ -5,7 +5,7 @@ import { QueryRenderer, type GraphQLTaggedNode, RelayEnvironmentProvider } from 
 import { isBrowser } from '@adeira/js';
 import { getDataFromRequest } from '@adeira/relay-utils';
 
-import createRelayEnvironment from '../createRelayEnvironment';
+import createRelayEnvironment from './createRelayEnvironment';
 
 type RendererProps = {| +[key: string]: any |};
 

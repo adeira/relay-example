@@ -4,14 +4,14 @@ import React from 'react';
 import { fetchQuery, type RecordMap } from '@adeira/relay';
 
 import createRelayEnvironment from '../createRelayEnvironment';
-import HotelsQuery, { query, variables } from '../Hotels/HotelsQuery';
+import LocationsQuery, { query, variables } from '../SSRLocations/LocationsQuery';
 
 type Props = {|
   +ssrData: RecordMap,
 |};
 
 function Ssr(props: Props) {
-  return <HotelsQuery ssrData={props.ssrData} />;
+  return <LocationsQuery ssrData={props.ssrData} />;
 }
 
 Ssr.getInitialProps = async () => {
