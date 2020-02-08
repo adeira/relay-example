@@ -6,17 +6,22 @@
   "dependencies": {
     "@adeira/fetch": "^1.0.0",
     "@adeira/relay": "^0.12.0",
+    "@adeira/graphql-global-id": "^0.4.0",
     "@adeira/js": "^1.0.0",
+    "@adeira/relay": "^0.12.0",
+    "@adeira/relay-utils": "0.3.0",
     "@kiwicom/orbit-components": "^0.73.0",
+    "apollo-server-micro": "^2.10.0",
     "date-fns": "^2.9.0",
+    "graphql": "^14.6.0",
+    "graphql-relay": "^0.6.0",
     "next": "^9.2.1",
     "next-plugin-custom-babel-config": "^1.0.2",
     "next-transpile-modules": "^3.0.2",
     "nprogress": "^0.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "styled-components": "^4.4.0",
-    "@adeira/relay-utils": "0.3.0"
+    "styled-components": "^4.4.0"
   },
   "devDependencies": {
     "@adeira/babel-preset-adeira": "^0.3.0",
