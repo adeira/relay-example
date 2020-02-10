@@ -10,7 +10,7 @@ import LocationsList from './LocationsList';
 
 export const query = graphql`
   query LocationsQuery($first: Int!) {
-    allLocations(first: $first) {
+    locations(first: $first) {
       ...LocationsList_locations
     }
   }
@@ -35,7 +35,7 @@ export default function LocationsQuery(props: Props) {
         query={query}
         variables={variables}
         onResponse={(renderProps: ?LocationsQueryResponse) => {
-          return <LocationsList locations={renderProps?.allLocations} />;
+          return <LocationsList locations={renderProps?.locations} />;
         }}
         ssrData={props.ssrData}
       />

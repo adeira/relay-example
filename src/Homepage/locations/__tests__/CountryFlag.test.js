@@ -13,7 +13,7 @@ let onResponse;
 beforeEach(() => {
   environment = createMockEnvironment();
   onResponse = props => {
-    return <CountryFlag location={props.location} />;
+    return <CountryFlag location={props.locations.edges[0]?.node} />;
   };
 });
 
@@ -23,8 +23,12 @@ it('renders Flag component as expected', () => {
       environment={environment}
       query={graphql`
         query CountryFlagTestSuccessQuery @relay_test_operation {
-          location(input: { locationId: "test-location-id" }) {
-            ...CountryFlag_location
+          locations(first: 1) {
+            edges {
+              node {
+                ...CountryFlag_location
+              }
+            }
           }
         }
       `}
@@ -52,8 +56,12 @@ it('renders Flag with code "anywhere" for special type', () => {
       environment={environment}
       query={graphql`
         query CountryFlagTestAnywhereQuery @relay_test_operation {
-          location(input: { locationId: "test-location-id" }) {
-            ...CountryFlag_location
+          locations(first: 1) {
+            edges {
+              node {
+                ...CountryFlag_location
+              }
+            }
           }
         }
       `}

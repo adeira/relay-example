@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 71095e9aad0302f59f87de0f94bacbc7
+ * @relayHash 89acb68b32b0eb9d1982fc5c155e6188
  */
 
 /* eslint-disable */
@@ -48,7 +48,7 @@ fragment Location_location on Location {
 }
 
 fragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {
-  allLocations(first: $first, last: $last, after: $after, before: $before) {
+  locations(first: $first, last: $last, after: $after, before: $before) {
     edges {
       node {
         id
@@ -152,7 +152,7 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "allLocations",
+        "name": "locations",
         "storageKey": null,
         "args": (v1/*: any*/),
         "concreteType": "LocationConnection",
@@ -256,7 +256,7 @@ return {
     "operationKind": "query",
     "name": "LocationsPaginatedBidirectionalRefetchQuery",
     "id": null,
-    "text": "query LocationsPaginatedBidirectionalRefetchQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n) {\n  ...LocationsPaginatedBidirectional_data_pbnwq\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {\n  allLocations(first: $first, last: $last, after: $after, before: $before) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n",
+    "text": "query LocationsPaginatedBidirectionalRefetchQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n) {\n  ...LocationsPaginatedBidirectional_data_pbnwq\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {\n  locations(first: $first, last: $last, after: $after, before: $before) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

@@ -63,7 +63,7 @@ const node: ReaderFragment = {
     {
       "kind": "LinkedField",
       "alias": "incrementalPagination2",
-      "name": "__allLocations_incrementalPagination2_connection",
+      "name": "__locations_incrementalPagination2_connection",
       "storageKey": null,
       "args": null,
       "concreteType": "LocationConnection",
@@ -147,5 +147,5 @@ const node: ReaderFragment = {
   ]
 };
 // prettier-ignore
-(node: any).hash = '6b4d0edb4dfba4a6ae85db6a90e6ccbb';
+(node: any).hash = 'cceec4a644df5b78c9fe14ec4e2c156c';
 export default node;

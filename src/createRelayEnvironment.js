@@ -8,7 +8,9 @@ import {
 } from '@adeira/relay';
 
 export default function createRelayEnvironment(initialData: ?RecordMap): Environment {
-  const resource = 'https://graphql.kiwi.com';
+  const resource = __DEV__
+    ? 'http://localhost:3000/api/graphql'
+    : 'https://relay-example.adeira.now.sh/api/graphql';
   const fetchFn = createNetworkFetcher(resource, {
     'X-Client': 'https://github.com/adeira/relay-example',
   });

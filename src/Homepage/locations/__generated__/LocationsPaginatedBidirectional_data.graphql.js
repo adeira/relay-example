@@ -11,7 +11,7 @@ import type { FragmentReference } from "relay-runtime";
 declare export opaque type LocationsPaginatedBidirectional_data$ref: FragmentReference;
 declare export opaque type LocationsPaginatedBidirectional_data$fragmentType: LocationsPaginatedBidirectional_data$ref;
 export type LocationsPaginatedBidirectional_data = {|
-  +allLocations: ?{|
+  +locations: ?{|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
         +id: string,
@@ -70,7 +70,7 @@ const node: ReaderFragment = {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "allLocations",
+      "name": "locations",
       "storageKey": null,
       "args": [
         {
@@ -175,5 +175,5 @@ const node: ReaderFragment = {
   ]
 };
 // prettier-ignore
-(node: any).hash = '75afce31dc28d17ce744bf23b598704b';
+(node: any).hash = 'fd753ec4e0d0301837f1a0e78f51f98c';
 export default node;

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f7ecdc84e50a52d783a55f93b5cdb479
+ * @relayHash 5c31795e6bd9ca0c67284956718e1d7e
  */
 
 /* eslint-disable */
@@ -12,7 +12,7 @@ export type LocationsQueryVariables = {|
   first: number
 |};
 export type LocationsQueryResponse = {|
-  +allLocations: ?{|
+  +locations: ?{|
     +$fragmentRefs: LocationsList_locations$ref
   |}
 |};
@@ -25,7 +25,7 @@ export type LocationsQuery = {|
 query LocationsQuery(
   $first: Int!
 ) {
-  allLocations(first: $first) {
+  locations(first: $first) {
     ...LocationsList_locations
   }
 }
@@ -72,7 +72,7 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "allLocations",
+        "name": "locations",
         "storageKey": null,
         "args": (v1/*: any*/),
         "concreteType": "LocationConnection",
@@ -95,7 +95,7 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "allLocations",
+        "name": "locations",
         "storageKey": null,
         "args": (v1/*: any*/),
         "concreteType": "LocationConnection",
@@ -145,11 +145,11 @@ return {
     "operationKind": "query",
     "name": "LocationsQuery",
     "id": null,
-    "text": "query LocationsQuery(\n  $first: Int!\n) {\n  allLocations(first: $first) {\n    ...LocationsList_locations\n  }\n}\n\nfragment LocationListItem_location on Location {\n  name\n}\n\nfragment LocationsList_locations on LocationConnection {\n  edges {\n    node {\n      id\n      ...LocationListItem_location\n    }\n  }\n}\n",
+    "text": "query LocationsQuery(\n  $first: Int!\n) {\n  locations(first: $first) {\n    ...LocationsList_locations\n  }\n}\n\nfragment LocationListItem_location on Location {\n  name\n}\n\nfragment LocationsList_locations on LocationConnection {\n  edges {\n    node {\n      id\n      ...LocationListItem_location\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node: any).hash = 'a52e38c20e1c4e46179cc31bfe6ea06c';
+(node: any).hash = '60fdf6bfaee22cd990f67a20469f86be';
 export default node;

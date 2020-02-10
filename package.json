@@ -37,6 +37,6 @@
     "start-production": "next start",
     "build": "next build",
     "relay": "adeira-relay-compiler",
-    "schema": "adeira-fetch-schema --filename=schema.graphql --resource=https://graphql.kiwi.com"
+    "schema": "adeira-fetch-schema --filename=schema.graphql --resource=https://relay-example.adeira.now.sh/api/graphql"
   }
 }

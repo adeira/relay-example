@@ -46,8 +46,8 @@ export default createPaginationContainer(
     data: graphql`
       fragment LocationsPaginated_data on RootQuery
         @argumentDefinitions(count: { type: "Int", defaultValue: 20 }, after: { type: "String" }) {
-        incrementalPagination2: allLocations(first: $count, after: $after)
-          @connection(key: "allLocations_incrementalPagination2") {
+        incrementalPagination2: locations(first: $count, after: $after)
+          @connection(key: "locations_incrementalPagination2") {
           edges {
             node {
               id

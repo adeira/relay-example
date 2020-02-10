@@ -19,7 +19,7 @@ type Props = {|
 function LocationsPaginatedBidirectional(props: Props) {
   const [start, setStart] = useState(1);
 
-  const pageInfo = props.data.allLocations?.pageInfo;
+  const pageInfo = props.data.locations?.pageInfo;
   if (!pageInfo) {
     return null; // or some failure placeholder
   }
@@ -54,7 +54,7 @@ function LocationsPaginatedBidirectional(props: Props) {
     );
   }
 
-  const edges = props.data.allLocations?.edges ?? [];
+  const edges = props.data.locations?.edges ?? [];
   return (
     <>
       <ol start={start}>
@@ -95,7 +95,7 @@ export default createRefetchContainer(
           after: { type: "String" }
           before: { type: "String" }
         ) {
-        allLocations(first: $first, last: $last, after: $after, before: $before) {
+        locations(first: $first, last: $last, after: $after, before: $before) {
           edges {
             node {
               id

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash e5f88cdbc9c9dccccd9d3c124f460b9b
+ * @relayHash e20c43f9aa140af9186979eb6c6645d9
  */
 
 /* eslint-disable */
@@ -38,7 +38,7 @@ fragment Location_location on Location {
 }
 
 fragment LocationsPaginatedRefetch_data on RootQuery {
-  incrementalPagination: allLocations(first: 20) {
+  incrementalPagination: locations(first: 20) {
     edges {
       node {
         id
@@ -113,8 +113,8 @@ return {
       {
         "kind": "LinkedField",
         "alias": "incrementalPagination",
-        "name": "allLocations",
-        "storageKey": "allLocations(first:20)",
+        "name": "locations",
+        "storageKey": "locations(first:20)",
         "args": (v0/*: any*/),
         "concreteType": "LocationConnection",
         "plural": false,
@@ -214,10 +214,10 @@ return {
       {
         "kind": "LinkedHandle",
         "alias": "incrementalPagination",
-        "name": "allLocations",
+        "name": "locations",
         "args": (v0/*: any*/),
         "handle": "connection",
-        "key": "allLocations_incrementalPagination",
+        "key": "locations_incrementalPagination",
         "filters": null
       }
     ]
@@ -226,7 +226,7 @@ return {
     "operationKind": "query",
     "name": "LocationsPaginatedRefetchTestQuery",
     "id": null,
-    "text": "query LocationsPaginatedRefetchTestQuery {\n  ...LocationsPaginatedRefetch_data\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: allLocations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
+    "text": "query LocationsPaginatedRefetchTestQuery {\n  ...LocationsPaginatedRefetch_data\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
     "metadata": {
       "relayTestingSelectionTypeInfo": {
         "incrementalPagination": {

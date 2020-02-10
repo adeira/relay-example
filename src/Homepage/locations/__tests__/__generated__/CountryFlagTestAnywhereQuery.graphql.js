@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash c1ab9d9daa652f2a929e4e72d60f4034
+ * @relayHash bdbc274c19196adaf14a779b70a2366b
  */
 
 /* eslint-disable */
@@ -10,8 +10,12 @@ import type { ConcreteRequest } from 'relay-runtime';
 type CountryFlag_location$ref = any;
 export type CountryFlagTestAnywhereQueryVariables = {||};
 export type CountryFlagTestAnywhereQueryResponse = {|
-  +location: ?{|
-    +$fragmentRefs: CountryFlag_location$ref
+  +locations: ?{|
+    +edges: ?$ReadOnlyArray<?{|
+      +node: ?{|
+        +$fragmentRefs: CountryFlag_location$ref
+      |}
+    |}>
   |}
 |};
 export type CountryFlagTestAnywhereQuery = {|
@@ -21,9 +25,13 @@ export type CountryFlagTestAnywhereQuery = {|
 
 /*
 query CountryFlagTestAnywhereQuery {
-  location(input: {locationId: "test-location-id"}) {
-    ...CountryFlag_location
-    id
+  locations(first: 1) {
+    edges {
+      node {
+        ...CountryFlag_location
+        id
+      }
+    }
   }
 }
 
@@ -42,10 +50,8 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "Literal",
-    "name": "input",
-    "value": {
-      "locationId": "test-location-id"
-    }
+    "name": "first",
+    "value": 1
   }
 ],
 v1 = {
@@ -80,16 +86,38 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "location",
-        "storageKey": "location(input:{\"locationId\":\"test-location-id\"})",
+        "name": "locations",
+        "storageKey": "locations(first:1)",
         "args": (v0/*: any*/),
-        "concreteType": "Location",
+        "concreteType": "LocationConnection",
         "plural": false,
         "selections": [
           {
-            "kind": "FragmentSpread",
-            "name": "CountryFlag_location",
-            "args": null
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "edges",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "LocationEdge",
+            "plural": true,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "node",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Location",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "FragmentSpread",
+                    "name": "CountryFlag_location",
+                    "args": null
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -103,40 +131,62 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "location",
-        "storageKey": "location(input:{\"locationId\":\"test-location-id\"})",
+        "name": "locations",
+        "storageKey": "locations(first:1)",
         "args": (v0/*: any*/),
-        "concreteType": "Location",
+        "concreteType": "LocationConnection",
         "plural": false,
         "selections": [
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "country",
+            "name": "edges",
             "storageKey": null,
             "args": null,
-            "concreteType": "LocationArea",
-            "plural": false,
+            "concreteType": "LocationEdge",
+            "plural": true,
             "selections": [
-              (v1/*: any*/),
-              (v2/*: any*/)
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "node",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Location",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "country",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "LocationArea",
+                    "plural": false,
+                    "selections": [
+                      (v1/*: any*/),
+                      (v2/*: any*/)
+                    ]
+                  },
+                  (v1/*: any*/),
+                  (v2/*: any*/),
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "type",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "id",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
+              }
             ]
-          },
-          (v1/*: any*/),
-          (v2/*: any*/),
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "type",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
           }
         ]
       }
@@ -146,37 +196,49 @@ return {
     "operationKind": "query",
     "name": "CountryFlagTestAnywhereQuery",
     "id": null,
-    "text": "query CountryFlagTestAnywhereQuery {\n  location(input: {locationId: \"test-location-id\"}) {\n    ...CountryFlag_location\n    id\n  }\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
+    "text": "query CountryFlagTestAnywhereQuery {\n  locations(first: 1) {\n    edges {\n      node {\n        ...CountryFlag_location\n        id\n      }\n    }\n  }\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n",
     "metadata": {
       "relayTestingSelectionTypeInfo": {
-        "location": {
+        "locations": {
+          "type": "LocationConnection",
+          "enumValues": null,
+          "plural": false,
+          "nullable": true
+        },
+        "locations.edges": {
+          "type": "LocationEdge",
+          "enumValues": null,
+          "plural": true,
+          "nullable": true
+        },
+        "locations.edges.node": {
           "type": "Location",
           "enumValues": null,
           "plural": false,
           "nullable": true
         },
-        "location.id": {
+        "locations.edges.node.id": {
           "type": "ID",
           "enumValues": null,
           "plural": false,
           "nullable": true
         },
-        "location.country": {
+        "locations.edges.node.country": {
           "type": "LocationArea",
           "enumValues": null,
           "plural": false,
           "nullable": true
         },
-        "location.code": (v3/*: any*/),
-        "location.name": (v3/*: any*/),
-        "location.type": (v3/*: any*/),
-        "location.country.code": (v3/*: any*/),
-        "location.country.name": (v3/*: any*/)
+        "locations.edges.node.code": (v3/*: any*/),
+        "locations.edges.node.name": (v3/*: any*/),
+        "locations.edges.node.type": (v3/*: any*/),
+        "locations.edges.node.country.code": (v3/*: any*/),
+        "locations.edges.node.country.name": (v3/*: any*/)
       }
     }
   }
 };
 })();
 // prettier-ignore
-(node: any).hash = '9facb0d14e3f34a90ad570053e5e077b';
+(node: any).hash = '484b418b231563b550782c6c43978f31';
 export default node;

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash aac8796e7ea4f59612a5b628ab939c54
+ * @relayHash d6f8ba866d85b2544a38df67ab71b938
  */
 
 /* eslint-disable */
@@ -94,7 +94,7 @@ return {
         "name": "currency",
         "storageKey": "currency(code:\"usd\")",
         "args": (v1/*: any*/),
-        "concreteType": "CurrencyDetail",
+        "concreteType": "Currency",
         "plural": false,
         "selections": [
           (v2/*: any*/),
@@ -114,7 +114,7 @@ return {
         "name": "currency",
         "storageKey": "currency(code:\"usd\")",
         "args": (v1/*: any*/),
-        "concreteType": "CurrencyDetail",
+        "concreteType": "Currency",
         "plural": false,
         "selections": [
           (v2/*: any*/),
