@@ -1,4 +1,7 @@
-# @generated SignedSource<<eb89c64236cbeb66299c9b1c8bb3fc71>>
+# @generated SignedSource<<459b4e6296506c81e08965cc0db52848>>
+
+# <BREAKING-CHANGES-LOG>
+# </BREAKING-CHANGES-LOG>
 
 schema {
   query: RootQuery
@@ -101,4 +104,3 @@ type RootQuery {
   ): Currency
   locations(after: String, before: String, first: Int, last: Int): LocationConnection
 }
-
