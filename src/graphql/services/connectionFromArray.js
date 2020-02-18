@@ -1,7 +1,6 @@
-// @flow
+// @flow strict-local
 
 import {
-  connectionArgs,
   cursorToOffset,
   connectionFromArray as relayConnectionFromArray,
   offsetToCursor,
@@ -9,18 +8,16 @@ import {
   type ConnectionArguments,
 } from 'graphql-relay';
 
-import locations from '../datasets/locations.json';
-import LocationConnection from '../types/LocationConnection';
-
+type Args = $ReadOnly<{
+  ...ConnectionArguments,
+  ...
+}>;
 // There is open discusion how to handle bidirectional pagination:
 // https://github.com/graphql/graphql-relay-js/issues/58
 //
 // Until Relay devs decide, let's try our implementation
-function connectionFromArray<T>(
-  // $FlowFixMe: https://github.com/graphql/graphql-relay-js/pull/228
-  data: $ReadOnlyArray<T>,
-  args: ConnectionArguments,
-): $Exact<Connection<T>> {
+export default function connectionFromArray<T>(data: $ReadOnlyArray<T>, args: Args): Connection<T> {
+  // $FlowExpectedError: graphql-relay is not using explicit inexact object
   const { edges, pageInfo } = relayConnectionFromArray(data, args);
   const firstCursor = offsetToCursor(0);
   const lastCursor = offsetToCursor(data.length - 1);
@@ -38,14 +35,3 @@ function connectionFromArray<T>(
 
   return { edges, pageInfo };
 }
-
-export default {
-  type: LocationConnection,
-  args: {
-    ...connectionArgs,
-  },
-  resolve: (_: mixed, args: { ...ConnectionArguments, ... }) => {
-    // $FlowExpectedError: graphql-relay is not using explicit inexact object
-    return connectionFromArray<Location>(locations.locations, args);
-  },
-};
