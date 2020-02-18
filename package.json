@@ -11,6 +11,7 @@
     "@adeira/monorepo-utils": "^0.3.0",
     "@adeira/relay": "^0.13.0",
     "@adeira/relay-utils": "0.4.0",
+    "@adeira/test-utils": "^0.1.0",
     "@kiwicom/orbit-components": "^0.73.1",
     "apollo-server-micro": "^2.10.1",
     "date-fns": "^2.9.0",

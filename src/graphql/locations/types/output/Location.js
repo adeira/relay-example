@@ -53,10 +53,16 @@ export default new GraphQLObjectType({
 
     country: {
       type: GraphQLLocationArea,
-      resolve: ({ country: { id, ...rest } }: Location): ?LocationArea => ({
-        locationId: id,
-        ...rest,
-      }),
+      resolve: ({ country }: Location): ?LocationArea => {
+        if (country == null) {
+          return null;
+        }
+        const { id, ...rest } = country;
+        return {
+          locationId: id,
+          ...rest,
+        };
+      },
     },
 
     countryFlagURL: {

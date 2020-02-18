@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches expected output: locations.graphql 1`] = `
+~~~~~~~~~~ INPUT ~~~~~~~~~~
+query locations {
+  locations(first: 5) {
+    edges {
+      node {
+        id
+        name
+        country {
+          locationId
+          name
+        }
+      }
+    }
+  }
+}
+
+~~~~~~~~~~ OUTPUT ~~~~~~~~~~
+{
+  "data": {
+    "locations": {
+      "edges": [
+        {
+          "node": {
+            "id": "TG9jYXRpb246Q0FfVVM",
+            "name": "California",
+            "country": {
+              "locationId": "US",
+              "name": "United States"
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "TG9jYXRpb246TllfVVM",
+            "name": "New York",
+            "country": {
+              "locationId": "US",
+              "name": "United States"
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "TG9jYXRpb246aW5kZXBlbmRlbmNlLW5hdGlvbmFsLWhpc3RvcmljYWwtcGFyay1wYS11c2FfcG9p",
+            "name": "Independence National Historical Park, PA, USA",
+            "country": null
+          }
+        },
+        {
+          "node": {
+            "id": "TG9jYXRpb246bWFuaGF0dGFuLWlzbGFuZF9wb2k",
+            "name": "Manhattan Island",
+            "country": null
+          }
+        },
+        {
+          "node": {
+            "id": "TG9jYXRpb246bWV0cm9wb2xpdGFuLW11c2V1bS1vZi1hcnRfcG9p",
+            "name": "Metropolitan Museum of Art",
+            "country": null
+          }
+        }
+      ]
+    }
+  }
+}
+`;

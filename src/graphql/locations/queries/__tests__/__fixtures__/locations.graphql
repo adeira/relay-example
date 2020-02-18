@@ -1,0 +1,14 @@
+query locations {
+  locations(first: 5) {
+    edges {
+      node {
+        id
+        name
+        country {
+          locationId
+          name
+        }
+      }
+    }
+  }
+}
