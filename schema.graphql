@@ -1,10 +1,34 @@
-# @generated SignedSource<<459b4e6296506c81e08965cc0db52848>>
+# @generated SignedSource<<6603f4bb0a469d32678fcf4a3ffbde99>>
 
 # <BREAKING-CHANGES-LOG>
 # </BREAKING-CHANGES-LOG>
 
 schema {
   query: RootQuery
+  mutation: RootMutation
+}
+
+"""Response type indicating an error"""
+type AddLocationError implements Error {
+  message: String
+}
+
+input AddLocationInput {
+  """3-letter IATA code of airport or internal city code."""
+  locationId: String!
+  name: String!
+
+  """Airport, city or country."""
+  type: LocationType!
+}
+
+union AddLocationOrError = AddLocationError | AddLocationResponse
+
+"""
+The newly created location edge that can be automatically added into a connection by Relay
+"""
+type AddLocationResponse {
+  locationEdge: LocationEdge
 }
 
 """The currency object. Note this is just mocked data"""
@@ -24,6 +48,11 @@ type Currency {
 
   """Currency rate compared to Euro"""
   rate: Float
+}
+
+"""Interface to describe an error"""
+interface Error {
+  message: String
 }
 
 """Location type"""
@@ -78,6 +107,12 @@ type LocationEdge {
   node: Location
 }
 
+enum LocationType {
+  AIRPORT
+  CITY
+  COUNTRY
+}
+
 """Information about pagination in a connection."""
 type PageInfo {
   """When paginating forwards, the cursor to continue."""
@@ -91,6 +126,12 @@ type PageInfo {
 
   """When paginating backwards, the cursor to continue."""
   startCursor: String
+}
+
+"""Root Mutation."""
+type RootMutation {
+  """Add a new location"""
+  addLocation(location: AddLocationInput!): AddLocationOrError
 }
 
 """Root Query"""

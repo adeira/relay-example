@@ -1,0 +1,14 @@
+mutation addLocationmutation {
+  addLocation(location: {locationId:"abc", name:"lol", type:AIRPORT}) {
+    ... on AddLocationResponse {
+      locationEdge {
+        node {
+          locationId
+          name
+          id
+          type
+        }
+      }
+    }
+  }
+}

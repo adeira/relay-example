@@ -1,0 +1,17 @@
+mutation addLocationErrormutation {
+  addLocation(location: {locationId:"abc", name:"", type:AIRPORT}) {
+    ... on AddLocationResponse {
+      locationEdge {
+        node {
+          locationId
+          name
+          id
+          type
+        }
+      }
+    }
+    ... on AddLocationError {
+      message
+    }
+  }
+}
