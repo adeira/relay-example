@@ -36,7 +36,7 @@ export default class MyApp extends App {
     return (
       <RelayEnvironmentProvider environment={createRelayEnvironment(undefined)}>
         <Head>
-          <title>My new cool app</title>
+          <title>Relay Example</title>
         </Head>
         <Stack>
           <ButtonGroup>
@@ -51,6 +51,9 @@ export default class MyApp extends App {
             </Link>
             <Link href="/ssr">
               <Button size="small">Server side rendering example</Button>
+            </Link>
+            <Link href="/mutations/range-add">
+              <Button size="small">Range add mutation example</Button>
             </Link>
           </ButtonGroup>
           {__DEV__ ? (
