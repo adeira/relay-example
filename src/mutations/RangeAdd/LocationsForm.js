@@ -4,10 +4,9 @@
 
 import * as React from 'react';
 import { InputField, Stack, Button, Select } from '@kiwicom/orbit-components';
-import { useRelayEnvironment } from '@adeira/relay';
+import { graphql, useMutation } from '@adeira/relay';
 
-import addLocation from './addLocation';
-import type { addLocationMutationResponse } from './__generated__/addLocationMutation.graphql';
+import type { LocationsFormMutation } from './__generated__/LocationsFormMutation.graphql';
 
 type Props = {||};
 
@@ -31,6 +30,20 @@ function reducer(state: State, action: Action) {
   };
 }
 
+const configs = [
+  {
+    type: 'RANGE_ADD',
+    parentID: 'client:root',
+    edgeName: 'locationEdge',
+    connectionInfo: [
+      {
+        key: 'LocationsList_locations',
+        rangeBehavior: 'prepend',
+      },
+    ],
+  },
+];
+
 const getLocation = (state: State) => {
   // We have to map the type from string to enum
   let type: 'AIRPORT' | 'CITY' | 'COUNTRY';
@@ -48,31 +61,51 @@ const getLocation = (state: State) => {
     type,
   };
 };
+
 export default (function LocationsForm() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
-  const [loading, setLoading] = React.useState(false);
-  const env = useRelayEnvironment();
+  const [addLocation, loading] = useMutation<LocationsFormMutation>(graphql`
+    mutation LocationsFormMutation($location: AddLocationInput!) {
+      addLocation(location: $location) {
+        __typename
+        ... on AddLocationResponse {
+          locationEdge {
+            node {
+              locationId
+              name
+              id
+              type
+            }
+          }
+        }
+        ... on Error {
+          message
+        }
+      }
+    }
+  `);
   const onSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (state.type === '') {
       alert('You must select a type');
       return;
     }
-    setLoading(true);
-    addLocation(
-      env,
-      { location: getLocation(state) },
-      (res: addLocationMutationResponse, errors: ?$ReadOnlyArray<Error>) => {
-        setLoading(false);
+    addLocation({
+      configs,
+      variables: { location: getLocation(state) },
+      onCompleted: (res, errors) => {
         if (errors != null) {
           alert(errors.map(e => e.message).join(','));
-        } else if (res.addLocation?.message != null) {
+        } else if (
+          res.addLocation?.__typename === 'AddLocationError' &&
+          res.addLocation.message != null
+        ) {
           alert(res.addLocation.message);
         } else {
           dispatch('reset');
         }
       },
-    );
+    });
   };
   const handleChange = e => {
     e.persist();
