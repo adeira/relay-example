@@ -25,11 +25,10 @@ function LocationsPaginated(props: Props) {
     });
   }
 
-  const edges = props.data.incrementalPagination2?.edges ?? [];
   return (
     <>
       <ol>
-        {edges.map(edge => (
+        {props.data.incrementalPagination2?.edges?.map(edge => (
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>

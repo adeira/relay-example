@@ -54,11 +54,10 @@ function LocationsPaginatedBidirectional(props: Props) {
     );
   }
 
-  const edges = props.data.locations?.edges ?? [];
   return (
     <>
       <ol start={start}>
-        {edges.map(edge => (
+        {props.data.locations?.edges?.map(edge => (
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>

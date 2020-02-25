@@ -30,11 +30,10 @@ function LocationsPaginatedRefetch(props: Props) {
     );
   }
 
-  const edges = props.data.incrementalPagination?.edges ?? [];
   return (
     <>
       <ol>
-        {edges.map(edge => (
+        {props.data.incrementalPagination?.edges?.map(edge => (
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>
