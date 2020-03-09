@@ -17,7 +17,7 @@
     "date-fns": "^2.10.0",
     "graphql": "^14.6.0",
     "graphql-relay": "^0.6.0",
-    "next": "^9.2.2",
+    "next": "^9.3.0",
     "next-plugin-custom-babel-config": "^1.0.2",
     "next-transpile-modules": "^3.0.2",
     "nprogress": "^0.2.0",
