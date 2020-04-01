@@ -12,7 +12,7 @@
     "@adeira/relay": "^1.2.0",
     "@adeira/relay-utils": "0.6.0",
     "@adeira/test-utils": "^0.2.0",
-    "@kiwicom/orbit-components": "^0.81.0",
+    "@kiwicom/orbit-components": "^0.82.1",
     "apollo-server-micro": "^2.11.0",
     "date-fns": "^2.11.1",
     "graphql": "^14.6.0",
