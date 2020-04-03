@@ -28,9 +28,9 @@ export default function LocationsQuery(props: Props) {
   return (
     <>
       <Heading>Server Side Rendered Locations</Heading>
-      <hr />
-      <p>TIP: Disable javascript and reload the page</p>
-      <hr />
+      <Separator />
+      <Paragraph>TIP: Disable javascript and reload the page</Paragraph>
+      <Separator />
       <QueryRenderer
         query={query}
         variables={variables}
@@ -42,6 +42,16 @@ export default function LocationsQuery(props: Props) {
     </>
   );
 }
+
+const Paragraph = styled.p`
+  padding: 0;
+  margin: 0;
+`;
+
+const Separator = styled.hr`
+  border-width: 0.5px;
+  margin: 16px 0;
+`;
 
 const Heading = styled.h1`
   font-family: 'Roboto', -apple-system, '.SFNSText-Regular', 'San Francisco', 'Segoe UI',
