@@ -7,9 +7,30 @@ import Link from 'next/link';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import { RelayEnvironmentProvider } from '@adeira/relay';
-import { Alert, Button, ButtonGroup, Stack } from '@kiwicom/orbit-components';
+import { Grommet, grommet as grommetTheme, Anchor, Header, Box, Nav } from 'grommet';
+import { createGlobalStyle } from 'styled-components';
+import { deepMerge } from 'grommet/utils';
 
 import createRelayEnvironment from '../createRelayEnvironment';
+
+const GlobalStyle = createGlobalStyle`
+html, body {
+  margin: 0;
+  padding: 0;
+}
+`;
+
+const theme = deepMerge(grommetTheme, {
+  button: {
+    extend: `border-radius: 3px; color: #fff`,
+  },
+  global: {
+    colors: {
+      brand: '#30b8ba',
+      white: '#fff',
+    },
+  },
+});
 
 export default class MyApp extends App {
   componentDidMount = () => {
@@ -38,35 +59,45 @@ export default class MyApp extends App {
         <Head>
           <title>Relay Example</title>
         </Head>
-        <Stack>
-          <ButtonGroup>
+        <GlobalStyle />
+        <Grommet theme={theme}>
+          <Header background="brand" pad="medium">
             <Link href="/">
-              <Button size="small">Pagination examples</Button>
+              <Anchor color="white">Relay Example</Anchor>
             </Link>
-            <Link href="/polling">
-              <Button size="small">Polling example</Button>
-            </Link>
-            <Link href="/local-form">
-              <Button size="small">Local schema example</Button>
-            </Link>
-            <Link href="/ssr">
-              <Button size="small">Server side rendering example</Button>
-            </Link>
-            <Link href="/mutations/range-add">
-              <Button size="small">Range add mutation example</Button>
-            </Link>
-          </ButtonGroup>
-          {__DEV__ ? (
-            <Alert type="info">
-              TIP: Open a console to see what&apos;s going on behind the scenes.
-            </Alert>
-          ) : (
-            <Alert type="warning">
-              It&apos;s better to clone this repository and try it in development mode.
-            </Alert>
-          )}
-          <Component {...pageProps} />
-        </Stack>
+            <Nav direction="row" gap="medium">
+              <Link href="/">
+                <Anchor color="white">Pagination</Anchor>
+              </Link>
+              <Link href="/polling">
+                <Anchor color="white">Polling</Anchor>
+              </Link>
+              <Link href="/local-form">
+                <Anchor color="white">Local schema</Anchor>
+              </Link>
+              <Link href="/ssr">
+                <Anchor color="white">Server side rendering</Anchor>
+              </Link>
+              <Link href="/mutations/range-add">
+                <Anchor color="white">Range add mutation</Anchor>
+              </Link>
+            </Nav>
+          </Header>
+          <Box pad="medium">
+            {__DEV__ ? (
+              <Box background="neutral-3" pad="small">
+                TIP: Open a console to see what&apos;s going on behind the scenes.
+              </Box>
+            ) : (
+              <Box background="status-warning" pad="small">
+                It&apos;s better to clone this repository and try it in development mode.
+              </Box>
+            )}
+            <Box margin={{ top: 'small' }}>
+              <Component {...pageProps} />
+            </Box>
+          </Box>
+        </Grommet>
       </RelayEnvironmentProvider>
     );
   }
