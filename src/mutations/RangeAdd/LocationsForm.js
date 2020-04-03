@@ -1,34 +1,19 @@
-// @flow strict-local
+// @flow
 
 /* eslint-disable no-alert */
 
 import * as React from 'react';
-import { InputField, Stack, Button, Select } from '@kiwicom/orbit-components';
+import { TextInput, Box, Button, Select } from 'grommet';
 import { graphql, useMutation } from '@adeira/relay';
 
 import type { LocationsFormMutation } from './__generated__/LocationsFormMutation.graphql';
 
 type Props = {||};
-
-type State = {|
-  +name: string,
+type Location = {|
   +locationId: string,
+  +name: string,
   +type: string,
 |};
-type Action =
-  | SyntheticInputEvent<HTMLInputElement>
-  | SyntheticInputEvent<HTMLSelectElement>
-  | 'reset';
-const initialState = { name: '', locationId: '', type: '' };
-function reducer(state: State, action: Action) {
-  if (action === 'reset') {
-    return initialState;
-  }
-  return {
-    ...state,
-    [action.target.name]: action.target.value,
-  };
-}
 
 const configs = [
   {
@@ -44,26 +29,28 @@ const configs = [
   },
 ];
 
-const getLocation = (state: State) => {
+const getLocation = (location: Location) => {
   // We have to map the type from string to enum
   let type: 'AIRPORT' | 'CITY' | 'COUNTRY';
-  switch (state.type) {
+  switch (location.type) {
     case 'AIRPORT':
     case 'CITY':
     case 'COUNTRY':
-      type = state.type;
+      type = location.type;
       break;
     default:
       throw new Error('You selected a value not in the select field');
   }
   return {
-    ...state,
+    ...location,
     type,
   };
 };
 
 export default (function LocationsForm() {
-  const [state, dispatch] = React.useReducer(reducer, initialState);
+  const [locationId, setLocationId] = React.useState('');
+  const [name, setName] = React.useState('');
+  const [type, setType] = React.useState('');
   const [addLocation, loading] = useMutation<LocationsFormMutation>(graphql`
     mutation LocationsFormMutation($location: AddLocationInput!) {
       addLocation(location: $location) {
@@ -86,13 +73,13 @@ export default (function LocationsForm() {
   `);
   const onSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (state.type === '') {
+    if (type === '') {
       alert('You must select a type');
       return;
     }
     addLocation({
       configs,
-      variables: { location: getLocation(state) },
+      variables: { location: getLocation({ type, name, locationId }) },
       onCompleted: (res, errors) => {
         if (errors != null) {
           alert(errors.map(e => e.message).join(','));
@@ -102,42 +89,42 @@ export default (function LocationsForm() {
         ) {
           alert(res.addLocation.message);
         } else {
-          dispatch('reset');
+          setType('');
+          setName('');
+          setLocationId('');
         }
       },
     });
   };
-  const handleChange = e => {
-    e.persist();
-    dispatch(e);
-  };
+
   return (
     <>
       <h3>Add a location</h3>
       <form onSubmit={onSubmit}>
-        <Stack spacing="condensed">
-          <InputField
+        <Box gap="small">
+          <TextInput
             placeholder="locationId"
             name="locationId"
-            value={state.locationId}
-            onChange={handleChange}
+            value={locationId}
+            onChange={e => setLocationId(e.target.value)}
           />
-          <InputField placeholder="name" name="name" value={state.name} onChange={handleChange} />
+          <TextInput
+            placeholder="name"
+            name="name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
           <Select
-            options={[
-              { value: 'AIRPORT', label: 'airport' },
-              { value: 'CITY', label: 'city' },
-              { value: 'COUNTRY', label: 'country' },
-            ]}
+            options={['AIRPORT', 'CITY', 'COUNTRY']}
             name="type"
             placeholder="type"
-            value={state.type}
-            onChange={handleChange}
+            value={type}
+            onChange={option => {
+              setType(option.value);
+            }}
           />
-          <Button loading={loading} submit={true} type="info">
-            Submit
-          </Button>
-        </Stack>
+          <Button label="Submit" disabled={loading} type="submit" primary />
+        </Box>
       </form>
     </>
   );

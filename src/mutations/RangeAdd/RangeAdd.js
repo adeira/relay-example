@@ -1,7 +1,7 @@
-// @flow strict-local
+// @flow
 
 import * as React from 'react';
-import { Stack } from '@kiwicom/orbit-components';
+import { Box, Grid } from 'grommet';
 
 import SimpleLocationsQuery from '../SimpleLocationsQuery';
 import LocationsForm from './LocationsForm';
@@ -10,13 +10,13 @@ type Props = {||};
 
 export default (function RangeAdd() {
   return (
-    <Stack flex={true} spacing="extraLoose">
-      <Stack>
+    <Grid columns={{ count: 2, size: 'auto' }} gap="medium">
+      <Box>
         <SimpleLocationsQuery />
-      </Stack>
-      <Stack>
+      </Box>
+      <Box>
         <LocationsForm />
-      </Stack>
-    </Stack>
+      </Box>
+    </Grid>
   );
 }: React.ComponentType<Props>);

@@ -1,15 +1,17 @@
-// @flow strict-local
+// @flow
 
 import * as React from 'react';
-import { Heading, Text } from '@kiwicom/orbit-components';
+import { Heading, Text } from 'grommet';
 
 import RangeAddExample from '../../mutations/RangeAdd/RangeAdd';
 
 export default function RangeAdd() {
   return (
     <>
-      <Heading element="h1">Range add mutation</Heading>
-      <Text>
+      <Heading level={1} size="small">
+        Range add mutation
+      </Heading>
+      <Text size="small">
         This example shows how you can use relays range add config to easily add new object to your
         connections
         <br />
