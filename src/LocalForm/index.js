@@ -1,7 +1,5 @@
 // @flow
 
-/* global window */
-
 import React, { useEffect } from 'react';
 import {
   commitLocalUpdate,
@@ -11,13 +9,19 @@ import {
 } from '@adeira/relay';
 // FIXME:
 import { generateClientID } from 'relay-runtime'; // eslint-disable-line import/no-extraneous-dependencies
-import { InputField, Textarea, Heading, Text, Separator, Stack } from '@kiwicom/orbit-components';
+import { TextInput, TextArea, Box, Heading, Text } from 'grommet';
+import styled from 'styled-components';
 
 import type { LocalFormQueryResponse } from './__generated__/LocalFormQuery.graphql';
 
 // We are overwriting here the application env context and replacing it with our custom local env.
 const environment = createLocalEnvironment();
 const consoleStyle = 'color: green; background-color: lightgreen;';
+
+const Separator = styled.hr`
+  border-width: 0.5px;
+  margin: 16px 0;
+`;
 
 type LocalData = {|
   +subject?: string,
@@ -53,18 +57,18 @@ function persist(data: LocalData) {
 
 function handleResponse(rendererProps: LocalFormQueryResponse) {
   return (
-    <>
-      <InputField
+    <Box gap="small">
+      <TextInput
         value={rendererProps.localForm?.subject ?? ''}
-        label="Subject"
         onChange={e => persist({ subject: e.target.value })}
+        placeholder="Subject"
       />
-      <Textarea
+      <TextArea
         value={rendererProps.localForm?.message ?? ''}
-        label="Message"
+        placeholder="Message"
         onChange={e => persist({ message: e.target.value })}
       />
-    </>
+    </Box>
   );
 }
 
@@ -74,9 +78,11 @@ export default function LocalForm() {
   });
 
   return (
-    <Stack>
-      <Heading>Persisted form</Heading>
-      <Text>
+    <Box>
+      <Heading level={1} size="small">
+        Persisted form
+      </Heading>
+      <Text size="small">
         This example shows how Relay local schema can be used with form inputs. As a bonus, values
         are persisted into the LocalStorage so anything you typed should &quot;survive&quot; page
         reload.
@@ -97,6 +103,6 @@ export default function LocalForm() {
         `}
         onResponse={handleResponse}
       />
-    </Stack>
+    </Box>
   );
 }
