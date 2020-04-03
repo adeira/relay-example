@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash e20c43f9aa140af9186979eb6c6645d9
+ * @relayHash e6f086ae7e53ce765fab846929c9c08a
  */
 
 /* eslint-disable */
@@ -22,19 +22,8 @@ query LocationsPaginatedRefetchTestQuery {
   ...LocationsPaginatedRefetch_data
 }
 
-fragment CountryFlag_location on Location {
-  country {
-    code
-    name
-  }
-  code
-  name
-  type
-}
-
 fragment Location_location on Location {
   name
-  ...CountryFlag_location
 }
 
 fragment LocationsPaginatedRefetch_data on RootQuery {
@@ -64,26 +53,12 @@ var v0 = [
   }
 ],
 v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "code",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
   "type": "String",
   "enumValues": null,
   "plural": false,
   "nullable": true
 },
-v4 = {
+v2 = {
   "type": "String",
   "enumValues": null,
   "plural": false,
@@ -144,25 +119,10 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  (v1/*: any*/),
-                  {
-                    "kind": "LinkedField",
-                    "alias": null,
-                    "name": "country",
-                    "storageKey": null,
-                    "args": null,
-                    "concreteType": "LocationArea",
-                    "plural": false,
-                    "selections": [
-                      (v2/*: any*/),
-                      (v1/*: any*/)
-                    ]
-                  },
-                  (v2/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "name": "type",
+                    "name": "name",
                     "args": null,
                     "storageKey": null
                   },
@@ -226,7 +186,7 @@ return {
     "operationKind": "query",
     "name": "LocationsPaginatedRefetchTestQuery",
     "id": null,
-    "text": "query LocationsPaginatedRefetchTestQuery {\n  ...LocationsPaginatedRefetch_data\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
+    "text": "query LocationsPaginatedRefetchTestQuery {\n  ...LocationsPaginatedRefetch_data\n}\n\nfragment Location_location on Location {\n  name\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
     "metadata": {
       "relayTestingSelectionTypeInfo": {
         "incrementalPagination": {
@@ -253,32 +213,22 @@ return {
           "plural": false,
           "nullable": true
         },
-        "incrementalPagination.pageInfo.endCursor": (v3/*: any*/),
+        "incrementalPagination.pageInfo.endCursor": (v1/*: any*/),
         "incrementalPagination.edges.node.id": {
           "type": "ID",
           "enumValues": null,
           "plural": false,
           "nullable": true
         },
-        "incrementalPagination.edges.cursor": (v4/*: any*/),
+        "incrementalPagination.edges.cursor": (v2/*: any*/),
         "incrementalPagination.pageInfo.hasNextPage": {
           "type": "Boolean",
           "enumValues": null,
           "plural": false,
           "nullable": false
         },
-        "incrementalPagination.edges.node.name": (v3/*: any*/),
-        "incrementalPagination.edges.node.__typename": (v4/*: any*/),
-        "incrementalPagination.edges.node.country": {
-          "type": "LocationArea",
-          "enumValues": null,
-          "plural": false,
-          "nullable": true
-        },
-        "incrementalPagination.edges.node.code": (v3/*: any*/),
-        "incrementalPagination.edges.node.type": (v3/*: any*/),
-        "incrementalPagination.edges.node.country.code": (v3/*: any*/),
-        "incrementalPagination.edges.node.country.name": (v3/*: any*/)
+        "incrementalPagination.edges.node.name": (v1/*: any*/),
+        "incrementalPagination.edges.node.__typename": (v2/*: any*/)
       }
     }
   }

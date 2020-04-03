@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7eb24f5076a4426e22317dd54b362113
+ * @relayHash bcfc222780253c246849a21d0ce15d8a
  */
 
 /* eslint-disable */
@@ -30,19 +30,8 @@ query HomepageQuery(
   ...LocationsPaginated_data
 }
 
-fragment CountryFlag_location on Location {
-  country {
-    code
-    name
-  }
-  code
-  name
-  type
-}
-
 fragment Location_location on Location {
   name
-  ...CountryFlag_location
 }
 
 fragment LocationsPaginatedBidirectional_data_1TJkD9 on RootQuery {
@@ -130,52 +119,25 @@ v3 = {
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "code",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "country",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "LocationArea",
-  "plural": false,
-  "selections": [
-    (v4/*: any*/),
-    (v3/*: any*/)
-  ]
-},
-v6 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "type",
-  "args": null,
-  "storageKey": null
-},
-v7 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "hasNextPage",
   "args": null,
   "storageKey": null
 },
-v8 = {
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "endCursor",
   "args": null,
   "storageKey": null
 },
-v9 = [
+v6 = [
   {
     "kind": "Literal",
     "name": "first",
     "value": 20
   }
 ],
-v10 = [
+v7 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -196,9 +158,6 @@ v10 = [
         "selections": [
           (v2/*: any*/),
           (v3/*: any*/),
-          (v5/*: any*/),
-          (v4/*: any*/),
-          (v6/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -226,8 +185,8 @@ v10 = [
     "concreteType": "PageInfo",
     "plural": false,
     "selections": [
-      (v8/*: any*/),
-      (v7/*: any*/)
+      (v5/*: any*/),
+      (v4/*: any*/)
     ]
   }
 ];
@@ -290,10 +249,7 @@ return {
                 "plural": false,
                 "selections": [
                   (v2/*: any*/),
-                  (v3/*: any*/),
-                  (v5/*: any*/),
-                  (v4/*: any*/),
-                  (v6/*: any*/)
+                  (v3/*: any*/)
                 ]
               }
             ]
@@ -307,7 +263,7 @@ return {
             "concreteType": "PageInfo",
             "plural": false,
             "selections": [
-              (v7/*: any*/),
+              (v4/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -322,7 +278,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              (v8/*: any*/)
+              (v5/*: any*/)
             ]
           }
         ]
@@ -332,16 +288,16 @@ return {
         "alias": "incrementalPagination",
         "name": "locations",
         "storageKey": "locations(first:20)",
-        "args": (v9/*: any*/),
+        "args": (v6/*: any*/),
         "concreteType": "LocationConnection",
         "plural": false,
-        "selections": (v10/*: any*/)
+        "selections": (v7/*: any*/)
       },
       {
         "kind": "LinkedHandle",
         "alias": "incrementalPagination",
         "name": "locations",
-        "args": (v9/*: any*/),
+        "args": (v6/*: any*/),
         "handle": "connection",
         "key": "locations_incrementalPagination",
         "filters": null
@@ -351,16 +307,16 @@ return {
         "alias": "incrementalPagination2",
         "name": "locations",
         "storageKey": "locations(first:20)",
-        "args": (v9/*: any*/),
+        "args": (v6/*: any*/),
         "concreteType": "LocationConnection",
         "plural": false,
-        "selections": (v10/*: any*/)
+        "selections": (v7/*: any*/)
       },
       {
         "kind": "LinkedHandle",
         "alias": "incrementalPagination2",
         "name": "locations",
-        "args": (v9/*: any*/),
+        "args": (v6/*: any*/),
         "handle": "connection",
         "key": "locations_incrementalPagination2",
         "filters": null
@@ -371,7 +327,7 @@ return {
     "operationKind": "query",
     "name": "HomepageQuery",
     "id": null,
-    "text": "query HomepageQuery(\n  $count: Int!\n) {\n  ...LocationsPaginatedBidirectional_data_1TJkD9\n  ...LocationsPaginatedRefetch_data\n  ...LocationsPaginated_data\n}\n\nfragment CountryFlag_location on Location {\n  country {\n    code\n    name\n  }\n  code\n  name\n  type\n}\n\nfragment Location_location on Location {\n  name\n  ...CountryFlag_location\n}\n\nfragment LocationsPaginatedBidirectional_data_1TJkD9 on RootQuery {\n  locations(first: $count) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment LocationsPaginated_data on RootQuery {\n  incrementalPagination2: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
+    "text": "query HomepageQuery(\n  $count: Int!\n) {\n  ...LocationsPaginatedBidirectional_data_1TJkD9\n  ...LocationsPaginatedRefetch_data\n  ...LocationsPaginated_data\n}\n\nfragment Location_location on Location {\n  name\n}\n\nfragment LocationsPaginatedBidirectional_data_1TJkD9 on RootQuery {\n  locations(first: $count) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment LocationsPaginated_data on RootQuery {\n  incrementalPagination2: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

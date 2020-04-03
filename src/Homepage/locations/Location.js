@@ -2,10 +2,8 @@
 
 import React from 'react';
 import { createFragmentContainer, graphql } from '@adeira/relay';
-import Text from '@kiwicom/orbit-components/lib/Text';
-import Stack from '@kiwicom/orbit-components/lib/Stack';
+import { Text, Box } from 'grommet';
 
-import CountryFlag from './CountryFlag';
 import type { Location_location as LocationDataType } from './__generated__/Location_location.graphql';
 
 type Props = {|
@@ -20,12 +18,11 @@ function Location({ location }: Props) {
   const name = location.name ?? '';
   return (
     <li>
-      <Stack direction="row" spacing="compact">
-        <CountryFlag location={location} />
-        <Text dataTest={`location-${name}`} element="div">
+      <Box direction="row" gap="small">
+        <Text dataTest={`location-${name}`} size="small">
           {name}
         </Text>
-      </Stack>
+      </Box>
     </li>
   );
 }
@@ -34,7 +31,6 @@ export default createFragmentContainer(Location, {
   location: graphql`
     fragment Location_location on Location {
       name
-      ...CountryFlag_location
     }
   `,
 });

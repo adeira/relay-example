@@ -2,8 +2,7 @@
 
 import React from 'react';
 import { graphql, QueryRenderer } from '@adeira/relay';
-import Heading from '@kiwicom/orbit-components/lib/Heading';
-import Text from '@kiwicom/orbit-components/lib/Text';
+import { Heading, Text } from 'grommet';
 
 import LocationsPaginatedBidirectional from './locations/LocationsPaginatedBidirectional';
 import LocationsPaginatedRefetch from './locations/LocationsPaginatedRefetch';
@@ -13,8 +12,10 @@ import type { HomepageQueryResponse } from './__generated__/HomepageQuery.graphq
 function Demo(props) {
   return (
     <>
-      <Heading type="title2">{props.title}</Heading>
-      <Text>
+      <Heading level={2} size="small">
+        {props.title}
+      </Heading>
+      <Text size="small">
         See: <a href={props.link}>{props.linkTitle}</a>
       </Text>
       {props.component}

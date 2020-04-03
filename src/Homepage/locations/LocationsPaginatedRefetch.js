@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { createRefetchContainer, graphql, type RefetchRelayProp } from '@adeira/relay';
-import Button from '@kiwicom/orbit-components/lib/Button';
+import { Button } from 'grommet';
 
 import Location from './Location';
 import type { LocationsPaginatedRefetch_data as LocationsDataType } from './__generated__/LocationsPaginatedRefetch_data.graphql';
@@ -37,9 +37,7 @@ function LocationsPaginatedRefetch(props: Props) {
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>
-      <Button dataTest="loadMore" onClick={loadMore} size="small">
-        Load more!
-      </Button>
+      <Button label="Load more!" dataTest="loadMore" onClick={loadMore} size="small" primary />
     </>
   );
 }

@@ -2,10 +2,8 @@
 
 import React, { useState } from 'react';
 import { createRefetchContainer, graphql, type RefetchRelayProp } from '@adeira/relay';
-import Button from '@kiwicom/orbit-components/lib/Button';
-import ButtonGroup from '@kiwicom/orbit-components/lib/ButtonGroup';
-import ChevronLeft from '@kiwicom/orbit-components/lib/icons/ChevronLeft';
-import ChevronRight from '@kiwicom/orbit-components/lib/icons/ChevronRight';
+import { Button, Box } from 'grommet';
+import { Next, Previous } from 'grommet-icons';
 
 import Location from './Location';
 import type { LocationsPaginatedBidirectional_data as LocationsDataType } from './__generated__/LocationsPaginatedBidirectional_data.graphql';
@@ -61,24 +59,25 @@ function LocationsPaginatedBidirectional(props: Props) {
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>
-      <ButtonGroup>
+      <Box flex={true} direction="row">
         <Button
           onClick={openPreviousPage}
           disabled={!pageInfo.hasPreviousPage}
           size="small"
-          iconLeft={<ChevronLeft />}
-        >
-          Previous page
-        </Button>
+          label="Previous page"
+          primary
+          icon={<Previous color="white" size="small" />}
+        />
         <Button
+          label="Next page"
           onClick={openNextPage}
           disabled={!pageInfo.hasNextPage}
           size="small"
-          iconRight={<ChevronRight />}
-        >
-          Next page
-        </Button>
-      </ButtonGroup>
+          primary
+          icon={<Next color="white" size="small" />}
+          reverse
+        />
+      </Box>
     </>
   );
 }

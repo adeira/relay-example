@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { createPaginationContainer, graphql, type PaginationRelayProp } from '@adeira/relay';
-import Button from '@kiwicom/orbit-components/lib/Button';
+import { Button } from 'grommet';
 
 import Location from './Location';
 import type { LocationsPaginated_data as LocationsDataType } from './__generated__/LocationsPaginated_data.graphql';
@@ -32,9 +32,7 @@ function LocationsPaginated(props: Props) {
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>
-      <Button onClick={loadMore} size="small">
-        Load more!
-      </Button>
+      <Button label="Load more!" onClick={loadMore} size="small" primary />
     </>
   );
 }
