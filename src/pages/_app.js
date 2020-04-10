@@ -24,6 +24,14 @@ const theme = deepMerge(grommetTheme, {
   button: {
     extend: `border-radius: 3px; color: #fff`,
   },
+  select: {
+    options: {
+      text: { color: '#444444' },
+    },
+    control: {
+      extend: `color: #444444;`,
+    },
+  },
   global: {
     colors: {
       brand: '#30b8ba',
