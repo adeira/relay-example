@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f3978bdfe362e7fe4a83b01d05b50a6a
+ * @relayHash 749dbcadd71f1b0d1f875b97ae9f468e
  */
 
 /* eslint-disable */
@@ -30,6 +30,10 @@ query LocationsPaginatedRefetchRefetchQuery(
 
 fragment Location_location on Location {
   name
+  countryFlagURL
+  country {
+    name
+  }
 }
 
 fragment LocationsPaginatedRefetch_data_2QE1um on RootQuery {
@@ -77,7 +81,14 @@ v2 = [
     "name": "first",
     "variableName": "count"
   }
-];
+],
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
   "fragment": {
@@ -140,12 +151,25 @@ return {
                     "args": null,
                     "storageKey": null
                   },
+                  (v3/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "name": "name",
+                    "name": "countryFlagURL",
                     "args": null,
                     "storageKey": null
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "country",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "LocationArea",
+                    "plural": false,
+                    "selections": [
+                      (v3/*: any*/)
+                    ]
                   },
                   {
                     "kind": "ScalarField",
@@ -207,7 +231,7 @@ return {
     "operationKind": "query",
     "name": "LocationsPaginatedRefetchRefetchQuery",
     "id": null,
-    "text": "query LocationsPaginatedRefetchRefetchQuery(\n  $count: Int\n  $after: String\n) {\n  ...LocationsPaginatedRefetch_data_2QE1um\n}\n\nfragment Location_location on Location {\n  name\n}\n\nfragment LocationsPaginatedRefetch_data_2QE1um on RootQuery {\n  incrementalPagination: locations(first: $count, after: $after) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
+    "text": "query LocationsPaginatedRefetchRefetchQuery(\n  $count: Int\n  $after: String\n) {\n  ...LocationsPaginatedRefetch_data_2QE1um\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginatedRefetch_data_2QE1um on RootQuery {\n  incrementalPagination: locations(first: $count, after: $after) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

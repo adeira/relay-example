@@ -16,9 +16,11 @@ function Location({ location }: Props) {
   }
 
   const name = location.name ?? '';
+  const countryName = location.country?.name ?? '';
   return (
     <li>
-      <Box direction="row" gap="small">
+      <Box align="center" direction="row" gap="small">
+        <img src={location.countryFlagURL} alt={`${countryName} flag`} height="24" width="24" />
         <Text dataTest={`location-${name}`} size="small">
           {name}
         </Text>
@@ -31,6 +33,10 @@ export default createFragmentContainer(Location, {
   location: graphql`
     fragment Location_location on Location {
       name
+      countryFlagURL
+      country {
+        name
+      }
     }
   `,
 });

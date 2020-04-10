@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash e6f086ae7e53ce765fab846929c9c08a
+ * @relayHash 88eee03105949ad890d21e5ef060ab6a
  */
 
 /* eslint-disable */
@@ -24,6 +24,10 @@ query LocationsPaginatedRefetchTestQuery {
 
 fragment Location_location on Location {
   name
+  countryFlagURL
+  country {
+    name
+  }
 }
 
 fragment LocationsPaginatedRefetch_data on RootQuery {
@@ -53,12 +57,19 @@ var v0 = [
   }
 ],
 v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
   "type": "String",
   "enumValues": null,
   "plural": false,
   "nullable": true
 },
-v2 = {
+v3 = {
   "type": "String",
   "enumValues": null,
   "plural": false,
@@ -119,12 +130,25 @@ return {
                     "args": null,
                     "storageKey": null
                   },
+                  (v1/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "name": "name",
+                    "name": "countryFlagURL",
                     "args": null,
                     "storageKey": null
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "country",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "LocationArea",
+                    "plural": false,
+                    "selections": [
+                      (v1/*: any*/)
+                    ]
                   },
                   {
                     "kind": "ScalarField",
@@ -186,7 +210,7 @@ return {
     "operationKind": "query",
     "name": "LocationsPaginatedRefetchTestQuery",
     "id": null,
-    "text": "query LocationsPaginatedRefetchTestQuery {\n  ...LocationsPaginatedRefetch_data\n}\n\nfragment Location_location on Location {\n  name\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
+    "text": "query LocationsPaginatedRefetchTestQuery {\n  ...LocationsPaginatedRefetch_data\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
     "metadata": {
       "relayTestingSelectionTypeInfo": {
         "incrementalPagination": {
@@ -213,22 +237,30 @@ return {
           "plural": false,
           "nullable": true
         },
-        "incrementalPagination.pageInfo.endCursor": (v1/*: any*/),
+        "incrementalPagination.pageInfo.endCursor": (v2/*: any*/),
         "incrementalPagination.edges.node.id": {
           "type": "ID",
           "enumValues": null,
           "plural": false,
           "nullable": true
         },
-        "incrementalPagination.edges.cursor": (v2/*: any*/),
+        "incrementalPagination.edges.cursor": (v3/*: any*/),
         "incrementalPagination.pageInfo.hasNextPage": {
           "type": "Boolean",
           "enumValues": null,
           "plural": false,
           "nullable": false
         },
-        "incrementalPagination.edges.node.name": (v1/*: any*/),
-        "incrementalPagination.edges.node.__typename": (v2/*: any*/)
+        "incrementalPagination.edges.node.name": (v2/*: any*/),
+        "incrementalPagination.edges.node.countryFlagURL": (v2/*: any*/),
+        "incrementalPagination.edges.node.country": {
+          "type": "LocationArea",
+          "enumValues": null,
+          "plural": false,
+          "nullable": true
+        },
+        "incrementalPagination.edges.node.__typename": (v3/*: any*/),
+        "incrementalPagination.edges.node.country.name": (v2/*: any*/)
       }
     }
   }

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash c80d5c1196f7e916c8cbe7b5e2942767
+ * @relayHash d2554029d41497167a0e5290e3b28aa5
  */
 
 /* eslint-disable */
@@ -34,6 +34,10 @@ query LocationsPaginatedBidirectionalRefetchQuery(
 
 fragment Location_location on Location {
   name
+  countryFlagURL
+  country {
+    name
+  }
 }
 
 fragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {
@@ -102,7 +106,14 @@ v1 = [
     "name": "last",
     "variableName": "last"
   }
-];
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
   "fragment": {
@@ -158,12 +169,25 @@ return {
                     "args": null,
                     "storageKey": null
                   },
+                  (v2/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "name": "name",
+                    "name": "countryFlagURL",
                     "args": null,
                     "storageKey": null
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "country",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "LocationArea",
+                    "plural": false,
+                    "selections": [
+                      (v2/*: any*/)
+                    ]
                   }
                 ]
               }
@@ -216,7 +240,7 @@ return {
     "operationKind": "query",
     "name": "LocationsPaginatedBidirectionalRefetchQuery",
     "id": null,
-    "text": "query LocationsPaginatedBidirectionalRefetchQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n) {\n  ...LocationsPaginatedBidirectional_data_pbnwq\n}\n\nfragment Location_location on Location {\n  name\n}\n\nfragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {\n  locations(first: $first, last: $last, after: $after, before: $before) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n",
+    "text": "query LocationsPaginatedBidirectionalRefetchQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n) {\n  ...LocationsPaginatedBidirectional_data_pbnwq\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {\n  locations(first: $first, last: $last, after: $after, before: $before) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

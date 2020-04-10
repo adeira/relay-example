@@ -11,6 +11,10 @@ declare export opaque type Location_location$ref: FragmentReference;
 declare export opaque type Location_location$fragmentType: Location_location$ref;
 export type Location_location = {|
   +name: ?string,
+  +countryFlagURL: ?string,
+  +country: ?{|
+    +name: ?string
+  |},
   +$refType: Location_location$ref,
 |};
 export type Location_location$data = Location_location;
@@ -21,22 +25,44 @@ export type Location_location$key = {
 };
 
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "Location_location",
   "type": "Location",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "name",
+      "name": "countryFlagURL",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "country",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "LocationArea",
+      "plural": false,
+      "selections": [
+        (v0/*: any*/)
+      ]
     }
   ]
 };
+})();
 // prettier-ignore
-(node: any).hash = '41fe7050dae52e7ec093383d7c141d5d';
+(node: any).hash = '7c698b5358738414da51f39ea27ddd47';
 export default node;
