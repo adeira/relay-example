@@ -94,7 +94,11 @@ export default function LocalForm() {
         environment={environment}
         query={graphql`
           query LocalFormQuery {
-            __typename # https://github.com/facebook/relay/issues/2471
+            # https://github.com/facebook/relay/issues/2471
+            # Should be ok, we are not calling the BE anyway
+            locations(first: 0) {
+              __typename
+            }
             localForm {
               subject
               message

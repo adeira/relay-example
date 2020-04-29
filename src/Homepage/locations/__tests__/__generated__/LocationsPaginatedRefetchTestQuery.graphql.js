@@ -1,10 +1,8 @@
 /**
  * @flow
- * @relayHash 88eee03105949ad890d21e5ef060ab6a
  */
 
 /* eslint-disable */
-// flowlint untyped-type-import:off
 
 import type { ConcreteRequest } from 'relay-runtime';
 type LocationsPaginatedRefetch_data$ref = any;
@@ -57,10 +55,10 @@ var v0 = [
   }
 ],
 v1 = {
-  "kind": "ScalarField",
   "alias": null,
-  "name": "name",
   "args": null,
+  "kind": "ScalarField",
+  "name": "name",
   "storageKey": null
 },
 v2 = {
@@ -76,141 +74,138 @@ v3 = {
   "nullable": false
 };
 return {
-  "kind": "Request",
   "fragment": {
-    "kind": "Fragment",
-    "name": "LocationsPaginatedRefetchTestQuery",
-    "type": "RootQuery",
-    "metadata": null,
     "argumentDefinitions": [],
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "LocationsPaginatedRefetchTestQuery",
     "selections": [
       {
+        "args": null,
         "kind": "FragmentSpread",
-        "name": "LocationsPaginatedRefetch_data",
-        "args": null
+        "name": "LocationsPaginatedRefetch_data"
       }
-    ]
+    ],
+    "type": "RootQuery"
   },
+  "kind": "Request",
   "operation": {
+    "argumentDefinitions": [],
     "kind": "Operation",
     "name": "LocationsPaginatedRefetchTestQuery",
-    "argumentDefinitions": [],
     "selections": [
       {
-        "kind": "LinkedField",
         "alias": "incrementalPagination",
-        "name": "locations",
-        "storageKey": "locations(first:20)",
         "args": (v0/*: any*/),
         "concreteType": "LocationConnection",
+        "kind": "LinkedField",
+        "name": "locations",
         "plural": false,
         "selections": [
           {
-            "kind": "LinkedField",
             "alias": null,
-            "name": "edges",
-            "storageKey": null,
             "args": null,
             "concreteType": "LocationEdge",
+            "kind": "LinkedField",
+            "name": "edges",
             "plural": true,
             "selections": [
               {
-                "kind": "LinkedField",
                 "alias": null,
-                "name": "node",
-                "storageKey": null,
                 "args": null,
                 "concreteType": "Location",
+                "kind": "LinkedField",
+                "name": "node",
                 "plural": false,
                 "selections": [
                   {
-                    "kind": "ScalarField",
                     "alias": null,
-                    "name": "id",
                     "args": null,
+                    "kind": "ScalarField",
+                    "name": "id",
                     "storageKey": null
                   },
                   (v1/*: any*/),
                   {
-                    "kind": "ScalarField",
                     "alias": null,
-                    "name": "countryFlagURL",
                     "args": null,
+                    "kind": "ScalarField",
+                    "name": "countryFlagURL",
                     "storageKey": null
                   },
                   {
-                    "kind": "LinkedField",
                     "alias": null,
-                    "name": "country",
-                    "storageKey": null,
                     "args": null,
                     "concreteType": "LocationArea",
+                    "kind": "LinkedField",
+                    "name": "country",
                     "plural": false,
                     "selections": [
                       (v1/*: any*/)
-                    ]
+                    ],
+                    "storageKey": null
                   },
                   {
-                    "kind": "ScalarField",
                     "alias": null,
-                    "name": "__typename",
                     "args": null,
+                    "kind": "ScalarField",
+                    "name": "__typename",
                     "storageKey": null
                   }
-                ]
+                ],
+                "storageKey": null
               },
               {
-                "kind": "ScalarField",
                 "alias": null,
-                "name": "cursor",
                 "args": null,
+                "kind": "ScalarField",
+                "name": "cursor",
                 "storageKey": null
               }
-            ]
+            ],
+            "storageKey": null
           },
           {
-            "kind": "LinkedField",
             "alias": null,
-            "name": "pageInfo",
-            "storageKey": null,
             "args": null,
             "concreteType": "PageInfo",
+            "kind": "LinkedField",
+            "name": "pageInfo",
             "plural": false,
             "selections": [
               {
-                "kind": "ScalarField",
                 "alias": null,
-                "name": "endCursor",
                 "args": null,
+                "kind": "ScalarField",
+                "name": "endCursor",
                 "storageKey": null
               },
               {
-                "kind": "ScalarField",
                 "alias": null,
-                "name": "hasNextPage",
                 "args": null,
+                "kind": "ScalarField",
+                "name": "hasNextPage",
                 "storageKey": null
               }
-            ]
+            ],
+            "storageKey": null
           }
-        ]
+        ],
+        "storageKey": "locations(first:20)"
       },
       {
-        "kind": "LinkedHandle",
         "alias": "incrementalPagination",
-        "name": "locations",
         "args": (v0/*: any*/),
+        "filters": null,
         "handle": "connection",
         "key": "locations_incrementalPagination",
-        "filters": null
+        "kind": "LinkedHandle",
+        "name": "locations"
       }
     ]
   },
   "params": {
-    "operationKind": "query",
-    "name": "LocationsPaginatedRefetchTestQuery",
     "id": null,
-    "text": "query LocationsPaginatedRefetchTestQuery {\n  ...LocationsPaginatedRefetch_data\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
     "metadata": {
       "relayTestingSelectionTypeInfo": {
         "incrementalPagination": {
@@ -262,7 +257,10 @@ return {
         "incrementalPagination.edges.node.__typename": (v3/*: any*/),
         "incrementalPagination.edges.node.country.name": (v2/*: any*/)
       }
-    }
+    },
+    "name": "LocationsPaginatedRefetchTestQuery",
+    "operationKind": "query",
+    "text": "query LocationsPaginatedRefetchTestQuery {\n  ...LocationsPaginatedRefetch_data\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();

@@ -1,10 +1,8 @@
 /**
  * @flow
- * @relayHash aaf1f1be9952e198ee157331076a7c45
  */
 
 /* eslint-disable */
-// flowlint untyped-type-import:off
 
 import type { ConcreteRequest } from 'relay-runtime';
 export type LocationType = "AIRPORT" | "CITY" | "COUNTRY" | "%future added value";
@@ -61,18 +59,15 @@ mutation LocationsFormMutation(
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
+    "defaultValue": null,
     "kind": "LocalArgument",
     "name": "location",
-    "type": "AddLocationInput!",
-    "defaultValue": null
+    "type": "AddLocationInput!"
   }
 ],
 v1 = [
   {
-    "kind": "LinkedField",
     "alias": null,
-    "name": "addLocation",
-    "storageKey": null,
     "args": [
       {
         "kind": "Variable",
@@ -81,103 +76,106 @@ v1 = [
       }
     ],
     "concreteType": null,
+    "kind": "LinkedField",
+    "name": "addLocation",
     "plural": false,
     "selections": [
       {
-        "kind": "ScalarField",
         "alias": null,
-        "name": "__typename",
         "args": null,
+        "kind": "ScalarField",
+        "name": "__typename",
         "storageKey": null
       },
       {
-        "kind": "ScalarField",
         "alias": null,
-        "name": "message",
         "args": null,
+        "kind": "ScalarField",
+        "name": "message",
         "storageKey": null
       },
       {
         "kind": "InlineFragment",
-        "type": "AddLocationResponse",
         "selections": [
           {
-            "kind": "LinkedField",
             "alias": null,
-            "name": "locationEdge",
-            "storageKey": null,
             "args": null,
             "concreteType": "LocationEdge",
+            "kind": "LinkedField",
+            "name": "locationEdge",
             "plural": false,
             "selections": [
               {
-                "kind": "LinkedField",
                 "alias": null,
-                "name": "node",
-                "storageKey": null,
                 "args": null,
                 "concreteType": "Location",
+                "kind": "LinkedField",
+                "name": "node",
                 "plural": false,
                 "selections": [
                   {
-                    "kind": "ScalarField",
                     "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
                     "name": "locationId",
-                    "args": null,
                     "storageKey": null
                   },
                   {
-                    "kind": "ScalarField",
                     "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
                     "name": "name",
-                    "args": null,
                     "storageKey": null
                   },
                   {
-                    "kind": "ScalarField",
                     "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
                     "name": "id",
-                    "args": null,
                     "storageKey": null
                   },
                   {
-                    "kind": "ScalarField",
                     "alias": null,
-                    "name": "type",
                     "args": null,
+                    "kind": "ScalarField",
+                    "name": "type",
                     "storageKey": null
                   }
-                ]
+                ],
+                "storageKey": null
               }
-            ]
+            ],
+            "storageKey": null
           }
-        ]
+        ],
+        "type": "AddLocationResponse"
       }
-    ]
+    ],
+    "storageKey": null
   }
 ];
 return {
-  "kind": "Request",
   "fragment": {
-    "kind": "Fragment",
-    "name": "LocationsFormMutation",
-    "type": "RootMutation",
-    "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
-    "selections": (v1/*: any*/)
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "LocationsFormMutation",
+    "selections": (v1/*: any*/),
+    "type": "RootMutation"
   },
+  "kind": "Request",
   "operation": {
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "LocationsFormMutation",
-    "argumentDefinitions": (v0/*: any*/),
     "selections": (v1/*: any*/)
   },
   "params": {
-    "operationKind": "mutation",
-    "name": "LocationsFormMutation",
     "id": null,
-    "text": "mutation LocationsFormMutation(\n  $location: AddLocationInput!\n) {\n  addLocation(location: $location) {\n    __typename\n    ... on AddLocationResponse {\n      locationEdge {\n        node {\n          locationId\n          name\n          id\n          type\n        }\n      }\n    }\n    ... on Error {\n      message\n    }\n  }\n}\n",
-    "metadata": {}
+    "metadata": {},
+    "name": "LocationsFormMutation",
+    "operationKind": "mutation",
+    "text": "mutation LocationsFormMutation(\n  $location: AddLocationInput!\n) {\n  addLocation(location: $location) {\n    __typename\n    ... on AddLocationResponse {\n      locationEdge {\n        node {\n          locationId\n          name\n          id\n          type\n        }\n      }\n    }\n    ... on Error {\n      message\n    }\n  }\n}\n"
   }
 };
 })();

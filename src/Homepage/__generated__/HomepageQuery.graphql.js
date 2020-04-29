@@ -1,10 +1,8 @@
 /**
  * @flow
- * @relayHash 6fd4d5de61d3fe15cdf9652488d81579
  */
 
 /* eslint-disable */
-// flowlint untyped-type-import:off
 
 import type { ConcreteRequest } from 'relay-runtime';
 type LocationsPaginatedBidirectional_data$ref = any;
@@ -93,10 +91,10 @@ fragment LocationsPaginated_data on RootQuery {
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
+    "defaultValue": null,
     "kind": "LocalArgument",
     "name": "count",
-    "type": "Int!",
-    "defaultValue": null
+    "type": "Int!"
   }
 ],
 v1 = [
@@ -107,50 +105,50 @@ v1 = [
   }
 ],
 v2 = {
-  "kind": "ScalarField",
   "alias": null,
-  "name": "id",
   "args": null,
+  "kind": "ScalarField",
+  "name": "id",
   "storageKey": null
 },
 v3 = {
-  "kind": "ScalarField",
   "alias": null,
-  "name": "name",
   "args": null,
+  "kind": "ScalarField",
+  "name": "name",
   "storageKey": null
 },
 v4 = {
-  "kind": "ScalarField",
   "alias": null,
-  "name": "countryFlagURL",
   "args": null,
+  "kind": "ScalarField",
+  "name": "countryFlagURL",
   "storageKey": null
 },
 v5 = {
-  "kind": "LinkedField",
   "alias": null,
-  "name": "country",
-  "storageKey": null,
   "args": null,
   "concreteType": "LocationArea",
+  "kind": "LinkedField",
+  "name": "country",
   "plural": false,
   "selections": [
     (v3/*: any*/)
-  ]
+  ],
+  "storageKey": null
 },
 v6 = {
-  "kind": "ScalarField",
   "alias": null,
-  "name": "hasNextPage",
   "args": null,
+  "kind": "ScalarField",
+  "name": "hasNextPage",
   "storageKey": null
 },
 v7 = {
-  "kind": "ScalarField",
   "alias": null,
-  "name": "endCursor",
   "args": null,
+  "kind": "ScalarField",
+  "name": "endCursor",
   "storageKey": null
 },
 v8 = [
@@ -162,21 +160,19 @@ v8 = [
 ],
 v9 = [
   {
-    "kind": "LinkedField",
     "alias": null,
-    "name": "edges",
-    "storageKey": null,
     "args": null,
     "concreteType": "LocationEdge",
+    "kind": "LinkedField",
+    "name": "edges",
     "plural": true,
     "selections": [
       {
-        "kind": "LinkedField",
         "alias": null,
-        "name": "node",
-        "storageKey": null,
         "args": null,
         "concreteType": "Location",
+        "kind": "LinkedField",
+        "name": "node",
         "plural": false,
         "selections": [
           (v2/*: any*/),
@@ -184,178 +180,180 @@ v9 = [
           (v4/*: any*/),
           (v5/*: any*/),
           {
-            "kind": "ScalarField",
             "alias": null,
-            "name": "__typename",
             "args": null,
+            "kind": "ScalarField",
+            "name": "__typename",
             "storageKey": null
           }
-        ]
+        ],
+        "storageKey": null
       },
       {
-        "kind": "ScalarField",
         "alias": null,
-        "name": "cursor",
         "args": null,
+        "kind": "ScalarField",
+        "name": "cursor",
         "storageKey": null
       }
-    ]
+    ],
+    "storageKey": null
   },
   {
-    "kind": "LinkedField",
     "alias": null,
-    "name": "pageInfo",
-    "storageKey": null,
     "args": null,
     "concreteType": "PageInfo",
+    "kind": "LinkedField",
+    "name": "pageInfo",
     "plural": false,
     "selections": [
       (v7/*: any*/),
       (v6/*: any*/)
-    ]
+    ],
+    "storageKey": null
   }
 ];
 return {
-  "kind": "Request",
   "fragment": {
-    "kind": "Fragment",
-    "name": "HomepageQuery",
-    "type": "RootQuery",
-    "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "HomepageQuery",
     "selections": [
       {
+        "args": (v1/*: any*/),
         "kind": "FragmentSpread",
-        "name": "LocationsPaginatedBidirectional_data",
-        "args": (v1/*: any*/)
+        "name": "LocationsPaginatedBidirectional_data"
       },
       {
+        "args": null,
         "kind": "FragmentSpread",
-        "name": "LocationsPaginatedRefetch_data",
-        "args": null
+        "name": "LocationsPaginatedRefetch_data"
       },
       {
+        "args": null,
         "kind": "FragmentSpread",
-        "name": "LocationsPaginated_data",
-        "args": null
+        "name": "LocationsPaginated_data"
       }
-    ]
+    ],
+    "type": "RootQuery"
   },
+  "kind": "Request",
   "operation": {
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "HomepageQuery",
-    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
-        "kind": "LinkedField",
         "alias": null,
-        "name": "locations",
-        "storageKey": null,
         "args": (v1/*: any*/),
         "concreteType": "LocationConnection",
+        "kind": "LinkedField",
+        "name": "locations",
         "plural": false,
         "selections": [
           {
-            "kind": "LinkedField",
             "alias": null,
-            "name": "edges",
-            "storageKey": null,
             "args": null,
             "concreteType": "LocationEdge",
+            "kind": "LinkedField",
+            "name": "edges",
             "plural": true,
             "selections": [
               {
-                "kind": "LinkedField",
                 "alias": null,
-                "name": "node",
-                "storageKey": null,
                 "args": null,
                 "concreteType": "Location",
+                "kind": "LinkedField",
+                "name": "node",
                 "plural": false,
                 "selections": [
                   (v2/*: any*/),
                   (v3/*: any*/),
                   (v4/*: any*/),
                   (v5/*: any*/)
-                ]
+                ],
+                "storageKey": null
               }
-            ]
+            ],
+            "storageKey": null
           },
           {
-            "kind": "LinkedField",
             "alias": null,
-            "name": "pageInfo",
-            "storageKey": null,
             "args": null,
             "concreteType": "PageInfo",
+            "kind": "LinkedField",
+            "name": "pageInfo",
             "plural": false,
             "selections": [
               (v6/*: any*/),
               {
-                "kind": "ScalarField",
                 "alias": null,
-                "name": "hasPreviousPage",
                 "args": null,
+                "kind": "ScalarField",
+                "name": "hasPreviousPage",
                 "storageKey": null
               },
               {
-                "kind": "ScalarField",
                 "alias": null,
-                "name": "startCursor",
                 "args": null,
+                "kind": "ScalarField",
+                "name": "startCursor",
                 "storageKey": null
               },
               (v7/*: any*/)
-            ]
+            ],
+            "storageKey": null
           }
-        ]
+        ],
+        "storageKey": null
       },
       {
-        "kind": "LinkedField",
         "alias": "incrementalPagination",
-        "name": "locations",
-        "storageKey": "locations(first:20)",
         "args": (v8/*: any*/),
         "concreteType": "LocationConnection",
+        "kind": "LinkedField",
+        "name": "locations",
         "plural": false,
-        "selections": (v9/*: any*/)
+        "selections": (v9/*: any*/),
+        "storageKey": "locations(first:20)"
       },
       {
-        "kind": "LinkedHandle",
         "alias": "incrementalPagination",
-        "name": "locations",
         "args": (v8/*: any*/),
+        "filters": null,
         "handle": "connection",
         "key": "locations_incrementalPagination",
-        "filters": null
+        "kind": "LinkedHandle",
+        "name": "locations"
       },
       {
-        "kind": "LinkedField",
         "alias": "incrementalPagination2",
-        "name": "locations",
-        "storageKey": "locations(first:20)",
         "args": (v8/*: any*/),
         "concreteType": "LocationConnection",
+        "kind": "LinkedField",
+        "name": "locations",
         "plural": false,
-        "selections": (v9/*: any*/)
+        "selections": (v9/*: any*/),
+        "storageKey": "locations(first:20)"
       },
       {
-        "kind": "LinkedHandle",
         "alias": "incrementalPagination2",
-        "name": "locations",
         "args": (v8/*: any*/),
+        "filters": null,
         "handle": "connection",
         "key": "locations_incrementalPagination2",
-        "filters": null
+        "kind": "LinkedHandle",
+        "name": "locations"
       }
     ]
   },
   "params": {
-    "operationKind": "query",
-    "name": "HomepageQuery",
     "id": null,
-    "text": "query HomepageQuery(\n  $count: Int!\n) {\n  ...LocationsPaginatedBidirectional_data_1TJkD9\n  ...LocationsPaginatedRefetch_data\n  ...LocationsPaginated_data\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginatedBidirectional_data_1TJkD9 on RootQuery {\n  locations(first: $count) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment LocationsPaginated_data on RootQuery {\n  incrementalPagination2: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
-    "metadata": {}
+    "metadata": {},
+    "name": "HomepageQuery",
+    "operationKind": "query",
+    "text": "query HomepageQuery(\n  $count: Int!\n) {\n  ...LocationsPaginatedBidirectional_data_1TJkD9\n  ...LocationsPaginatedRefetch_data\n  ...LocationsPaginated_data\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginatedBidirectional_data_1TJkD9 on RootQuery {\n  locations(first: $count) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment LocationsPaginated_data on RootQuery {\n  incrementalPagination2: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();

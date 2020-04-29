@@ -3,7 +3,6 @@
  */
 
 /* eslint-disable */
-// flowlint untyped-type-import:off
 
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
@@ -22,20 +21,20 @@ export type LocationListItem_location$key = {
 
 
 const node: ReaderFragment = {
-  "kind": "Fragment",
-  "name": "LocationListItem_location",
-  "type": "Location",
-  "metadata": null,
   "argumentDefinitions": [],
+  "kind": "Fragment",
+  "metadata": null,
+  "name": "LocationListItem_location",
   "selections": [
     {
-      "kind": "ScalarField",
       "alias": null,
-      "name": "name",
       "args": null,
+      "kind": "ScalarField",
+      "name": "name",
       "storageKey": null
     }
-  ]
+  ],
+  "type": "Location"
 };
 // prettier-ignore
 (node: any).hash = 'f612186461796d05fd950095fd0680ab';

@@ -3,7 +3,6 @@
  */
 
 /* eslint-disable */
-// flowlint untyped-type-import:off
 
 import type { ReaderFragment } from 'relay-runtime';
 type LocationListItem_location$ref = any;
@@ -28,47 +27,47 @@ export type LocationsList_locations$key = {
 
 
 const node: ReaderFragment = {
-  "kind": "Fragment",
-  "name": "LocationsList_locations",
-  "type": "LocationConnection",
-  "metadata": null,
   "argumentDefinitions": [],
+  "kind": "Fragment",
+  "metadata": null,
+  "name": "LocationsList_locations",
   "selections": [
     {
-      "kind": "LinkedField",
       "alias": null,
-      "name": "edges",
-      "storageKey": null,
       "args": null,
       "concreteType": "LocationEdge",
+      "kind": "LinkedField",
+      "name": "edges",
       "plural": true,
       "selections": [
         {
-          "kind": "LinkedField",
           "alias": null,
-          "name": "node",
-          "storageKey": null,
           "args": null,
           "concreteType": "Location",
+          "kind": "LinkedField",
+          "name": "node",
           "plural": false,
           "selections": [
             {
-              "kind": "ScalarField",
               "alias": null,
-              "name": "id",
               "args": null,
+              "kind": "ScalarField",
+              "name": "id",
               "storageKey": null
             },
             {
+              "args": null,
               "kind": "FragmentSpread",
-              "name": "LocationListItem_location",
-              "args": null
+              "name": "LocationListItem_location"
             }
-          ]
+          ],
+          "storageKey": null
         }
-      ]
+      ],
+      "storageKey": null
     }
-  ]
+  ],
+  "type": "LocationConnection"
 };
 // prettier-ignore
 (node: any).hash = 'c52e566c5b829069868d00f531eb22d7';

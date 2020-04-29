@@ -15,6 +15,7 @@ beforeEach(() => {
 
 const TestRenderer = () => (
   <QueryRenderer
+    // $FlowFixMe errors after upgrading to relay 9.1.0
     environment={environment}
     query={graphql`
       query LocationsPaginatedRefetchTestQuery @relay_test_operation {
