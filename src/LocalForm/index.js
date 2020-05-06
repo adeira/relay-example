@@ -95,8 +95,7 @@ export default function LocalForm() {
         query={graphql`
           query LocalFormQuery {
             # https://github.com/facebook/relay/issues/2471
-            # Should be ok, we are not calling the BE anyway
-            locations(first: 0) {
+            ... on RootQuery {
               __typename
             }
             localForm {

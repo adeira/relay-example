@@ -7,9 +7,7 @@
 import type { ConcreteRequest } from 'relay-runtime';
 export type LocalFormQueryVariables = {||};
 export type LocalFormQueryResponse = {|
-  +locations: ?{|
-    +__typename: string
-  |},
+  +__typename: string,
   +localForm: ?{|
     +subject: ?string,
     +message: ?string,
@@ -22,9 +20,7 @@ export type LocalFormQuery = {|
 
 /*
 query LocalFormQuery {
-  locations(first: 0) {
-    __typename
-  }
+  __typename
 }
 */
 
@@ -32,27 +28,10 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "alias": null,
-    "args": [
-      {
-        "kind": "Literal",
-        "name": "first",
-        "value": 0
-      }
-    ],
-    "concreteType": "LocationConnection",
-    "kind": "LinkedField",
-    "name": "locations",
-    "plural": false,
-    "selections": [
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "__typename",
-        "storageKey": null
-      }
-    ],
-    "storageKey": "locations(first:0)"
+    "args": null,
+    "kind": "ScalarField",
+    "name": "__typename",
+    "storageKey": null
   },
   {
     "kind": "ClientExtension",
@@ -106,10 +85,10 @@ return {
     "metadata": {},
     "name": "LocalFormQuery",
     "operationKind": "query",
-    "text": "query LocalFormQuery {\n  locations(first: 0) {\n    __typename\n  }\n}\n"
+    "text": "query LocalFormQuery {\n  __typename\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node: any).hash = '507cef5d350e79a2935ca660216818d6';
+(node: any).hash = 'e61f3eac0352f6268cbca8f35ceb79ed';
 export default node;
