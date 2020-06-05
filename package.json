@@ -29,7 +29,7 @@
   "devDependencies": {
     "@adeira/babel-preset-adeira": "^0.4.0",
     "@testing-library/jest-dom": "^5.9.0",
-    "@testing-library/react": "^10.1.0",
+    "@testing-library/react": "^10.2.0",
     "babel-jest": "^26.0.1",
     "flow-bin": "^0.125.1",
     "graphql": "^14.6.0",
