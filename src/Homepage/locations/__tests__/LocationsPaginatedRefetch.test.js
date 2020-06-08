@@ -22,14 +22,14 @@ const TestRenderer = () => (
       }
     `}
     variables={{}}
-    onResponse={renderProps => <LocationsPaginatedRefetch data={renderProps} />}
+    onResponse={(renderProps) => <LocationsPaginatedRefetch data={renderProps} />}
   />
 );
 
 it('refetches data', () => {
   const wrapper = create(<TestRenderer />);
 
-  environment.mock.resolveMostRecentOperation(operation =>
+  environment.mock.resolveMostRecentOperation((operation) =>
     MockPayloadGenerator.generate(operation, {
       LocationConnection: () => ({
         edges: [
@@ -66,7 +66,7 @@ it('refetches data', () => {
     loadMore.props.onClick();
   });
 
-  environment.mock.resolveMostRecentOperation(operation =>
+  environment.mock.resolveMostRecentOperation((operation) =>
     MockPayloadGenerator.generate(operation, {
       LocationConnection: () => ({
         edges: [
