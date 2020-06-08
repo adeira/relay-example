@@ -1,4 +1,4 @@
-# @generated SignedSource<<6603f4bb0a469d32678fcf4a3ffbde99>>
+# @generated SignedSource<<83290bb975e93dd09e2c722caf346311>>
 
 # <BREAKING-CHANGES-LOG>
 # </BREAKING-CHANGES-LOG>
@@ -13,6 +13,7 @@ type AddLocationError implements Error {
   message: String
 }
 
+"""Input type for creating a location"""
 input AddLocationInput {
   """3-letter IATA code of airport or internal city code."""
   locationId: String!

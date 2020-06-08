@@ -13,6 +13,7 @@ const LocationType = new GraphQLEnumType({
 
 export default new GraphQLInputObjectType({
   name: 'AddLocationInput',
+  description: 'Input type for creating a location',
   fields: {
     locationId: {
       type: GraphQLNonNull(GraphQLString),
