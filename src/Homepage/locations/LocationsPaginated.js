@@ -18,7 +18,7 @@ function LocationsPaginated(props: Props) {
       return;
     }
 
-    props.relay.loadMore(20, (error) => {
+    props.relay.loadMore(20, error => {
       if (error) {
         console.error(error); // eslint-disable-line no-console
       }
@@ -28,7 +28,7 @@ function LocationsPaginated(props: Props) {
   return (
     <>
       <ol>
-        {props.data.incrementalPagination2?.edges?.map((edge) => (
+        {props.data.incrementalPagination2?.edges?.map(edge => (
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>

@@ -31,7 +31,7 @@ function LocationsPaginatedBidirectional(props: Props) {
         before: args.before,
       },
       null,
-      (error) => {
+      error => {
         if (error) {
           console.error(error); // eslint-disable-line no-console
         }
@@ -42,20 +42,20 @@ function LocationsPaginatedBidirectional(props: Props) {
 
   function openPreviousPage() {
     handlePageChange({ before: pageInfo.startCursor }, () =>
-      setStart((start) => start - props.itemsCount),
+      setStart(start => start - props.itemsCount),
     );
   }
 
   function openNextPage() {
     handlePageChange({ after: pageInfo.endCursor }, () =>
-      setStart((start) => start + props.itemsCount),
+      setStart(start => start + props.itemsCount),
     );
   }
 
   return (
     <>
       <ol start={start}>
-        {props.data.locations?.edges?.map((edge) => (
+        {props.data.locations?.edges?.map(edge => (
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>

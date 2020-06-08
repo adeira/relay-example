@@ -33,7 +33,7 @@ function getLocalStorageData(): LocalData {
 }
 
 function persist(data: LocalData) {
-  return commitLocalUpdate(environment, (store) => {
+  return commitLocalUpdate(environment, store => {
     const dataID = generateClientID('local', 'form');
     const record = store.get(dataID) ?? store.create(dataID, 'LocalForm');
     for (const [key, value] of Object.entries(data)) {
@@ -60,13 +60,13 @@ function handleResponse(rendererProps: LocalFormQueryResponse) {
     <Box gap="small">
       <TextInput
         value={rendererProps.localForm?.subject ?? ''}
-        onChange={(e) => persist({ subject: e.target.value })}
+        onChange={e => persist({ subject: e.target.value })}
         placeholder="Subject"
       />
       <TextArea
         value={rendererProps.localForm?.message ?? ''}
         placeholder="Message"
-        onChange={(e) => persist({ message: e.target.value })}
+        onChange={e => persist({ message: e.target.value })}
       />
     </Box>
   );

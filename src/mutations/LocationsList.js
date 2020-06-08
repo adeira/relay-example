@@ -13,7 +13,7 @@ function LocationsList(props: Props) {
   return (
     <>
       <h3>My favorite locations</h3>
-      {props.data.locations?.edges?.map<React.Node>((edge) => (
+      {props.data.locations?.edges?.map<React.Node>(edge => (
         <div key={edge?.node?.id} style={{ padding: '12px', borderBottom: '1px solid black' }}>
           <div>
             name: {edge?.node?.name}, type: {edge?.node?.type}

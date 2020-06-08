@@ -11,7 +11,7 @@ export default new GraphQLObjectType({
     code: {
       type: GraphQLString,
       description: 'The code of the currency ',
-      resolve: (payload) => payload.id,
+      resolve: payload => payload.id,
     },
     format: {
       type: GraphQLString,

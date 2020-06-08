@@ -39,7 +39,7 @@ const TestRenderer = () => (
 
 it('shows city names in the list', () => {
   render(<TestRenderer />);
-  environment.mock.resolveMostRecentOperation((operation) =>
+  environment.mock.resolveMostRecentOperation(operation =>
     MockPayloadGenerator.generate(operation, {
       LocationConnection: () => ({
         edges,
@@ -53,7 +53,7 @@ it('shows city names in the list', () => {
 
 it('adds a location to the connection', async () => {
   render(<TestRenderer />);
-  environment.mock.resolveMostRecentOperation((operation) =>
+  environment.mock.resolveMostRecentOperation(operation =>
     MockPayloadGenerator.generate(operation, {
       LocationConnection: () => ({
         edges,
