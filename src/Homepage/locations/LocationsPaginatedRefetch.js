@@ -15,14 +15,14 @@ type Props = {|
 function LocationsPaginatedRefetch(props: Props) {
   function loadMore() {
     props.relay.refetch(
-      refetchVariables => {
+      (refetchVariables) => {
         return {
           ...refetchVariables,
           after: props.data.incrementalPagination?.pageInfo.endCursor,
         };
       },
       null,
-      error => {
+      (error) => {
         if (error) {
           console.error(error); // eslint-disable-line no-console
         }
@@ -33,7 +33,7 @@ function LocationsPaginatedRefetch(props: Props) {
   return (
     <>
       <ol>
-        {props.data.incrementalPagination?.edges?.map(edge => (
+        {props.data.incrementalPagination?.edges?.map((edge) => (
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>

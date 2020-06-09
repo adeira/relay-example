@@ -82,7 +82,7 @@ export default (function LocationsForm() {
       variables: { location: getLocation({ type, name, locationId }) },
       onCompleted: (res, errors) => {
         if (errors != null) {
-          alert(errors.map(e => e.message).join(','));
+          alert(errors.map((e) => e.message).join(','));
         } else if (
           res.addLocation?.__typename === 'AddLocationError' &&
           res.addLocation.message != null
@@ -106,20 +106,20 @@ export default (function LocationsForm() {
             placeholder="locationId"
             name="locationId"
             value={locationId}
-            onChange={e => setLocationId(e.target.value)}
+            onChange={(e) => setLocationId(e.target.value)}
           />
           <TextInput
             placeholder="name"
             name="name"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
           <Select
             options={['AIRPORT', 'CITY', 'COUNTRY']}
             name="type"
             placeholder="type"
             value={type}
-            onChange={option => {
+            onChange={(option) => {
               setType(option.value);
             }}
           />

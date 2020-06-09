@@ -12,7 +12,7 @@ type Props = {|
 
 const LocationsList = (props: Props): React.Node => {
   const edges = props.locations?.edges ?? [];
-  return edges.map(edge => <LocationListItem key={edge?.node?.id} location={edge?.node} />);
+  return edges.map((edge) => <LocationListItem key={edge?.node?.id} location={edge?.node} />);
 };
 
 export default createFragmentContainer(LocationsList, {

@@ -11,7 +11,7 @@ type ApiType = {|
 
 */
 
-module.exports = function(api /*: ApiType */) {
+module.exports = function (api /*: ApiType */) {
   api.assertVersion(7);
   api.cache.forever();
 
