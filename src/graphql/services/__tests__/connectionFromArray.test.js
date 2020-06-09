@@ -1,6 +1,6 @@
 // @flow
 
-import { offsetToCursor } from 'graphql-relay';
+import { offsetToCursor } from '@adeira/graphql-relay';
 
 import connectionFromArray from '../connectionFromArray';
 

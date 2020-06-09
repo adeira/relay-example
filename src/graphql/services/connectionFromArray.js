@@ -6,18 +6,17 @@ import {
   offsetToCursor,
   type Connection,
   type ConnectionArguments,
-} from 'graphql-relay';
+} from '@adeira/graphql-relay';
 
-type Args = $ReadOnly<{
+type Args = {
   ...ConnectionArguments,
   ...
-}>;
+};
 // There is open discusion how to handle bidirectional pagination:
 // https://github.com/graphql/graphql-relay-js/issues/58
 //
 // Until Relay devs decide, let's try our implementation
 export default function connectionFromArray<T>(data: $ReadOnlyArray<T>, args: Args): Connection<T> {
-  // $FlowExpectedError: graphql-relay is not using explicit inexact object
   const { edges, pageInfo } = relayConnectionFromArray(data, args);
   const firstCursor = offsetToCursor(0);
   const lastCursor = offsetToCursor(data.length - 1);

@@ -1,6 +1,6 @@
 // @flow
 
-import { connectionArgs, type ConnectionArguments } from 'graphql-relay';
+import { connectionArgs, type ConnectionArguments } from '@adeira/graphql-relay';
 
 import connectionFromArray from '../../services/connectionFromArray';
 import locations from '../datasets/locations.json';

@@ -1,6 +1,6 @@
 // @flow strict-local
 
-import { connectionDefinitions } from 'graphql-relay';
+import { connectionDefinitions } from '@adeira/graphql-relay';
 
 import GraphQLLocation from './Location';
 
