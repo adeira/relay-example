@@ -16,7 +16,7 @@
     "apollo-server-micro": "^2.14.3",
     "date-fns": "^2.14.0",
     "graphql": "^14.6.0",
-    "@adeira/graphql-relay": "^0.1.0",
+    "@adeira/graphql-relay": "^0.2.0",
     "grommet": "^2.13.0",
     "grommet-icons": "^4.4.0",
     "next": "^9.4.4",
