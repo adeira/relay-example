@@ -30,7 +30,7 @@ export default function SSRQueryRenderer<T>(props: Props<T>) {
 
     return (
       <RelayEnvironmentProvider environment={environment}>
-        {/* // $FlowFixMe errors after upgrading to relay 9.1.0 */}
+        {/* $FlowFixMe[incompatible-call] errors after upgrading to relay 9.1.0 */}
         {data != null ? props.onResponse(data) : <div>loading...</div>}
       </RelayEnvironmentProvider>
     );
