@@ -31,7 +31,7 @@
     "@adeira/babel-preset-adeira": "^0.4.0",
     "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^10.3.0",
-    "babel-jest": "^26.0.1",
+    "babel-jest": "^26.1.0",
     "flow-bin": "^0.127.0",
     "graphql": "^14.6.0",
     "jest": "^26.0.1",
