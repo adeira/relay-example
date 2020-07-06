@@ -15,7 +15,7 @@
     "@adeira/relay-runtime": "^0.11.0",
     "apollo-server-micro": "^2.15.1",
     "date-fns": "^2.14.0",
-    "graphql": "^14.6.0",
+    "graphql": "^14.7.0",
     "@adeira/graphql-relay": "^0.2.0",
     "grommet": "^2.14.0",
     "grommet-icons": "^4.4.0",
@@ -33,7 +33,7 @@
     "@testing-library/react": "^10.4.3",
     "babel-jest": "^26.1.0",
     "flow-bin": "^0.128.0",
-    "graphql": "^14.6.0",
+    "graphql": "^14.7.0",
     "jest": "^26.1.0",
     "react-test-renderer": "^16.13.1",
     "relay-test-utils": "^9.1.0"
