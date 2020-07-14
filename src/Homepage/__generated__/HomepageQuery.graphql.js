@@ -93,8 +93,7 @@ var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "count",
-    "type": "Int!"
+    "name": "count"
   }
 ],
 v1 = [
@@ -236,7 +235,8 @@ return {
         "name": "LocationsPaginated_data"
       }
     ],
-    "type": "RootQuery"
+    "type": "RootQuery",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -349,6 +349,7 @@ return {
     ]
   },
   "params": {
+    "cacheID": "db85df6575b42f2220776a0d2bdd37b3",
     "id": null,
     "metadata": {},
     "name": "HomepageQuery",

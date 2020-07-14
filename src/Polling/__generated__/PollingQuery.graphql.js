@@ -27,7 +27,7 @@ query PollingQuery(
   currency(code: "usd") {
     rate
     code @include(if: $abTestEnabled)
-  format @include(if: $abTestEnabled)
+    format @include(if: $abTestEnabled)
     id
   }
 }
@@ -38,8 +38,7 @@ var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "abTestEnabled",
-    "type": "Boolean!"
+    "name": "abTestEnabled"
   }
 ],
 v1 = [
@@ -98,7 +97,8 @@ return {
         "storageKey": "currency(code:\"usd\")"
       }
     ],
-    "type": "RootQuery"
+    "type": "RootQuery",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -129,11 +129,12 @@ return {
     ]
   },
   "params": {
+    "cacheID": "f58374fd603c39d824dd8378305483cd",
     "id": null,
     "metadata": {},
     "name": "PollingQuery",
     "operationKind": "query",
-    "text": "query PollingQuery(\n  $abTestEnabled: Boolean!\n) {\n  currency(code: \"usd\") {\n    rate\n    code @include(if: $abTestEnabled)\n  format @include(if: $abTestEnabled)\n    id\n  }\n}\n"
+    "text": "query PollingQuery(\n  $abTestEnabled: Boolean!\n) {\n  currency(code: \"usd\") {\n    rate\n    code @include(if: $abTestEnabled)\n    format @include(if: $abTestEnabled)\n    id\n  }\n}\n"
   }
 };
 })();

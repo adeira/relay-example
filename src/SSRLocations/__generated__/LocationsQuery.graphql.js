@@ -47,8 +47,7 @@ var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "first",
-    "type": "Int!"
+    "name": "first"
   }
 ],
 v1 = [
@@ -82,7 +81,8 @@ return {
         "storageKey": null
       }
     ],
-    "type": "RootQuery"
+    "type": "RootQuery",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -140,6 +140,7 @@ return {
     ]
   },
   "params": {
+    "cacheID": "b9f0b1056687e6075290cc80ed7e3652",
     "id": null,
     "metadata": {},
     "name": "LocationsQuery",

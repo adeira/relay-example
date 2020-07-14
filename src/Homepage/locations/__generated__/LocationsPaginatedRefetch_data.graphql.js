@@ -34,16 +34,14 @@ export type LocationsPaginatedRefetch_data$key = {
 const node: ReaderFragment = {
   "argumentDefinitions": [
     {
-      "defaultValue": 20,
-      "kind": "LocalArgument",
-      "name": "count",
-      "type": "Int"
-    },
-    {
       "defaultValue": null,
       "kind": "LocalArgument",
-      "name": "after",
-      "type": "String"
+      "name": "after"
+    },
+    {
+      "defaultValue": 20,
+      "kind": "LocalArgument",
+      "name": "count"
     }
   ],
   "kind": "Fragment",
@@ -146,7 +144,8 @@ const node: ReaderFragment = {
       "storageKey": null
     }
   ],
-  "type": "RootQuery"
+  "type": "RootQuery",
+  "abstractKey": null
 };
 // prettier-ignore
 (node: any).hash = 'e4110e19cca1a1252c0bed4b574e163b';

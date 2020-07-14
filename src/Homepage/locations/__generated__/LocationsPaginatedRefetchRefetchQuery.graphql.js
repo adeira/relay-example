@@ -53,34 +53,30 @@ fragment LocationsPaginatedRefetch_data_2QE1um on RootQuery {
 */
 
 const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "count",
-    "type": "Int"
-  },
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "after",
-    "type": "String"
-  }
-],
+var v0 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "after"
+},
 v1 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "count"
+},
+v2 = {
   "kind": "Variable",
   "name": "after",
   "variableName": "after"
 },
-v2 = [
-  (v1/*: any*/),
+v3 = [
+  (v2/*: any*/),
   {
     "kind": "Variable",
     "name": "first",
     "variableName": "count"
   }
 ],
-v3 = {
+v4 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
@@ -89,14 +85,17 @@ v3 = {
 };
 return {
   "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v0/*: any*/),
+      (v1/*: any*/)
+    ],
     "kind": "Fragment",
     "metadata": null,
     "name": "LocationsPaginatedRefetchRefetchQuery",
     "selections": [
       {
         "args": [
-          (v1/*: any*/),
+          (v2/*: any*/),
           {
             "kind": "Variable",
             "name": "count",
@@ -107,17 +106,21 @@ return {
         "name": "LocationsPaginatedRefetch_data"
       }
     ],
-    "type": "RootQuery"
+    "type": "RootQuery",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v1/*: any*/),
+      (v0/*: any*/)
+    ],
     "kind": "Operation",
     "name": "LocationsPaginatedRefetchRefetchQuery",
     "selections": [
       {
         "alias": "incrementalPagination",
-        "args": (v2/*: any*/),
+        "args": (v3/*: any*/),
         "concreteType": "LocationConnection",
         "kind": "LinkedField",
         "name": "locations",
@@ -146,7 +149,7 @@ return {
                     "name": "id",
                     "storageKey": null
                   },
-                  (v3/*: any*/),
+                  (v4/*: any*/),
                   {
                     "alias": null,
                     "args": null,
@@ -162,7 +165,7 @@ return {
                     "name": "country",
                     "plural": false,
                     "selections": [
-                      (v3/*: any*/)
+                      (v4/*: any*/)
                     ],
                     "storageKey": null
                   },
@@ -216,7 +219,7 @@ return {
       },
       {
         "alias": "incrementalPagination",
-        "args": (v2/*: any*/),
+        "args": (v3/*: any*/),
         "filters": null,
         "handle": "connection",
         "key": "locations_incrementalPagination",
@@ -226,6 +229,7 @@ return {
     ]
   },
   "params": {
+    "cacheID": "68fcad21c6b61b7cc23b9ba013f0e311",
     "id": null,
     "metadata": {},
     "name": "LocationsPaginatedRefetchRefetchQuery",

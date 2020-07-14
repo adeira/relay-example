@@ -7,16 +7,16 @@
     "@adeira/fetch": "^1.0.3",
     "@adeira/graphql-bc-checker": "^0.2.0",
     "@adeira/graphql-global-id": "^1.0.0",
+    "@adeira/graphql-relay": "^0.2.0",
     "@adeira/js": "^1.2.0",
     "@adeira/monorepo-utils": "^0.8.0",
     "@adeira/relay": "^1.3.2",
+    "@adeira/relay-runtime": "^0.12.0",
     "@adeira/relay-utils": "0.9.0",
     "@adeira/test-utils": "^0.5.0",
-    "@adeira/relay-runtime": "^0.11.0",
     "apollo-server-micro": "^2.15.1",
     "date-fns": "^2.14.0",
     "graphql": "^14.7.0",
-    "@adeira/graphql-relay": "^0.2.0",
     "grommet": "^2.14.0",
     "grommet-icons": "^4.4.0",
     "next": "^9.4.4",
@@ -36,7 +36,7 @@
     "graphql": "^14.7.0",
     "jest": "^26.1.0",
     "react-test-renderer": "^16.13.1",
-    "relay-test-utils": "^9.1.0"
+    "relay-test-utils": "^10.0.0"
   },
   "scripts": {
     "start": "next dev",

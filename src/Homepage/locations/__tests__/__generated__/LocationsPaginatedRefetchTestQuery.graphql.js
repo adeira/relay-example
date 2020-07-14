@@ -62,16 +62,16 @@ v1 = {
   "storageKey": null
 },
 v2 = {
-  "type": "String",
   "enumValues": null,
+  "nullable": false,
   "plural": false,
-  "nullable": true
+  "type": "String"
 },
 v3 = {
-  "type": "String",
   "enumValues": null,
+  "nullable": true,
   "plural": false,
-  "nullable": false
+  "type": "String"
 };
 return {
   "fragment": {
@@ -86,7 +86,8 @@ return {
         "name": "LocationsPaginatedRefetch_data"
       }
     ],
-    "type": "RootQuery"
+    "type": "RootQuery",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -205,57 +206,58 @@ return {
     ]
   },
   "params": {
+    "cacheID": "3ab7d01d3069f9ab266bb0efbeef1023",
     "id": null,
     "metadata": {
       "relayTestingSelectionTypeInfo": {
         "incrementalPagination": {
-          "type": "LocationConnection",
           "enumValues": null,
+          "nullable": true,
           "plural": false,
-          "nullable": true
+          "type": "LocationConnection"
         },
         "incrementalPagination.edges": {
-          "type": "LocationEdge",
           "enumValues": null,
+          "nullable": true,
           "plural": true,
-          "nullable": true
+          "type": "LocationEdge"
         },
-        "incrementalPagination.pageInfo": {
-          "type": "PageInfo",
-          "enumValues": null,
-          "plural": false,
-          "nullable": false
-        },
+        "incrementalPagination.edges.cursor": (v2/*: any*/),
         "incrementalPagination.edges.node": {
-          "type": "Location",
           "enumValues": null,
+          "nullable": true,
           "plural": false,
-          "nullable": true
+          "type": "Location"
         },
-        "incrementalPagination.pageInfo.endCursor": (v2/*: any*/),
-        "incrementalPagination.edges.node.id": {
-          "type": "ID",
-          "enumValues": null,
-          "plural": false,
-          "nullable": true
-        },
-        "incrementalPagination.edges.cursor": (v3/*: any*/),
-        "incrementalPagination.pageInfo.hasNextPage": {
-          "type": "Boolean",
-          "enumValues": null,
-          "plural": false,
-          "nullable": false
-        },
-        "incrementalPagination.edges.node.name": (v2/*: any*/),
-        "incrementalPagination.edges.node.countryFlagURL": (v2/*: any*/),
+        "incrementalPagination.edges.node.__typename": (v2/*: any*/),
         "incrementalPagination.edges.node.country": {
-          "type": "LocationArea",
           "enumValues": null,
+          "nullable": true,
           "plural": false,
-          "nullable": true
+          "type": "LocationArea"
         },
-        "incrementalPagination.edges.node.__typename": (v3/*: any*/),
-        "incrementalPagination.edges.node.country.name": (v2/*: any*/)
+        "incrementalPagination.edges.node.country.name": (v3/*: any*/),
+        "incrementalPagination.edges.node.countryFlagURL": (v3/*: any*/),
+        "incrementalPagination.edges.node.id": {
+          "enumValues": null,
+          "nullable": false,
+          "plural": false,
+          "type": "ID"
+        },
+        "incrementalPagination.edges.node.name": (v3/*: any*/),
+        "incrementalPagination.pageInfo": {
+          "enumValues": null,
+          "nullable": false,
+          "plural": false,
+          "type": "PageInfo"
+        },
+        "incrementalPagination.pageInfo.endCursor": (v3/*: any*/),
+        "incrementalPagination.pageInfo.hasNextPage": {
+          "enumValues": null,
+          "nullable": false,
+          "plural": false,
+          "type": "Boolean"
+        }
       }
     },
     "name": "LocationsPaginatedRefetchTestQuery",

@@ -60,7 +60,8 @@ return {
         "name": "LocationsList_data"
       }
     ],
-    "type": "RootQuery"
+    "type": "RootQuery",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -173,6 +174,7 @@ return {
     ]
   },
   "params": {
+    "cacheID": "ded359500963cd5566c57b0144e27664",
     "id": null,
     "metadata": {},
     "name": "SimpleLocationsQuery",

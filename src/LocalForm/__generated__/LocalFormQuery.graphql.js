@@ -71,7 +71,8 @@ return {
     "metadata": null,
     "name": "LocalFormQuery",
     "selections": (v0/*: any*/),
-    "type": "RootQuery"
+    "type": "RootQuery",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -81,6 +82,7 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
+    "cacheID": "0d99b879d458f565ba2e90754bb6673f",
     "id": null,
     "metadata": {},
     "name": "LocalFormQuery",

@@ -59,7 +59,8 @@ return {
       "storageKey": null
     }
   ],
-  "type": "Location"
+  "type": "Location",
+  "abstractKey": null
 };
 })();
 // prettier-ignore

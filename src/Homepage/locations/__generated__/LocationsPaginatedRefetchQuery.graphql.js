@@ -57,14 +57,12 @@ var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "count",
-    "type": "Int"
+    "name": "count"
   },
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "cursor",
-    "type": "String"
+    "name": "cursor"
   }
 ],
 v1 = {
@@ -107,7 +105,8 @@ return {
         "name": "LocationsPaginated_data"
       }
     ],
-    "type": "RootQuery"
+    "type": "RootQuery",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -226,6 +225,7 @@ return {
     ]
   },
   "params": {
+    "cacheID": "d2e33abab3e007a69c127b9870425423",
     "id": null,
     "metadata": {},
     "name": "LocationsPaginatedRefetchQuery",

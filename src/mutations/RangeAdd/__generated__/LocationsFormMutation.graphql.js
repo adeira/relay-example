@@ -50,6 +50,7 @@ mutation LocationsFormMutation(
       }
     }
     ... on Error {
+      __isError: __typename
       message
     }
   }
@@ -61,8 +62,7 @@ var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "location",
-    "type": "AddLocationInput!"
+    "name": "location"
   }
 ],
 v1 = [
@@ -85,13 +85,6 @@ v1 = [
         "args": null,
         "kind": "ScalarField",
         "name": "__typename",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "message",
         "storageKey": null
       },
       {
@@ -148,7 +141,22 @@ v1 = [
             "storageKey": null
           }
         ],
-        "type": "AddLocationResponse"
+        "type": "AddLocationResponse",
+        "abstractKey": null
+      },
+      {
+        "kind": "InlineFragment",
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "message",
+            "storageKey": null
+          }
+        ],
+        "type": "Error",
+        "abstractKey": "__isError"
       }
     ],
     "storageKey": null
@@ -161,7 +169,8 @@ return {
     "metadata": null,
     "name": "LocationsFormMutation",
     "selections": (v1/*: any*/),
-    "type": "RootMutation"
+    "type": "RootMutation",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -171,11 +180,12 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
+    "cacheID": "ee5a5e99115167c9e889b1e1ab510a56",
     "id": null,
     "metadata": {},
     "name": "LocationsFormMutation",
     "operationKind": "mutation",
-    "text": "mutation LocationsFormMutation(\n  $location: AddLocationInput!\n) {\n  addLocation(location: $location) {\n    __typename\n    ... on AddLocationResponse {\n      locationEdge {\n        node {\n          locationId\n          name\n          id\n          type\n        }\n      }\n    }\n    ... on Error {\n      message\n    }\n  }\n}\n"
+    "text": "mutation LocationsFormMutation(\n  $location: AddLocationInput!\n) {\n  addLocation(location: $location) {\n    __typename\n    ... on AddLocationResponse {\n      locationEdge {\n        node {\n          locationId\n          name\n          id\n          type\n        }\n      }\n    }\n    ... on Error {\n      __isError: __typename\n      message\n    }\n  }\n}\n"
   }
 };
 })();

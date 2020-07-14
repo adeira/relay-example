@@ -139,7 +139,8 @@ const node: ReaderFragment = {
       "storageKey": null
     }
   ],
-  "type": "RootQuery"
+  "type": "RootQuery",
+  "abstractKey": null
 };
 // prettier-ignore
 (node: any).hash = '62c34de2cc3d242f77bd58f315464ccf';

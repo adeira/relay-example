@@ -34,7 +34,8 @@ const node: ReaderFragment = {
       "storageKey": null
     }
   ],
-  "type": "Location"
+  "type": "Location",
+  "abstractKey": null
 };
 // prettier-ignore
 (node: any).hash = 'f612186461796d05fd950095fd0680ab';

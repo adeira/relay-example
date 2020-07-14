@@ -39,26 +39,22 @@ const node: ReaderFragment = {
     {
       "defaultValue": null,
       "kind": "LocalArgument",
-      "name": "first",
-      "type": "Int"
+      "name": "after"
     },
     {
       "defaultValue": null,
       "kind": "LocalArgument",
-      "name": "last",
-      "type": "Int"
+      "name": "before"
     },
     {
       "defaultValue": null,
       "kind": "LocalArgument",
-      "name": "after",
-      "type": "String"
+      "name": "first"
     },
     {
       "defaultValue": null,
       "kind": "LocalArgument",
-      "name": "before",
-      "type": "String"
+      "name": "last"
     }
   ],
   "kind": "Fragment",
@@ -171,7 +167,8 @@ const node: ReaderFragment = {
       "storageKey": null
     }
   ],
-  "type": "RootQuery"
+  "type": "RootQuery",
+  "abstractKey": null
 };
 // prettier-ignore
 (node: any).hash = 'fd753ec4e0d0301837f1a0e78f51f98c';
