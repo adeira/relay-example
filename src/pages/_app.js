@@ -13,6 +13,12 @@ import { deepMerge } from 'grommet/utils';
 
 import createRelayEnvironment from '../createRelayEnvironment';
 
+if (__DEV__) {
+  import('relay-devtools').then(({ installRelayDevTools }) => {
+    installRelayDevTools();
+  });
+}
+
 const GlobalStyle = createGlobalStyle`
 html, body {
   margin: 0;

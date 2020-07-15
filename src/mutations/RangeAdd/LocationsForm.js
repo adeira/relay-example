@@ -15,20 +15,6 @@ type Location = {|
   +type: string,
 |};
 
-const configs = [
-  {
-    type: 'RANGE_ADD',
-    parentID: 'client:root',
-    edgeName: 'locationEdge',
-    connectionInfo: [
-      {
-        key: 'LocationsList_locations',
-        rangeBehavior: 'prepend',
-      },
-    ],
-  },
-];
-
 const getLocation = (location: Location) => {
   // We have to map the type from string to enum
   let type: 'AIRPORT' | 'CITY' | 'COUNTRY';
@@ -56,7 +42,8 @@ export default (function LocationsForm() {
       addLocation(location: $location) {
         __typename
         ... on AddLocationResponse {
-          locationEdge {
+          locationEdge
+            @prependEdge(connections: ["client:root:__LocationsList_locations_connection"]) {
             node {
               locationId
               name
@@ -78,7 +65,6 @@ export default (function LocationsForm() {
       return;
     }
     addLocation({
-      configs,
       variables: { location: getLocation({ type, name, locationId }) },
       onCompleted: (res, errors) => {
         if (errors != null) {

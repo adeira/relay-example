@@ -67,108 +67,111 @@ var v0 = [
 ],
 v1 = [
   {
-    "alias": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "location",
-        "variableName": "location"
-      }
-    ],
-    "concreteType": null,
-    "kind": "LinkedField",
-    "name": "addLocation",
-    "plural": false,
-    "selections": [
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "__typename",
-        "storageKey": null
-      },
-      {
-        "kind": "InlineFragment",
-        "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": "LocationEdge",
-            "kind": "LinkedField",
-            "name": "locationEdge",
-            "plural": false,
-            "selections": [
-              {
-                "alias": null,
-                "args": null,
-                "concreteType": "Location",
-                "kind": "LinkedField",
-                "name": "node",
-                "plural": false,
-                "selections": [
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "locationId",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "name",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "id",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "type",
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          }
-        ],
-        "type": "AddLocationResponse",
-        "abstractKey": null
-      },
-      {
-        "kind": "InlineFragment",
-        "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "message",
-            "storageKey": null
-          }
-        ],
-        "type": "Error",
-        "abstractKey": "__isError"
-      }
-    ],
-    "storageKey": null
+    "kind": "Variable",
+    "name": "location",
+    "variableName": "location"
   }
-];
+],
+v2 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "__typename",
+  "storageKey": null
+},
+v3 = {
+  "alias": null,
+  "args": null,
+  "concreteType": "LocationEdge",
+  "kind": "LinkedField",
+  "name": "locationEdge",
+  "plural": false,
+  "selections": [
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "Location",
+      "kind": "LinkedField",
+      "name": "node",
+      "plural": false,
+      "selections": [
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "locationId",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "name",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "id",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "type",
+          "storageKey": null
+        }
+      ],
+      "storageKey": null
+    }
+  ],
+  "storageKey": null
+},
+v4 = {
+  "kind": "InlineFragment",
+  "selections": [
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "message",
+      "storageKey": null
+    }
+  ],
+  "type": "Error",
+  "abstractKey": "__isError"
+};
 return {
   "fragment": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
     "name": "LocationsFormMutation",
-    "selections": (v1/*: any*/),
+    "selections": [
+      {
+        "alias": null,
+        "args": (v1/*: any*/),
+        "concreteType": null,
+        "kind": "LinkedField",
+        "name": "addLocation",
+        "plural": false,
+        "selections": [
+          (v2/*: any*/),
+          {
+            "kind": "InlineFragment",
+            "selections": [
+              (v3/*: any*/)
+            ],
+            "type": "AddLocationResponse",
+            "abstractKey": null
+          },
+          (v4/*: any*/)
+        ],
+        "storageKey": null
+      }
+    ],
     "type": "RootMutation",
     "abstractKey": null
   },
@@ -177,7 +180,47 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "LocationsFormMutation",
-    "selections": (v1/*: any*/)
+    "selections": [
+      {
+        "alias": null,
+        "args": (v1/*: any*/),
+        "concreteType": null,
+        "kind": "LinkedField",
+        "name": "addLocation",
+        "plural": false,
+        "selections": [
+          (v2/*: any*/),
+          {
+            "kind": "InlineFragment",
+            "selections": [
+              (v3/*: any*/),
+              {
+                "alias": null,
+                "args": null,
+                "filters": null,
+                "handle": "prependEdge",
+                "key": "",
+                "kind": "LinkedHandle",
+                "name": "locationEdge",
+                "handleArgs": [
+                  {
+                    "kind": "Literal",
+                    "name": "connections",
+                    "value": [
+                      "client:root:__LocationsList_locations_connection"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "type": "AddLocationResponse",
+            "abstractKey": null
+          },
+          (v4/*: any*/)
+        ],
+        "storageKey": null
+      }
+    ]
   },
   "params": {
     "cacheID": "ee5a5e99115167c9e889b1e1ab510a56",
@@ -190,5 +233,5 @@ return {
 };
 })();
 // prettier-ignore
-(node: any).hash = 'b76b10e95f185bbe64b7bf91d01fdf78';
+(node: any).hash = '7beb8a2a80e3e7354ba8e494dd71a502';
 export default node;
