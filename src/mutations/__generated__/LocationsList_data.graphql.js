@@ -10,13 +10,14 @@ declare export opaque type LocationsList_data$ref: FragmentReference;
 declare export opaque type LocationsList_data$fragmentType: LocationsList_data$ref;
 export type LocationsList_data = {|
   +locations: ?{|
+    +__id: string,
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
         +id: string,
         +name: ?string,
         +type: ?string,
       |}
-    |}>
+    |}>,
   |},
   +$refType: LocationsList_data$ref,
 |};
@@ -134,6 +135,18 @@ const node: ReaderFragment = {
             }
           ],
           "storageKey": null
+        },
+        {
+          "kind": "ClientExtension",
+          "selections": [
+            {
+              "alias": null,
+              "args": null,
+              "kind": "ScalarField",
+              "name": "__id",
+              "storageKey": null
+            }
+          ]
         }
       ],
       "storageKey": null
@@ -143,5 +156,5 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 // prettier-ignore
-(node: any).hash = '62c34de2cc3d242f77bd58f315464ccf';
+(node: any).hash = '889f1cc9f0546e9d48dcdb71bb4d5f3b';
 export default node;

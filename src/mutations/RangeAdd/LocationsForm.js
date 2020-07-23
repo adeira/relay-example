@@ -8,7 +8,10 @@ import { graphql, useMutation } from '@adeira/relay';
 
 import type { LocationsFormMutation } from './__generated__/LocationsFormMutation.graphql';
 
-type Props = {||};
+type Props = {|
+  +connectionId: string,
+|};
+
 type Location = {|
   +locationId: string,
   +name: string,
@@ -33,17 +36,16 @@ const getLocation = (location: Location) => {
   };
 };
 
-export default (function LocationsForm() {
+export default (function LocationsForm(props: Props) {
   const [locationId, setLocationId] = React.useState('');
   const [name, setName] = React.useState('');
   const [type, setType] = React.useState('');
   const [addLocation, loading] = useMutation<LocationsFormMutation>(graphql`
-    mutation LocationsFormMutation($location: AddLocationInput!) {
+    mutation LocationsFormMutation($location: AddLocationInput!, $connections: [String!]!) {
       addLocation(location: $location) {
         __typename
         ... on AddLocationResponse {
-          locationEdge
-            @prependEdge(connections: ["client:root:__LocationsList_locations_connection"]) {
+          locationEdge @prependEdge(connections: $connections) {
             node {
               locationId
               name
@@ -65,7 +67,10 @@ export default (function LocationsForm() {
       return;
     }
     addLocation({
-      variables: { location: getLocation({ type, name, locationId }) },
+      variables: {
+        location: getLocation({ type, name, locationId }),
+        connections: [props.connectionId],
+      },
       onCompleted: (res, errors) => {
         if (errors != null) {
           alert(errors.map((e) => e.message).join(','));

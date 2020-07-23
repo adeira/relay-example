@@ -12,7 +12,8 @@ export type AddLocationInput = {|
   type: LocationType,
 |};
 export type LocationsFormMutationVariables = {|
-  location: AddLocationInput
+  location: AddLocationInput,
+  connections: $ReadOnlyArray<string>,
 |};
 export type LocationsFormMutationResponse = {|
   +addLocation: ?{|
@@ -58,28 +59,31 @@ mutation LocationsFormMutation(
 */
 
 const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "location"
-  }
-],
-v1 = [
+var v0 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "connections"
+},
+v1 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "location"
+},
+v2 = [
   {
     "kind": "Variable",
     "name": "location",
     "variableName": "location"
   }
 ],
-v2 = {
+v3 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "__typename",
   "storageKey": null
 },
-v3 = {
+v4 = {
   "alias": null,
   "args": null,
   "concreteType": "LocationEdge",
@@ -129,7 +133,7 @@ v3 = {
   ],
   "storageKey": null
 },
-v4 = {
+v5 = {
   "kind": "InlineFragment",
   "selections": [
     {
@@ -145,29 +149,32 @@ v4 = {
 };
 return {
   "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v0/*: any*/),
+      (v1/*: any*/)
+    ],
     "kind": "Fragment",
     "metadata": null,
     "name": "LocationsFormMutation",
     "selections": [
       {
         "alias": null,
-        "args": (v1/*: any*/),
+        "args": (v2/*: any*/),
         "concreteType": null,
         "kind": "LinkedField",
         "name": "addLocation",
         "plural": false,
         "selections": [
-          (v2/*: any*/),
+          (v3/*: any*/),
           {
             "kind": "InlineFragment",
             "selections": [
-              (v3/*: any*/)
+              (v4/*: any*/)
             ],
             "type": "AddLocationResponse",
             "abstractKey": null
           },
-          (v4/*: any*/)
+          (v5/*: any*/)
         ],
         "storageKey": null
       }
@@ -177,23 +184,26 @@ return {
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v1/*: any*/),
+      (v0/*: any*/)
+    ],
     "kind": "Operation",
     "name": "LocationsFormMutation",
     "selections": [
       {
         "alias": null,
-        "args": (v1/*: any*/),
+        "args": (v2/*: any*/),
         "concreteType": null,
         "kind": "LinkedField",
         "name": "addLocation",
         "plural": false,
         "selections": [
-          (v2/*: any*/),
+          (v3/*: any*/),
           {
             "kind": "InlineFragment",
             "selections": [
-              (v3/*: any*/),
+              (v4/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -204,11 +214,9 @@ return {
                 "name": "locationEdge",
                 "handleArgs": [
                   {
-                    "kind": "Literal",
+                    "kind": "Variable",
                     "name": "connections",
-                    "value": [
-                      "client:root:__LocationsList_locations_connection"
-                    ]
+                    "variableName": "connections"
                   }
                 ]
               }
@@ -216,7 +224,7 @@ return {
             "type": "AddLocationResponse",
             "abstractKey": null
           },
-          (v4/*: any*/)
+          (v5/*: any*/)
         ],
         "storageKey": null
       }
@@ -233,5 +241,5 @@ return {
 };
 })();
 // prettier-ignore
-(node: any).hash = '7beb8a2a80e3e7354ba8e494dd71a502';
+(node: any).hash = '02620f243d49e3a3e981e691a84c5f70';
 export default node;
