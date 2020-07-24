@@ -12,7 +12,7 @@
     "@adeira/monorepo-utils": "^0.8.0",
     "@adeira/relay": "^2.0.2",
     "@adeira/relay-runtime": "^0.14.0",
-    "@adeira/relay-utils": "0.10.0",
+    "@adeira/relay-utils": "0.11.0",
     "@adeira/test-utils": "^0.5.0",
     "apollo-server-micro": "^2.16.0",
     "date-fns": "^2.15.0",
