@@ -19,7 +19,7 @@
     "graphql": "^14.7.0",
     "grommet": "^2.14.0",
     "grommet-icons": "^4.4.0",
-    "next": "^9.4.4",
+    "next": "^9.5.0",
     "next-plugin-custom-babel-config": "^1.0.4",
     "next-transpile-modules": "^4.0.2",
     "nprogress": "^0.2.0",
