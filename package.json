@@ -14,7 +14,7 @@
     "@adeira/relay-runtime": "^0.14.0",
     "@adeira/relay-utils": "0.11.0",
     "@adeira/test-utils": "^0.5.0",
-    "apollo-server-micro": "^2.16.0",
+    "apollo-server-micro": "^2.16.1",
     "date-fns": "^2.15.0",
     "graphql": "^14.7.0",
     "grommet": "^2.14.0",
