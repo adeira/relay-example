@@ -13,7 +13,6 @@
 [lints]
 all=error
 ambiguous-object-type=off
-dynamic-export=off
 sketchy-null-bool=off
 unclear-type=off
 untyped-import=off
