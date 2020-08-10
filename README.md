@@ -58,7 +58,7 @@ function handleResponse(props: AppQueryResponse) {
   const edges = props.allLocations?.edges ?? [];
   return (
     <ol>
-      {edges.map(edge => (
+      {edges.map((edge) => (
         <li key={edge?.node?.id}>{edge?.node?.name}</li>
       ))}
     </ol>
@@ -234,7 +234,7 @@ export default function Polling() {
       cacheConfig={{
         poll: 5000, // update UI every 5 seconds
       }}
-      onResponse={data => {
+      onResponse={(data) => {
         // this callback is gonna be called every time your data change
         console.log(data);
       }}
