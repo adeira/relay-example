@@ -1,4 +1,4 @@
-# @generated SignedSource<<83290bb975e93dd09e2c722caf346311>>
+# @generated SignedSource<<61eff28ca34068e0d32355fa3790bfc6>>
 
 # <BREAKING-CHANGES-LOG>
 # </BREAKING-CHANGES-LOG>
@@ -41,9 +41,7 @@ type Currency {
   format: String
 
   """
-  The globally unique ID of an object. You can unmask this ID to get original
-  value but please note that this unmasked ID is not globally unique anymore and
-  therefore it cannot be used as a cache key.
+  The globally unique ID of an object. You can unmask this ID to get original value but please note that this unmasked ID is not globally unique anymore and therefore it cannot be used as a cache key.
   """
   id(opaque: Boolean = true): ID!
 
@@ -64,9 +62,7 @@ type Location {
   countryFlagURL: String
 
   """
-  The globally unique ID of an object. You can unmask this ID to get original
-  value but please note that this unmasked ID is not globally unique anymore and
-  therefore it cannot be used as a cache key.
+  The globally unique ID of an object. You can unmask this ID to get original value but please note that this unmasked ID is not globally unique anymore and therefore it cannot be used as a cache key.
   """
   id(opaque: Boolean = true): ID!
 
