@@ -1,13 +1,13 @@
 // @flow
 
-import React, { useState } from 'react';
+import React, { useState, type Node } from 'react';
 import { graphql, QueryRenderer } from '@adeira/relay';
 import { isBrowser } from '@adeira/js';
 
 import useInterval from './useInterval';
 import type { PollingQueryResponse } from './__generated__/PollingQuery.graphql';
 
-export default function Polling() {
+export default function Polling(): Node {
   const [abTestEnabled, setAbTest] = useState(false);
 
   // If we add the polling config on server, the server also keeps polling, which is unnecessary

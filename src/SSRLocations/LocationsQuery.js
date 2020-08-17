@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react';
+import React, { type Node } from 'react';
 import { graphql, type RecordMap } from '@adeira/relay';
 import styled from 'styled-components';
 
@@ -24,7 +24,7 @@ type Props = {|
   +ssrData: RecordMap,
 |};
 
-export default function LocationsQuery(props: Props) {
+export default function LocationsQuery(props: Props): Node {
   return (
     <>
       <Heading>Server Side Rendered Locations</Heading>

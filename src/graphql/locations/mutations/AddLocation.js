@@ -14,9 +14,9 @@ export default {
   type: AddLocationOrError,
   description: 'Add a new location',
   args: {
-    location: { type: GraphQLNonNull(AddLocationInput) },
+    location: { type: (GraphQLNonNull(AddLocationInput): GraphQLNonNull<typeof AddLocationInput>) },
   },
-  resolve: (_: mixed, { location }: Args) => {
+  resolve: (_: mixed, { location }: Args): ValidLocationResponse | string => {
     if (location.name === '' || location.locationId.length !== 3) {
       // TODO: ErrorClass and handle missing type, possibly locationId.length !== 3
       return '';

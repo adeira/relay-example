@@ -2,8 +2,9 @@
 
 import {
   connectionArgs,
-  type ConnectionArguments,
   connectionFromArray,
+  type Connection,
+  type ConnectionArguments,
 } from '@adeira/graphql-relay';
 
 import locations from '../datasets/locations.json';
@@ -14,7 +15,7 @@ export default {
   args: {
     ...connectionArgs,
   },
-  resolve: (_: mixed, args: { ...ConnectionArguments, ... }) => {
+  resolve: (_: mixed, args: { ...ConnectionArguments, ... }): Connection<Location> => {
     return connectionFromArray<Location>(locations.locations, args);
   },
 };

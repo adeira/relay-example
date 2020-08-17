@@ -11,7 +11,7 @@ const LocationType = new GraphQLEnumType({
   },
 });
 
-export default new GraphQLInputObjectType({
+export default (new GraphQLInputObjectType({
   name: 'AddLocationInput',
   description: 'Input type for creating a location',
   fields: {
@@ -27,4 +27,4 @@ export default new GraphQLInputObjectType({
       description: 'Airport, city or country.',
     },
   },
-});
+}): GraphQLInputObjectType);

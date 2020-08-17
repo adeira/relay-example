@@ -5,7 +5,7 @@ import { Heading, Text } from 'grommet';
 
 import RangeAddExample from '../../mutations/RangeAdd/RangeAdd';
 
-export default function RangeAdd() {
+export default function RangeAdd(): React.Node {
   return (
     <>
       <Heading level={1} size="small">

@@ -1,8 +1,8 @@
 // @flow
 
-import { GraphQLNonNull, GraphQLString } from 'graphql';
+import { GraphQLNonNull, GraphQLString, type GraphQLScalarType } from 'graphql';
 
-import CurrencyType from '../types/output/Currency';
+import CurrencyType, { type TSource } from '../types/output/Currency';
 
 export default {
   type: CurrencyType,
@@ -10,11 +10,11 @@ export default {
     'Detail of a currency. Please note: This is not real data, only Math.random() is return',
   args: {
     code: {
-      type: new GraphQLNonNull(GraphQLString),
+      type: (new GraphQLNonNull(GraphQLString): GraphQLNonNull<GraphQLScalarType>),
       description: 'The currency code',
     },
   },
-  resolve: () => {
+  resolve: (): TSource => {
     return {
       rate: Math.random(),
       format: '$ __price__',

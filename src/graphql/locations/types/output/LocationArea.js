@@ -9,7 +9,7 @@ export type LocationArea = {|
   +code: string,
 |};
 
-export default new GraphQLObjectType({
+export default (new GraphQLObjectType({
   name: 'LocationArea',
   description: 'Area of a location',
   fields: {
@@ -30,4 +30,4 @@ export default new GraphQLObjectType({
       resolve: ({ code }: LocationArea): string => code,
     },
   },
-});
+}): GraphQLObjectType);

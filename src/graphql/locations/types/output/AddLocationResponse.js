@@ -4,7 +4,7 @@ import { GraphQLObjectType } from 'graphql';
 
 import { LocationEdge } from './LocationConnection';
 
-export default new GraphQLObjectType({
+export default (new GraphQLObjectType({
   name: 'AddLocationResponse',
   description:
     'The newly created location edge that can be automatically added into a connection by Relay',
@@ -16,4 +16,4 @@ export default new GraphQLObjectType({
       },
     },
   },
-});
+}): GraphQLObjectType);

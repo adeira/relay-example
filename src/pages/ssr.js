@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react';
+import React, { type Node } from 'react';
 import { fetchQuery, type RecordMap } from '@adeira/relay';
 
 import createRelayEnvironment from '../createRelayEnvironment';
@@ -10,7 +10,7 @@ type Props = {|
   +ssrData: RecordMap,
 |};
 
-function Ssr(props: Props) {
+function Ssr(props: Props): Node {
   return <LocationsQuery ssrData={props.ssrData} />;
 }
 

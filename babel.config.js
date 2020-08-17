@@ -9,9 +9,14 @@ type ApiType = {|
   |},
 |};
 
+type BabelConfig = {|
+  +plugins: $ReadOnlyArray<string>,
+  +presets: $ReadOnlyArray<string>,
+|}
+
 */
 
-module.exports = function (api /*: ApiType */) {
+module.exports = function (api /*: ApiType */) /*: BabelConfig */ {
   api.assertVersion(7);
   api.cache.forever();
 

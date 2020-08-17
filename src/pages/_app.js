@@ -47,26 +47,26 @@ const theme = deepMerge(grommetTheme, {
 });
 
 export default class MyApp extends App {
-  componentDidMount = () => {
+  componentDidMount: () => void = () => {
     Router.events.on('routeChangeStart', this.handleRouteChangeStart);
     Router.events.on('routeChangeComplete', this.handleRouteChangeComplete);
     Router.events.on('routeChangeError', this.handleRouteChangeComplete);
   };
 
-  componentWillUnmount = () => {
+  componentWillUnmount: () => void = () => {
     Router.events.off('routeChangeStart', this.handleRouteChangeStart);
   };
 
-  handleRouteChangeStart = (url: string) => {
+  handleRouteChangeStart: (url: string) => void = (url: string) => {
     console.log(`Loading: ${url}`); // eslint-disable-line no-console
     NProgress.start();
   };
 
-  handleRouteChangeComplete = () => {
+  handleRouteChangeComplete: () => void = () => {
     NProgress.done();
   };
 
-  render() {
+  render(): React.Node {
     const { Component, pageProps } = this.props;
     return (
       <RelayEnvironmentProvider environment={createRelayEnvironment(undefined)}>

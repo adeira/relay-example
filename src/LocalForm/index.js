@@ -1,6 +1,6 @@
 // @flow
 
-import React, { useEffect } from 'react';
+import React, { useEffect, type Node } from 'react';
 import {
   commitLocalUpdate,
   createLocalEnvironment,
@@ -72,7 +72,7 @@ function handleResponse(rendererProps: LocalFormQueryResponse) {
   );
 }
 
-export default function LocalForm() {
+export default function LocalForm(): Node {
   useEffect(() => {
     persist(getLocalStorageData());
   });

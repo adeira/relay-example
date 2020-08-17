@@ -15,7 +15,7 @@ type Props<T> = {|
   +ssrData: $FlowFixMe,
 |};
 
-export default function SSRQueryRenderer<T>(props: Props<T>) {
+export default function SSRQueryRenderer<T>(props: Props<T>): React.Node {
   // We have to re-create the environment here with initialized store for SSR.
   const environment = createRelayEnvironment(props.ssrData);
 

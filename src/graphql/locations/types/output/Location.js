@@ -6,7 +6,7 @@ import GlobalID from '@adeira/graphql-global-id';
 import GraphQLLocationArea, { type LocationArea } from './LocationArea';
 import type { Location } from '../../locations';
 
-export default new GraphQLObjectType({
+export default (new GraphQLObjectType({
   name: 'Location',
   description: 'Location type',
   fields: {
@@ -84,4 +84,4 @@ export default new GraphQLObjectType({
       resolve: ({ code }: Location): string => code,
     },
   },
-});
+}): GraphQLObjectType);

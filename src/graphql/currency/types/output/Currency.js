@@ -3,7 +3,13 @@
 import { GraphQLObjectType, GraphQLString, GraphQLFloat } from 'graphql';
 import globalIdField from '@adeira/graphql-global-id';
 
-export default new GraphQLObjectType({
+export type TSource = {|
+  +format: string,
+  +id: string,
+  +rate: number,
+|};
+
+export default (new GraphQLObjectType({
   name: 'Currency',
   description: 'The currency object. Note this is just mocked data',
   fields: () => ({
@@ -22,4 +28,4 @@ export default new GraphQLObjectType({
       type: GraphQLFloat,
     },
   }),
-});
+}): GraphQLObjectType);

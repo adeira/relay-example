@@ -16,7 +16,7 @@ export class ValidLocationResponse {
   }
 }
 
-export default new GraphQLUnionType({
+export default (new GraphQLUnionType({
   name: 'AddLocationOrError',
   types: [AddLocationError, AddLocationResponse],
   resolveType: (value) => {
@@ -25,4 +25,4 @@ export default new GraphQLUnionType({
     }
     return AddLocationError;
   },
-});
+}): GraphQLUnionType);

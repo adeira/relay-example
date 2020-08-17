@@ -21,7 +21,7 @@ const FadeInWrapper = styled(CSSTransition)`
   }
 `;
 
-function FadeIn({ children, ...rest }: Props) {
+function FadeIn({ children, ...rest }: Props): React.Node {
   return (
     <FadeInWrapper {...rest}>
       <div>{children}</div>

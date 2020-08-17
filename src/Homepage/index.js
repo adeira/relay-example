@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react';
+import * as React from 'react';
 import { graphql, QueryRenderer } from '@adeira/relay';
 import { Heading, Text } from 'grommet';
 
@@ -68,7 +68,7 @@ function renderQueryRendererResponse(props: HomepageQueryResponse) {
   );
 }
 
-export default function Homepage() {
+export default function Homepage(): React.Node {
   const queryVariables = {
     count: ITEMS_COUNT,
   };
