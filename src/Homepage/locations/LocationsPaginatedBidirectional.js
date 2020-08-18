@@ -1,7 +1,12 @@
 // @flow
 
 import React, { useState } from 'react';
-import { createRefetchContainer, graphql, type RefetchRelayProp } from '@adeira/relay';
+import {
+  createRefetchContainer,
+  graphql,
+  type RefetchRelayProp,
+  type RefetchContainerType,
+} from '@adeira/relay';
 import { Button, Box } from 'grommet';
 import { Next, Previous } from 'grommet-icons';
 
@@ -82,7 +87,7 @@ function LocationsPaginatedBidirectional(props: Props) {
   );
 }
 
-export default createRefetchContainer(
+export default (createRefetchContainer(
   LocationsPaginatedBidirectional,
   {
     data: graphql`
@@ -121,4 +126,4 @@ export default createRefetchContainer(
         @arguments(first: $first, last: $last, after: $after, before: $before)
     }
   `,
-);
+): RefetchContainerType<Props>);

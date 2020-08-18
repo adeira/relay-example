@@ -1,7 +1,12 @@
 // @flow
 
 import React from 'react';
-import { createRefetchContainer, graphql, type RefetchRelayProp } from '@adeira/relay';
+import {
+  createRefetchContainer,
+  graphql,
+  type RefetchRelayProp,
+  type RefetchContainerType,
+} from '@adeira/relay';
 import { Button } from 'grommet';
 
 import Location from './Location';
@@ -42,7 +47,7 @@ function LocationsPaginatedRefetch(props: Props) {
   );
 }
 
-export default createRefetchContainer(
+export default (createRefetchContainer(
   LocationsPaginatedRefetch,
   {
     data: graphql`
@@ -68,4 +73,4 @@ export default createRefetchContainer(
       ...LocationsPaginatedRefetch_data @arguments(count: $count, after: $after)
     }
   `,
-);
+): RefetchContainerType<Props>);

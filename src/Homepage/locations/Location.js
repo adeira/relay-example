@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { createFragmentContainer, graphql } from '@adeira/relay';
+import { createFragmentContainer, graphql, type FragmentContainerType } from '@adeira/relay';
 import { Text, Box } from 'grommet';
 
 import type { Location_location as LocationDataType } from './__generated__/Location_location.graphql';
@@ -29,7 +29,7 @@ function Location({ location }: Props) {
   );
 }
 
-export default createFragmentContainer(Location, {
+export default (createFragmentContainer(Location, {
   location: graphql`
     fragment Location_location on Location {
       name
@@ -39,4 +39,4 @@ export default createFragmentContainer(Location, {
       }
     }
   `,
-});
+}): FragmentContainerType<Props>);

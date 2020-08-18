@@ -14,7 +14,7 @@ function Ssr(props: Props): Node {
   return <LocationsQuery ssrData={props.ssrData} />;
 }
 
-Ssr.getInitialProps = async () => {
+Ssr.getInitialProps = async function (): Promise<{| +ssrData: any |}> {
   const environment = createRelayEnvironment(undefined);
   await fetchQuery(environment, query, variables);
   const ssrData = environment.getStore().getSource().toJSON();

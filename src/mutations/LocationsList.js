@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { createFragmentContainer, graphql } from '@adeira/relay';
+import { createFragmentContainer, graphql, type FragmentContainerType } from '@adeira/relay';
 import { TransitionGroup } from 'react-transition-group';
 import { Grid, Box } from 'grommet';
 
@@ -39,7 +39,7 @@ function LocationsList(props: Props) {
   );
 }
 
-export default createFragmentContainer(LocationsList, {
+export default (createFragmentContainer(LocationsList, {
   data: graphql`
     fragment LocationsList_data on RootQuery {
       locations(first: 3) @connection(key: "LocationsList_locations") {
@@ -54,4 +54,4 @@ export default createFragmentContainer(LocationsList, {
       }
     }
   `,
-});
+}): FragmentContainerType<Props>);

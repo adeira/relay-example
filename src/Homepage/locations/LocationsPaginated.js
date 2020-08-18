@@ -1,7 +1,12 @@
 // @flow
 
 import React from 'react';
-import { createPaginationContainer, graphql, type PaginationRelayProp } from '@adeira/relay';
+import {
+  createPaginationContainer,
+  graphql,
+  type PaginationRelayProp,
+  type PaginationContainerType,
+} from '@adeira/relay';
 import { Button } from 'grommet';
 
 import Location from './Location';
@@ -37,7 +42,7 @@ function LocationsPaginated(props: Props) {
   );
 }
 
-export default createPaginationContainer(
+export default (createPaginationContainer(
   LocationsPaginated,
   {
     data: graphql`
@@ -63,4 +68,4 @@ export default createPaginationContainer(
       }
     `,
   },
-);
+): PaginationContainerType<Props>);

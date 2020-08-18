@@ -1,14 +1,14 @@
 // @flow
 
 import React, { type Node } from 'react';
-import { graphql, type RecordMap } from '@adeira/relay';
+import { graphql, type RecordMap, type GraphQLTaggedNode } from '@adeira/relay';
 import styled from 'styled-components';
 
 import QueryRenderer from '../SSRQueryRenderer';
 import type { LocationsQueryResponse } from './__generated__/LocationsQuery.graphql';
 import LocationsList from './LocationsList';
 
-export const query = graphql`
+export const query: GraphQLTaggedNode = graphql`
   query LocationsQuery($first: Int!) {
     locations(first: $first) {
       ...LocationsList_locations
