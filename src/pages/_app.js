@@ -1,6 +1,7 @@
 // @flow
 
 import * as React from 'react';
+import * as sx from '@adeira/sx';
 import App from 'next/app';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -93,13 +94,17 @@ export default class MyApp extends App {
           </Header>
           <Box pad="medium">
             {__DEV__ ? (
-              <Box background="neutral-3" pad="small">
+              <div className={styles('box')}>
                 TIP: Open a console to see what&apos;s going on behind the scenes.
-              </Box>
+              </div>
             ) : (
-              <Box background="status-warning" pad="small">
-                It&apos;s better to clone this repository and try it in development mode.
-              </Box>
+              <div className={styles('box', 'boxWarning')}>
+                It&apos;s better to clone this repository and try it in development mode so you can
+                see what&apos;s going on behind the scenes:{' '}
+                <a href="https://github.com/adeira/relay-example">
+                  https://github.com/adeira/relay-example
+                </a>
+              </div>
             )}
             <Box margin={{ top: 'small' }}>
               <Component {...pageProps} />
@@ -110,3 +115,14 @@ export default class MyApp extends App {
     );
   }
 }
+
+const styles = sx.create({
+  box: {
+    backgroundColor: '#FFF8E1',
+    maxWidth: '100%',
+    padding: 12,
+  },
+  boxWarning: {
+    backgroundColor: '#FFCA28',
+  },
+});
