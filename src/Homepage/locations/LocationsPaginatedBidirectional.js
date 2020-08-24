@@ -97,12 +97,12 @@ export default (createRefetchContainer(
   {
     data: graphql`
       fragment LocationsPaginatedBidirectional_data on RootQuery
-        @argumentDefinitions(
-          first: { type: "Int" }
-          last: { type: "Int" }
-          after: { type: "String" }
-          before: { type: "String" }
-        ) {
+      @argumentDefinitions(
+        first: { type: "Int" }
+        last: { type: "Int" }
+        after: { type: "String" }
+        before: { type: "String" }
+      ) {
         locations(first: $first, last: $last, after: $after, before: $before) {
           edges {
             node {
@@ -128,7 +128,7 @@ export default (createRefetchContainer(
       $before: String
     ) {
       ...LocationsPaginatedBidirectional_data
-        @arguments(first: $first, last: $last, after: $after, before: $before)
+      @arguments(first: $first, last: $last, after: $after, before: $before)
     }
   `,
 ): RefetchContainerType<Props>);

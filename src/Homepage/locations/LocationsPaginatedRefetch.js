@@ -54,9 +54,9 @@ export default (createRefetchContainer(
   {
     data: graphql`
       fragment LocationsPaginatedRefetch_data on RootQuery
-        @argumentDefinitions(count: { type: "Int", defaultValue: 20 }, after: { type: "String" }) {
+      @argumentDefinitions(count: { type: "Int", defaultValue: 20 }, after: { type: "String" }) {
         incrementalPagination: locations(first: $count, after: $after)
-          @connection(key: "locations_incrementalPagination") {
+        @connection(key: "locations_incrementalPagination") {
           edges {
             node {
               id
