@@ -5,7 +5,6 @@
   "private": true,
   "dependencies": {
     "@adeira/fetch": "^1.0.3",
-    "@adeira/sx": "^0.6.0",
     "@adeira/graphql-bc-checker": "^0.2.0",
     "@adeira/graphql-global-id": "^1.0.0",
     "@adeira/graphql-relay": "^0.2.0",
@@ -14,8 +13,10 @@
     "@adeira/relay": "^2.0.3",
     "@adeira/relay-runtime": "^0.14.0",
     "@adeira/relay-utils": "0.11.0",
+    "@adeira/sx": "^0.6.0",
     "@adeira/test-utils": "^0.5.0",
     "apollo-server-micro": "^2.17.0",
+    "cors": "^2.8.5",
     "date-fns": "^2.16.0",
     "graphql": "^15.3.0",
     "grommet": "^2.15.0",
