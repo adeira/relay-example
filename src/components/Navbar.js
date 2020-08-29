@@ -3,33 +3,31 @@
 import * as React from 'react';
 import * as sx from '@adeira/sx';
 import Link from 'next/link';
-import { Anchor as GrommetAnchor } from 'grommet';
 import { Menu } from 'grommet-icons';
 import { useRouter } from 'next/router';
 
-type Props = {||};
+/* eslint-disable jsx-a11y/anchor-is-valid */
+// Next.js does this automatically (https://nextjs.org/docs/api-reference/next/link)
 
-function Anchor(props) {
-  return <GrommetAnchor margin={{ right: 'medium' }} color="white" {...props} />;
-}
+type Props = {||};
 
 function NavLinks() {
   return (
     <div className={styles('navLinkWrapper')}>
       <Link href="/">
-        <Anchor>Pagination</Anchor>
+        <a className={styles('link')}>Pagination</a>
       </Link>
       <Link href="/polling">
-        <Anchor>Polling</Anchor>
+        <a className={styles('link')}>Polling</a>
       </Link>
       <Link href="/local-form">
-        <Anchor>Local schema</Anchor>
+        <a className={styles('link')}>Local schema</a>
       </Link>
       <Link href="/ssr">
-        <Anchor>Server side rendering</Anchor>
+        <a className={styles('link')}>Server side rendering</a>
       </Link>
       <Link href="/mutations/range-add">
-        <Anchor>Range add mutation</Anchor>
+        <a className={styles('link')}>Range add mutation</a>
       </Link>
     </div>
   );
@@ -60,11 +58,9 @@ function Navbar() {
   return (
     <nav className={styles('nav')}>
       <div className={styles('navInner')}>
-        <div>
-          <Link href="/">
-            <Anchor color="white">Relay Example</Anchor>
-          </Link>
-        </div>
+        <Link href="/">
+          <a className={styles('link')}>Relay Example</a>
+        </Link>
         {showMenu && (
           <button
             aria-label="Menu"
@@ -85,6 +81,13 @@ function Navbar() {
 const styles = sx.create({
   nav: {
     width: '100%',
+  },
+  link: {
+    color: '#fff',
+    fontWeight: 600,
+    textDecoration: 'none',
+    cursor: 'pointer',
+    marginRight: 24,
   },
   navInner: {
     display: 'flex',
