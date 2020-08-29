@@ -31,7 +31,7 @@
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
-    "@adeira/babel-preset-adeira": "^0.4.0",
+    "@adeira/babel-preset-adeira": "^1.0.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^10.4.9",
     "babel-jest": "^26.3.0",
