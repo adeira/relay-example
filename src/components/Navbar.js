@@ -86,8 +86,8 @@ const styles = sx.create({
     flex: 1,
   },
   navLinkWrapper: {
-    flexDirection: 'column',
-    display: 'flex',
+    'flexDirection': 'column',
+    'display': 'flex',
     '@media(min-width: 900px)': {
       alignItems: 'flex-end',
       flexDirection: 'row',
