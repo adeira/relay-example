@@ -5,6 +5,7 @@ import * as sx from '@adeira/sx';
 import Link from 'next/link';
 import { Anchor as GrommetAnchor } from 'grommet';
 import { Menu } from 'grommet-icons';
+import { useRouter } from 'next/router';
 
 type Props = {||};
 
@@ -35,8 +36,13 @@ function NavLinks() {
 }
 
 function Navbar() {
+  const { pathname } = useRouter();
   const [show, setShow] = React.useState(false);
   const [showMenu, setShowMenu] = React.useState(false);
+
+  React.useEffect(() => {
+    setShow(false);
+  }, [pathname]);
 
   React.useEffect(() => {
     function WidthChange(mq) {
