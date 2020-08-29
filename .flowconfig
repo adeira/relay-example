@@ -24,10 +24,18 @@ unclear-type
 untyped-import
 
 [options]
+emoji=true
+exact_by_default=true
 include_warnings=true
+types_first=true
+well_formed_exports=true
 
-; Allow require(path.join(__dirname, 'myFile.json'))
+; Allow dynamic `require(path.join(__dirname, 'myFile.json'))`
 module.ignore_non_literal_requires=true
 
 esproposal.optional_chaining=enable
 esproposal.nullish_coalescing=enable
+
+; This option is always ON in the strict mode. We are enabling it even for the classic mode.
+; Function parameters are considered const (i.e., treated as if they were declared with const rather than let).
+experimental.const_params=true

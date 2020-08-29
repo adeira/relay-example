@@ -5,9 +5,10 @@ const path = require('path');
 /*::
 
 type JestConfig = {|
-  +rootDir: string,
-  +transform: {| +[string]: string |},
-  +setupFilesAfterEnv: $ReadOnlyArray<string>,
+  +rootDir?: string,
+  +testMatch?: $ReadOnlyArray<string>,
+  +transform?: {| +[string]: string |},
+  +setupFilesAfterEnv?: $ReadOnlyArray<string>,
 |};
 
 */
