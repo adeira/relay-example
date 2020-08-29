@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { graphql, QueryRenderer } from '@adeira/relay';
 import { Heading, Text } from 'grommet';
+import * as sx from '@adeira/sx';
 
 import LocationsPaginatedBidirectional from './locations/LocationsPaginatedBidirectional';
 import LocationsPaginatedRefetch from './locations/LocationsPaginatedRefetch';
@@ -27,17 +28,7 @@ const ITEMS_COUNT = 20; // change me
 
 function renderQueryRendererResponse(props: HomepageQueryResponse) {
   return (
-    <div className="row">
-      <style jsx>{`
-        .row {
-          display: flex;
-        }
-
-        .column {
-          flex: 1;
-        }
-      `}</style>
-
+    <div className={styles('container')}>
       <div className="column">
         <Demo
           title="Bi-directional pagination"
@@ -87,3 +78,11 @@ export default function Homepage(): React.Node {
     />
   );
 }
+
+const styles = sx.create({
+  container: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+    gap: 16,
+  },
+});

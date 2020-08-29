@@ -4,20 +4,21 @@ import * as React from 'react';
 import * as sx from '@adeira/sx';
 import App from 'next/app';
 import Head from 'next/head';
-import Link from 'next/link';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import { RelayEnvironmentProvider } from '@adeira/relay';
-import { Grommet, grommet as grommetTheme, Anchor, Header, Box, Nav } from 'grommet';
+import { Grommet, grommet as grommetTheme, Header, Box } from 'grommet';
 import { createGlobalStyle } from 'styled-components';
 import { deepMerge } from 'grommet/utils';
 
 import createRelayEnvironment from '../createRelayEnvironment';
+import Navbar from '../components/Navbar';
 
 const GlobalStyle = createGlobalStyle`
 html, body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 `;
 
@@ -71,26 +72,7 @@ export default class MyApp extends App {
         <GlobalStyle />
         <Grommet theme={theme}>
           <Header background="brand" pad="medium">
-            <Link href="/">
-              <Anchor color="white">Relay Example</Anchor>
-            </Link>
-            <Nav direction="row" gap="medium">
-              <Link href="/">
-                <Anchor color="white">Pagination</Anchor>
-              </Link>
-              <Link href="/polling">
-                <Anchor color="white">Polling</Anchor>
-              </Link>
-              <Link href="/local-form">
-                <Anchor color="white">Local schema</Anchor>
-              </Link>
-              <Link href="/ssr">
-                <Anchor color="white">Server side rendering</Anchor>
-              </Link>
-              <Link href="/mutations/range-add">
-                <Anchor color="white">Range add mutation</Anchor>
-              </Link>
-            </Nav>
+            <Navbar />
           </Header>
           <Box pad="medium">
             {__DEV__ ? (
