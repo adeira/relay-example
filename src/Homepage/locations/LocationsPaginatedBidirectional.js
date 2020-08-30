@@ -7,7 +7,7 @@ import {
   type RefetchRelayProp,
   type RefetchContainerType,
 } from '@adeira/relay';
-import { Next, Previous } from 'grommet-icons';
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import * as sx from '@adeira/sx';
 
 import Location from './Location';
@@ -69,14 +69,14 @@ function LocationsPaginatedBidirectional(props: Props) {
         <Button
           onClick={openPreviousPage}
           disabled={!pageInfo.hasPreviousPage}
-          iconLeft={<Previous color="white" size="small" />}
+          iconLeft={<MdChevronLeft color="white" size="16" />}
         >
           Previous page
         </Button>
         <Button
           onClick={openNextPage}
           disabled={!pageInfo.hasNextPage}
-          iconRight={<Next color="white" size="small" />}
+          iconRight={<MdChevronRight color="white" size="16" />}
         >
           Next page
         </Button>

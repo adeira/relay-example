@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import * as sx from '@adeira/sx';
-import { FormDown } from 'grommet-icons';
+import { MdExpandMore } from 'react-icons/md';
 
 import Text from './Text';
 
@@ -47,7 +47,7 @@ export default function Select({
         ))}
       </select>
       <div className={styles('iconContainer')}>
-        <FormDown color="#30b8ba" />
+        <MdExpandMore size="24" color="#30b8ba" />
       </div>
     </label>
   );

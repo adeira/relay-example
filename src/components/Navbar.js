@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import * as sx from '@adeira/sx';
-import { Menu } from 'grommet-icons';
 import { useRouter } from 'next/router';
+import { MdMenu } from 'react-icons/md';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // Next.js does this automatically (https://nextjs.org/docs/api-reference/next/link)
@@ -75,7 +75,7 @@ function Navbar() {
             type="button"
             onClick={() => setShow((show) => !show)}
           >
-            <Menu color="white" />
+            <MdMenu color="white" />
           </button>
         )}
         {!showMenu && <NavLinks />}

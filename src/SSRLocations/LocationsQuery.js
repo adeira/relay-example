@@ -2,11 +2,12 @@
 
 import React, { type Node } from 'react';
 import { graphql, type RecordMap, type GraphQLTaggedNode } from '@adeira/relay';
-import styled from 'styled-components';
+import * as sx from '@adeira/sx';
 
 import QueryRenderer from '../SSRQueryRenderer';
 import type { LocationsQueryResponse } from './__generated__/LocationsQuery.graphql';
 import LocationsList from './LocationsList';
+import Heading from '../components/Heading';
 
 export const query: GraphQLTaggedNode = graphql`
   query LocationsQuery($first: Int!) {
@@ -27,10 +28,10 @@ type Props = {|
 export default function LocationsQuery(props: Props): Node {
   return (
     <>
-      <Heading>Server Side Rendered Locations</Heading>
-      <Separator />
-      <Paragraph>TIP: Disable javascript and reload the page</Paragraph>
-      <Separator />
+      <Heading level={1}>Server Side Rendered Locations</Heading>
+      <hr className={styles('hr')} />
+      <p>TIP: Disable javascript and reload the page</p>
+      <hr className={styles('hr')} />
       <QueryRenderer
         query={query}
         variables={variables}
@@ -43,21 +44,9 @@ export default function LocationsQuery(props: Props): Node {
   );
 }
 
-const Paragraph = styled.p`
-  padding: 0;
-  margin: 0;
-`;
-
-const Separator = styled.hr`
-  border-width: 0.5px;
-  margin: 16px 0;
-`;
-
-const Heading = styled.h1`
-  font-family: 'Roboto', -apple-system, '.SFNSText-Regular', 'San Francisco', 'Segoe UI',
-    'Helvetica Neue', 'Lucida Grande', sans-serif;
-  font-size: 22px;
-  font-weight: 500;
-  color: #252a31;
-  line-height: 28px;
-`;
+const styles = sx.create({
+  hr: {
+    borderWidth: '0.5px',
+    margin: 'var(--space-medium) 0',
+  },
+});

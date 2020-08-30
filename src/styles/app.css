@@ -1,3 +1,5 @@
+@import "../mutations/FadeIn.css";
+
 :root {
   /* Colors */
   --color-primary: #30b8ba;
@@ -16,6 +18,7 @@
   /* Border radius */
   --border-radius-normal: 3px;
 }
+
 
 * {
   box-sizing: border-box;
