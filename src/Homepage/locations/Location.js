@@ -2,9 +2,10 @@
 
 import React from 'react';
 import { createFragmentContainer, graphql, type FragmentContainerType } from '@adeira/relay';
-import { Text, Box } from 'grommet';
+import * as sx from '@adeira/sx';
 
 import type { Location_location as LocationDataType } from './__generated__/Location_location.graphql';
+import Text from '../../components/Text';
 
 type Props = {|
   +location: ?LocationDataType,
@@ -19,12 +20,12 @@ function Location({ location }: Props) {
   const countryName = location.country?.name ?? '';
   return (
     <li>
-      <Box align="center" direction="row" gap="small">
+      <div className={styles('box')}>
         <img src={location.countryFlagURL} alt={`${countryName} flag`} height="24" width="24" />
         <Text dataTest={`location-${name}`} size="small">
           {name}
         </Text>
-      </Box>
+      </div>
     </li>
   );
 }
@@ -40,3 +41,11 @@ export default (createFragmentContainer(Location, {
     }
   `,
 }): FragmentContainerType<Props>);
+
+const styles = sx.create({
+  box: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px', // Works in edge, chrome and firefox, but should be ok for this app
+  },
+});

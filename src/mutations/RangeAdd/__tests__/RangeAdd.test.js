@@ -65,11 +65,12 @@ it('adds a location to the connection', async () => {
   expect(screen.queryByText(/name: prague/i)).not.toBeInTheDocument();
   const idInput = screen.getByPlaceholderText('locationId');
   const nameInput = screen.getByPlaceholderText('name');
+  const select = screen.getByRole('combobox', { name: /type/i });
 
   fireEvent.change(idInput, { target: { value: 'OCD' } });
   fireEvent.change(nameInput, { target: { value: 'Prague' } });
-  fireEvent.click(screen.getByRole('button', { name: /open drop/i }));
-  fireEvent.click(screen.getByRole('menuitem', { name: /city/i }));
+  fireEvent.change(select, { target: { value: 'CITY' } });
+
   fireEvent.click(screen.getByRole('button', { name: /submit/i }));
 
   const operation = await waitFor(() => environment.mock.getMostRecentOperation());

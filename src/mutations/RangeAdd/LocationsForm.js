@@ -3,10 +3,13 @@
 /* eslint-disable no-alert */
 
 import * as React from 'react';
-import { TextInput, Box, Button, Select } from 'grommet';
 import { graphql, useMutation } from '@adeira/relay';
+import * as sx from '@adeira/sx';
 
 import type { LocationsFormMutation } from './__generated__/LocationsFormMutation.graphql';
+import TextInput from '../../components/TextInput';
+import Button from '../../components/Button';
+import Select from '../../components/Select';
 
 type Props = {|
   +connectionId: string,
@@ -92,31 +95,39 @@ export default (function LocationsForm(props: Props) {
     <>
       <h3>Add a location</h3>
       <form onSubmit={onSubmit}>
-        <Box gap="small">
+        <div className={styles('formContainer')}>
           <TextInput
             placeholder="locationId"
+            label="locationId"
             name="locationId"
             value={locationId}
-            onChange={(e) => setLocationId(e.target.value)}
+            onChange={setLocationId}
           />
-          <TextInput
-            placeholder="name"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+          <TextInput placeholder="name" label="name" name="name" value={name} onChange={setName} />
           <Select
-            options={['AIRPORT', 'CITY', 'COUNTRY']}
             name="type"
             placeholder="type"
-            value={type}
-            onChange={(option) => {
-              setType(option.value);
-            }}
+            onChange={setType}
+            label="type"
+            options={[
+              { label: 'Airport', value: 'AIRPORT' },
+              { label: 'City', value: 'CITY' },
+              { label: 'Country', value: 'COUNTRY' },
+            ]}
           />
-          <Button label="Submit" disabled={loading} type="submit" primary />
-        </Box>
+          <Button disabled={loading} type="submit">
+            Submit
+          </Button>
+        </div>
       </form>
     </>
   );
 }: React.ComponentType<Props>);
+
+const styles = sx.create({
+  formContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 'var(--space-small)',
+  },
+});

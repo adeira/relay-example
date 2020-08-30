@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import * as sx from '@adeira/sx';
-import Link from 'next/link';
 import { Menu } from 'grommet-icons';
 import { useRouter } from 'next/router';
 
@@ -10,6 +9,14 @@ import { useRouter } from 'next/router';
 // Next.js does this automatically (https://nextjs.org/docs/api-reference/next/link)
 
 type Props = {||};
+
+function Link({ children, href }) {
+  // Currently deactivating client side routing, since sx styles are not correctly
+  // set on client side routing
+  return React.cloneElement(children, {
+    href,
+  });
+}
 
 function NavLinks() {
   return (
@@ -82,13 +89,6 @@ const styles = sx.create({
   nav: {
     width: '100%',
   },
-  link: {
-    color: '#fff',
-    fontWeight: 600,
-    textDecoration: 'none',
-    cursor: 'pointer',
-    marginRight: 24,
-  },
   navInner: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -106,6 +106,22 @@ const styles = sx.create({
     background: 'none',
     border: 'none',
     cursor: 'pointer',
+  },
+  link: {
+    'fontSize': 18,
+    'lineHeight': 1.333333,
+    'marginRight': 24,
+    'color': 'white',
+    'fontWeight': 600,
+    'cursor': 'pointer',
+    'textDecoration': 'none',
+    ':hover': {
+      textDecoration: 'underline',
+    },
+    ':focus': {
+      textDecoration: 'underline',
+      outline: 'none',
+    },
   },
 });
 

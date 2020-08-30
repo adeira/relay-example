@@ -7,8 +7,8 @@ import {
   type RefetchRelayProp,
   type RefetchContainerType,
 } from '@adeira/relay';
-import { Button } from 'grommet';
 
+import Button from '../../components/Button';
 import Location from './Location';
 import type { LocationsPaginatedRefetch_data as LocationsDataType } from './__generated__/LocationsPaginatedRefetch_data.graphql';
 
@@ -42,7 +42,9 @@ function LocationsPaginatedRefetch(props: Props) {
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>
-      <Button label="Load more!" dataTest="loadMore" onClick={loadMore} size="small" primary />
+      <Button dataTest="loadMore" onClick={loadMore}>
+        Load more!
+      </Button>
     </>
   );
 }

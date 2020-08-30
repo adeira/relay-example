@@ -7,11 +7,12 @@ import {
   type RefetchRelayProp,
   type RefetchContainerType,
 } from '@adeira/relay';
-import { Button, Box } from 'grommet';
 import { Next, Previous } from 'grommet-icons';
+import * as sx from '@adeira/sx';
 
 import Location from './Location';
 import type { LocationsPaginatedBidirectional_data as LocationsDataType } from './__generated__/LocationsPaginatedBidirectional_data.graphql';
+import Button from '../../components/Button';
 
 type Props = {|
   +itemsCount: number,
@@ -64,28 +65,32 @@ function LocationsPaginatedBidirectional(props: Props) {
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>
-      <Box flex={true} direction="row">
+      <div className={styles('buttonBox')}>
         <Button
           onClick={openPreviousPage}
           disabled={!pageInfo.hasPreviousPage}
-          size="small"
-          label="Previous page"
-          primary
-          icon={<Previous color="white" size="small" />}
-        />
+          iconLeft={<Previous color="white" size="small" />}
+        >
+          Previous page
+        </Button>
         <Button
-          label="Next page"
           onClick={openNextPage}
           disabled={!pageInfo.hasNextPage}
-          size="small"
-          primary
-          icon={<Next color="white" size="small" />}
-          reverse
-        />
-      </Box>
+          iconRight={<Next color="white" size="small" />}
+        >
+          Next page
+        </Button>
+      </div>
     </>
   );
 }
+
+const styles = sx.create({
+  buttonBox: {
+    display: 'flex',
+    gap: 'var(--space-small)',
+  },
+});
 
 export default (createRefetchContainer(
   LocationsPaginatedBidirectional,

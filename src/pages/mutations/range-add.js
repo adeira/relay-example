@@ -1,16 +1,15 @@
 // @flow
 
 import * as React from 'react';
-import { Heading, Text } from 'grommet';
 
 import RangeAddExample from '../../mutations/RangeAdd/RangeAdd';
+import Heading from '../../components/Heading';
+import Text from '../../components/Text';
 
 export default function RangeAdd(): React.Node {
   return (
     <>
-      <Heading level={1} size="small">
-        Range add mutation
-      </Heading>
+      <Heading level={1}>Range add mutation</Heading>
       <Text size="small">
         This example shows how you can use relays range add config to easily add new object to your
         connections

@@ -2,22 +2,24 @@
 
 import * as React from 'react';
 import { graphql, QueryRenderer } from '@adeira/relay';
-import { Heading, Text } from 'grommet';
 import * as sx from '@adeira/sx';
 
 import LocationsPaginatedBidirectional from './locations/LocationsPaginatedBidirectional';
 import LocationsPaginatedRefetch from './locations/LocationsPaginatedRefetch';
 import LocationsPaginated from './locations/LocationsPaginated';
 import type { HomepageQueryResponse } from './__generated__/HomepageQuery.graphql';
+import Heading from '../components/Heading';
+import Text from '../components/Text';
 
 function Demo(props) {
   return (
     <>
-      <Heading level={2} size="small">
-        {props.title}
-      </Heading>
+      <Heading level={2}>{props.title}</Heading>
       <Text size="small">
-        See: <a href={props.link}>{props.linkTitle}</a>
+        See:{' '}
+        <a rel="noreferrer" target="_blank" href={props.link}>
+          {props.linkTitle}
+        </a>
       </Text>
       {props.component}
     </>

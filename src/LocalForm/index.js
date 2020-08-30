@@ -9,19 +9,15 @@ import {
 } from '@adeira/relay';
 // FIXME:
 import { generateClientID } from 'relay-runtime'; // eslint-disable-line import/no-extraneous-dependencies
-import { TextInput, TextArea, Box, Heading, Text } from 'grommet';
-import styled from 'styled-components';
+import * as sx from '@adeira/sx';
 
 import type { LocalFormQueryResponse } from './__generated__/LocalFormQuery.graphql';
-
+import Heading from '../components/Heading';
+import Text from '../components/Text';
+import TextInput from '../components/TextInput';
 // We are overwriting here the application env context and replacing it with our custom local env.
 const environment = createLocalEnvironment();
 const consoleStyle = 'color: green; background-color: lightgreen;';
-
-const Separator = styled.hr`
-  border-width: 0.5px;
-  margin: 16px 0;
-`;
 
 type LocalData = {|
   +subject?: string,
@@ -57,18 +53,20 @@ function persist(data: LocalData) {
 
 function handleResponse(rendererProps: LocalFormQueryResponse) {
   return (
-    <Box gap="small">
+    <div className={styles('formContainer')}>
       <TextInput
         value={rendererProps.localForm?.subject ?? ''}
-        onChange={(e) => persist({ subject: e.target.value })}
+        onChange={(subject) => persist({ subject })}
         placeholder="Subject"
+        label="Subject"
       />
-      <TextArea
+      <TextInput
         value={rendererProps.localForm?.message ?? ''}
         placeholder="Message"
-        onChange={(e) => persist({ message: e.target.value })}
+        label="Message"
+        onChange={(message) => persist({ message })}
       />
-    </Box>
+    </div>
   );
 }
 
@@ -78,17 +76,15 @@ export default function LocalForm(): Node {
   });
 
   return (
-    <Box>
-      <Heading level={1} size="small">
-        Persisted form
-      </Heading>
+    <div>
+      <Heading level={1}>Persisted form</Heading>
       <Text size="small">
         This example shows how Relay local schema can be used with form inputs. As a bonus, values
         are persisted into the LocalStorage so anything you typed should &quot;survive&quot; page
         reload.
       </Text>
 
-      <Separator />
+      <hr className={styles('separator')} />
 
       <LocalQueryRenderer
         environment={environment}
@@ -106,6 +102,18 @@ export default function LocalForm(): Node {
         `}
         onResponse={handleResponse}
       />
-    </Box>
+    </div>
   );
 }
+
+const styles = sx.create({
+  separator: {
+    borderWidth: '0.5px',
+    margin: 'var(--space-medium) 0',
+  },
+  formContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 'var(--space-small)',
+  },
+});

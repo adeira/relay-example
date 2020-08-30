@@ -3,11 +3,12 @@
 import * as React from 'react';
 import { createFragmentContainer, graphql, type FragmentContainerType } from '@adeira/relay';
 import { TransitionGroup } from 'react-transition-group';
-import { Grid, Box } from 'grommet';
+import * as sx from '@adeira/sx';
 
 import type { LocationsList_data as Data } from './__generated__/LocationsList_data.graphql';
 import FadeIn from './FadeIn';
 import LocationsForm from './RangeAdd/LocationsForm';
+import { tablet } from '../components/breakpoints';
 
 type Props = {|
   +data: Data,
@@ -15,29 +16,38 @@ type Props = {|
 
 function LocationsList(props: Props) {
   return (
-    <Grid columns={{ count: 2, size: 'auto' }} gap="medium">
-      <Box>
-        <>
-          <h3>My favorite locations</h3>
-          <TransitionGroup component={null} className="location-list">
-            {props.data.locations?.edges?.map<React.Node>((edge) => (
-              <FadeIn key={edge?.node?.id} timeout={320}>
-                <div style={{ padding: '12px', borderBottom: '1px solid black' }}>
-                  <div>
-                    name: {edge?.node?.name}, type: {edge?.node?.type}
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </TransitionGroup>
-        </>
-      </Box>
-      <Box>
+    <div className={styles('grid')}>
+      <div>
         <LocationsForm connectionId={props.data.locations?.__id ?? ''} />
-      </Box>
-    </Grid>
+      </div>
+      <div>
+        <h3>My favorite locations</h3>
+        <TransitionGroup component={null} className="location-list">
+          {props.data.locations?.edges?.map<React.Node>((edge) => (
+            <FadeIn key={edge?.node?.id} timeout={320}>
+              <div style={{ padding: '12px', borderBottom: '1px solid black' }}>
+                <div>
+                  name: {edge?.node?.name}, type: {edge?.node?.type}
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </TransitionGroup>
+      </div>
+    </div>
   );
 }
+
+const styles = sx.create({
+  grid: {
+    display: 'grid',
+    gap: 'var(--space-x-large)',
+    gridTemplateColumns: '1fr',
+    [tablet]: {
+      gridTemplateColumns: 'repeat(2,minmax(auto,1fr))',
+    },
+  },
+});
 
 export default (createFragmentContainer(LocationsList, {
   data: graphql`

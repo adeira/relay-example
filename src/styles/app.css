@@ -1,0 +1,26 @@
+:root {
+  /* Colors */
+  --color-primary: #30b8ba;
+
+
+  /* Box shadow */
+  --box-shadow-active: 0 0 2px 2px #6FFFB0;
+
+  /* Spacing */
+  --space-x-small: 6px;
+  --space-small: 12px;
+  --space-medium: 16px;
+  --space-large: 20px;
+  --space-x-large: 24px;
+
+  /* Border radius */
+  --border-radius-normal: 3px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+}

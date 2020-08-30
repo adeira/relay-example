@@ -7,40 +7,12 @@ import Head from 'next/head';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import { RelayEnvironmentProvider } from '@adeira/relay';
-import { Grommet, grommet as grommetTheme, Header, Box } from 'grommet';
-import { createGlobalStyle } from 'styled-components';
-import { deepMerge } from 'grommet/utils';
 
 import createRelayEnvironment from '../createRelayEnvironment';
 import Navbar from '../components/Navbar';
-
-const GlobalStyle = createGlobalStyle`
-html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-`;
-
-const theme = deepMerge(grommetTheme, {
-  button: {
-    extend: `border-radius: 3px; color: #fff`,
-  },
-  select: {
-    options: {
-      text: { color: '#444444' },
-    },
-    control: {
-      extend: `color: #444444;`,
-    },
-  },
-  global: {
-    colors: {
-      brand: '#30b8ba',
-      white: '#fff',
-    },
-  },
-});
+import Header from '../components/Header';
+import '../styles/app.css';
+import { tablet } from '../components/breakpoints';
 
 export default class MyApp extends App {
   componentDidMount: () => void = () => {
@@ -69,30 +41,27 @@ export default class MyApp extends App {
         <Head>
           <title>Relay Example</title>
         </Head>
-        <GlobalStyle />
-        <Grommet theme={theme}>
-          <Header background="brand" pad="medium">
-            <Navbar />
-          </Header>
-          <Box pad="medium">
-            {__DEV__ ? (
-              <div className={styles('box')}>
-                TIP: Open a console to see what&apos;s going on behind the scenes.
-              </div>
-            ) : (
-              <div className={styles('box', 'boxWarning')}>
-                It&apos;s better to clone this repository and try it in development mode so you can
-                see what&apos;s going on behind the scenes:{' '}
-                <a href="https://github.com/adeira/relay-example">
-                  https://github.com/adeira/relay-example
-                </a>
-              </div>
-            )}
-            <Box margin={{ top: 'small' }}>
-              <Component {...pageProps} />
-            </Box>
-          </Box>
-        </Grommet>
+        <Header>
+          <Navbar />
+        </Header>
+        <div className={styles('padMedium')}>
+          {__DEV__ ? (
+            <div className={styles('box')}>
+              TIP: Open a console to see what&apos;s going on behind the scenes.
+            </div>
+          ) : (
+            <div className={styles('box', 'boxWarning')}>
+              It&apos;s better to clone this repository and try it in development mode so you can
+              see what&apos;s going on behind the scenes:{' '}
+              <a href="https://github.com/adeira/relay-example">
+                https://github.com/adeira/relay-example
+              </a>
+            </div>
+          )}
+          <div className={styles('marginTopSmall')}>
+            <Component {...pageProps} />
+          </div>
+        </div>
       </RelayEnvironmentProvider>
     );
   }
@@ -102,9 +71,21 @@ const styles = sx.create({
   box: {
     backgroundColor: '#FFF8E1',
     maxWidth: '100%',
-    padding: 12,
+    padding: 'var(--space-small)',
   },
   boxWarning: {
     backgroundColor: '#FFCA28',
+  },
+  padMedium: {
+    padding: 'var(--space-small)',
+    [tablet]: {
+      padding: 'var(--space-x-large)',
+    },
+  },
+  marginTopSmall: {
+    marginTop: 'var(--space-x-small)',
+    [tablet]: {
+      marginTop: 'var(--space-small)',
+    },
   },
 });

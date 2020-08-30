@@ -7,10 +7,10 @@ import {
   type PaginationRelayProp,
   type PaginationContainerType,
 } from '@adeira/relay';
-import { Button } from 'grommet';
 
 import Location from './Location';
 import type { LocationsPaginated_data as LocationsDataType } from './__generated__/LocationsPaginated_data.graphql';
+import Button from '../../components/Button';
 
 type Props = {|
   +data: LocationsDataType,
@@ -37,7 +37,7 @@ function LocationsPaginated(props: Props) {
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </ol>
-      <Button label="Load more!" onClick={loadMore} size="small" primary />
+      <Button onClick={loadMore}>Load more!</Button>
     </>
   );
 }
