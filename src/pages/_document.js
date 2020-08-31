@@ -1,28 +1,21 @@
 // @flow
 
-import React, { type Element } from 'react';
+import * as React from 'react';
 import Document, { Head, Main, NextScript, type DocumentContext } from 'next/document';
 import * as sx from '@adeira/sx';
 
-export default class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext): Promise<any> {
-    const originalRenderPage = ctx.renderPage;
-    const { html, css } = sx.renderStatic(originalRenderPage);
+type RenderPageResult = {|
+  +html: string,
+  +head: $ReadOnlyArray<React.Node>,
+  +styles: $ReadOnlyArray<any>,
+|};
 
-    const initialProps = await Document.getInitialProps(ctx);
-    return {
-      ...html, // @adeira/sx
-      ...initialProps,
-      styles: (
-        <>
-          {initialProps.styles}
-          <style>{css}</style> {/* @adeira/sx */}
-        </>
-      ),
-    };
+export default class MyDocument extends Document {
+  static getInitialProps(ctx: DocumentContext): RenderPageResult {
+    return sx.renderPageWithSX(ctx.renderPage);
   }
 
-  render(): Element<'html'> {
+  render(): React.Element<'html'> {
     return (
       <html lang="en-US">
         <Head>
