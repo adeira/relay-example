@@ -128,7 +128,7 @@ export default (createRefetchContainer(
       $before: String
     ) {
       ...LocationsPaginatedBidirectional_data
-      @arguments(first: $first, last: $last, after: $after, before: $before)
+        @arguments(first: $first, last: $last, after: $after, before: $before)
     }
   `,
 ): RefetchContainerType<Props>);

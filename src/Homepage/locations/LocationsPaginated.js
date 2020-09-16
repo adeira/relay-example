@@ -49,7 +49,7 @@ export default (createPaginationContainer(
       fragment LocationsPaginated_data on RootQuery
       @argumentDefinitions(count: { type: "Int", defaultValue: 20 }, after: { type: "String" }) {
         incrementalPagination2: locations(first: $count, after: $after)
-        @connection(key: "locations_incrementalPagination2") {
+          @connection(key: "locations_incrementalPagination2") {
           edges {
             node {
               id
