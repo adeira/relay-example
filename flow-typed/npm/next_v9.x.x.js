@@ -169,6 +169,8 @@ declare module "next/router" {
     ...
   };
 
+  declare export function useRouter(): Router;
+
   declare export function withRouter<T>(
     Component: React$ComponentType<T & { router: Router, ... }>
   ): Class<React$Component<T>>;
