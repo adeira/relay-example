@@ -1,8 +1,9 @@
 // @flow
 
-import { cloneElement, useState, useEffect, type ComponentType, type Element } from 'react';
+import { useState, useEffect, type ComponentType, type Node } from 'react';
 import * as sx from '@adeira/sx';
 import { MdMenu } from 'react-icons/md';
+import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
 
 import cssStyles from './Navbar.module.css';
@@ -12,26 +13,11 @@ import { Media } from './Media';
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // Next.js does this automatically (https://nextjs.org/docs/api-reference/next/link)
 
-type Props = {||};
-
-function Link({
-  children,
-  href,
-  onClick,
-}: {|
-  +children: Element<'a'>,
-  +href: string,
+type Props = {|
   +onClick?: () => void,
-|}) {
-  // Currently deactivating client side routing, since sx styles are not correctly
-  // set on client side routing
-  return cloneElement(children, {
-    href,
-    onClick,
-  });
-}
+|};
 
-function NavLinks({ onClick }: {| +onClick?: () => void |}) {
+function NavLinks({ onClick }: Props): Node {
   return (
     <div className={styles('navLinkWrapper')}>
       <Link onClick={onClick} href="/">
