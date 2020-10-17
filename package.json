@@ -24,7 +24,7 @@
     "next-transpile-modules": "^4.1.0",
     "nprogress": "^0.2.0",
     "react": "^16.14.0",
-    "react-dom": "^16.13.1",
+    "react-dom": "^16.14.0",
     "react-icons": "^3.11.0",
     "react-transition-group": "^4.4.1"
   },
