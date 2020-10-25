@@ -13,6 +13,7 @@ import * as sx from '@adeira/sx';
 import Location from './Location';
 import type { LocationsPaginatedBidirectional_data as LocationsDataType } from './__generated__/LocationsPaginatedBidirectional_data.graphql';
 import Button from '../../components/Button';
+import LocationList from './LocationsList';
 
 type Props = {|
   +itemsCount: number,
@@ -58,27 +59,28 @@ function LocationsPaginatedBidirectional(props: Props) {
     );
   }
 
+  const edges = props.data.locations?.edges ?? [];
   return (
     <>
-      <ol start={start}>
-        {props.data.locations?.edges?.map((edge) => (
+      <LocationList start={start}>
+        {edges.map((edge) => (
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
-      </ol>
+      </LocationList>
       <div className={styles('buttonBox')}>
         <Button
           onClick={openPreviousPage}
           disabled={!pageInfo.hasPreviousPage}
           iconLeft={<MdChevronLeft color="white" size="16" />}
         >
-          Previous page
+          Previous&nbsp;page
         </Button>
         <Button
           onClick={openNextPage}
           disabled={!pageInfo.hasNextPage}
           iconRight={<MdChevronRight color="white" size="16" />}
         >
-          Next page
+          Next&nbsp;page
         </Button>
       </div>
     </>

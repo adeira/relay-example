@@ -11,6 +11,7 @@ import {
 import Button from '../../components/Button';
 import Location from './Location';
 import type { LocationsPaginatedRefetch_data as LocationsDataType } from './__generated__/LocationsPaginatedRefetch_data.graphql';
+import LocationList from './LocationsList';
 
 type Props = {|
   +data: LocationsDataType,
@@ -35,13 +36,14 @@ function LocationsPaginatedRefetch(props: Props) {
     );
   }
 
+  const edges = props.data.incrementalPagination?.edges ?? [];
   return (
     <>
-      <ol>
-        {props.data.incrementalPagination?.edges?.map((edge) => (
+      <LocationList>
+        {edges.map((edge) => (
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
-      </ol>
+      </LocationList>
       <Button dataTest="loadMore" onClick={loadMore}>
         Load more!
       </Button>

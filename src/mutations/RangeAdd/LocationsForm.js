@@ -10,6 +10,7 @@ import type { LocationsFormMutation } from './__generated__/LocationsFormMutatio
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import Select from '../../components/Select';
+import Heading from '../../components/Heading';
 
 type Props = {|
   +connectionId: string,
@@ -93,7 +94,7 @@ export default (function LocationsForm(props: Props) {
 
   return (
     <>
-      <h3>Add a location</h3>
+      <Heading level={3}>Add a location</Heading>
       <form onSubmit={onSubmit}>
         <div className={styles('formContainer')}>
           <TextInput

@@ -9,6 +9,7 @@ import type { LocationsList_data as Data } from './__generated__/LocationsList_d
 import FadeIn from './FadeIn';
 import LocationsForm from './RangeAdd/LocationsForm';
 import { tablet } from '../components/breakpoints';
+import Heading from '../components/Heading';
 
 type Props = {|
   +data: Data,
@@ -21,7 +22,7 @@ function LocationsList(props: Props) {
         <LocationsForm connectionId={props.data.locations?.__id ?? ''} />
       </div>
       <div>
-        <h3>My favorite locations</h3>
+        <Heading level={3}>My favorite locations</Heading>
         <TransitionGroup component={null} className="location-list">
           {props.data.locations?.edges?.map<React.Node>((edge) => (
             <FadeIn key={edge?.node?.id} timeout={320}>

@@ -12,17 +12,13 @@ type RenderPageResult = {|
 
 export default class MyDocument extends Document {
   static getInitialProps(ctx: DocumentContext): RenderPageResult {
-    return sx.renderPageWithSX(ctx.renderPage);
+    return sx.renderPageWithSX(ctx.renderPage, { includeReset: true });
   }
 
   render(): React.Element<'html'> {
     return (
       <html lang="en-US">
         <Head>
-          <link
-            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
-            rel="stylesheet"
-          />
           <link
             href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700"
             rel="stylesheet"

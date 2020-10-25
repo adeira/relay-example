@@ -11,6 +11,7 @@ import {
 import Location from './Location';
 import type { LocationsPaginated_data as LocationsDataType } from './__generated__/LocationsPaginated_data.graphql';
 import Button from '../../components/Button';
+import LocationList from './LocationsList';
 
 type Props = {|
   +data: LocationsDataType,
@@ -29,14 +30,14 @@ function LocationsPaginated(props: Props) {
       }
     });
   }
-
+  const edges = props.data.incrementalPagination2?.edges ?? [];
   return (
     <>
-      <ol>
-        {props.data.incrementalPagination2?.edges?.map((edge) => (
+      <LocationList>
+        {edges.map((edge) => (
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
-      </ol>
+      </LocationList>
       <Button onClick={loadMore}>Load more!</Button>
     </>
   );
