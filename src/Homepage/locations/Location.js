@@ -3,6 +3,7 @@
 import React from 'react';
 import { createFragmentContainer, graphql, type FragmentContainerType } from '@adeira/relay';
 import * as sx from '@adeira/sx';
+import Image from 'next/image';
 
 import type { Location_location as LocationDataType } from './__generated__/Location_location.graphql';
 import Text from '../../components/Text';
@@ -21,7 +22,13 @@ function Location({ location }: Props) {
   return (
     <li>
       <div className={styles('box')}>
-        <img src={location.countryFlagURL} alt={`${countryName} flag`} height="24" width="24" />
+        <Image
+          loading="lazy"
+          src={location.countryFlagURL}
+          alt={`${countryName} flag`}
+          height="24"
+          width="24"
+        />
         <Text dataTest={`location-${name}`} size="small">
           {name}
         </Text>

@@ -6,6 +6,9 @@ const withCustomBabelConfigFile = require('next-plugin-custom-babel-config');
 
 module.exports = (withCustomBabelConfigFile(
   withTranspileModules(['@adeira'])({
+    images: {
+      domains: ['images.kiwi.com'],
+    },
     babelConfigFile: path.join(
       __dirname,
       'babel.config.js', // @x-shipit-enable

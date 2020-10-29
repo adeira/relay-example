@@ -38,6 +38,7 @@ it('refetches data', () => {
               id: '1',
               name: 'Oslo',
               code: 'no',
+              countryFlagURL: 'https://images.kiwi.com',
               country: {
                 code: 'no',
               },
@@ -48,6 +49,7 @@ it('refetches data', () => {
               id: '2',
               name: 'Mexico city',
               code: 'mx',
+              countryFlagURL: 'https://images.kiwi.com',
               country: {
                 code: 'mx',
               },
@@ -75,6 +77,7 @@ it('refetches data', () => {
               id: '3',
               name: 'Prague',
               code: 'prg',
+              countryFlagURL: 'https://images.kiwi.com',
               country: {
                 code: 'cz',
               },
