@@ -10,9 +10,10 @@ import Text from '../../components/Text';
 
 type Props = {|
   +location: ?LocationDataType,
+  +dataCount?: string,
 |};
 
-function Location({ location }: Props) {
+function Location({ location, dataCount }: Props) {
   if (!location) {
     return null; // or some failure placeholder
   }
@@ -20,7 +21,7 @@ function Location({ location }: Props) {
   const name = location.name ?? '';
   const countryName = location.country?.name ?? '';
   return (
-    <li>
+    <li className={styles('li')} data-count={dataCount}>
       <div className={styles('box')}>
         <Image
           loading="lazy"
@@ -54,5 +55,16 @@ const styles = sx.create({
     display: 'flex',
     alignItems: 'center',
     gap: '12px', // Works in edge, chrome and firefox, but should be ok for this app
+  },
+  li: {
+    'position': 'relative',
+    '::before': {
+      content: 'attr(data-count) ". "',
+      color: 'black',
+      position: 'absolute',
+      left: '-40px',
+      top: '50%',
+      transform: 'translateY(-50%)',
+    },
   },
 });

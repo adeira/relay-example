@@ -10,10 +10,14 @@ type Props = {|
   +start?: number,
 |};
 
-export default function LocationList({ children, ...rest }: Props): React.Node {
+export default function LocationList({ children, start = 1 }: Props): React.Node {
   return (
-    <ol {...rest} className={styles('ol')}>
-      {children}
+    <ol start={start} className={styles('ol')}>
+      {React.Children.map(children, (child, i) =>
+        React.cloneElement(child, {
+          dataCount: start + i,
+        }),
+      )}
     </ol>
   );
 }
@@ -22,5 +26,6 @@ const styles = sx.create({
   ol: {
     paddingInlineStart: 40,
     margin: '1rem 0',
+    listStyle: 'none',
   },
 });
