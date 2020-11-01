@@ -10,6 +10,7 @@ import LocationsPaginated from './locations/LocationsPaginated';
 import type { HomepageQueryResponse } from './__generated__/HomepageQuery.graphql';
 import Heading from '../components/Heading';
 import Text from '../components/Text';
+import { desktop } from '../components/breakpoints';
 
 function Demo(props) {
   return (
@@ -86,5 +87,8 @@ const styles = sx.create({
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
     gap: 16,
+    [desktop]: {
+      gridTemplateColumns: 'repeat(3, 1fr)',
+    },
   },
 });
