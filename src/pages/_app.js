@@ -1,6 +1,6 @@
 // @flow
 
-import * as React from 'react';
+import type { Node } from 'react';
 import * as sx from '@adeira/sx';
 import App from 'next/app';
 import Head from 'next/head';
@@ -33,7 +33,7 @@ export default class MyApp extends App {
     NProgress.done();
   };
 
-  render(): React.Node {
+  render(): Node {
     const { Component, pageProps } = this.props;
     return (
       <RelayEnvironmentProvider environment={createRelayEnvironment(undefined)}>

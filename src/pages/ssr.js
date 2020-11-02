@@ -1,6 +1,6 @@
 // @flow
 
-import React, { type Node } from 'react';
+import type { Node } from 'react';
 import { fetchQuery, type RecordMap } from '@adeira/relay';
 
 import createRelayEnvironment from '../createRelayEnvironment';

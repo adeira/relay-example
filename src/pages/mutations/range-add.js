@@ -1,12 +1,12 @@
 // @flow
 
-import * as React from 'react';
+import type { Node } from 'react';
 
 import RangeAddExample from '../../mutations/RangeAdd/RangeAdd';
 import Heading from '../../components/Heading';
 import Text from '../../components/Text';
 
-export default function RangeAdd(): React.Node {
+export default function RangeAdd(): Node {
   return (
     <>
       <Heading level={1}>Range add mutation</Heading>

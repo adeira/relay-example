@@ -1,20 +1,20 @@
 // @flow strict-local
 
-import * as React from 'react';
+import { Children, cloneElement, type Element, type ChildrenArray, type Node } from 'react';
 import * as sx from '@adeira/sx';
 
 import Location from './Location';
 
 type Props = {|
-  +children: React.Element<typeof Location> | React.ChildrenArray<React.Element<typeof Location>>,
+  +children: Element<typeof Location> | ChildrenArray<Element<typeof Location>>,
   +start?: number,
 |};
 
-export default function LocationList({ children, start = 1 }: Props): React.Node {
+export default function LocationList({ children, start = 1 }: Props): Node {
   return (
     <ol start={start} className={styles('ol')}>
-      {React.Children.map(children, (child, i) =>
-        React.cloneElement(child, {
+      {Children.map(children, (child, i) =>
+        cloneElement(child, {
           dataCount: start + i,
         }),
       )}

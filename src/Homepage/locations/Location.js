@@ -1,6 +1,5 @@
 // @flow
 
-import React from 'react';
 import { createFragmentContainer, graphql, type FragmentContainerType } from '@adeira/relay';
 import * as sx from '@adeira/sx';
 import Image from 'next/image';

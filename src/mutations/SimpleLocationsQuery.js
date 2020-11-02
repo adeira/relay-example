@@ -1,6 +1,6 @@
 // @flow strict-local
 
-import * as React from 'react';
+import type { ComponentType } from 'react';
 import { QueryRenderer, graphql } from '@adeira/relay';
 
 import LocationsList from './LocationsList';
@@ -20,4 +20,4 @@ export default (function LocationsQuery() {
       onResponse={(data: SimpleLocationsQueryResponse) => <LocationsList data={data} />}
     />
   );
-}: React.ComponentType<Props>);
+}: ComponentType<Props>);

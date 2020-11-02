@@ -1,15 +1,15 @@
 // @flow
 
-import * as React from 'react';
+import type { Node } from 'react';
 import * as sx from '@adeira/sx';
 
 type Props = {|
   +onClick?: () => void,
-  +children: React.Node,
+  +children: Node,
   +dataTest?: string,
   +disabled?: boolean,
-  +iconLeft?: React.Node,
-  +iconRight?: React.Node,
+  +iconLeft?: Node,
+  +iconRight?: Node,
   +type?: 'submit' | 'button',
 |};
 
@@ -20,7 +20,7 @@ export default function Button({
   iconRight,
   type = 'button',
   ...rest
-}: Props): React.Node {
+}: Props): Node {
   return (
     <button
       // eslint-disable-next-line react/button-has-type

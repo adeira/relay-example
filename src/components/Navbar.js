@@ -1,6 +1,6 @@
 // @flow
 
-import * as React from 'react';
+import { cloneElement, useState, useEffect, type ComponentType } from 'react';
 import * as sx from '@adeira/sx';
 import { useRouter } from 'next/router';
 import { MdMenu } from 'react-icons/md';
@@ -17,7 +17,7 @@ type Props = {||};
 function Link({ children, href }) {
   // Currently deactivating client side routing, since sx styles are not correctly
   // set on client side routing
-  return React.cloneElement(children, {
+  return cloneElement(children, {
     href,
   });
 }
@@ -46,14 +46,14 @@ function NavLinks() {
 
 function Navbar() {
   const { pathname } = useRouter();
-  const [show, setShow] = React.useState(false);
-  const [showMenu, setShowMenu] = React.useState(false);
+  const [show, setShow] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setShow(false);
   }, [pathname]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     function WidthChange(mq) {
       setShowMenu(mq.matches);
       setShow(!mq.matches);
@@ -172,4 +172,4 @@ const styles = sx.create({
   },
 });
 
-export default (Navbar: React.ComponentType<Props>);
+export default (Navbar: ComponentType<Props>);

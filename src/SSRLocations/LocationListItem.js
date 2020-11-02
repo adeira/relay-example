@@ -1,6 +1,5 @@
 // @flow
 
-import React from 'react';
 import { createFragmentContainer, graphql, type FragmentContainerType } from '@adeira/relay';
 
 import type { LocationListItem_location as Location } from './__generated__/LocationListItem_location.graphql';

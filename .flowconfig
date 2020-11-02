@@ -37,3 +37,6 @@ suppress_type=$FlowFixMe
 ; This option is always ON in the strict mode. We are enabling it even for the classic mode.
 ; Function parameters are considered const (i.e., treated as if they were declared with const rather than let).
 experimental.const_params=true
+
+; This enables new react JSX transforms in flow
+react.runtime=automatic

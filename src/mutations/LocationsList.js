@@ -1,6 +1,6 @@
 // @flow
 
-import * as React from 'react';
+import type { Node } from 'react';
 import { createFragmentContainer, graphql, type FragmentContainerType } from '@adeira/relay';
 import { TransitionGroup } from 'react-transition-group';
 import * as sx from '@adeira/sx';
@@ -24,7 +24,7 @@ function LocationsList(props: Props) {
       <div>
         <Heading level={3}>My favorite locations</Heading>
         <TransitionGroup component={null} className="location-list">
-          {props.data.locations?.edges?.map<React.Node>((edge) => (
+          {props.data.locations?.edges?.map<Node>((edge) => (
             <FadeIn key={edge?.node?.id} timeout={320}>
               <div style={{ padding: '12px', borderBottom: '1px solid black' }}>
                 <div>

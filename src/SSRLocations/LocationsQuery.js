@@ -1,6 +1,6 @@
 // @flow
 
-import React, { type Node } from 'react';
+import type { Node } from 'react';
 import { graphql, type RecordMap, type GraphQLTaggedNode } from '@adeira/relay';
 import * as sx from '@adeira/sx';
 

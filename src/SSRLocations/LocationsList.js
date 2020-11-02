@@ -1,6 +1,6 @@
 // @flow
 
-import * as React from 'react';
+import type { Node } from 'react';
 import { createFragmentContainer, graphql, type FragmentContainerType } from '@adeira/relay';
 
 import type { LocationsList_locations as Locations } from './__generated__/LocationsList_locations.graphql';
@@ -10,7 +10,7 @@ type Props = {|
   +locations: ?Locations,
 |};
 
-const LocationsList = (props: Props): React.Node => {
+const LocationsList = (props: Props): Node => {
   const edges = props.locations?.edges ?? [];
   return edges.map((edge) => <LocationListItem key={edge?.node?.id} location={edge?.node} />);
 };

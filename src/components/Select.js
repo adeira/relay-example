@@ -1,6 +1,6 @@
 // @flow
 
-import * as React from 'react';
+import { useState, type Node } from 'react';
 import * as sx from '@adeira/sx';
 import { MdExpandMore } from 'react-icons/md';
 
@@ -19,14 +19,8 @@ type Props = {|
   +name?: string,
 |};
 
-export default function Select({
-  options,
-  label,
-  placeholder,
-  onChange,
-  ...rest
-}: Props): React.Node {
-  const [value, setValue] = React.useState('');
+export default function Select({ options, label, placeholder, onChange, ...rest }: Props): Node {
+  const [value, setValue] = useState('');
   const handleChange = (e) => {
     setValue(e.target.value);
     onChange(e.target.value);

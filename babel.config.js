@@ -11,7 +11,7 @@ type ApiType = {|
 
 type BabelConfig = {|
   +plugins: $ReadOnlyArray<string>,
-  +presets: $ReadOnlyArray<string>,
+  +presets: $ReadOnlyArray<string | [string, { ... }]>,
 |}
 
 */
@@ -21,7 +21,7 @@ module.exports = function (api /*: ApiType */) /*: BabelConfig */ {
   api.cache.forever();
 
   return {
-    presets: ['@adeira/babel-preset-adeira', 'next/babel'],
+    presets: [['@adeira/babel-preset-adeira', { reactRuntime: 'automatic' }], 'next/babel'],
     plugins: ['relay'],
   };
 };

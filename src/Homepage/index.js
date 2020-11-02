@@ -1,6 +1,6 @@
 // @flow
 
-import * as React from 'react';
+import type { Node } from 'react';
 import { graphql, QueryRenderer } from '@adeira/relay';
 import * as sx from '@adeira/sx';
 
@@ -62,7 +62,7 @@ function renderQueryRendererResponse(props: HomepageQueryResponse) {
   );
 }
 
-export default function Homepage(): React.Node {
+export default function Homepage(): Node {
   const queryVariables = {
     count: ITEMS_COUNT,
   };

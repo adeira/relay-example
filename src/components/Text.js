@@ -1,15 +1,15 @@
 // @flow
 
-import * as React from 'react';
+import type { Node } from 'react';
 import * as sx from '@adeira/sx';
 
 type Props = {|
   +size?: 'small' | 'normal',
-  +children: React.Node,
+  +children: Node,
   +dataTest?: string,
 |};
 
-export default function Text({ size = 'normal', children, dataTest }: Props): React.Node {
+export default function Text({ size = 'normal', children, dataTest }: Props): Node {
   return (
     <span data-testid={dataTest} className={styles(size)}>
       {children}

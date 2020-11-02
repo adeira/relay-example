@@ -1,6 +1,6 @@
 // @flow
 
-import * as React from 'react';
+import type { Node } from 'react';
 import * as sx from '@adeira/sx';
 
 import Text from './Text';
@@ -13,7 +13,7 @@ type Props = {|
   +name?: string,
 |};
 
-export default function TextInput({ onChange, label, ...rest }: Props): React.Node {
+export default function TextInput({ onChange, label, ...rest }: Props): Node {
   const handleChange = (e) => {
     onChange(e.target.value);
   };

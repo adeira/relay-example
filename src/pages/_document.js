@@ -1,12 +1,12 @@
 // @flow
 
-import * as React from 'react';
+import type { Node, Element } from 'react';
 import Document, { Head, Main, NextScript, type DocumentContext } from 'next/document';
 import * as sx from '@adeira/sx';
 
 type RenderPageResult = {|
   +html: string,
-  +head: $ReadOnlyArray<React.Node>,
+  +head: $ReadOnlyArray<Node>,
   +styles: $ReadOnlyArray<any>,
 |};
 
@@ -15,7 +15,7 @@ export default class MyDocument extends Document {
     return sx.renderPageWithSX(ctx.renderPage);
   }
 
-  render(): React.Element<'html'> {
+  render(): Element<'html'> {
     return (
       <html lang="en-US">
         <Head>

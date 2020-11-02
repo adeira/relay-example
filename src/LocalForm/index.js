@@ -1,6 +1,6 @@
 // @flow
 
-import React, { useEffect, type Node } from 'react';
+import { useEffect, type Node } from 'react';
 import {
   commitLocalUpdate,
   createLocalEnvironment,

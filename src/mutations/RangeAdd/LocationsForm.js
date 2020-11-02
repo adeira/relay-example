@@ -2,7 +2,7 @@
 
 /* eslint-disable no-alert */
 
-import * as React from 'react';
+import { useState, type ComponentType } from 'react';
 import { graphql, useMutation } from '@adeira/relay';
 import * as sx from '@adeira/sx';
 
@@ -41,9 +41,9 @@ const getLocation = (location: Location) => {
 };
 
 export default (function LocationsForm(props: Props) {
-  const [locationId, setLocationId] = React.useState('');
-  const [name, setName] = React.useState('');
-  const [type, setType] = React.useState('');
+  const [locationId, setLocationId] = useState('');
+  const [name, setName] = useState('');
+  const [type, setType] = useState('');
   const [addLocation, loading] = useMutation<LocationsFormMutation>(graphql`
     mutation LocationsFormMutation($location: AddLocationInput!, $connections: [String!]!) {
       addLocation(location: $location) {
@@ -123,7 +123,7 @@ export default (function LocationsForm(props: Props) {
       </form>
     </>
   );
-}: React.ComponentType<Props>);
+}: ComponentType<Props>);
 
 const styles = sx.create({
   formContainer: {

@@ -1,6 +1,6 @@
 // @flow
 
-import * as React from 'react';
+import type { Node } from 'react';
 import { QueryRenderer, type GraphQLTaggedNode, RelayEnvironmentProvider } from '@adeira/relay';
 import { isBrowser } from '@adeira/js';
 import { getDataFromRequest } from '@adeira/relay-utils';
@@ -11,11 +11,11 @@ import createRelayEnvironment from './createRelayEnvironment';
 type Props<T> = {|
   +query: GraphQLTaggedNode,
   +variables: Variables,
-  +onResponse: (?T) => React.Node,
+  +onResponse: (?T) => Node,
   +ssrData: $FlowFixMe,
 |};
 
-export default function SSRQueryRenderer<T>(props: Props<T>): React.Node {
+export default function SSRQueryRenderer<T>(props: Props<T>): Node {
   // We have to re-create the environment here with initialized store for SSR.
   const environment = createRelayEnvironment(props.ssrData);
 

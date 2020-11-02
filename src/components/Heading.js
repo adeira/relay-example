@@ -1,14 +1,14 @@
 // @flow
 
-import * as React from 'react';
+import type { Node } from 'react';
 import * as sx from '@adeira/sx';
 
 type Props = {|
   +level: 1 | 2 | 3 | 4 | 5 | 6,
-  +children: React.Node,
+  +children: Node,
 |};
 
-export default function Heading({ level, children }: Props): React.Node {
+export default function Heading({ level, children }: Props): Node {
   const Component = `h${level}`;
   return (
     <Component className={styles(level === 1 && 'h1', level === 2 && 'h2', level === 3 && 'h3')}>

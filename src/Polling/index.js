@@ -1,6 +1,6 @@
 // @flow
 
-import React, { useState, type Node } from 'react';
+import { useState, type Node } from 'react';
 import { graphql, QueryRenderer } from '@adeira/relay';
 import { isBrowser } from '@adeira/js';
 
