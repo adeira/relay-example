@@ -55,13 +55,17 @@ const styles = sx.create({
   primary: {
     'border': '2px solid var(--color-primary)',
     'backgroundColor': 'var(--color-primary)',
-    'color': 'white',
+    'color': 'var(--text-color)',
+    'transition': 'all 0.3s',
     ':hover': {
       boxShadow: 'var(--box-shadow-active)',
+      transform: 'translateY(-3px)',
     },
     ':active': {
+      transform: 'translateY(-1px)',
+    },
+    ':focus': {
       boxShadow: 'var(--box-shadow-active)',
-      opacity: 0.5,
     },
   },
   spacer: {

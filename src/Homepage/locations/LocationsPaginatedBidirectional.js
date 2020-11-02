@@ -71,14 +71,14 @@ function LocationsPaginatedBidirectional(props: Props) {
         <Button
           onClick={openPreviousPage}
           disabled={!pageInfo.hasPreviousPage}
-          iconLeft={<MdChevronLeft color="white" size="16" />}
+          iconLeft={<MdChevronLeft color="var(--text-color)" size="16" />}
         >
           Previous&nbsp;page
         </Button>
         <Button
           onClick={openNextPage}
           disabled={!pageInfo.hasNextPage}
-          iconRight={<MdChevronRight color="white" size="16" />}
+          iconRight={<MdChevronRight color="var(--text-color)" size="16" />}
         >
           Next&nbsp;page
         </Button>

@@ -111,7 +111,7 @@ const styles = sx.create({
     'fontSize': 18,
     'lineHeight': 1.333333,
     'marginRight': 24,
-    'color': 'white',
+    'color': 'var(--text-color)',
     'fontWeight': 600,
     'cursor': 'pointer',
     'textDecoration': 'none',

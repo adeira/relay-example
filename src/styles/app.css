@@ -2,11 +2,12 @@
 
 :root {
   /* Colors */
-  --color-primary: #30b8ba;
+  --color-primary: #55e0c6;
+  --text-color: #1c1e21;
 
 
   /* Box shadow */
-  --box-shadow-active: 0 0 2px 2px #6FFFB0;
+  --box-shadow-active: 0 0 2px 2px #50c9b3;
 
   /* Spacing */
   --space-x-small: 6px;
@@ -20,10 +21,8 @@
 }
 
 
-* {
-  box-sizing: border-box;
-}
-
 body {
   font-family: Roboto, sans-serif;
+  color: var(--text-color);
+  font-size: 1rem;
 }
