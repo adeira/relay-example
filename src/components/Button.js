@@ -47,6 +47,7 @@ const styles = sx.create({
     background: 'none',
     padding: '4px 20px',
     borderRadius: '3px',
+    fontFamily: 'inherit',
   },
   disabled: {
     opacity: 0.3,

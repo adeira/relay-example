@@ -10,7 +10,6 @@ import { RelayEnvironmentProvider } from '@adeira/relay';
 
 import createRelayEnvironment from '../createRelayEnvironment';
 import Navbar from '../components/Navbar';
-import Header from '../components/Header';
 import '../styles/app.css';
 import { tablet } from '../components/breakpoints';
 
@@ -41,9 +40,9 @@ export default class MyApp extends App {
         <Head>
           <title>Relay Example</title>
         </Head>
-        <Header>
+        <header>
           <Navbar />
-        </Header>
+        </header>
         <div className={styles('padMedium')}>
           {__DEV__ ? (
             <div className={styles('box')}>

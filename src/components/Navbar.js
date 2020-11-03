@@ -4,6 +4,10 @@ import * as React from 'react';
 import * as sx from '@adeira/sx';
 import { useRouter } from 'next/router';
 import { MdMenu } from 'react-icons/md';
+import { CSSTransition } from 'react-transition-group';
+
+import cssStyles from './Navbar.module.css';
+import { tablet } from './breakpoints';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // Next.js does this automatically (https://nextjs.org/docs/api-reference/next/link)
@@ -54,7 +58,7 @@ function Navbar() {
       setShowMenu(mq.matches);
       setShow(!mq.matches);
     }
-    const mq = window.matchMedia('(max-width: 900px)');
+    const mq = window.matchMedia('(max-width: 901px)');
     mq.addListener(WidthChange);
     WidthChange(mq);
     return () => {
@@ -63,7 +67,7 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className={styles('nav')}>
+    <nav className={styles('nav', show && showMenu && 'navExpanded')}>
       <div className={styles('navInner')}>
         <Link href="/">
           <a className={styles('link')}>Relay Example</a>
@@ -75,12 +79,27 @@ function Navbar() {
             type="button"
             onClick={() => setShow((show) => !show)}
           >
-            <MdMenu color="white" />
+            <MdMenu color="var(--text-color)" />
           </button>
         )}
         {!showMenu && <NavLinks />}
       </div>
-      {show && showMenu && <NavLinks />}
+      <CSSTransition
+        classNames={{
+          enter: cssStyles['Navbar__links-enter'],
+          enterActive: cssStyles['Navbar__links-enter-active'],
+          exit: cssStyles['Navbar__links-exit'],
+          exitActive: cssStyles['Navbar__links-enter-active'],
+        }}
+        in={show && showMenu}
+        unmountOnExit
+        timeout={200}
+        appear={true}
+      >
+        <div className={styles('navLinkContainer')}>
+          <NavLinks />
+        </div>
+      </CSSTransition>
     </nav>
   );
 }
@@ -88,24 +107,52 @@ function Navbar() {
 const styles = sx.create({
   nav: {
     width: '100%',
+    maxHeight: '71px',
+    overflow: 'hidden',
+    transition: 'all 0.3s',
+    backgroundColor: 'var(--color-primary)',
+    padding: 'var(--space-small)',
+    [tablet]: {
+      padding: 'var(--space-x-large)',
+    },
+  },
+  navExpanded: {
+    maxHeight: '210px',
   },
   navInner: {
     display: 'flex',
     justifyContent: 'space-between',
+    alignItems: 'center',
     flex: 1,
   },
   navLinkWrapper: {
     'flexDirection': 'column',
     'display': 'flex',
-    '@media(min-width: 900px)': {
+    '@media(min-width: 902px)': {
       alignItems: 'flex-end',
       flexDirection: 'row',
     },
   },
+  navLinkContainer: {
+    paddingTop: '20px',
+  },
   button: {
-    background: 'none',
-    border: 'none',
-    cursor: 'pointer',
+    'backgroundColor': 'transparent',
+    'border': 'none',
+    'cursor': 'pointer',
+    'outline': 'none',
+    'position': 'relative',
+    'fontSize': 'inherit',
+    ':focus::before': {
+      content: '""',
+      borderRadius: '50%',
+      height: '40px',
+      width: '40px',
+      top: '-12px',
+      left: '-12px',
+      backgroundColor: 'rgba(0, 0, 0, 0.2)',
+      position: 'absolute',
+    },
   },
   link: {
     'fontSize': 18,
