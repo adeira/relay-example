@@ -12,7 +12,7 @@ type RenderPageResult = {|
 
 export default class MyDocument extends Document {
   static getInitialProps(ctx: DocumentContext): RenderPageResult {
-    return sx.renderPageWithSX(ctx.renderPage, { includeReset: true });
+    return sx.renderPageWithSX(ctx.renderPage);
   }
 
   render(): React.Element<'html'> {
@@ -23,6 +23,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700"
             rel="stylesheet"
           />
+          <link rel="stylesheet" type="text/css" href="/reset.css" />
           <link rel="stylesheet" type="text/css" href="/nprogress.css" />
         </Head>
         <body>
