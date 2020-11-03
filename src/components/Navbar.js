@@ -109,7 +109,7 @@ const styles = sx.create({
     width: '100%',
     maxHeight: '71px',
     overflow: 'hidden',
-    transition: 'all 0.3s',
+    transition: 'max-height 0.3s',
     backgroundColor: 'var(--color-primary)',
     padding: 'var(--space-small)',
     [tablet]: {
