@@ -4,6 +4,8 @@ import type { Node, Element } from 'react';
 import Document, { Head, Main, NextScript, type DocumentContext } from 'next/document';
 import * as sx from '@adeira/sx';
 
+import { mediaStyles } from '../components/Media';
+
 type RenderPageResult = {|
   +html: string,
   +head: $ReadOnlyArray<Node>,
@@ -23,8 +25,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700"
             rel="stylesheet"
           />
-          <link rel="stylesheet" type="text/css" href="/reset.css" />
-          <link rel="stylesheet" type="text/css" href="/nprogress.css" />
+          <style dangerouslySetInnerHTML={{ __html: mediaStyles }} />
         </Head>
         <body>
           <Main />

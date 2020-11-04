@@ -12,6 +12,7 @@ import createRelayEnvironment from '../createRelayEnvironment';
 import Navbar from '../components/Navbar';
 import '../styles/app.css';
 import { tablet } from '../components/breakpoints';
+import { MediaContextProvider } from '../components/Media';
 
 export default class MyApp extends App {
   componentDidMount: () => void = () => {
@@ -58,7 +59,9 @@ export default class MyApp extends App {
             </div>
           )}
           <div className={styles('marginTopSmall')}>
-            <Component {...pageProps} />
+            <MediaContextProvider>
+              <Component {...pageProps} />
+            </MediaContextProvider>
           </div>
         </div>
       </RelayEnvironmentProvider>

@@ -1,43 +1,52 @@
 // @flow
 
-import { cloneElement, useState, useEffect, type ComponentType } from 'react';
+import { cloneElement, useState, useEffect, type ComponentType, type Element } from 'react';
 import * as sx from '@adeira/sx';
-import { useRouter } from 'next/router';
 import { MdMenu } from 'react-icons/md';
 import { CSSTransition } from 'react-transition-group';
 
 import cssStyles from './Navbar.module.css';
-import { tablet } from './breakpoints';
+import { tablet, desktop } from './breakpoints';
+import { Media } from './Media';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // Next.js does this automatically (https://nextjs.org/docs/api-reference/next/link)
 
 type Props = {||};
 
-function Link({ children, href }) {
+function Link({
+  children,
+  href,
+  onClick,
+}: {|
+  +children: Element<'a'>,
+  +href: string,
+  +onClick?: () => void,
+|}) {
   // Currently deactivating client side routing, since sx styles are not correctly
   // set on client side routing
   return cloneElement(children, {
     href,
+    onClick,
   });
 }
 
-function NavLinks() {
+function NavLinks({ onClick }: {| +onClick?: () => void |}) {
   return (
     <div className={styles('navLinkWrapper')}>
-      <Link href="/">
+      <Link onClick={onClick} href="/">
         <a className={styles('link')}>Pagination</a>
       </Link>
-      <Link href="/polling">
+      <Link onClick={onClick} href="/polling">
         <a className={styles('link')}>Polling</a>
       </Link>
-      <Link href="/local-form">
+      <Link onClick={onClick} href="/local-form">
         <a className={styles('link')}>Local schema</a>
       </Link>
-      <Link href="/ssr">
+      <Link onClick={onClick} href="/ssr">
         <a className={styles('link')}>Server side rendering</a>
       </Link>
-      <Link href="/mutations/range-add">
+      <Link onClick={onClick} href="/mutations/range-add">
         <a className={styles('link')}>Range add mutation</a>
       </Link>
     </div>
@@ -45,20 +54,15 @@ function NavLinks() {
 }
 
 function Navbar() {
-  const { pathname } = useRouter();
   const [show, setShow] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-
-  useEffect(() => {
-    setShow(false);
-  }, [pathname]);
 
   useEffect(() => {
     function WidthChange(mq) {
       setShowMenu(mq.matches);
       setShow(!mq.matches);
     }
-    const mq = window.matchMedia('(max-width: 901px)');
+    const mq = window.matchMedia('(max-width: 992px)');
     mq.addListener(WidthChange);
     WidthChange(mq);
     return () => {
@@ -72,7 +76,7 @@ function Navbar() {
         <Link href="/">
           <a className={styles('link')}>Relay Example</a>
         </Link>
-        {showMenu && (
+        <Media lessThan="desktop">
           <button
             aria-label="Menu"
             className={styles('button')}
@@ -81,8 +85,10 @@ function Navbar() {
           >
             <MdMenu color="var(--text-color)" />
           </button>
-        )}
-        {!showMenu && <NavLinks />}
+        </Media>
+        <Media greaterThanOrEqual="desktop">
+          <NavLinks />
+        </Media>
       </div>
       <CSSTransition
         classNames={{
@@ -94,10 +100,9 @@ function Navbar() {
         in={show && showMenu}
         unmountOnExit
         timeout={200}
-        appear={true}
       >
         <div className={styles('navLinkContainer')}>
-          <NavLinks />
+          <NavLinks onClick={() => setShow(false)} />
         </div>
       </CSSTransition>
     </nav>
@@ -126,9 +131,9 @@ const styles = sx.create({
     flex: 1,
   },
   navLinkWrapper: {
-    'flexDirection': 'column',
-    'display': 'flex',
-    '@media(min-width: 902px)': {
+    flexDirection: 'column',
+    display: 'flex',
+    [desktop]: {
       alignItems: 'flex-end',
       flexDirection: 'row',
     },
