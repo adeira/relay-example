@@ -21,7 +21,7 @@ module.exports = function (api /*: ApiType */) /*: BabelConfig */ {
   api.cache.forever();
 
   return {
-    presets: [['@adeira/babel-preset-adeira', { reactRuntime: 'automatic' }], 'next/babel'],
+    presets: ['@adeira/babel-preset-adeira', 'next/babel'],
     plugins: ['relay'],
   };
 };
