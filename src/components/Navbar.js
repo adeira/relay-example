@@ -20,20 +20,30 @@ type Props = {|
 function NavLinks({ onClick }: Props): Node {
   return (
     <div className={styles('navLinkWrapper')}>
-      <Link onClick={onClick} href="/">
-        <a className={styles('link')}>Pagination</a>
+      <Link href="/">
+        <a onClick={onClick} className={styles('link')}>
+          Pagination
+        </a>
       </Link>
-      <Link onClick={onClick} href="/polling">
-        <a className={styles('link')}>Polling</a>
+      <Link href="/polling">
+        <a onClick={onClick} className={styles('link')}>
+          Polling
+        </a>
       </Link>
-      <Link onClick={onClick} href="/local-form">
-        <a className={styles('link')}>Local schema</a>
+      <Link href="/local-form">
+        <a onClick={onClick} className={styles('link')}>
+          Local schema
+        </a>
       </Link>
-      <Link onClick={onClick} href="/ssr">
-        <a className={styles('link')}>Server side rendering</a>
+      <Link href="/ssr">
+        <a onClick={onClick} className={styles('link')}>
+          Server side rendering
+        </a>
       </Link>
-      <Link onClick={onClick} href="/mutations/range-add">
-        <a className={styles('link')}>Range add mutation</a>
+      <Link href="/mutations/range-add">
+        <a onClick={onClick} className={styles('link')}>
+          Range add mutation
+        </a>
       </Link>
     </div>
   );
