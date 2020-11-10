@@ -19,11 +19,11 @@ export default function Text({ size = 'normal', children, dataTest }: Props): No
 
 const styles = sx.create({
   small: {
-    fontSize: 14,
+    fontSize: '1.4rem',
     lineHeight: 1.42857,
   },
   normal: {
-    fontSize: 16,
+    fontSize: '1.6rem',
     lineHeight: 1.42857,
   },
 });

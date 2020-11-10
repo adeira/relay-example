@@ -12,19 +12,22 @@
   --box-shadow-active: 0 0 2px 2px #50c9b3;
 
   /* Spacing */
-  --space-x-small: 6px;
-  --space-small: 12px;
-  --space-medium: 16px;
-  --space-large: 20px;
-  --space-x-large: 24px;
+  --space-x-small: .6rem;
+  --space-small: 1.2rem;
+  --space-medium: 1.6rem;
+  --space-large: 2rem;
+  --space-x-large: 2.4rem;
 
   /* Border radius */
   --border-radius-normal: 3px;
 }
 
+html {
+  font-size: 62.5%;
+}
 
 body {
   font-family: Roboto, sans-serif;
   color: var(--text-color);
-  font-size: 1rem;
+  font-size: 1.6rem;
 }

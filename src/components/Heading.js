@@ -19,19 +19,19 @@ export default function Heading({ level, children }: Props): Node {
 
 const styles = sx.create({
   h1: {
-    fontSize: 34,
+    fontSize: '3.4rem',
     lineHeight: 1.1674,
     fontWeight: 600,
     margin: '1.4rem 0',
   },
   h2: {
-    fontSize: 26,
+    fontSize: '2.6rem',
     lineHeight: 1.2307,
     fontWeight: 600,
     margin: '1.3rem 0',
   },
   h3: {
-    fontSize: 18,
+    fontSize: '1.8rem',
     lineHeight: 1.15,
     fontWeight: 600,
     margin: '1.15rem 0',

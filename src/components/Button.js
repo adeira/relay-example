@@ -42,7 +42,7 @@ const styles = sx.create({
   button: {
     cursor: 'pointer',
     outline: 'none',
-    fontSize: 14,
+    fontSize: '1.4rem',
     lineHeight: 1.42857,
     background: 'none',
     padding: '4px 20px',

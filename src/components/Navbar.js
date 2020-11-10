@@ -156,7 +156,7 @@ const styles = sx.create({
     },
   },
   link: {
-    'fontSize': 18,
+    'fontSize': '1.8rem',
     'lineHeight': 1.333333,
     'marginRight': 24,
     'color': 'var(--text-color)',
