@@ -1,7 +1,7 @@
 // @flow
 
 import type { Node } from 'react';
-import * as sx from '@adeira/sx';
+import sx from '@adeira/sx';
 
 type Props = {|
   +size?: 'small' | 'normal',

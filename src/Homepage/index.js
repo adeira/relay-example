@@ -2,7 +2,7 @@
 
 import type { Node } from 'react';
 import { graphql, QueryRenderer } from '@adeira/relay';
-import * as sx from '@adeira/sx';
+import sx from '@adeira/sx';
 
 import LocationsPaginatedBidirectional from './locations/LocationsPaginatedBidirectional';
 import LocationsPaginatedRefetch from './locations/LocationsPaginatedRefetch';

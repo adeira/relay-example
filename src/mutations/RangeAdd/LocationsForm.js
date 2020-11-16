@@ -4,7 +4,7 @@
 
 import { useState, type ComponentType } from 'react';
 import { graphql, useMutation } from '@adeira/relay';
-import * as sx from '@adeira/sx';
+import sx from '@adeira/sx';
 
 import type { LocationsFormMutation } from './__generated__/LocationsFormMutation.graphql';
 import TextInput from '../../components/TextInput';

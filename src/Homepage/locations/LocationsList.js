@@ -1,7 +1,7 @@
 // @flow strict-local
 
 import { Children, cloneElement, type Element, type ChildrenArray, type Node } from 'react';
-import * as sx from '@adeira/sx';
+import sx from '@adeira/sx';
 
 import Location from './Location';
 

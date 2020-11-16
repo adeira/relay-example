@@ -2,7 +2,7 @@
 
 import type { Node } from 'react';
 import { graphql, type RecordMap, type GraphQLTaggedNode } from '@adeira/relay';
-import * as sx from '@adeira/sx';
+import sx from '@adeira/sx';
 
 import QueryRenderer from '../SSRQueryRenderer';
 import type { LocationsQueryResponse } from './__generated__/LocationsQuery.graphql';

@@ -3,7 +3,7 @@
 import type { Node } from 'react';
 import { createFragmentContainer, graphql, type FragmentContainerType } from '@adeira/relay';
 import { TransitionGroup } from 'react-transition-group';
-import * as sx from '@adeira/sx';
+import sx from '@adeira/sx';
 
 import type { LocationsList_data as Data } from './__generated__/LocationsList_data.graphql';
 import FadeIn from './FadeIn';

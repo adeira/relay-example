@@ -8,7 +8,7 @@ import {
   type RefetchContainerType,
 } from '@adeira/relay';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-import * as sx from '@adeira/sx';
+import sx from '@adeira/sx';
 
 import Location from './Location';
 import type { LocationsPaginatedBidirectional_data as LocationsDataType } from './__generated__/LocationsPaginatedBidirectional_data.graphql';

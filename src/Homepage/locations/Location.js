@@ -1,7 +1,7 @@
 // @flow
 
 import { createFragmentContainer, graphql, type FragmentContainerType } from '@adeira/relay';
-import * as sx from '@adeira/sx';
+import sx from '@adeira/sx';
 import Image from 'next/image';
 
 import type { Location_location as LocationDataType } from './__generated__/Location_location.graphql';

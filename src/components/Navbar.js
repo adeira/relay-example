@@ -1,7 +1,7 @@
 // @flow
 
 import { useState, useEffect, type ComponentType, type Node } from 'react';
-import * as sx from '@adeira/sx';
+import sx from '@adeira/sx';
 import { MdMenu } from 'react-icons/md';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';

@@ -9,7 +9,7 @@ import {
 } from '@adeira/relay';
 // FIXME:
 import { generateClientID } from 'relay-runtime'; // eslint-disable-line import/no-extraneous-dependencies
-import * as sx from '@adeira/sx';
+import sx from '@adeira/sx';
 
 import type { LocalFormQueryResponse } from './__generated__/LocalFormQuery.graphql';
 import Heading from '../components/Heading';

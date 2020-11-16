@@ -1,7 +1,7 @@
 // @flow
 
 import { useState, type Node } from 'react';
-import * as sx from '@adeira/sx';
+import sx from '@adeira/sx';
 import { MdExpandMore } from 'react-icons/md';
 
 import Text from './Text';

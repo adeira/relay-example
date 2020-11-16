@@ -2,7 +2,7 @@
 
 import type { Node, Element } from 'react';
 import Document, { Head, Main, NextScript, type DocumentContext } from 'next/document';
-import * as sx from '@adeira/sx';
+import sx from '@adeira/sx';
 
 import { mediaStyles } from '../components/Media';
 
