@@ -1,6 +1,6 @@
 // @flow
 
-import { generateTestsFromFixtures } from '@adeira/test-utils';
+import { generateTestsFromFixtures } from '@adeira/fixtures-tester';
 import path from 'path';
 
 import executeTestQuery from '../../../services/executeTestQuery';
