@@ -8,7 +8,7 @@
     "@adeira/fixtures-tester": "^0.1.0",
     "@adeira/graphql-bc-checker": "^0.3.0",
     "@adeira/graphql-global-id": "^1.2.0",
-    "@adeira/graphql-relay": "^0.2.0",
+    "@adeira/graphql-relay": "^0.3.0",
     "@adeira/js": "^1.3.0",
     "@adeira/monorepo-utils": "^0.9.0",
     "@adeira/relay": "^2.2.0",
