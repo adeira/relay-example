@@ -13,11 +13,11 @@ module.exports = (withCustomBabelConfigFile(
     '@adeira/graphql-relay',
     '@adeira/js',
     '@adeira/monorepo-utils',
+    '@adeira/murmur-hash',
     '@adeira/relay',
     '@adeira/relay-runtime',
     '@adeira/relay-utils',
     '@adeira/sx',
-    '@adeira/test-utils',
   ])({
     images: {
       domains: ['images.kiwi.com'],
