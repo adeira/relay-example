@@ -4,21 +4,13 @@ const path = require('path');
 const withTranspileModules = require('next-transpile-modules');
 const withCustomBabelConfigFile = require('next-plugin-custom-babel-config');
 
+// @x-shipit-disable: const getTranspileWorkspaces = require('./scripts/getTranspileWorkspaces');
+
+// @x-shipit-disable: const transpileWorkspaces = getTranspileWorkspaces();
+const transpileWorkspaces = []; // @x-shipit-enable
+
 module.exports = (withCustomBabelConfigFile(
-  withTranspileModules([
-    '@adeira/css-colors',
-    '@adeira/fetch',
-    '@adeira/graphql-bc-checker',
-    '@adeira/graphql-global-id',
-    '@adeira/graphql-relay',
-    '@adeira/js',
-    '@adeira/monorepo-utils',
-    '@adeira/murmur-hash',
-    '@adeira/relay',
-    '@adeira/relay-runtime',
-    '@adeira/relay-utils',
-    '@adeira/sx',
-  ])({
+  withTranspileModules(transpileWorkspaces)({
     images: {
       domains: ['images.kiwi.com'],
     },
