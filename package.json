@@ -10,7 +10,7 @@
     "@adeira/graphql-global-id": "^1.2.0",
     "@adeira/graphql-relay": "^0.3.0",
     "@adeira/js": "^1.3.0",
-    "@adeira/monorepo-utils": "^0.10.0",
+    "@adeira/monorepo-utils": "^0.11.0",
     "@adeira/relay": "^2.2.0",
     "@adeira/relay-runtime": "^0.18.0",
     "@adeira/relay-utils": "0.11.0",
