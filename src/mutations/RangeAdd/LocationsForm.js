@@ -45,7 +45,7 @@ export default (function LocationsForm(props: Props) {
   const [name, setName] = useState('');
   const [type, setType] = useState('');
   const [addLocation, loading] = useMutation<LocationsFormMutation>(graphql`
-    mutation LocationsFormMutation($location: AddLocationInput!, $connections: [String!]!) {
+    mutation LocationsFormMutation($location: AddLocationInput!, $connections: [ID!]!) {
       addLocation(location: $location) {
         __typename
         ... on AddLocationResponse {
