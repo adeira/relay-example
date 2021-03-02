@@ -1,10 +1,14 @@
 // @flow
 
 import type { Node } from 'react';
-import { QueryRenderer, type GraphQLTaggedNode, RelayEnvironmentProvider } from '@adeira/relay';
+import {
+  getDataFromRequest,
+  QueryRenderer,
+  RelayEnvironmentProvider,
+  type GraphQLTaggedNode,
+  type Variables,
+} from '@adeira/relay';
 import { isBrowser } from '@adeira/js';
-import { getDataFromRequest } from '@adeira/relay-utils';
-import type { Variables } from '@adeira/relay-runtime';
 
 import createRelayEnvironment from './createRelayEnvironment';
 
