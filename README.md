@@ -4,22 +4,20 @@ _This project was initially developed at Kiwi.com for education purposes and was
 
 # Relay examples
 
-This repository contains examples of common patterns used in real-world applications so you don't have to re-invent the wheel every time. It currently contains following examples:
+This repository contains examples of common patterns used in real-world applications, so you don't have to re-invent the wheel every time. It currently contains following examples:
 
-- `@adeira/relay` package usage
-- simple fetching using `createFragmentContainer`
-- bi-directional (also known as window) pagination using `createRefetchContainer`
+- [`@adeira/relay`](https://www.npmjs.com/package/@adeira/relay) package usage
+- simple fetching using `useFragment` hook API
+- bi-directional pagination using `createRefetchContainer` (also known as window pagination)
 - _"load more"_ pagination using `createRefetchContainer` AND `createPaginationContainer`
 - query polling (live queries) with simple A/B test
 - example of local schema via `commitLocalUpdate` with local storage
 - server side rendering
 
-This example project also uses single directory for artifacts which means that all the generated metafiles are stored in single `__generated__` directory. It improves Flow types as a side-effect.
-
 Additional learning resources:
 
-- official documentation: https://facebook.github.io/relay/docs/en/next/introduction-to-relay.html
-- advanced and experimental features: https://github.com/mrtnzlml/meta/blob/master/relay.md
+- official documentation: https://relay.dev/docs/en/introduction-to-relay
+- advanced and experimental features: https://mrtnzlml.com/docs/relay
 - source-code: https://github.com/facebook/relay
 
 # Install and run
@@ -35,7 +33,7 @@ You should regenerate Relay files in case you are changing Relay fragments:
 yarn relay
 ```
 
-This is necessary because Relay is not working with the GraphQL code you write directly. Instead, it generates optimized metafiles to the `__generated__` folder and it's working with these files. It's a good idea to check what files are being regenerated and sometimes even look inside and read them. You'll eventually learn a lot about how it actually works and what optimizations are actually being done.
+This is necessary because Relay is not working with the GraphQL code you write directly. Instead, it generates optimized metafiles to the `__generated__` folder, and it's working with these files. It's a good idea to check what files are being regenerated and sometimes even look inside and read them. You'll eventually learn a lot about how it actually works and what optimizations are actually being done.
 
 Run this command to get fresh GraphQL schema:
 
@@ -47,7 +45,7 @@ yarn schema
 
 [Docs](https://github.com/adeira/universe/tree/master/src/relay)
 
-We use `@adeira/relay` internally to help with some difficult Relay tasks and to share knowledge via code across all our teams. It exposes high-level (and to some extend compatible) API very similar to Relay. The key element is so called Query Renderer. This renderer expects root query which will be automatically fetched and function to call (with the new data) to render some UI:
+We use `@adeira/relay` internally to help with some difficult Relay tasks and to share knowledge via code across all our teams. It exposes high-level API very similar to Facebook Relay. The key element is so-called Query Renderer. This renderer expects root query which will be automatically fetched and function to call (with the new data) to render some UI:
 
 ```js
 import * as React from 'react';
@@ -86,22 +84,21 @@ export default function App(props) {
 }
 ```
 
-The package `@adeira/relay` exposes correct Flow types so you can just require it and use it. There are other key elements helping us to build the applications well: `@adeira/eslint-config` and `@adeira/babel-preset-adeira`. The eslint config prevents you from using Relay incorrectly and the Babel preset helps us to write modern JS including the `graphql ...` syntax and using optional chain (`a?.b`) which is very common in our applications.
+The package `@adeira/relay` exposes correct Flow types, so you can just require it and use it. There are other key elements helping us to build the applications well: `@adeira/eslint-config` and `@adeira/babel-preset-adeira`. The eslint config prevents you from using Relay incorrectly, and the Babel preset helps us to write modern JS including the `graphql ...` syntax and using optional chain (`a?.b`) which is very common in our applications.
 
 # Fragment compositions
 
-[Relay docs](https://facebook.github.io/relay/docs/en/fragment-container.html)
+[Relay docs](https://relay.dev/docs/en/fragment-container)
 
-It is correct to write the whole query into Query Renderer. However, as application grows it's necessary to decompose the root application component into smaller parts. Relay copies React components _exactly_ so when you write new component then you should specify there data requirements as well. This is how we could refactor the previous example - first, let's move the whole query into separate component using `createFragmentContainer`:
+It is correct to write the whole query into Query Renderer. However, as application grows it's necessary to decompose the root application component into smaller parts. Relay copies React components _exactly_ so when you write new component then you should specify there data requirements as well. This is how we could refactor the previous example - first, let's move the whole query into separate component using `useFragment` hook:
 
 ```js
-function AllLocations(props) {
-  // TODO: move the React code here (iterate props.data)
-}
+import { graphql, useFragment } from '@adeira/relay';
 
-export default createFragmentContainer(AllLocations, {
-  data: graphql`
-      fragment LocationsPaginated_data on RootQuery
+export default function AllLocations(props) {
+  const data = useFragment(
+    graphql`
+      fragment AllLocations on RootQuery
         allLocations(first: 20) {
           edges {
             node {
@@ -112,10 +109,14 @@ export default createFragmentContainer(AllLocations, {
         }
       }
     `,
-});
+    props.data,
+  );
+
+  // TODO: move the React code here (iterate `data` variable)
+}
 ```
 
-Please note: you could decompose it on many different levels and it all depends on your needs and experience where to cut the line. This is handy for the future steps around pagination but otherwise it would be OK to just decompose the single location with `id` and `name`. It really depends...
+Please note: you could decompose it on many levels and it all depends on your needs and experience where to cut the line. This is handy for the future steps around pagination but otherwise it would be OK to just decompose the single location with `id` and `name`.
 
 Now, we have to modify the original application to use our new component:
 
@@ -144,7 +145,7 @@ export default function App(props) {
 }
 ```
 
-And that's it - we have two components and they describe what data they need exactly. Our first component needs to iterate all locations and requires `id` and `name`. Our second component requires data for `AllLocations` but doesn't care more about what data is it actually. This is very important concept in Relay and in GraphQL in general: _always describe what you need in the component itself_. It is important because it's 1) very explicit and you can be sure that you are not gonna greak anything when refactoring the component and 2) you can easily use the component somewhere and just spread the requirements using `...AllLocations`. This is crucial for composing UI from many many React components.
+And that's it - we have two components and they describe what data they need exactly. Our first component needs to iterate all locations and requires `id` and `name`. Our second component requires data for `AllLocations` but doesn't care more about what data is it actually. This is very important concept in Relay and in GraphQL in general: _always describe what you need in the component itself_. It is important because it's 1) very explicit and you can be sure that you are not gonna break anything when refactoring the component and 2) you can easily use the component somewhere and just spread the requirements using `...AllLocations`. This is crucial for composing UI from many many React components.
 
 [![Watch the video](https://img.youtube.com/vi/yUhl6A5T7fQ/sddefault.jpg)](https://youtu.be/yUhl6A5T7fQ)
 
@@ -174,9 +175,9 @@ The best fit for bi-directional (sometimes known as "window" or "next/prev" pagi
 }
 ```
 
-This query returns 5 results and let'say the middle one has ID `YXJyYXljb25uZWN0aW9uOjI=`. To get page after this page you have to query it with `first/after` combo. To get previous page you have to use `last/before` combo. It can be a bit burdensome to work with the cursor manually so you can also use `pageInfo` field (that's exactly how it works in our Relay example). There are only few steps you have to do in order to make it work in Relay:
+This query returns 5 results and let's say the middle one has ID `YXJyYXljb25uZWN0aW9uOjI=`. To get page after this page you have to query it with `first/after` combo. To get a previous page you have to use `last/before` combo. It can be a bit burdensome to work with the cursor manually, so you can also use `pageInfo` field (that's exactly how it works in our Relay example). There are only few steps you have to do in order to make it work in Relay:
 
-1. Export component using `createRefetchContainer`. This component accept the raw React component as a first argument, regular GraphQL fragment as a second argument (start with the same fragment as from the `createFragmentContainer`) and last argument is a query which is going to be called during the refetch.
+1. Export component using `createRefetchContainer`. This component accepts the raw React component as a first argument, regular GraphQL fragment as a second argument (start with the same fragment as from the `useFragment` hook) and last argument is a query which is going to be called during the refetch.
 2. Describe what variables your fragment needs using `@argumentDefinitions(argName: { type: "Int!", defaultValue: null })`.
 3. Pass down all the variables from the query to the fragment using `@arguments(argName: $argName)` and finally:
 4. Call `props.relay.refetch` with the variables necessary for the refetch query.
