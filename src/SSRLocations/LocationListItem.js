@@ -1,21 +1,23 @@
 // @flow
 
-import { createFragmentContainer, graphql, type FragmentContainerType } from '@adeira/relay';
+import type { Node } from 'react';
+import { graphql, useFragment } from '@adeira/relay';
 
-import type { LocationListItem_location as Location } from './__generated__/LocationListItem_location.graphql';
+import type { LocationListItem$key } from './__generated__/LocationListItem.graphql';
 
 type Props = {|
-  +location: ?Location,
+  +location: ?LocationListItem$key,
 |};
 
-const LocationListItem = (props: Props) => {
-  return <div>{props.location?.name}</div>;
-};
+export default function LocationListItem(props: Props): Node {
+  const location = useFragment(
+    graphql`
+      fragment LocationListItem on Location {
+        name
+      }
+    `,
+    props.location,
+  );
 
-export default (createFragmentContainer(LocationListItem, {
-  location: graphql`
-    fragment LocationListItem_location on Location {
-      name
-    }
-  `,
-}): FragmentContainerType<Props>);
+  return <div>{location?.name}</div>;
+}

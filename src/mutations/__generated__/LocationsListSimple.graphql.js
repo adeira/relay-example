@@ -6,9 +6,9 @@
 
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type LocationsList_data$ref: FragmentReference;
-declare export opaque type LocationsList_data$fragmentType: LocationsList_data$ref;
-export type LocationsList_data = {|
+declare export opaque type LocationsListSimple$ref: FragmentReference;
+declare export opaque type LocationsListSimple$fragmentType: LocationsListSimple$ref;
+export type LocationsListSimple = {|
   +locations: ?{|
     +__id: string,
     +edges: ?$ReadOnlyArray<?{|
@@ -19,12 +19,12 @@ export type LocationsList_data = {|
       |}
     |}>,
   |},
-  +$refType: LocationsList_data$ref,
+  +$refType: LocationsListSimple$ref,
 |};
-export type LocationsList_data$data = LocationsList_data;
-export type LocationsList_data$key = {
-  +$data?: LocationsList_data$data,
-  +$fragmentRefs: LocationsList_data$ref,
+export type LocationsListSimple$data = LocationsListSimple;
+export type LocationsListSimple$key = {
+  +$data?: LocationsListSimple$data,
+  +$fragmentRefs: LocationsListSimple$ref,
   ...
 };
 
@@ -44,7 +44,7 @@ const node: ReaderFragment = {
       }
     ]
   },
-  "name": "LocationsList_data",
+  "name": "LocationsListSimple",
   "selections": [
     {
       "alias": "locations",
@@ -156,5 +156,5 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 // prettier-ignore
-(node: any).hash = '889f1cc9f0546e9d48dcdb71bb4d5f3b';
+(node: any).hash = '280ae193c4eb34f11066becbad3110cc';
 export default node;

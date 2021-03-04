@@ -4,15 +4,15 @@ import type { Node } from 'react';
 import { graphql, type RecordMap, type GraphQLTaggedNode } from '@adeira/relay';
 import sx from '@adeira/sx';
 
+import Heading from '../components/Heading';
+import LocationsList from './LocationsList';
 import QueryRenderer from '../SSRQueryRenderer';
 import type { LocationsQueryResponse } from './__generated__/LocationsQuery.graphql';
-import LocationsList from './LocationsList';
-import Heading from '../components/Heading';
 
 export const query: GraphQLTaggedNode = graphql`
   query LocationsQuery($first: Int!) {
     locations(first: $first) {
-      ...LocationsList_locations
+      ...LocationsList
     }
   }
 `;

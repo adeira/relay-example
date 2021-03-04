@@ -26,7 +26,7 @@ query LocationsPaginatedRefetchQuery(
   ...LocationsPaginated_data_kPtUz
 }
 
-fragment Location_location on Location {
+fragment Location on Location {
   name
   countryFlagURL
   country {
@@ -39,7 +39,7 @@ fragment LocationsPaginated_data_kPtUz on RootQuery {
     edges {
       node {
         id
-        ...Location_location
+        ...Location
         __typename
       }
       cursor
@@ -225,12 +225,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "d2e33abab3e007a69c127b9870425423",
+    "cacheID": "d47b6f54d9475ff8cf2642145a23e321",
     "id": null,
     "metadata": {},
     "name": "LocationsPaginatedRefetchQuery",
     "operationKind": "query",
-    "text": "query LocationsPaginatedRefetchQuery(\n  $count: Int\n  $cursor: String\n) {\n  ...LocationsPaginated_data_kPtUz\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginated_data_kPtUz on RootQuery {\n  incrementalPagination2: locations(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query LocationsPaginatedRefetchQuery(\n  $count: Int\n  $cursor: String\n) {\n  ...LocationsPaginated_data_kPtUz\n}\n\nfragment Location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginated_data_kPtUz on RootQuery {\n  incrementalPagination2: locations(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();

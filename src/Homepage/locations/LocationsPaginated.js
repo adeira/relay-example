@@ -7,10 +7,10 @@ import {
   type PaginationContainerType,
 } from '@adeira/relay';
 
-import Location from './Location';
-import type { LocationsPaginated_data as LocationsDataType } from './__generated__/LocationsPaginated_data.graphql';
 import Button from '../../components/Button';
+import Location from './Location';
 import LocationList from './LocationsList';
+import type { LocationsPaginated_data as LocationsDataType } from './__generated__/LocationsPaginated_data.graphql';
 
 type Props = {|
   +data: LocationsDataType,
@@ -53,7 +53,7 @@ export default (createPaginationContainer(
           edges {
             node {
               id
-              ...Location_location
+              ...Location
             }
           }
         }

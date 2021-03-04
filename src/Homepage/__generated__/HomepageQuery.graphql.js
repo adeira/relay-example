@@ -28,7 +28,7 @@ query HomepageQuery(
   ...LocationsPaginated_data
 }
 
-fragment Location_location on Location {
+fragment Location on Location {
   name
   countryFlagURL
   country {
@@ -41,7 +41,7 @@ fragment LocationsPaginatedBidirectional_data_1TJkD9 on RootQuery {
     edges {
       node {
         id
-        ...Location_location
+        ...Location
       }
     }
     pageInfo {
@@ -58,7 +58,7 @@ fragment LocationsPaginatedRefetch_data on RootQuery {
     edges {
       node {
         id
-        ...Location_location
+        ...Location
         __typename
       }
       cursor
@@ -75,7 +75,7 @@ fragment LocationsPaginated_data on RootQuery {
     edges {
       node {
         id
-        ...Location_location
+        ...Location
         __typename
       }
       cursor
@@ -349,12 +349,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "db85df6575b42f2220776a0d2bdd37b3",
+    "cacheID": "1c02b07ae0a299674c355f14723778cd",
     "id": null,
     "metadata": {},
     "name": "HomepageQuery",
     "operationKind": "query",
-    "text": "query HomepageQuery(\n  $count: Int!\n) {\n  ...LocationsPaginatedBidirectional_data_1TJkD9\n  ...LocationsPaginatedRefetch_data\n  ...LocationsPaginated_data\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginatedBidirectional_data_1TJkD9 on RootQuery {\n  locations(first: $count) {\n    edges {\n      node {\n        id\n        ...Location_location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment LocationsPaginated_data on RootQuery {\n  incrementalPagination2: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query HomepageQuery(\n  $count: Int!\n) {\n  ...LocationsPaginatedBidirectional_data_1TJkD9\n  ...LocationsPaginatedRefetch_data\n  ...LocationsPaginated_data\n}\n\nfragment Location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginatedBidirectional_data_1TJkD9 on RootQuery {\n  locations(first: $count) {\n    edges {\n      node {\n        id\n        ...Location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment LocationsPaginated_data on RootQuery {\n  incrementalPagination2: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();

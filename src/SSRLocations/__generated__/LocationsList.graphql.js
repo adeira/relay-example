@@ -5,23 +5,23 @@
 /* eslint-disable */
 
 import type { ReaderFragment } from 'relay-runtime';
-type LocationListItem_location$ref = any;
+type LocationListItem$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type LocationsList_locations$ref: FragmentReference;
-declare export opaque type LocationsList_locations$fragmentType: LocationsList_locations$ref;
-export type LocationsList_locations = {|
+declare export opaque type LocationsList$ref: FragmentReference;
+declare export opaque type LocationsList$fragmentType: LocationsList$ref;
+export type LocationsList = {|
   +edges: ?$ReadOnlyArray<?{|
     +node: ?{|
       +id: string,
-      +$fragmentRefs: LocationListItem_location$ref,
+      +$fragmentRefs: LocationListItem$ref,
     |}
   |}>,
-  +$refType: LocationsList_locations$ref,
+  +$refType: LocationsList$ref,
 |};
-export type LocationsList_locations$data = LocationsList_locations;
-export type LocationsList_locations$key = {
-  +$data?: LocationsList_locations$data,
-  +$fragmentRefs: LocationsList_locations$ref,
+export type LocationsList$data = LocationsList;
+export type LocationsList$key = {
+  +$data?: LocationsList$data,
+  +$fragmentRefs: LocationsList$ref,
   ...
 };
 
@@ -30,7 +30,7 @@ const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "LocationsList_locations",
+  "name": "LocationsList",
   "selections": [
     {
       "alias": null,
@@ -58,7 +58,7 @@ const node: ReaderFragment = {
             {
               "args": null,
               "kind": "FragmentSpread",
-              "name": "LocationListItem_location"
+              "name": "LocationListItem"
             }
           ],
           "storageKey": null
@@ -71,5 +71,5 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 // prettier-ignore
-(node: any).hash = 'c52e566c5b829069868d00f531eb22d7';
+(node: any).hash = '41e58f9d458466b240d3a17bde2d7e12';
 export default node;

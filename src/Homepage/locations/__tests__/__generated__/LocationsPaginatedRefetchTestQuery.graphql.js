@@ -20,7 +20,7 @@ query LocationsPaginatedRefetchTestQuery {
   ...LocationsPaginatedRefetch_data
 }
 
-fragment Location_location on Location {
+fragment Location on Location {
   name
   countryFlagURL
   country {
@@ -33,7 +33,7 @@ fragment LocationsPaginatedRefetch_data on RootQuery {
     edges {
       node {
         id
-        ...Location_location
+        ...Location
         __typename
       }
       cursor
@@ -206,7 +206,7 @@ return {
     ]
   },
   "params": {
-    "cacheID": "3ab7d01d3069f9ab266bb0efbeef1023",
+    "cacheID": "4fe765b4a5f4bb7a95398bd8a1507830",
     "id": null,
     "metadata": {
       "relayTestingSelectionTypeInfo": {
@@ -262,7 +262,7 @@ return {
     },
     "name": "LocationsPaginatedRefetchTestQuery",
     "operationKind": "query",
-    "text": "query LocationsPaginatedRefetchTestQuery {\n  ...LocationsPaginatedRefetch_data\n}\n\nfragment Location_location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location_location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query LocationsPaginatedRefetchTestQuery {\n  ...LocationsPaginatedRefetch_data\n}\n\nfragment Location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();

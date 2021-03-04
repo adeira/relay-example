@@ -5,7 +5,7 @@
 /* eslint-disable */
 
 import type { ReaderFragment } from 'relay-runtime';
-type Location_location$ref = any;
+type Location$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type LocationsPaginated_data$ref: FragmentReference;
 declare export opaque type LocationsPaginated_data$fragmentType: LocationsPaginated_data$ref;
@@ -14,7 +14,7 @@ export type LocationsPaginated_data = {|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
         +id: string,
-        +$fragmentRefs: Location_location$ref,
+        +$fragmentRefs: Location$ref,
       |}
     |}>
   |},
@@ -97,7 +97,7 @@ const node: ReaderFragment = {
                 {
                   "args": null,
                   "kind": "FragmentSpread",
-                  "name": "Location_location"
+                  "name": "Location"
                 }
               ],
               "storageKey": null
@@ -145,5 +145,5 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 // prettier-ignore
-(node: any).hash = 'cceec4a644df5b78c9fe14ec4e2c156c';
+(node: any).hash = '985245ffb955b786bedcc04d633483dc';
 export default node;

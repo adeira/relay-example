@@ -5,10 +5,10 @@
 /* eslint-disable */
 
 import type { ConcreteRequest } from 'relay-runtime';
-type LocationsList_data$ref = any;
+type LocationsListSimple$ref = any;
 export type SimpleLocationsQueryVariables = {||};
 export type SimpleLocationsQueryResponse = {|
-  +$fragmentRefs: LocationsList_data$ref
+  +$fragmentRefs: LocationsListSimple$ref
 |};
 export type SimpleLocationsQuery = {|
   variables: SimpleLocationsQueryVariables,
@@ -17,10 +17,10 @@ export type SimpleLocationsQuery = {|
 
 /*
 query SimpleLocationsQuery {
-  ...LocationsList_data
+  ...LocationsListSimple
 }
 
-fragment LocationsList_data on RootQuery {
+fragment LocationsListSimple on RootQuery {
   locations(first: 3) {
     edges {
       node {
@@ -57,7 +57,7 @@ return {
       {
         "args": null,
         "kind": "FragmentSpread",
-        "name": "LocationsList_data"
+        "name": "LocationsListSimple"
       }
     ],
     "type": "RootQuery",
@@ -186,15 +186,15 @@ return {
     ]
   },
   "params": {
-    "cacheID": "ded359500963cd5566c57b0144e27664",
+    "cacheID": "ec9fa5b8d6f05d3ea9a25ed72c630b02",
     "id": null,
     "metadata": {},
     "name": "SimpleLocationsQuery",
     "operationKind": "query",
-    "text": "query SimpleLocationsQuery {\n  ...LocationsList_data\n}\n\nfragment LocationsList_data on RootQuery {\n  locations(first: 3) {\n    edges {\n      node {\n        id\n        name\n        type\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query SimpleLocationsQuery {\n  ...LocationsListSimple\n}\n\nfragment LocationsListSimple on RootQuery {\n  locations(first: 3) {\n    edges {\n      node {\n        id\n        name\n        type\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node: any).hash = '08a8dad3d66866d253ff2c22181d0796';
+(node: any).hash = 'aa52b74b1eaa5676ce91cd116a763562';
 export default node;

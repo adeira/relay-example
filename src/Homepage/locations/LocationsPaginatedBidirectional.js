@@ -10,10 +10,10 @@ import {
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import sx from '@adeira/sx';
 
-import Location from './Location';
-import type { LocationsPaginatedBidirectional_data as LocationsDataType } from './__generated__/LocationsPaginatedBidirectional_data.graphql';
 import Button from '../../components/Button';
+import Location from './Location';
 import LocationList from './LocationsList';
+import type { LocationsPaginatedBidirectional_data as LocationsDataType } from './__generated__/LocationsPaginatedBidirectional_data.graphql';
 
 type Props = {|
   +itemsCount: number,
@@ -109,7 +109,7 @@ export default (createRefetchContainer(
           edges {
             node {
               id
-              ...Location_location
+              ...Location
             }
           }
           pageInfo {

@@ -13,10 +13,9 @@ export default (function LocationsQuery() {
     <QueryRenderer
       query={graphql`
         query SimpleLocationsQuery {
-          ...LocationsList_data
+          ...LocationsListSimple
         }
       `}
-      variables={{}}
       onResponse={(data: SimpleLocationsQueryResponse) => <LocationsList data={data} />}
     />
   );

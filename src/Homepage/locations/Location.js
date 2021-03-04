@@ -1,18 +1,32 @@
 // @flow
 
-import { createFragmentContainer, graphql, type FragmentContainerType } from '@adeira/relay';
+import type { Node } from 'react';
+import { graphql, useFragment } from '@adeira/relay';
 import sx from '@adeira/sx';
 import Image from 'next/image';
 
-import type { Location_location as LocationDataType } from './__generated__/Location_location.graphql';
 import Text from '../../components/Text';
+import type { Location$key } from './__generated__/Location.graphql';
 
 type Props = {|
-  +location: ?LocationDataType,
+  +location: ?Location$key,
   +dataCount?: string,
 |};
 
-function Location({ location, dataCount }: Props) {
+export default function Location(props: Props): Node {
+  const location = useFragment(
+    graphql`
+      fragment Location on Location {
+        name
+        countryFlagURL
+        country {
+          name
+        }
+      }
+    `,
+    props.location,
+  );
+
   if (!location) {
     return null; // or some failure placeholder
   }
@@ -20,7 +34,7 @@ function Location({ location, dataCount }: Props) {
   const name = location.name ?? '';
   const countryName = location.country?.name ?? '';
   return (
-    <li className={styles('li')} data-count={dataCount}>
+    <li className={styles('li')} data-count={props.dataCount}>
       <div className={styles('box')}>
         <Image
           loading="lazy"
@@ -36,18 +50,6 @@ function Location({ location, dataCount }: Props) {
     </li>
   );
 }
-
-export default (createFragmentContainer(Location, {
-  location: graphql`
-    fragment Location_location on Location {
-      name
-      countryFlagURL
-      country {
-        name
-      }
-    }
-  `,
-}): FragmentContainerType<Props>);
 
 const styles = sx.create({
   box: {

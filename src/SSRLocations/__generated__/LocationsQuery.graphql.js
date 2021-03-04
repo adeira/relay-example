@@ -5,13 +5,13 @@
 /* eslint-disable */
 
 import type { ConcreteRequest } from 'relay-runtime';
-type LocationsList_locations$ref = any;
+type LocationsList$ref = any;
 export type LocationsQueryVariables = {|
   first: number
 |};
 export type LocationsQueryResponse = {|
   +locations: ?{|
-    +$fragmentRefs: LocationsList_locations$ref
+    +$fragmentRefs: LocationsList$ref
   |}
 |};
 export type LocationsQuery = {|
@@ -24,19 +24,19 @@ query LocationsQuery(
   $first: Int!
 ) {
   locations(first: $first) {
-    ...LocationsList_locations
+    ...LocationsList
   }
 }
 
-fragment LocationListItem_location on Location {
+fragment LocationListItem on Location {
   name
 }
 
-fragment LocationsList_locations on LocationConnection {
+fragment LocationsList on LocationConnection {
   edges {
     node {
       id
-      ...LocationListItem_location
+      ...LocationListItem
     }
   }
 }
@@ -75,7 +75,7 @@ return {
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "LocationsList_locations"
+            "name": "LocationsList"
           }
         ],
         "storageKey": null
@@ -140,15 +140,15 @@ return {
     ]
   },
   "params": {
-    "cacheID": "b9f0b1056687e6075290cc80ed7e3652",
+    "cacheID": "bc2822430c3514095c8044cd6dabff6d",
     "id": null,
     "metadata": {},
     "name": "LocationsQuery",
     "operationKind": "query",
-    "text": "query LocationsQuery(\n  $first: Int!\n) {\n  locations(first: $first) {\n    ...LocationsList_locations\n  }\n}\n\nfragment LocationListItem_location on Location {\n  name\n}\n\nfragment LocationsList_locations on LocationConnection {\n  edges {\n    node {\n      id\n      ...LocationListItem_location\n    }\n  }\n}\n"
+    "text": "query LocationsQuery(\n  $first: Int!\n) {\n  locations(first: $first) {\n    ...LocationsList\n  }\n}\n\nfragment LocationListItem on Location {\n  name\n}\n\nfragment LocationsList on LocationConnection {\n  edges {\n    node {\n      id\n      ...LocationListItem\n    }\n  }\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node: any).hash = '60fdf6bfaee22cd990f67a20469f86be';
+(node: any).hash = '3b0df24d2dfd6f8221b06f3dff4e6bbb';
 export default node;

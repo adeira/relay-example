@@ -6,20 +6,20 @@
 
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type Location_location$ref: FragmentReference;
-declare export opaque type Location_location$fragmentType: Location_location$ref;
-export type Location_location = {|
+declare export opaque type Location$ref: FragmentReference;
+declare export opaque type Location$fragmentType: Location$ref;
+export type Location = {|
   +name: ?string,
   +countryFlagURL: ?string,
   +country: ?{|
     +name: ?string
   |},
-  +$refType: Location_location$ref,
+  +$refType: Location$ref,
 |};
-export type Location_location$data = Location_location;
-export type Location_location$key = {
-  +$data?: Location_location$data,
-  +$fragmentRefs: Location_location$ref,
+export type Location$data = Location;
+export type Location$key = {
+  +$data?: Location$data,
+  +$fragmentRefs: Location$ref,
   ...
 };
 
@@ -36,7 +36,7 @@ return {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "Location_location",
+  "name": "Location",
   "selections": [
     (v0/*: any*/),
     {
@@ -64,5 +64,5 @@ return {
 };
 })();
 // prettier-ignore
-(node: any).hash = '7c698b5358738414da51f39ea27ddd47';
+(node: any).hash = '58584a7e6bd090556fbbb1e258ca704e';
 export default node;

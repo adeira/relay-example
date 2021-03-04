@@ -1,29 +1,33 @@
 // @flow
 
 import type { Node } from 'react';
-import { createFragmentContainer, graphql, type FragmentContainerType } from '@adeira/relay';
+import { graphql, useFragment } from '@adeira/relay';
 
-import type { LocationsList_locations as Locations } from './__generated__/LocationsList_locations.graphql';
 import LocationListItem from './LocationListItem';
+import type { LocationsList$key } from './__generated__/LocationsList.graphql';
 
 type Props = {|
-  +locations: ?Locations,
+  +locations: ?LocationsList$key,
 |};
 
-const LocationsList = (props: Props): Node => {
-  const edges = props.locations?.edges ?? [];
-  return edges.map((edge) => <LocationListItem key={edge?.node?.id} location={edge?.node} />);
-};
-
-export default (createFragmentContainer(LocationsList, {
-  locations: graphql`
-    fragment LocationsList_locations on LocationConnection {
-      edges {
-        node {
-          id
-          ...LocationListItem_location
+export default function LocationsList(props: Props): Node {
+  const locations = useFragment(
+    graphql`
+      fragment LocationsList on LocationConnection {
+        edges {
+          node {
+            id
+            ...LocationListItem
+          }
         }
       }
-    }
-  `,
-}): FragmentContainerType<Props>);
+    `,
+    props.locations,
+  );
+
+  return (
+    locations?.edges?.map((edge) => (
+      <LocationListItem key={edge?.node?.id} location={edge?.node} />
+    )) ?? null
+  );
+}

@@ -9,8 +9,8 @@ import {
 
 import Button from '../../components/Button';
 import Location from './Location';
-import type { LocationsPaginatedRefetch_data as LocationsDataType } from './__generated__/LocationsPaginatedRefetch_data.graphql';
 import LocationList from './LocationsList';
+import type { LocationsPaginatedRefetch_data as LocationsDataType } from './__generated__/LocationsPaginatedRefetch_data.graphql';
 
 type Props = {|
   +data: LocationsDataType,
@@ -61,7 +61,7 @@ export default (createRefetchContainer(
           edges {
             node {
               id
-              ...Location_location
+              ...Location
             }
           }
           pageInfo {
