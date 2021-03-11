@@ -7,13 +7,13 @@ import { breakpoints } from './breakpoints';
 
 type MediaValues = 'sm' | 'tablet' | 'desktop';
 
-type AppMediaType = {|
+type AppMediaType = {
   +Media: ComponentType<MediaProps>,
   +createMediaStyle: () => string,
   +MediaContextProvider: ComponentType<AppMediaContextProps>,
-|};
+};
 
-type MediaProps = {|
+type MediaProps = {
   +at?: MediaValues,
   +lessThan?: MediaValues,
   +greaterThan?: MediaValues,
@@ -21,13 +21,13 @@ type MediaProps = {|
   +between?: $ReadOnlyArray<MediaValues>,
   +children: Node,
   // There might be more, check official docs at https://github.com/artsy/fresnel
-|};
+};
 
-type AppMediaContextProps = {|
+type AppMediaContextProps = {
   +children: Node,
   +onlyMatch?: $ReadOnlyArray<MediaValues>,
   +disableDynamicMediaQueries?: boolean,
-|};
+};
 
 // Expand as needed
 const AppMedia: AppMediaType = createMedia({

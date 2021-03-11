@@ -7,7 +7,7 @@ import AddLocationResponse from './AddLocationResponse';
 import type { LocationInput } from '../../locations';
 
 export class ValidLocationResponse {
-  location: $ReadOnly<{| ...LocationInput, +id: string |}>;
+  location: $ReadOnly<{ ...LocationInput, +id: string }>;
   constructor(location: LocationInput) {
     this.location = {
       ...location,

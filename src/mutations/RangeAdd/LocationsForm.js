@@ -12,15 +12,15 @@ import Button from '../../components/Button';
 import Select from '../../components/Select';
 import Heading from '../../components/Heading';
 
-type Props = {|
+type Props = {
   +connectionId: string,
-|};
+};
 
-type Location = {|
+type Location = {
   +locationId: string,
   +name: string,
   +type: string,
-|};
+};
 
 const getLocation = (location: Location) => {
   // We have to map the type from string to enum

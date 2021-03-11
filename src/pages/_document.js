@@ -6,11 +6,11 @@ import sx from '@adeira/sx';
 
 import { mediaStyles } from '../components/Media';
 
-type RenderPageResult = {|
+type RenderPageResult = {
   +html: string,
   +head: $ReadOnlyArray<Node>,
   +styles: $ReadOnlyArray<any>,
-|};
+};
 
 export default class MyDocument extends Document {
   static getInitialProps(ctx: DocumentContext): RenderPageResult {

@@ -8,10 +8,10 @@ import Image from 'next/image';
 import Text from '../../components/Text';
 import type { Location$key } from './__generated__/Location.graphql';
 
-type Props = {|
+type Props = {
   +location: ?Location$key,
   +dataCount?: string,
-|};
+};
 
 export default function Location(props: Props): Node {
   const location = useFragment(

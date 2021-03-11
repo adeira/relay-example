@@ -2,12 +2,12 @@
 
 import { GraphQLObjectType, GraphQLString } from 'graphql';
 
-export type LocationArea = {|
+export type LocationArea = {
   +locationId: string,
   +name: string,
   +slug: string,
   +code: string,
-|};
+};
 
 export default (new GraphQLObjectType({
   name: 'LocationArea',

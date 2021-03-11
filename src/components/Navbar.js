@@ -13,9 +13,9 @@ import { Media } from './Media';
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // Next.js does this automatically (https://nextjs.org/docs/api-reference/next/link)
 
-type Props = {|
+type Props = {
   +onClick?: () => void,
-|};
+};
 
 function NavLinks({ onClick }: Props): Node {
   return (

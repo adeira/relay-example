@@ -12,10 +12,10 @@ import Location from './Location';
 import LocationList from './LocationsList';
 import type { LocationsPaginatedRefetch_data as LocationsDataType } from './__generated__/LocationsPaginatedRefetch_data.graphql';
 
-type Props = {|
+type Props = {
   +data: LocationsDataType,
   +relay: RefetchRelayProp,
-|};
+};
 
 function LocationsPaginatedRefetch(props: Props) {
   function loadMore() {

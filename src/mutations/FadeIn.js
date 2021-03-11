@@ -3,10 +3,10 @@
 import type { Node } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-type Props = {|
+type Props = {
   +children: Node,
   +timeout: number,
-|};
+};
 
 function FadeIn({ children, ...rest }: Props): Node {
   return (

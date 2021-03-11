@@ -6,18 +6,18 @@ import { MdExpandMore } from 'react-icons/md';
 
 import Text from './Text';
 
-type Option = {|
+type Option = {
   +label: string,
   +value: string,
-|};
+};
 
-type Props = {|
+type Props = {
   +options: $ReadOnlyArray<Option>,
   +label: string,
   +onChange: (string) => void,
   +placeholder?: string,
   +name?: string,
-|};
+};
 
 export default function Select({ options, label, placeholder, onChange, ...rest }: Props): Node {
   const [value, setValue] = useState('');

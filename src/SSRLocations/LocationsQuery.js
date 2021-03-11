@@ -21,9 +21,9 @@ export const variables = {
   first: 20,
 };
 
-type Props = {|
+type Props = {
   +ssrData: RecordMap,
-|};
+};
 
 export default function LocationsQuery(props: Props): Node {
   return (

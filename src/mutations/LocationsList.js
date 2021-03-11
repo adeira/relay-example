@@ -11,9 +11,9 @@ import LocationsForm from './RangeAdd/LocationsForm';
 import { tablet } from '../components/breakpoints';
 import type { LocationsListSimple$key } from './__generated__/LocationsListSimple.graphql';
 
-type Props = {|
+type Props = {
   +data: LocationsListSimple$key,
-|};
+};
 
 export default function LocationsList(props: Props): Node {
   const data = useFragment(

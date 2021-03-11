@@ -5,9 +5,9 @@ import { graphql, useFragment } from '@adeira/relay';
 
 import type { LocationListItem$key } from './__generated__/LocationListItem.graphql';
 
-type Props = {|
+type Props = {
   +location: ?LocationListItem$key,
-|};
+};
 
 export default function LocationListItem(props: Props): Node {
   const location = useFragment(

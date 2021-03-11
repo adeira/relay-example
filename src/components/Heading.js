@@ -3,10 +3,10 @@
 import type { Node } from 'react';
 import sx from '@adeira/sx';
 
-type Props = {|
+type Props = {
   +level: 1 | 2 | 3 | 4 | 5 | 6,
   +children: Node,
-|};
+};
 
 export default function Heading({ level, children }: Props): Node {
   const Component = `h${level}`;

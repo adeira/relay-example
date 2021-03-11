@@ -3,11 +3,11 @@
 import type { Node } from 'react';
 import sx from '@adeira/sx';
 
-type Props = {|
+type Props = {
   +size?: 'small' | 'normal',
   +children: Node,
   +dataTest?: string,
-|};
+};
 
 export default function Text({ size = 'normal', children, dataTest }: Props): Node {
   return (

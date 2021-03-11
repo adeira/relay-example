@@ -12,10 +12,10 @@ import Location from './Location';
 import LocationList from './LocationsList';
 import type { LocationsPaginated_data as LocationsDataType } from './__generated__/LocationsPaginated_data.graphql';
 
-type Props = {|
+type Props = {
   +data: LocationsDataType,
   +relay: PaginationRelayProp,
-|};
+};
 
 function LocationsPaginated(props: Props) {
   function loadMore() {

@@ -4,7 +4,7 @@ import type { ComponentType } from 'react';
 
 import SimpleLocationsQuery from '../SimpleLocationsQuery';
 
-type Props = {||};
+type Props = {};
 
 export default (function RangeAdd() {
   return <SimpleLocationsQuery />;

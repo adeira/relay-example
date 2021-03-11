@@ -19,10 +19,10 @@ import TextInput from '../components/TextInput';
 const environment = createLocalEnvironment();
 const consoleStyle = 'color: green; background-color: lightgreen;';
 
-type LocalData = {|
+type LocalData = {
   +subject?: string,
   +message?: string,
-|};
+};
 
 function getLocalStorageData(): LocalData {
   return JSON.parse(window.localStorage.getItem('LocalForm')) ?? {};

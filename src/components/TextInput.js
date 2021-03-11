@@ -5,13 +5,13 @@ import sx from '@adeira/sx';
 
 import Text from './Text';
 
-type Props = {|
+type Props = {
   +onChange: (string) => void,
   +value: string,
   +placeholder?: string,
   +label: string,
   +name?: string,
-|};
+};
 
 export default function TextInput({ onChange, label, ...rest }: Props): Node {
   const handleChange = (e) => {

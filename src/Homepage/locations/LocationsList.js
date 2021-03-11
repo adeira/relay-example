@@ -5,10 +5,10 @@ import sx from '@adeira/sx';
 
 import Location from './Location';
 
-type Props = {|
+type Props = {
   +children: Element<typeof Location> | ChildrenArray<Element<typeof Location>>,
   +start?: number,
-|};
+};
 
 export default function LocationList({ children, start = 1 }: Props): Node {
   return (

@@ -6,7 +6,7 @@ import { QueryRenderer, graphql } from '@adeira/relay';
 import LocationsList from './LocationsList';
 import type { SimpleLocationsQueryResponse } from './__generated__/SimpleLocationsQuery.graphql';
 
-type Props = {||};
+type Props = {};
 
 export default (function LocationsQuery() {
   return (

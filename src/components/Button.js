@@ -3,7 +3,7 @@
 import type { Node } from 'react';
 import sx from '@adeira/sx';
 
-type Props = {|
+type Props = {
   +onClick?: () => void,
   +children: Node,
   +dataTest?: string,
@@ -11,7 +11,7 @@ type Props = {|
   +iconLeft?: Node,
   +iconRight?: Node,
   +type?: 'submit' | 'button',
-|};
+};
 
 export default function Button({
   children,

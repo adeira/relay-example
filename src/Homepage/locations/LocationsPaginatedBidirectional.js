@@ -15,11 +15,11 @@ import Location from './Location';
 import LocationList from './LocationsList';
 import type { LocationsPaginatedBidirectional_data as LocationsDataType } from './__generated__/LocationsPaginatedBidirectional_data.graphql';
 
-type Props = {|
+type Props = {
   +itemsCount: number,
   +data: LocationsDataType,
   +relay: RefetchRelayProp,
-|};
+};
 
 function LocationsPaginatedBidirectional(props: Props) {
   const [start, setStart] = useState(1);
@@ -29,7 +29,7 @@ function LocationsPaginatedBidirectional(props: Props) {
     return null; // or some failure placeholder
   }
 
-  function handlePageChange(args: {| before?: ?string, after?: ?string |}, callback: () => void) {
+  function handlePageChange(args: { before?: ?string, after?: ?string }, callback: () => void) {
     props.relay.refetch(
       {
         first: args.after != null ? props.itemsCount : null,

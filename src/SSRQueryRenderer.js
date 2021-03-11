@@ -12,12 +12,12 @@ import { isBrowser } from '@adeira/js';
 
 import createRelayEnvironment from './createRelayEnvironment';
 
-type Props<T> = {|
+type Props<T> = {
   +query: GraphQLTaggedNode,
   +variables: Variables,
   +onResponse: (?T) => Node,
   +ssrData: $FlowFixMe,
-|};
+};
 
 export default function SSRQueryRenderer<T>(props: Props<T>): Node {
   // We have to re-create the environment here with initialized store for SSR.
