@@ -43,7 +43,7 @@
     "start-production": "next start",
     "build": "next build",
     "relay": "adeira-relay-compiler",
-    "schema": "adeira-fetch-schema --filename=schema.graphql --resource=https://relay-example.adeira.dev/api/graphql",
+    "schema": "adeira-fetch-schema --resource=https://relay-example.adeira.dev/api/graphql",
     "test-bc": "yarn monorepo-babel-node scripts/test-bc.js"
   }
 }
