@@ -1,34 +1,42 @@
 /**
+ * @generated SignedSource<<dfb3e8df2c33b721fbe4075d7f177f3a>>
  * @flow
+ * @lightSyntaxTransform
+ * @nogrep
+ * @codegen-command: ./node_modules/.bin/relay-compiler
  */
 
 /* eslint-disable */
 
-import type { ReaderFragment } from 'relay-runtime';
-type Location$ref = any;
-import type { FragmentReference } from "relay-runtime";
-declare export opaque type LocationsPaginated$ref: FragmentReference;
-declare export opaque type LocationsPaginated$fragmentType: LocationsPaginated$ref;
-export type LocationsPaginated = {|
+'use strict';
+
+/*::
+import type { ReaderFragment, RefetchableFragment } from 'relay-runtime';
+type Location$fragmentType = any;
+import type { FragmentType } from "relay-runtime";
+declare export opaque type LocationsPaginated$fragmentType: FragmentType;
+export type LocationsPaginated$ref = LocationsPaginated$fragmentType;
+type LocationsPaginatedRefetchQuery$variables = any;
+export type LocationsPaginated$data = {|
   +incrementalPagination2: ?{|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
         +id: string,
-        +$fragmentRefs: Location$ref,
-      |}
-    |}>
+        +$fragmentSpreads: Location$fragmentType,
+      |},
+    |}>,
   |},
-  +$refType: LocationsPaginated$ref,
+  +$fragmentType: LocationsPaginated$fragmentType,
 |};
-export type LocationsPaginated$data = LocationsPaginated;
+export type LocationsPaginated = LocationsPaginated$data;
 export type LocationsPaginated$key = {
   +$data?: LocationsPaginated$data,
-  +$fragmentRefs: LocationsPaginated$ref,
+  +$fragmentSpreads: LocationsPaginated$fragmentType,
   ...
 };
+*/
 
-
-const node: ReaderFragment = (function(){
+var node/*: ReaderFragment*/ = (function(){
 var v0 = [
   "incrementalPagination2"
 ];
@@ -65,7 +73,7 @@ return {
         "path": (v0/*: any*/)
       },
       "fragmentPathInResult": [],
-      "operation": require('./LocationsPaginatedRefetchQuery.graphql.js').default
+      "operation": require('./LocationsPaginatedRefetchQuery.graphql')
     }
   },
   "name": "LocationsPaginated",
@@ -102,16 +110,16 @@ return {
                   "storageKey": null
                 },
                 {
+                  "args": null,
+                  "kind": "FragmentSpread",
+                  "name": "Location"
+                },
+                {
                   "alias": null,
                   "args": null,
                   "kind": "ScalarField",
                   "name": "__typename",
                   "storageKey": null
-                },
-                {
-                  "args": null,
-                  "kind": "FragmentSpread",
-                  "name": "Location"
                 }
               ],
               "storageKey": null
@@ -159,6 +167,13 @@ return {
   "abstractKey": null
 };
 })();
-// prettier-ignore
-(node: any).hash = '4c6e41152f6e3fb4c537ab2d68022119';
-export default node;
+
+if (__DEV__) {
+  (node/*: any*/).hash = "4c6e41152f6e3fb4c537ab2d68022119";
+}
+
+module.exports = ((node/*: any*/)/*: RefetchableFragment<
+  LocationsPaginated$fragmentType,
+  LocationsPaginated$data,
+  LocationsPaginatedRefetchQuery$variables,
+>*/);

@@ -1,52 +1,31 @@
 /**
+ * @generated SignedSource<<fbdc126a76bebf1b37c7dcc4e117e876>>
  * @flow
+ * @lightSyntaxTransform
+ * @nogrep
+ * @codegen-command: ./node_modules/.bin/relay-compiler
  */
 
 /* eslint-disable */
 
-import type { ConcreteRequest } from 'relay-runtime';
-type LocationsPaginatedRefetch$ref = any;
-export type LocationsPaginatedRefetchTestQueryVariables = {||};
-export type LocationsPaginatedRefetchTestQueryResponse = {|
-  +$fragmentRefs: LocationsPaginatedRefetch$ref
+'use strict';
+
+/*::
+import type { ConcreteRequest, Query } from 'relay-runtime';
+type LocationsPaginatedRefetch$fragmentType = any;
+export type LocationsPaginatedRefetchTestQuery$variables = {||};
+export type LocationsPaginatedRefetchTestQueryVariables = LocationsPaginatedRefetchTestQuery$variables;
+export type LocationsPaginatedRefetchTestQuery$data = {|
+  +$fragmentSpreads: LocationsPaginatedRefetch$fragmentType,
 |};
+export type LocationsPaginatedRefetchTestQueryResponse = LocationsPaginatedRefetchTestQuery$data;
 export type LocationsPaginatedRefetchTestQuery = {|
   variables: LocationsPaginatedRefetchTestQueryVariables,
-  response: LocationsPaginatedRefetchTestQueryResponse,
+  response: LocationsPaginatedRefetchTestQuery$data,
 |};
-
-/*
-query LocationsPaginatedRefetchTestQuery {
-  ...LocationsPaginatedRefetch
-}
-
-fragment Location on Location {
-  name
-  countryFlagURL
-  country {
-    name
-  }
-}
-
-fragment LocationsPaginatedRefetch on RootQuery {
-  incrementalPagination: locations(first: 20) {
-    edges {
-      node {
-        id
-        ...Location
-        __typename
-      }
-      cursor
-    }
-    pageInfo {
-      endCursor
-      hasNextPage
-    }
-  }
-}
 */
 
-const node: ConcreteRequest = (function(){
+var node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
     "kind": "Literal",
@@ -266,6 +245,12 @@ return {
   }
 };
 })();
-// prettier-ignore
-(node: any).hash = 'aa5c30ce170d6be45067cdc6677b4e5c';
-export default node;
+
+if (__DEV__) {
+  (node/*: any*/).hash = "aa5c30ce170d6be45067cdc6677b4e5c";
+}
+
+module.exports = ((node/*: any*/)/*: Query<
+  LocationsPaginatedRefetchTestQuery$variables,
+  LocationsPaginatedRefetchTestQuery$data,
+>*/);

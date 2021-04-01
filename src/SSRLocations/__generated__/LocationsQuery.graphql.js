@@ -1,48 +1,35 @@
 /**
+ * @generated SignedSource<<37e36ba196c445ba954063303b0bff09>>
  * @flow
+ * @lightSyntaxTransform
+ * @nogrep
+ * @codegen-command: ./node_modules/.bin/relay-compiler
  */
 
 /* eslint-disable */
 
-import type { ConcreteRequest } from 'relay-runtime';
-type LocationsList$ref = any;
-export type LocationsQueryVariables = {|
-  first: number
+'use strict';
+
+/*::
+import type { ConcreteRequest, Query } from 'relay-runtime';
+type LocationsList$fragmentType = any;
+export type LocationsQuery$variables = {|
+  first: number,
 |};
-export type LocationsQueryResponse = {|
+export type LocationsQueryVariables = LocationsQuery$variables;
+export type LocationsQuery$data = {|
   +locations: ?{|
-    +$fragmentRefs: LocationsList$ref
-  |}
+    +$fragmentSpreads: LocationsList$fragmentType,
+  |},
 |};
+export type LocationsQueryResponse = LocationsQuery$data;
 export type LocationsQuery = {|
   variables: LocationsQueryVariables,
-  response: LocationsQueryResponse,
+  response: LocationsQuery$data,
 |};
-
-/*
-query LocationsQuery(
-  $first: Int!
-) {
-  locations(first: $first) {
-    ...LocationsList
-  }
-}
-
-fragment LocationListItem on Location {
-  name
-}
-
-fragment LocationsList on LocationConnection {
-  edges {
-    node {
-      id
-      ...LocationListItem
-    }
-  }
-}
 */
 
-const node: ConcreteRequest = (function(){
+var node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
     "defaultValue": null,
@@ -149,6 +136,12 @@ return {
   }
 };
 })();
-// prettier-ignore
-(node: any).hash = '3b0df24d2dfd6f8221b06f3dff4e6bbb';
-export default node;
+
+if (__DEV__) {
+  (node/*: any*/).hash = "3b0df24d2dfd6f8221b06f3dff4e6bbb";
+}
+
+module.exports = ((node/*: any*/)/*: Query<
+  LocationsQuery$variables,
+  LocationsQuery$data,
+>*/);

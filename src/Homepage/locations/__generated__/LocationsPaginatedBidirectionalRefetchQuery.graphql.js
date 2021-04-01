@@ -1,62 +1,37 @@
 /**
+ * @generated SignedSource<<e838daa1ede3c763f89ce0adb487464b>>
  * @flow
+ * @lightSyntaxTransform
+ * @nogrep
+ * @codegen-command: ./node_modules/.bin/relay-compiler
  */
 
 /* eslint-disable */
 
-import type { ConcreteRequest } from 'relay-runtime';
-type LocationsPaginatedBidirectional$ref = any;
-export type LocationsPaginatedBidirectionalRefetchQueryVariables = {|
+'use strict';
+
+/*::
+import type { ConcreteRequest, Query } from 'relay-runtime';
+import type { FragmentType } from "relay-runtime";
+type LocationsPaginatedBidirectional$fragmentType = any;
+export type LocationsPaginatedBidirectionalRefetchQuery$variables = {|
   after?: ?string,
   before?: ?string,
   first?: ?number,
   last?: ?number,
 |};
-export type LocationsPaginatedBidirectionalRefetchQueryResponse = {|
-  +$fragmentRefs: LocationsPaginatedBidirectional$ref
+export type LocationsPaginatedBidirectionalRefetchQueryVariables = LocationsPaginatedBidirectionalRefetchQuery$variables;
+export type LocationsPaginatedBidirectionalRefetchQuery$data = {|
+  +$fragmentSpreads: LocationsPaginatedBidirectional$fragmentType,
 |};
+export type LocationsPaginatedBidirectionalRefetchQueryResponse = LocationsPaginatedBidirectionalRefetchQuery$data;
 export type LocationsPaginatedBidirectionalRefetchQuery = {|
   variables: LocationsPaginatedBidirectionalRefetchQueryVariables,
-  response: LocationsPaginatedBidirectionalRefetchQueryResponse,
+  response: LocationsPaginatedBidirectionalRefetchQuery$data,
 |};
-
-/*
-query LocationsPaginatedBidirectionalRefetchQuery(
-  $after: String
-  $before: String
-  $first: Int
-  $last: Int
-) {
-  ...LocationsPaginatedBidirectional_pbnwq
-}
-
-fragment Location on Location {
-  name
-  countryFlagURL
-  country {
-    name
-  }
-}
-
-fragment LocationsPaginatedBidirectional_pbnwq on RootQuery {
-  locations(first: $first, last: $last, after: $after, before: $before) {
-    edges {
-      node {
-        id
-        ...Location
-      }
-    }
-    pageInfo {
-      hasNextPage
-      hasPreviousPage
-      startCursor
-      endCursor
-    }
-  }
-}
 */
 
-const node: ConcreteRequest = (function(){
+var node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
     "defaultValue": null,
@@ -241,6 +216,12 @@ return {
   }
 };
 })();
-// prettier-ignore
-(node: any).hash = '46f79f411cdd91adf7c66321a579be4b';
-export default node;
+
+if (__DEV__) {
+  (node/*: any*/).hash = "46f79f411cdd91adf7c66321a579be4b";
+}
+
+module.exports = ((node/*: any*/)/*: Query<
+  LocationsPaginatedBidirectionalRefetchQuery$variables,
+  LocationsPaginatedBidirectionalRefetchQuery$data,
+>*/);

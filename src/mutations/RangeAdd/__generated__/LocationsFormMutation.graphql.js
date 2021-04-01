@@ -1,21 +1,29 @@
 /**
+ * @generated SignedSource<<9b4509f08a8d70fc5fc148400bbdce59>>
  * @flow
+ * @lightSyntaxTransform
+ * @nogrep
+ * @codegen-command: ./node_modules/.bin/relay-compiler
  */
 
 /* eslint-disable */
 
-import type { ConcreteRequest } from 'relay-runtime';
+'use strict';
+
+/*::
+import type { ConcreteRequest, Mutation } from 'relay-runtime';
 export type LocationType = "AIRPORT" | "CITY" | "COUNTRY" | "%future added value";
 export type AddLocationInput = {|
   locationId: string,
   name: string,
   type: LocationType,
 |};
-export type LocationsFormMutationVariables = {|
+export type LocationsFormMutation$variables = {|
   location: AddLocationInput,
   connections: $ReadOnlyArray<string>,
 |};
-export type LocationsFormMutationResponse = {|
+export type LocationsFormMutationVariables = LocationsFormMutation$variables;
+export type LocationsFormMutation$data = {|
   +addLocation: ?{|
     +__typename: string,
     +message?: ?string,
@@ -25,40 +33,18 @@ export type LocationsFormMutationResponse = {|
         +name: ?string,
         +id: string,
         +type: ?string,
-      |}
+      |},
     |},
-  |}
+  |},
 |};
+export type LocationsFormMutationResponse = LocationsFormMutation$data;
 export type LocationsFormMutation = {|
   variables: LocationsFormMutationVariables,
-  response: LocationsFormMutationResponse,
+  response: LocationsFormMutation$data,
 |};
-
-/*
-mutation LocationsFormMutation(
-  $location: AddLocationInput!
-) {
-  addLocation(location: $location) {
-    __typename
-    ... on AddLocationResponse {
-      locationEdge {
-        node {
-          locationId
-          name
-          id
-          type
-        }
-      }
-    }
-    ... on Error {
-      __isError: __typename
-      message
-    }
-  }
-}
 */
 
-const node: ConcreteRequest = (function(){
+var node/*: ConcreteRequest*/ = (function(){
 var v0 = {
   "defaultValue": null,
   "kind": "LocalArgument",
@@ -240,6 +226,12 @@ return {
   }
 };
 })();
-// prettier-ignore
-(node: any).hash = '96c58517ee3913a83519a6cc97925513';
-export default node;
+
+if (__DEV__) {
+  (node/*: any*/).hash = "96c58517ee3913a83519a6cc97925513";
+}
+
+module.exports = ((node/*: any*/)/*: Mutation<
+  LocationsFormMutation$variables,
+  LocationsFormMutation$data,
+>*/);

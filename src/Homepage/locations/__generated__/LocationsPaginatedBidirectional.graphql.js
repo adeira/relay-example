@@ -1,21 +1,29 @@
 /**
+ * @generated SignedSource<<59c998569e41d87c2ede20aff7d28144>>
  * @flow
+ * @lightSyntaxTransform
+ * @nogrep
+ * @codegen-command: ./node_modules/.bin/relay-compiler
  */
 
 /* eslint-disable */
 
-import type { ReaderFragment } from 'relay-runtime';
-type Location$ref = any;
-import type { FragmentReference } from "relay-runtime";
-declare export opaque type LocationsPaginatedBidirectional$ref: FragmentReference;
-declare export opaque type LocationsPaginatedBidirectional$fragmentType: LocationsPaginatedBidirectional$ref;
-export type LocationsPaginatedBidirectional = {|
+'use strict';
+
+/*::
+import type { ReaderFragment, RefetchableFragment } from 'relay-runtime';
+type Location$fragmentType = any;
+import type { FragmentType } from "relay-runtime";
+declare export opaque type LocationsPaginatedBidirectional$fragmentType: FragmentType;
+export type LocationsPaginatedBidirectional$ref = LocationsPaginatedBidirectional$fragmentType;
+type LocationsPaginatedBidirectionalRefetchQuery$variables = any;
+export type LocationsPaginatedBidirectional$data = {|
   +locations: ?{|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
         +id: string,
-        +$fragmentRefs: Location$ref,
-      |}
+        +$fragmentSpreads: Location$fragmentType,
+      |},
     |}>,
     +pageInfo: {|
       +hasNextPage: boolean,
@@ -24,17 +32,17 @@ export type LocationsPaginatedBidirectional = {|
       +endCursor: ?string,
     |},
   |},
-  +$refType: LocationsPaginatedBidirectional$ref,
+  +$fragmentType: LocationsPaginatedBidirectional$fragmentType,
 |};
-export type LocationsPaginatedBidirectional$data = LocationsPaginatedBidirectional;
+export type LocationsPaginatedBidirectional = LocationsPaginatedBidirectional$data;
 export type LocationsPaginatedBidirectional$key = {
   +$data?: LocationsPaginatedBidirectional$data,
-  +$fragmentRefs: LocationsPaginatedBidirectional$ref,
+  +$fragmentSpreads: LocationsPaginatedBidirectional$fragmentType,
   ...
 };
+*/
 
-
-const node: ReaderFragment = {
+var node/*: ReaderFragment*/ = {
   "argumentDefinitions": [
     {
       "defaultValue": null,
@@ -62,7 +70,7 @@ const node: ReaderFragment = {
     "refetch": {
       "connection": null,
       "fragmentPathInResult": [],
-      "operation": require('./LocationsPaginatedBidirectionalRefetchQuery.graphql.js').default
+      "operation": require('./LocationsPaginatedBidirectionalRefetchQuery.graphql')
     }
   },
   "name": "LocationsPaginatedBidirectional",
@@ -176,6 +184,13 @@ const node: ReaderFragment = {
   "type": "RootQuery",
   "abstractKey": null
 };
-// prettier-ignore
-(node: any).hash = '46f79f411cdd91adf7c66321a579be4b';
-export default node;
+
+if (__DEV__) {
+  (node/*: any*/).hash = "46f79f411cdd91adf7c66321a579be4b";
+}
+
+module.exports = ((node/*: any*/)/*: RefetchableFragment<
+  LocationsPaginatedBidirectional$fragmentType,
+  LocationsPaginatedBidirectional$data,
+  LocationsPaginatedBidirectionalRefetchQuery$variables,
+>*/);

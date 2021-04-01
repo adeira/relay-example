@@ -1,30 +1,34 @@
 /**
+ * @generated SignedSource<<6b9fb065c42af9b640a1a45a9b68a55e>>
  * @flow
+ * @lightSyntaxTransform
+ * @nogrep
+ * @codegen-command: ./node_modules/.bin/relay-compiler
  */
 
 /* eslint-disable */
 
-import type { ConcreteRequest } from 'relay-runtime';
-export type LocalFormQueryVariables = {||};
-export type LocalFormQueryResponse = {|
+'use strict';
+
+/*::
+import type { ConcreteRequest, Query } from 'relay-runtime';
+export type LocalFormQuery$variables = {||};
+export type LocalFormQueryVariables = LocalFormQuery$variables;
+export type LocalFormQuery$data = {|
   +__typename: string,
   +localForm: ?{|
     +subject: ?string,
     +message: ?string,
   |},
 |};
+export type LocalFormQueryResponse = LocalFormQuery$data;
 export type LocalFormQuery = {|
   variables: LocalFormQueryVariables,
-  response: LocalFormQueryResponse,
+  response: LocalFormQuery$data,
 |};
-
-/*
-query LocalFormQuery {
-  __typename
-}
 */
 
-const node: ConcreteRequest = (function(){
+var node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
     "alias": null,
@@ -91,6 +95,12 @@ return {
   }
 };
 })();
-// prettier-ignore
-(node: any).hash = 'e61f3eac0352f6268cbca8f35ceb79ed';
-export default node;
+
+if (__DEV__) {
+  (node/*: any*/).hash = "e61f3eac0352f6268cbca8f35ceb79ed";
+}
+
+module.exports = ((node/*: any*/)/*: Query<
+  LocalFormQuery$variables,
+  LocalFormQuery$data,
+>*/);

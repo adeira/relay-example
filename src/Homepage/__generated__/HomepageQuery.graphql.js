@@ -1,94 +1,35 @@
 /**
+ * @generated SignedSource<<71bc2dc7e2027124c6ca3c2e8b9dbd07>>
  * @flow
+ * @lightSyntaxTransform
+ * @nogrep
+ * @codegen-command: ./node_modules/.bin/relay-compiler
  */
 
 /* eslint-disable */
 
-import type { ConcreteRequest } from 'relay-runtime';
-type LocationsPaginated$ref = any;
-type LocationsPaginatedBidirectional$ref = any;
-type LocationsPaginatedRefetch$ref = any;
-export type HomepageQueryVariables = {|
-  count: number
+'use strict';
+
+/*::
+import type { ConcreteRequest, Query } from 'relay-runtime';
+type LocationsPaginated$fragmentType = any;
+type LocationsPaginatedBidirectional$fragmentType = any;
+type LocationsPaginatedRefetch$fragmentType = any;
+export type HomepageQuery$variables = {|
+  count: number,
 |};
-export type HomepageQueryResponse = {|
-  +$fragmentRefs: LocationsPaginatedBidirectional$ref & LocationsPaginatedRefetch$ref & LocationsPaginated$ref
+export type HomepageQueryVariables = HomepageQuery$variables;
+export type HomepageQuery$data = {|
+  +$fragmentSpreads: LocationsPaginatedBidirectional$fragmentType & LocationsPaginatedRefetch$fragmentType & LocationsPaginated$fragmentType,
 |};
+export type HomepageQueryResponse = HomepageQuery$data;
 export type HomepageQuery = {|
   variables: HomepageQueryVariables,
-  response: HomepageQueryResponse,
+  response: HomepageQuery$data,
 |};
-
-/*
-query HomepageQuery(
-  $count: Int!
-) {
-  ...LocationsPaginatedBidirectional_1TJkD9
-  ...LocationsPaginatedRefetch
-  ...LocationsPaginated
-}
-
-fragment Location on Location {
-  name
-  countryFlagURL
-  country {
-    name
-  }
-}
-
-fragment LocationsPaginated on RootQuery {
-  incrementalPagination2: locations(first: 20) {
-    edges {
-      node {
-        id
-        ...Location
-        __typename
-      }
-      cursor
-    }
-    pageInfo {
-      endCursor
-      hasNextPage
-    }
-  }
-}
-
-fragment LocationsPaginatedBidirectional_1TJkD9 on RootQuery {
-  locations(first: $count) {
-    edges {
-      node {
-        id
-        ...Location
-      }
-    }
-    pageInfo {
-      hasNextPage
-      hasPreviousPage
-      startCursor
-      endCursor
-    }
-  }
-}
-
-fragment LocationsPaginatedRefetch on RootQuery {
-  incrementalPagination: locations(first: 20) {
-    edges {
-      node {
-        id
-        ...Location
-        __typename
-      }
-      cursor
-    }
-    pageInfo {
-      endCursor
-      hasNextPage
-    }
-  }
-}
 */
 
-const node: ConcreteRequest = (function(){
+var node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
     "defaultValue": null,
@@ -358,6 +299,12 @@ return {
   }
 };
 })();
-// prettier-ignore
-(node: any).hash = '085ef3ea8676fdcaf828d0cb62550f00';
-export default node;
+
+if (__DEV__) {
+  (node/*: any*/).hash = "085ef3ea8676fdcaf828d0cb62550f00";
+}
+
+module.exports = ((node/*: any*/)/*: Query<
+  HomepageQuery$variables,
+  HomepageQuery$data,
+>*/);

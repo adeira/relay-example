@@ -1,14 +1,21 @@
 /**
+ * @generated SignedSource<<69a2c108773fb807ecfddfa596270bf5>>
  * @flow
+ * @lightSyntaxTransform
+ * @nogrep
+ * @codegen-command: ./node_modules/.bin/relay-compiler
  */
 
 /* eslint-disable */
 
-import type { ReaderFragment } from 'relay-runtime';
-import type { FragmentReference } from "relay-runtime";
-declare export opaque type LocationsListSimple$ref: FragmentReference;
-declare export opaque type LocationsListSimple$fragmentType: LocationsListSimple$ref;
-export type LocationsListSimple = {|
+'use strict';
+
+/*::
+import type { Fragment, ReaderFragment } from 'relay-runtime';
+import type { FragmentType } from "relay-runtime";
+declare export opaque type LocationsListSimple$fragmentType: FragmentType;
+export type LocationsListSimple$ref = LocationsListSimple$fragmentType;
+export type LocationsListSimple$data = {|
   +locations: ?{|
     +__id: string,
     +edges: ?$ReadOnlyArray<?{|
@@ -16,20 +23,20 @@ export type LocationsListSimple = {|
         +id: string,
         +name: ?string,
         +type: ?string,
-      |}
+      |},
     |}>,
   |},
-  +$refType: LocationsListSimple$ref,
+  +$fragmentType: LocationsListSimple$fragmentType,
 |};
-export type LocationsListSimple$data = LocationsListSimple;
+export type LocationsListSimple = LocationsListSimple$data;
 export type LocationsListSimple$key = {
   +$data?: LocationsListSimple$data,
-  +$fragmentRefs: LocationsListSimple$ref,
+  +$fragmentSpreads: LocationsListSimple$fragmentType,
   ...
 };
+*/
 
-
-const node: ReaderFragment = {
+var node/*: ReaderFragment*/ = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": {
@@ -155,6 +162,12 @@ const node: ReaderFragment = {
   "type": "RootQuery",
   "abstractKey": null
 };
-// prettier-ignore
-(node: any).hash = '280ae193c4eb34f11066becbad3110cc';
-export default node;
+
+if (__DEV__) {
+  (node/*: any*/).hash = "280ae193c4eb34f11066becbad3110cc";
+}
+
+module.exports = ((node/*: any*/)/*: Fragment<
+  LocationsListSimple$fragmentType,
+  LocationsListSimple$data,
+>*/);

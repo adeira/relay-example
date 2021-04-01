@@ -1,39 +1,36 @@
 /**
+ * @generated SignedSource<<eb074780c522c261a8723bb94c0a5476>>
  * @flow
+ * @lightSyntaxTransform
+ * @nogrep
+ * @codegen-command: ./node_modules/.bin/relay-compiler
  */
 
 /* eslint-disable */
 
-import type { ConcreteRequest } from 'relay-runtime';
-export type PollingQueryVariables = {|
-  abTestEnabled: boolean
+'use strict';
+
+/*::
+import type { ConcreteRequest, Query } from 'relay-runtime';
+export type PollingQuery$variables = {|
+  abTestEnabled: boolean,
 |};
-export type PollingQueryResponse = {|
+export type PollingQueryVariables = PollingQuery$variables;
+export type PollingQuery$data = {|
   +currency: ?{|
     +rate: ?number,
     +code?: ?string,
     +format?: ?string,
-  |}
+  |},
 |};
+export type PollingQueryResponse = PollingQuery$data;
 export type PollingQuery = {|
   variables: PollingQueryVariables,
-  response: PollingQueryResponse,
+  response: PollingQuery$data,
 |};
-
-/*
-query PollingQuery(
-  $abTestEnabled: Boolean!
-) {
-  currency(code: "usd") {
-    rate
-    code @include(if: $abTestEnabled)
-    format @include(if: $abTestEnabled)
-    id
-  }
-}
 */
 
-const node: ConcreteRequest = (function(){
+var node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
     "defaultValue": null,
@@ -115,14 +112,14 @@ return {
         "plural": false,
         "selections": [
           (v2/*: any*/),
+          (v3/*: any*/),
           {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
             "name": "id",
             "storageKey": null
-          },
-          (v3/*: any*/)
+          }
         ],
         "storageKey": "currency(code:\"usd\")"
       }
@@ -138,6 +135,12 @@ return {
   }
 };
 })();
-// prettier-ignore
-(node: any).hash = '4fe8e121396058d93ef63050a2f5b555';
-export default node;
+
+if (__DEV__) {
+  (node/*: any*/).hash = "4fe8e121396058d93ef63050a2f5b555";
+}
+
+module.exports = ((node/*: any*/)/*: Query<
+  PollingQuery$variables,
+  PollingQuery$data,
+>*/);

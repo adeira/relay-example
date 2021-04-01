@@ -1,58 +1,35 @@
 /**
+ * @generated SignedSource<<4196495ebac4ee71193b45ee4a96e1ef>>
  * @flow
+ * @lightSyntaxTransform
+ * @nogrep
+ * @codegen-command: ./node_modules/.bin/relay-compiler
  */
 
 /* eslint-disable */
 
-import type { ConcreteRequest } from 'relay-runtime';
-type LocationsPaginatedRefetch$ref = any;
-export type LocationsPaginatedRefetchRefetchQueryVariables = {|
+'use strict';
+
+/*::
+import type { ConcreteRequest, Query } from 'relay-runtime';
+import type { FragmentType } from "relay-runtime";
+type LocationsPaginatedRefetch$fragmentType = any;
+export type LocationsPaginatedRefetchRefetchQuery$variables = {|
   after?: ?string,
   count?: ?number,
 |};
-export type LocationsPaginatedRefetchRefetchQueryResponse = {|
-  +$fragmentRefs: LocationsPaginatedRefetch$ref
+export type LocationsPaginatedRefetchRefetchQueryVariables = LocationsPaginatedRefetchRefetchQuery$variables;
+export type LocationsPaginatedRefetchRefetchQuery$data = {|
+  +$fragmentSpreads: LocationsPaginatedRefetch$fragmentType,
 |};
+export type LocationsPaginatedRefetchRefetchQueryResponse = LocationsPaginatedRefetchRefetchQuery$data;
 export type LocationsPaginatedRefetchRefetchQuery = {|
   variables: LocationsPaginatedRefetchRefetchQueryVariables,
-  response: LocationsPaginatedRefetchRefetchQueryResponse,
+  response: LocationsPaginatedRefetchRefetchQuery$data,
 |};
-
-/*
-query LocationsPaginatedRefetchRefetchQuery(
-  $after: String
-  $count: Int = 20
-) {
-  ...LocationsPaginatedRefetch_2QE1um
-}
-
-fragment Location on Location {
-  name
-  countryFlagURL
-  country {
-    name
-  }
-}
-
-fragment LocationsPaginatedRefetch_2QE1um on RootQuery {
-  incrementalPagination: locations(first: $count, after: $after) {
-    edges {
-      node {
-        id
-        ...Location
-        __typename
-      }
-      cursor
-    }
-    pageInfo {
-      endCursor
-      hasNextPage
-    }
-  }
-}
 */
 
-const node: ConcreteRequest = (function(){
+var node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
     "defaultValue": null,
@@ -234,6 +211,12 @@ return {
   }
 };
 })();
-// prettier-ignore
-(node: any).hash = '9b7f0b241071b44b2e2f386b1e71ce2e';
-export default node;
+
+if (__DEV__) {
+  (node/*: any*/).hash = "9b7f0b241071b44b2e2f386b1e71ce2e";
+}
+
+module.exports = ((node/*: any*/)/*: Query<
+  LocationsPaginatedRefetchRefetchQuery$variables,
+  LocationsPaginatedRefetchRefetchQuery$data,
+>*/);
