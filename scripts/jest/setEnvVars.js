@@ -1,4 +1,4 @@
-// @flow
+// @flow strict
 
 // https://github.com/vercel/next.js/issues/18415#issuecomment-718180659
 process.env = {
