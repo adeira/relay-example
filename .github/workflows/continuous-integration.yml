@@ -17,7 +17,10 @@ jobs:
 
     # TODO: lint
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2.3.4
+        with:
+          # Number of commits to fetch. 0 indicates all history for all branches and tags.
+          fetch-depth: 0
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2.1.5
         with:
