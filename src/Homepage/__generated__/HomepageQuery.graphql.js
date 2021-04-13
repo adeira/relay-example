@@ -5,14 +5,14 @@
 /* eslint-disable */
 
 import type { ConcreteRequest } from 'relay-runtime';
-type LocationsPaginatedBidirectional_data$ref = any;
-type LocationsPaginatedRefetch_data$ref = any;
-type LocationsPaginated_data$ref = any;
+type LocationsPaginated$ref = any;
+type LocationsPaginatedBidirectional$ref = any;
+type LocationsPaginatedRefetch$ref = any;
 export type HomepageQueryVariables = {|
   count: number
 |};
 export type HomepageQueryResponse = {|
-  +$fragmentRefs: LocationsPaginatedBidirectional_data$ref & LocationsPaginatedRefetch_data$ref & LocationsPaginated_data$ref
+  +$fragmentRefs: LocationsPaginatedBidirectional$ref & LocationsPaginatedRefetch$ref & LocationsPaginated$ref
 |};
 export type HomepageQuery = {|
   variables: HomepageQueryVariables,
@@ -23,9 +23,9 @@ export type HomepageQuery = {|
 query HomepageQuery(
   $count: Int!
 ) {
-  ...LocationsPaginatedBidirectional_data_1TJkD9
-  ...LocationsPaginatedRefetch_data
-  ...LocationsPaginated_data
+  ...LocationsPaginatedBidirectional_1TJkD9
+  ...LocationsPaginatedRefetch
+  ...LocationsPaginated
 }
 
 fragment Location on Location {
@@ -36,7 +36,24 @@ fragment Location on Location {
   }
 }
 
-fragment LocationsPaginatedBidirectional_data_1TJkD9 on RootQuery {
+fragment LocationsPaginated on RootQuery {
+  incrementalPagination2: locations(first: 20) {
+    edges {
+      node {
+        id
+        ...Location
+        __typename
+      }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
+fragment LocationsPaginatedBidirectional_1TJkD9 on RootQuery {
   locations(first: $count) {
     edges {
       node {
@@ -53,25 +70,8 @@ fragment LocationsPaginatedBidirectional_data_1TJkD9 on RootQuery {
   }
 }
 
-fragment LocationsPaginatedRefetch_data on RootQuery {
+fragment LocationsPaginatedRefetch on RootQuery {
   incrementalPagination: locations(first: 20) {
-    edges {
-      node {
-        id
-        ...Location
-        __typename
-      }
-      cursor
-    }
-    pageInfo {
-      endCursor
-      hasNextPage
-    }
-  }
-}
-
-fragment LocationsPaginated_data on RootQuery {
-  incrementalPagination2: locations(first: 20) {
     edges {
       node {
         id
@@ -222,17 +222,17 @@ return {
       {
         "args": (v1/*: any*/),
         "kind": "FragmentSpread",
-        "name": "LocationsPaginatedBidirectional_data"
+        "name": "LocationsPaginatedBidirectional"
       },
       {
         "args": null,
         "kind": "FragmentSpread",
-        "name": "LocationsPaginatedRefetch_data"
+        "name": "LocationsPaginatedRefetch"
       },
       {
         "args": null,
         "kind": "FragmentSpread",
-        "name": "LocationsPaginated_data"
+        "name": "LocationsPaginated"
       }
     ],
     "type": "RootQuery",
@@ -349,15 +349,15 @@ return {
     ]
   },
   "params": {
-    "cacheID": "1c02b07ae0a299674c355f14723778cd",
+    "cacheID": "4cf3d7a4ac5dee0119b188436a4dd53c",
     "id": null,
     "metadata": {},
     "name": "HomepageQuery",
     "operationKind": "query",
-    "text": "query HomepageQuery(\n  $count: Int!\n) {\n  ...LocationsPaginatedBidirectional_data_1TJkD9\n  ...LocationsPaginatedRefetch_data\n  ...LocationsPaginated_data\n}\n\nfragment Location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginatedBidirectional_data_1TJkD9 on RootQuery {\n  locations(first: $count) {\n    edges {\n      node {\n        id\n        ...Location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment LocationsPaginated_data on RootQuery {\n  incrementalPagination2: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query HomepageQuery(\n  $count: Int!\n) {\n  ...LocationsPaginatedBidirectional_1TJkD9\n  ...LocationsPaginatedRefetch\n  ...LocationsPaginated\n}\n\nfragment Location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginated on RootQuery {\n  incrementalPagination2: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment LocationsPaginatedBidirectional_1TJkD9 on RootQuery {\n  locations(first: $count) {\n    edges {\n      node {\n        id\n        ...Location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n\nfragment LocationsPaginatedRefetch on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node: any).hash = 'da1e002367f01113132353727909b19c';
+(node: any).hash = '085ef3ea8676fdcaf828d0cb62550f00';
 export default node;

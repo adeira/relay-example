@@ -5,15 +5,15 @@
 /* eslint-disable */
 
 import type { ConcreteRequest } from 'relay-runtime';
-type LocationsPaginatedBidirectional_data$ref = any;
+type LocationsPaginatedBidirectional$ref = any;
 export type LocationsPaginatedBidirectionalRefetchQueryVariables = {|
-  first?: ?number,
-  last?: ?number,
   after?: ?string,
   before?: ?string,
+  first?: ?number,
+  last?: ?number,
 |};
 export type LocationsPaginatedBidirectionalRefetchQueryResponse = {|
-  +$fragmentRefs: LocationsPaginatedBidirectional_data$ref
+  +$fragmentRefs: LocationsPaginatedBidirectional$ref
 |};
 export type LocationsPaginatedBidirectionalRefetchQuery = {|
   variables: LocationsPaginatedBidirectionalRefetchQueryVariables,
@@ -22,12 +22,12 @@ export type LocationsPaginatedBidirectionalRefetchQuery = {|
 
 /*
 query LocationsPaginatedBidirectionalRefetchQuery(
-  $first: Int
-  $last: Int
   $after: String
   $before: String
+  $first: Int
+  $last: Int
 ) {
-  ...LocationsPaginatedBidirectional_data_pbnwq
+  ...LocationsPaginatedBidirectional_pbnwq
 }
 
 fragment Location on Location {
@@ -38,7 +38,7 @@ fragment Location on Location {
   }
 }
 
-fragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {
+fragment LocationsPaginatedBidirectional_pbnwq on RootQuery {
   locations(first: $first, last: $last, after: $after, before: $before) {
     edges {
       node {
@@ -57,27 +57,29 @@ fragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {
 */
 
 const node: ConcreteRequest = (function(){
-var v0 = {
-  "defaultValue": null,
-  "kind": "LocalArgument",
-  "name": "after"
-},
-v1 = {
-  "defaultValue": null,
-  "kind": "LocalArgument",
-  "name": "before"
-},
-v2 = {
-  "defaultValue": null,
-  "kind": "LocalArgument",
-  "name": "first"
-},
-v3 = {
-  "defaultValue": null,
-  "kind": "LocalArgument",
-  "name": "last"
-},
-v4 = [
+var v0 = [
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "after"
+  },
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "before"
+  },
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "first"
+  },
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "last"
+  }
+],
+v1 = [
   {
     "kind": "Variable",
     "name": "after",
@@ -99,7 +101,7 @@ v4 = [
     "variableName": "last"
   }
 ],
-v5 = {
+v2 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
@@ -108,20 +110,15 @@ v5 = {
 };
 return {
   "fragment": {
-    "argumentDefinitions": [
-      (v0/*: any*/),
-      (v1/*: any*/),
-      (v2/*: any*/),
-      (v3/*: any*/)
-    ],
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
     "name": "LocationsPaginatedBidirectionalRefetchQuery",
     "selections": [
       {
-        "args": (v4/*: any*/),
+        "args": (v1/*: any*/),
         "kind": "FragmentSpread",
-        "name": "LocationsPaginatedBidirectional_data"
+        "name": "LocationsPaginatedBidirectional"
       }
     ],
     "type": "RootQuery",
@@ -129,18 +126,13 @@ return {
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": [
-      (v2/*: any*/),
-      (v3/*: any*/),
-      (v0/*: any*/),
-      (v1/*: any*/)
-    ],
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "LocationsPaginatedBidirectionalRefetchQuery",
     "selections": [
       {
         "alias": null,
-        "args": (v4/*: any*/),
+        "args": (v1/*: any*/),
         "concreteType": "LocationConnection",
         "kind": "LinkedField",
         "name": "locations",
@@ -169,7 +161,7 @@ return {
                     "name": "id",
                     "storageKey": null
                   },
-                  (v5/*: any*/),
+                  (v2/*: any*/),
                   {
                     "alias": null,
                     "args": null,
@@ -185,7 +177,7 @@ return {
                     "name": "country",
                     "plural": false,
                     "selections": [
-                      (v5/*: any*/)
+                      (v2/*: any*/)
                     ],
                     "storageKey": null
                   }
@@ -240,15 +232,15 @@ return {
     ]
   },
   "params": {
-    "cacheID": "46d54ce2134d2d8afbf709cf2f4ce6e2",
+    "cacheID": "314bf8e00ef1920d062de67947dc7c80",
     "id": null,
     "metadata": {},
     "name": "LocationsPaginatedBidirectionalRefetchQuery",
     "operationKind": "query",
-    "text": "query LocationsPaginatedBidirectionalRefetchQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n) {\n  ...LocationsPaginatedBidirectional_data_pbnwq\n}\n\nfragment Location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginatedBidirectional_data_pbnwq on RootQuery {\n  locations(first: $first, last: $last, after: $after, before: $before) {\n    edges {\n      node {\n        id\n        ...Location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n"
+    "text": "query LocationsPaginatedBidirectionalRefetchQuery(\n  $after: String\n  $before: String\n  $first: Int\n  $last: Int\n) {\n  ...LocationsPaginatedBidirectional_pbnwq\n}\n\nfragment Location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginatedBidirectional_pbnwq on RootQuery {\n  locations(first: $first, last: $last, after: $after, before: $before) {\n    edges {\n      node {\n        id\n        ...Location\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node: any).hash = 'b477875859d7890a09eedf906ddcb30a';
+(node: any).hash = '46f79f411cdd91adf7c66321a579be4b';
 export default node;

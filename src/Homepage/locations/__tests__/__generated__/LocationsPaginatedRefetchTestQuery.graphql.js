@@ -5,10 +5,10 @@
 /* eslint-disable */
 
 import type { ConcreteRequest } from 'relay-runtime';
-type LocationsPaginatedRefetch_data$ref = any;
+type LocationsPaginatedRefetch$ref = any;
 export type LocationsPaginatedRefetchTestQueryVariables = {||};
 export type LocationsPaginatedRefetchTestQueryResponse = {|
-  +$fragmentRefs: LocationsPaginatedRefetch_data$ref
+  +$fragmentRefs: LocationsPaginatedRefetch$ref
 |};
 export type LocationsPaginatedRefetchTestQuery = {|
   variables: LocationsPaginatedRefetchTestQueryVariables,
@@ -17,7 +17,7 @@ export type LocationsPaginatedRefetchTestQuery = {|
 
 /*
 query LocationsPaginatedRefetchTestQuery {
-  ...LocationsPaginatedRefetch_data
+  ...LocationsPaginatedRefetch
 }
 
 fragment Location on Location {
@@ -28,7 +28,7 @@ fragment Location on Location {
   }
 }
 
-fragment LocationsPaginatedRefetch_data on RootQuery {
+fragment LocationsPaginatedRefetch on RootQuery {
   incrementalPagination: locations(first: 20) {
     edges {
       node {
@@ -83,7 +83,7 @@ return {
       {
         "args": null,
         "kind": "FragmentSpread",
-        "name": "LocationsPaginatedRefetch_data"
+        "name": "LocationsPaginatedRefetch"
       }
     ],
     "type": "RootQuery",
@@ -206,7 +206,7 @@ return {
     ]
   },
   "params": {
-    "cacheID": "4fe765b4a5f4bb7a95398bd8a1507830",
+    "cacheID": "85b312b35ea24f9aaeb5014b3da4195a",
     "id": null,
     "metadata": {
       "relayTestingSelectionTypeInfo": {
@@ -262,10 +262,10 @@ return {
     },
     "name": "LocationsPaginatedRefetchTestQuery",
     "operationKind": "query",
-    "text": "query LocationsPaginatedRefetchTestQuery {\n  ...LocationsPaginatedRefetch_data\n}\n\nfragment Location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginatedRefetch_data on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query LocationsPaginatedRefetchTestQuery {\n  ...LocationsPaginatedRefetch\n}\n\nfragment Location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginatedRefetch on RootQuery {\n  incrementalPagination: locations(first: 20) {\n    edges {\n      node {\n        id\n        ...Location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node: any).hash = '27422bb6ee6bf293f13ca56c3ecf9166';
+(node: any).hash = 'aa5c30ce170d6be45067cdc6677b4e5c';
 export default node;

@@ -7,9 +7,9 @@
 import type { ReaderFragment } from 'relay-runtime';
 type Location$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type LocationsPaginated_data$ref: FragmentReference;
-declare export opaque type LocationsPaginated_data$fragmentType: LocationsPaginated_data$ref;
-export type LocationsPaginated_data = {|
+declare export opaque type LocationsPaginated$ref: FragmentReference;
+declare export opaque type LocationsPaginated$fragmentType: LocationsPaginated$ref;
+export type LocationsPaginated = {|
   +incrementalPagination2: ?{|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
@@ -18,17 +18,21 @@ export type LocationsPaginated_data = {|
       |}
     |}>
   |},
-  +$refType: LocationsPaginated_data$ref,
+  +$refType: LocationsPaginated$ref,
 |};
-export type LocationsPaginated_data$data = LocationsPaginated_data;
-export type LocationsPaginated_data$key = {
-  +$data?: LocationsPaginated_data$data,
-  +$fragmentRefs: LocationsPaginated_data$ref,
+export type LocationsPaginated$data = LocationsPaginated;
+export type LocationsPaginated$key = {
+  +$data?: LocationsPaginated$data,
+  +$fragmentRefs: LocationsPaginated$ref,
   ...
 };
 
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = [
+  "incrementalPagination2"
+];
+return {
   "argumentDefinitions": [
     {
       "defaultValue": null,
@@ -48,13 +52,23 @@ const node: ReaderFragment = {
         "count": "count",
         "cursor": "after",
         "direction": "forward",
-        "path": [
-          "incrementalPagination2"
-        ]
+        "path": (v0/*: any*/)
       }
-    ]
+    ],
+    "refetch": {
+      "connection": {
+        "forward": {
+          "count": "count",
+          "cursor": "after"
+        },
+        "backward": null,
+        "path": (v0/*: any*/)
+      },
+      "fragmentPathInResult": [],
+      "operation": require('./LocationsPaginatedRefetchQuery.graphql.js').default
+    }
   },
-  "name": "LocationsPaginated_data",
+  "name": "LocationsPaginated",
   "selections": [
     {
       "alias": "incrementalPagination2",
@@ -144,6 +158,7 @@ const node: ReaderFragment = {
   "type": "RootQuery",
   "abstractKey": null
 };
+})();
 // prettier-ignore
-(node: any).hash = '985245ffb955b786bedcc04d633483dc';
+(node: any).hash = '4c6e41152f6e3fb4c537ab2d68022119';
 export default node;

@@ -1,6 +1,6 @@
 // @flow
 
-import type { Node } from 'react';
+import { Suspense, type Node } from 'react';
 import { graphql, QueryRenderer } from '@adeira/relay';
 import sx from '@adeira/sx';
 
@@ -22,7 +22,7 @@ function Demo(props) {
           {props.linkTitle}
         </a>
       </Text>
-      {props.component}
+      <Suspense fallback={<div>loading...</div>}>{props.component}</Suspense>
     </>
   );
 }
@@ -35,8 +35,8 @@ function renderQueryRendererResponse(props: HomepageQueryResponse) {
       <div className="column">
         <Demo
           title="Bi-directional pagination"
-          link="https://facebook.github.io/relay/docs/en/refetch-container.html"
-          linkTitle="Refetch Container"
+          link="https://relay.dev/docs/api-reference/use-refetchable-fragment/"
+          linkTitle="useRefetchableFragment"
           component={<LocationsPaginatedBidirectional data={props} itemsCount={ITEMS_COUNT} />}
         />
       </div>
@@ -44,8 +44,8 @@ function renderQueryRendererResponse(props: HomepageQueryResponse) {
       <div className="column">
         <Demo
           title="Incremental pagination 1"
-          link="https://facebook.github.io/relay/docs/en/refetch-container.html"
-          linkTitle="Refetch Container"
+          link="https://relay.dev/docs/api-reference/use-refetchable-fragment/"
+          linkTitle="useRefetchableFragment"
           component={<LocationsPaginatedRefetch data={props} />}
         />
       </div>
@@ -53,8 +53,8 @@ function renderQueryRendererResponse(props: HomepageQueryResponse) {
       <div className="column">
         <Demo
           title="Incremental pagination 2"
-          link="https://facebook.github.io/relay/docs/en/pagination-container.html"
-          linkTitle="Pagination Container"
+          link="https://relay.dev/docs/api-reference/use-pagination-fragment/"
+          linkTitle="usePaginationFragment"
           component={<LocationsPaginated data={props} />}
         />
       </div>
@@ -71,9 +71,9 @@ export default function Homepage(): Node {
     <QueryRenderer
       query={graphql`
         query HomepageQuery($count: Int!) {
-          ...LocationsPaginatedBidirectional_data @arguments(first: $count)
-          ...LocationsPaginatedRefetch_data
-          ...LocationsPaginated_data
+          ...LocationsPaginatedBidirectional @arguments(first: $count)
+          ...LocationsPaginatedRefetch
+          ...LocationsPaginated
         }
       `}
       variables={queryVariables}

@@ -7,9 +7,9 @@
 import type { ReaderFragment } from 'relay-runtime';
 type Location$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type LocationsPaginatedBidirectional_data$ref: FragmentReference;
-declare export opaque type LocationsPaginatedBidirectional_data$fragmentType: LocationsPaginatedBidirectional_data$ref;
-export type LocationsPaginatedBidirectional_data = {|
+declare export opaque type LocationsPaginatedBidirectional$ref: FragmentReference;
+declare export opaque type LocationsPaginatedBidirectional$fragmentType: LocationsPaginatedBidirectional$ref;
+export type LocationsPaginatedBidirectional = {|
   +locations: ?{|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
@@ -24,12 +24,12 @@ export type LocationsPaginatedBidirectional_data = {|
       +endCursor: ?string,
     |},
   |},
-  +$refType: LocationsPaginatedBidirectional_data$ref,
+  +$refType: LocationsPaginatedBidirectional$ref,
 |};
-export type LocationsPaginatedBidirectional_data$data = LocationsPaginatedBidirectional_data;
-export type LocationsPaginatedBidirectional_data$key = {
-  +$data?: LocationsPaginatedBidirectional_data$data,
-  +$fragmentRefs: LocationsPaginatedBidirectional_data$ref,
+export type LocationsPaginatedBidirectional$data = LocationsPaginatedBidirectional;
+export type LocationsPaginatedBidirectional$key = {
+  +$data?: LocationsPaginatedBidirectional$data,
+  +$fragmentRefs: LocationsPaginatedBidirectional$ref,
   ...
 };
 
@@ -58,8 +58,14 @@ const node: ReaderFragment = {
     }
   ],
   "kind": "Fragment",
-  "metadata": null,
-  "name": "LocationsPaginatedBidirectional_data",
+  "metadata": {
+    "refetch": {
+      "connection": null,
+      "fragmentPathInResult": [],
+      "operation": require('./LocationsPaginatedBidirectionalRefetchQuery.graphql.js').default
+    }
+  },
+  "name": "LocationsPaginatedBidirectional",
   "selections": [
     {
       "alias": null,
@@ -171,5 +177,5 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 // prettier-ignore
-(node: any).hash = '1b487cf48709d22722ad8c0ffcd70356';
+(node: any).hash = '46f79f411cdd91adf7c66321a579be4b';
 export default node;

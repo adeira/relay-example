@@ -17,7 +17,7 @@ const TestRenderer = () => (
     environment={environment}
     query={graphql`
       query LocationsPaginatedRefetchTestQuery @relay_test_operation {
-        ...LocationsPaginatedRefetch_data
+        ...LocationsPaginatedRefetch
       }
     `}
     variables={{}}
@@ -55,6 +55,9 @@ it('refetches data', () => {
             },
           },
         ],
+        pageInfo: {
+          hasNextPage: true,
+        },
       }),
     }),
   );
@@ -65,27 +68,27 @@ it('refetches data', () => {
   const loadMore = wrapper.root.findByProps({ dataTest: 'loadMore' });
   act(() => {
     loadMore.props.onClick();
-  });
 
-  environment.mock.resolveMostRecentOperation((operation) =>
-    MockPayloadGenerator.generate(operation, {
-      LocationConnection: () => ({
-        edges: [
-          {
-            node: {
-              id: '3',
-              name: 'Prague',
-              code: 'prg',
-              countryFlagURL: 'https://images.kiwi.com',
-              country: {
-                code: 'cz',
+    environment.mock.resolveMostRecentOperation((operation) =>
+      MockPayloadGenerator.generate(operation, {
+        LocationConnection: () => ({
+          edges: [
+            {
+              node: {
+                id: '3',
+                name: 'Prague',
+                code: 'prg',
+                countryFlagURL: 'https://images.kiwi.com',
+                country: {
+                  code: 'cz',
+                },
               },
             },
-          },
-        ],
+          ],
+        }),
       }),
-    }),
-  );
+    );
+  });
 
   const prague = wrapper.root.findByProps({ dataTest: 'location-Prague' });
   expect(prague).toBeDefined();

@@ -1,49 +1,70 @@
 // @flow
 
-import { useState } from 'react';
-import {
-  createRefetchContainer,
-  graphql,
-  type RefetchRelayProp,
-  type RefetchContainerType,
-} from '@adeira/relay';
+import { useState, type Node } from 'react';
+import { graphql, useRefetchableFragment } from '@adeira/relay';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import sx from '@adeira/sx';
 
 import Button from '../../components/Button';
 import Location from './Location';
 import LocationList from './LocationsList';
-import type { LocationsPaginatedBidirectional_data as LocationsDataType } from './__generated__/LocationsPaginatedBidirectional_data.graphql';
+import { type LocationsPaginatedBidirectionalRefetchQuery } from './__generated__/LocationsPaginatedBidirectionalRefetchQuery.graphql';
+import type { LocationsPaginatedBidirectional$key } from './__generated__/LocationsPaginatedBidirectional.graphql';
 
 type Props = {
   +itemsCount: number,
-  +data: LocationsDataType,
-  +relay: RefetchRelayProp,
+  +data: LocationsPaginatedBidirectional$key,
 };
 
-function LocationsPaginatedBidirectional(props: Props) {
+export default function LocationsPaginatedBidirectional(props: Props): Node {
   const [start, setStart] = useState(1);
 
-  const pageInfo = props.data.locations?.pageInfo;
+  const [data, refetch] = useRefetchableFragment<
+    LocationsPaginatedBidirectionalRefetchQuery,
+    LocationsPaginatedBidirectional$key,
+  >(
+    graphql`
+      fragment LocationsPaginatedBidirectional on RootQuery
+      @argumentDefinitions(
+        first: { type: "Int" }
+        last: { type: "Int" }
+        after: { type: "String" }
+        before: { type: "String" }
+      )
+      @refetchable(queryName: "LocationsPaginatedBidirectionalRefetchQuery") {
+        locations(first: $first, last: $last, after: $after, before: $before) {
+          edges {
+            node {
+              id
+              ...Location
+            }
+          }
+          pageInfo {
+            hasNextPage
+            hasPreviousPage
+            startCursor
+            endCursor
+          }
+        }
+      }
+    `,
+    props.data,
+  );
+
+  const pageInfo = data.locations?.pageInfo;
   if (!pageInfo) {
     return null; // or some failure placeholder
   }
 
   function handlePageChange(args: { before?: ?string, after?: ?string }, callback: () => void) {
-    props.relay.refetch(
+    refetch(
       {
         first: args.after != null ? props.itemsCount : null,
         after: args.after,
         last: args.before != null ? props.itemsCount : null,
         before: args.before,
       },
-      null,
-      (error) => {
-        if (error) {
-          console.error(error); // eslint-disable-line no-console
-        }
-        callback();
-      },
+      { onComplete: () => callback() },
     );
   }
 
@@ -59,7 +80,7 @@ function LocationsPaginatedBidirectional(props: Props) {
     );
   }
 
-  const edges = props.data.locations?.edges ?? [];
+  const edges = data.locations?.edges ?? [];
   return (
     <>
       <LocationList start={start}>
@@ -93,44 +114,3 @@ const styles = sx.create({
     gap: 'var(--space-small)',
   },
 });
-
-export default (createRefetchContainer(
-  LocationsPaginatedBidirectional,
-  {
-    data: graphql`
-      fragment LocationsPaginatedBidirectional_data on RootQuery
-      @argumentDefinitions(
-        first: { type: "Int" }
-        last: { type: "Int" }
-        after: { type: "String" }
-        before: { type: "String" }
-      ) {
-        locations(first: $first, last: $last, after: $after, before: $before) {
-          edges {
-            node {
-              id
-              ...Location
-            }
-          }
-          pageInfo {
-            hasNextPage
-            hasPreviousPage
-            startCursor
-            endCursor
-          }
-        }
-      }
-    `,
-  },
-  graphql`
-    query LocationsPaginatedBidirectionalRefetchQuery(
-      $first: Int
-      $last: Int
-      $after: String
-      $before: String
-    ) {
-      ...LocationsPaginatedBidirectional_data
-        @arguments(first: $first, last: $last, after: $after, before: $before)
-    }
-  `,
-): RefetchContainerType<Props>);

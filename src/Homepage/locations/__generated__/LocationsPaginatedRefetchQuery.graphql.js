@@ -5,13 +5,13 @@
 /* eslint-disable */
 
 import type { ConcreteRequest } from 'relay-runtime';
-type LocationsPaginated_data$ref = any;
+type LocationsPaginated$ref = any;
 export type LocationsPaginatedRefetchQueryVariables = {|
+  after?: ?string,
   count?: ?number,
-  cursor?: ?string,
 |};
 export type LocationsPaginatedRefetchQueryResponse = {|
-  +$fragmentRefs: LocationsPaginated_data$ref
+  +$fragmentRefs: LocationsPaginated$ref
 |};
 export type LocationsPaginatedRefetchQuery = {|
   variables: LocationsPaginatedRefetchQueryVariables,
@@ -20,10 +20,10 @@ export type LocationsPaginatedRefetchQuery = {|
 
 /*
 query LocationsPaginatedRefetchQuery(
-  $count: Int
-  $cursor: String
+  $after: String
+  $count: Int = 20
 ) {
-  ...LocationsPaginated_data_kPtUz
+  ...LocationsPaginated_2QE1um
 }
 
 fragment Location on Location {
@@ -34,8 +34,8 @@ fragment Location on Location {
   }
 }
 
-fragment LocationsPaginated_data_kPtUz on RootQuery {
-  incrementalPagination2: locations(first: $count, after: $cursor) {
+fragment LocationsPaginated_2QE1um on RootQuery {
+  incrementalPagination2: locations(first: $count, after: $after) {
     edges {
       node {
         id
@@ -57,18 +57,18 @@ var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "count"
+    "name": "after"
   },
   {
-    "defaultValue": null,
+    "defaultValue": 20,
     "kind": "LocalArgument",
-    "name": "cursor"
+    "name": "count"
   }
 ],
 v1 = {
   "kind": "Variable",
   "name": "after",
-  "variableName": "cursor"
+  "variableName": "after"
 },
 v2 = [
   (v1/*: any*/),
@@ -102,7 +102,7 @@ return {
           }
         ],
         "kind": "FragmentSpread",
-        "name": "LocationsPaginated_data"
+        "name": "LocationsPaginated"
       }
     ],
     "type": "RootQuery",
@@ -225,15 +225,15 @@ return {
     ]
   },
   "params": {
-    "cacheID": "d47b6f54d9475ff8cf2642145a23e321",
+    "cacheID": "e9fadc87db9bf3d523f25484d0ce88f8",
     "id": null,
     "metadata": {},
     "name": "LocationsPaginatedRefetchQuery",
     "operationKind": "query",
-    "text": "query LocationsPaginatedRefetchQuery(\n  $count: Int\n  $cursor: String\n) {\n  ...LocationsPaginated_data_kPtUz\n}\n\nfragment Location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginated_data_kPtUz on RootQuery {\n  incrementalPagination2: locations(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query LocationsPaginatedRefetchQuery(\n  $after: String\n  $count: Int = 20\n) {\n  ...LocationsPaginated_2QE1um\n}\n\nfragment Location on Location {\n  name\n  countryFlagURL\n  country {\n    name\n  }\n}\n\nfragment LocationsPaginated_2QE1um on RootQuery {\n  incrementalPagination2: locations(first: $count, after: $after) {\n    edges {\n      node {\n        id\n        ...Location\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node: any).hash = '18eeeddb06165648d90b9fe38c768d68';
+(node: any).hash = '4c6e41152f6e3fb4c537ab2d68022119';
 export default node;
