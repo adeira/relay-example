@@ -2,17 +2,17 @@
 
 /*::
 
-type ApiType = {|
+type ApiType = {
   +assertVersion: number => void,
-  +cache: {|
+  +cache: {
     forever: () => void,
-  |},
-|};
+  },
+};
 
-type BabelConfig = {|
+type BabelConfig = {
   +plugins: $ReadOnlyArray<string>,
   +presets: $ReadOnlyArray<string | [string, { ... }]>,
-|}
+}
 
 */
 

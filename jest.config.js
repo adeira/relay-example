@@ -4,13 +4,13 @@ const path = require('path');
 
 /*::
 
-type JestConfig = {|
+type JestConfig = {
   +rootDir?: string,
   +testMatch?: $ReadOnlyArray<string>,
-  +transform?: {| +[string]: string |},
+  +transform?: { +[string]: string },
   +setupFilesAfterEnv?: $ReadOnlyArray<string>,
   +setupFiles?: $ReadOnlyArray<string>,
-|};
+};
 
 */
 
