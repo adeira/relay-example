@@ -4,7 +4,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@adeira/fetch": "^2.0.2",
+    "@adeira/fetch": "^2.1.0",
     "@adeira/fixtures-tester": "^1.0.1",
     "@adeira/graphql-bc-checker": "^0.3.0",
     "@adeira/graphql-global-id": "^2.0.0",
