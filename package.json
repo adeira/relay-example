@@ -32,7 +32,7 @@
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "babel-jest": "^26.6.3",
-    "flow-bin": "^0.150.0",
+    "flow-bin": "^0.150.1",
     "graphql": "^15.5.0",
     "jest": "^26.6.3",
     "react-test-renderer": "^17.0.2",
