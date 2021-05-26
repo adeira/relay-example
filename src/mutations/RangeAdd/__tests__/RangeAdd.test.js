@@ -1,4 +1,7 @@
-// @flow
+/**
+ * @flow
+ * @jest-environment jsdom
+ */
 
 import { createMockEnvironment, MockPayloadGenerator } from 'relay-test-utils';
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
