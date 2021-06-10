@@ -1,4 +1,0 @@
-# TODO
-
-- `@match`, `@module` example
-- …

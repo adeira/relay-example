@@ -1,7 +1,5 @@
 _This project was initially developed at Kiwi.com for education purposes and was agreed upon developing it further outside of this company._
 
-[![Continuous Integration](https://github.com/adeira/relay-example/workflows/Continuous%20Integration/badge.svg)](https://github.com/adeira/relay-example/actions?query=workflow%3A%22Continuous+Integration%22)
-
 # Relay examples
 
 This repository contains examples of common patterns used in real-world applications, so you don't have to re-invent the wheel every time. It currently contains following examples:
