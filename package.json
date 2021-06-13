@@ -6,7 +6,6 @@
   "dependencies": {
     "@adeira/fetch": "^2.1.0",
     "@adeira/fixtures-tester": "^1.0.1",
-    "@adeira/graphql-bc-checker": "^0.3.0",
     "@adeira/graphql-global-id": "^2.0.0",
     "@adeira/graphql-relay": "^0.3.0",
     "@adeira/js": "^2.1.0",
@@ -43,7 +42,6 @@
     "start-production": "next start",
     "build": "next build",
     "relay": "adeira-relay-compiler",
-    "schema": "adeira-fetch-schema --resource=https://relay-example.adeira.dev/api/graphql",
-    "test-bc": "yarn monorepo-babel-node scripts/test-bc.js"
+    "schema": "adeira-fetch-schema --resource=https://relay-example.adeira.dev/api/graphql"
   }
 }
