@@ -27,5 +27,8 @@ module.exports = (withCustomBabelConfigFile(
 
       return config;
     },
+    eslint: {
+      ignoreDuringBuilds: true,
+    },
   }),
 ) /*: any */);
