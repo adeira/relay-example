@@ -16,7 +16,7 @@
     "apollo-server-micro": "^2.25.1",
     "cors": "^2.8.5",
     "date-fns": "^2.22.1",
-    "graphql": "^15.5.0",
+    "graphql": "^15.5.1",
     "next": "^11.0.0",
     "next-plugin-custom-babel-config": "^1.0.4",
     "next-transpile-modules": "^8.0.0",
@@ -32,7 +32,7 @@
     "@testing-library/react": "^11.2.7",
     "babel-jest": "^27.0.2",
     "flow-bin": "^0.153.0",
-    "graphql": "^15.5.0",
+    "graphql": "^15.5.1",
     "jest": "^27.0.4",
     "react-test-renderer": "^17.0.2",
     "relay-test-utils": "^11.0.2"
