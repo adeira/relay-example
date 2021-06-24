@@ -42,7 +42,7 @@ export default function LocationsList(props: Props): Node {
       <div>
         <Heading level={3}>My favorite locations</Heading>
         <TransitionGroup component={null} className="location-list">
-          {data.locations?.edges?.map<Node>((edge) => (
+          {data.locations?.edges?.map((edge) => (
             <FadeIn key={edge?.node?.id} timeout={320}>
               <div style={{ padding: '12px', borderBottom: '1px solid black' }}>
                 <div>
