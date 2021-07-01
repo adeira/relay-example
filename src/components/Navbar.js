@@ -135,7 +135,7 @@ const styles = sx.create({
     },
   },
   navLinkContainer: {
-    paddingTop: '20px',
+    paddingBlockStart: '20px',
   },
   button: {
     'backgroundColor': 'transparent',
@@ -158,7 +158,7 @@ const styles = sx.create({
   link: {
     'fontSize': '1.8rem',
     'lineHeight': 1.333333,
-    'marginRight': 24,
+    'marginInlineEnd': 24,
     'color': 'var(--text-color)',
     'fontWeight': 600,
     'cursor': 'pointer',

@@ -85,9 +85,9 @@ const styles = sx.create({
     },
   },
   marginTopSmall: {
-    marginTop: 'var(--space-x-small)',
+    marginBlockStart: 'var(--space-x-small)',
     [tablet]: {
-      marginTop: 'var(--space-small)',
+      marginBlockStart: 'var(--space-small)',
     },
   },
 });
