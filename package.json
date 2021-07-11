@@ -11,7 +11,7 @@
     "@adeira/js": "^2.1.0",
     "@adeira/monorepo-utils": "^0.11.0",
     "@adeira/relay": "^3.2.4",
-    "@adeira/sx": "^0.26.0",
+    "@adeira/sx": "^0.27.0",
     "@artsy/fresnel": "^1.7.0",
     "apollo-server-micro": "^2.25.2",
     "cors": "^2.8.5",
