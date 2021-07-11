@@ -8,13 +8,15 @@ import { mediaStyles } from '../components/Media';
 
 type RenderPageResult = {
   +html: string,
-  +head: $ReadOnlyArray<Node>,
-  +styles: $ReadOnlyArray<any>,
+  +head?: $ReadOnlyArray<Node | null>,
+  +styles?: $ReadOnlyArray<Element<'style'>>,
+  ...
 };
 
 export default class MyDocument extends Document {
-  static getInitialProps(ctx: DocumentContext): RenderPageResult {
-    return sx.renderPageWithSX(ctx.renderPage);
+  static async getInitialProps({ renderPage }: DocumentContext): Promise<RenderPageResult> {
+    const page = await renderPage();
+    return { ...page, styles: [sx.getStyleTag()] };
   }
 
   render(): Element<'html'> {
