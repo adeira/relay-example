@@ -94,7 +94,6 @@ export default function LocationsPaginatedBidirectional(props: Props): Node {
           isDisabled={!pageInfo.hasPreviousPage}
           prefix={<Icon name="chevron_left" />}
         >
-          {/* $FlowFixMe[incompatible-type]: Button children should be FBT */}
           Previous&nbsp;page
         </Button>
         <Button
@@ -102,7 +101,6 @@ export default function LocationsPaginatedBidirectional(props: Props): Node {
           isDisabled={!pageInfo.hasNextPage}
           suffix={<Icon name="chevron_right" />}
         >
-          {/* $FlowFixMe[incompatible-type]: Button children should be FBT */}
           Next&nbsp;page
         </Button>
       </div>

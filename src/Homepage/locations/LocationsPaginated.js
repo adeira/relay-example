@@ -53,7 +53,6 @@ export default function LocationsPaginated(props: Props): Node {
         ))}
       </LocationList>
       <Button onClick={loadMore} isDisabled={!hasNext}>
-        {/* $FlowFixMe[incompatible-type]: Button children should be FBT */}
         Load more!
       </Button>
     </>

@@ -117,7 +117,6 @@ export default (function LocationsForm(props: Props) {
           />
           {/* $FlowFixMe[prop-missing]: SX Design by default requires `onClick` callback but it's actually not needed in this case */}
           <Button isDisabled={loading} type="submit">
-            {/* $FlowFixMe[incompatible-type]: Button children should be FBT */}
             Submit
           </Button>
         </div>

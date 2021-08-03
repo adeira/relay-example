@@ -64,7 +64,6 @@ export default function LocationsPaginatedRefetch(props: Props): Node {
         ))}
       </LocationList>
       <Button data-testid="loadMore" onClick={loadMore} isDisabled={!hasNextPage}>
-        {/* $FlowFixMe[incompatible-type]: Button children should be FBT */}
         Load more!
       </Button>
     </>
