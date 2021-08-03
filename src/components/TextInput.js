@@ -1,9 +1,8 @@
 // @flow
 
-import type { Node } from 'react';
+import { Text } from '@adeira/sx-design';
 import sx from '@adeira/sx';
-
-import Text from './Text';
+import type { Node } from 'react';
 
 type Props = {
   +onChange: (string) => void,
@@ -19,7 +18,7 @@ export default function TextInput({ onChange, label, ...rest }: Props): Node {
   };
   return (
     <label>
-      <Text size="small">{label}</Text>
+      <Text as="small">{label}</Text>
       <input {...rest} className={styles('input')} onChange={handleChange} />
     </label>
   );
@@ -32,10 +31,10 @@ const styles = sx.create({
     'fontWeight': 600,
     'padding': 'var(--space-small)',
     'border': '1px solid rgba(0, 0, 0, 0.33)',
-    'borderRadius': 'var(--border-radius-normal)',
+    'borderRadius': 'var(--sx-radius)',
     ':focus': {
       outline: 'none',
-      boxShadow: 'var(--box-shadow-active)',
+      boxShadow: 'var(--sx-shadow-small)',
     },
   },
 });

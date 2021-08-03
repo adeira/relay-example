@@ -1,10 +1,9 @@
 // @flow
 
+import Icon from '@adeira/icons';
+import { Text } from '@adeira/sx-design';
 import { useState, type Node } from 'react';
 import sx from '@adeira/sx';
-import { MdExpandMore } from 'react-icons/md';
-
-import Text from './Text';
 
 type Option = {
   +label: string,
@@ -27,7 +26,7 @@ export default function Select({ options, label, placeholder, onChange, ...rest 
   };
   return (
     <label className={styles('label')}>
-      <Text size="small">{label}</Text>
+      <Text as="small">{label}</Text>
       <select
         {...rest}
         onChange={handleChange}
@@ -41,7 +40,7 @@ export default function Select({ options, label, placeholder, onChange, ...rest 
         ))}
       </select>
       <div className={styles('iconContainer')}>
-        <MdExpandMore size="24" color="#30b8ba" />
+        <Icon name="chevron_down" />
       </div>
     </label>
   );
@@ -62,10 +61,10 @@ const styles = sx.create({
     'fontWeight': 600,
     'padding': 'var(--space-small)',
     'border': '1px solid rgba(0, 0, 0, 0.33)',
-    'borderRadius': 'var(--border-radius-normal)',
+    'borderRadius': 'var(--sx-radius)',
     ':focus': {
       outline: 'none',
-      boxShadow: 'var(--box-shadow-active)',
+      boxShadow: 'var(--sx-shadow-small)',
     },
   },
   placeholder: {

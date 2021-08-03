@@ -2,15 +2,14 @@
 
 /* eslint-disable no-alert */
 
+import { Button, Text } from '@adeira/sx-design';
 import { useState, type ComponentType } from 'react';
 import { graphql, useMutation } from '@adeira/relay';
 import sx from '@adeira/sx';
 
 import type { LocationsFormMutation } from './__generated__/LocationsFormMutation.graphql';
 import TextInput from '../../components/TextInput';
-import Button from '../../components/Button';
 import Select from '../../components/Select';
-import Heading from '../../components/Heading';
 
 type Props = {
   +connectionId: string,
@@ -94,7 +93,7 @@ export default (function LocationsForm(props: Props) {
 
   return (
     <>
-      <Heading level={3}>Add a location</Heading>
+      <Text as="h3">Add a location</Text>
       <form onSubmit={onSubmit}>
         <div className={styles('formContainer')}>
           <TextInput
@@ -116,7 +115,9 @@ export default (function LocationsForm(props: Props) {
               { label: 'Country', value: 'COUNTRY' },
             ]}
           />
-          <Button disabled={loading} type="submit">
+          {/* $FlowFixMe[prop-missing]: SX Design by default requires `onClick` callback but it's actually not needed in this case */}
+          <Button isDisabled={loading} type="submit">
+            {/* $FlowFixMe[incompatible-type]: Button children should be FBT */}
             Submit
           </Button>
         </div>

@@ -1,5 +1,6 @@
 // @flow
 
+import { Text } from '@adeira/sx-design';
 import { Suspense, type Node } from 'react';
 import { graphql, QueryRenderer } from '@adeira/relay';
 import sx from '@adeira/sx';
@@ -7,16 +8,15 @@ import sx from '@adeira/sx';
 import LocationsPaginatedBidirectional from './locations/LocationsPaginatedBidirectional';
 import LocationsPaginatedRefetch from './locations/LocationsPaginatedRefetch';
 import LocationsPaginated from './locations/LocationsPaginated';
-import type { HomepageQueryResponse } from './__generated__/HomepageQuery.graphql';
-import Heading from '../components/Heading';
-import Text from '../components/Text';
 import { desktop } from '../components/breakpoints';
+import type { HomepageQueryResponse } from './__generated__/HomepageQuery.graphql';
 
 function Demo(props) {
   return (
     <>
-      <Heading level={2}>{props.title}</Heading>
-      <Text size="small">
+      <Text as="h2">{props.title}</Text>
+      {/* $FlowFixMe[incompatible-type]: SX Design currently doesn't allow other than textual children */}
+      <Text as="small">
         See:{' '}
         <a rel="noreferrer" target="_blank" href={props.link}>
           {props.linkTitle}

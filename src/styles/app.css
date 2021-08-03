@@ -3,22 +3,12 @@
 @import '../mutations/FadeIn.css';
 
 :root {
-  /* Colors */
-  --color-primary: #55e0c6;
-  --text-color: #1c1e21;
-
-  /* Box shadow */
-  --box-shadow-active: 0 0 2px 2px #50c9b3;
-
   /* Spacing */
   --space-x-small: 0.6rem;
   --space-small: 1.2rem;
   --space-medium: 1.6rem;
   --space-large: 2rem;
   --space-x-large: 2.4rem;
-
-  /* Border radius */
-  --border-radius-normal: 3px;
 }
 
 html {
@@ -27,6 +17,5 @@ html {
 
 body {
   font-family: Roboto, sans-serif;
-  color: var(--text-color);
   font-size: 1.6rem;
 }

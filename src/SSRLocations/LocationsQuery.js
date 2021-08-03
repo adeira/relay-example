@@ -1,10 +1,9 @@
 // @flow
 
+import { LayoutBlock, Note, Text } from '@adeira/sx-design';
 import type { Node } from 'react';
 import { graphql, type RecordMap, type GraphQLTaggedNode } from '@adeira/relay';
-import sx from '@adeira/sx';
 
-import Heading from '../components/Heading';
 import LocationsList from './LocationsList';
 import QueryRenderer from '../SSRQueryRenderer';
 import type { LocationsQueryResponse } from './__generated__/LocationsQuery.graphql';
@@ -27,26 +26,19 @@ type Props = {
 
 export default function LocationsQuery(props: Props): Node {
   return (
-    <>
-      <Heading level={1}>Server Side Rendered Locations</Heading>
-      <hr className={styles('hr')} />
-      <p>TIP: Disable javascript and reload the page</p>
-      <hr className={styles('hr')} />
-      <QueryRenderer
-        query={query}
-        variables={variables}
-        onResponse={(renderProps: ?LocationsQueryResponse) => {
-          return <LocationsList locations={renderProps?.locations} />;
-        }}
-        ssrData={props.ssrData}
-      />
-    </>
+    <LayoutBlock spacing="large">
+      <Text as="h1">Server Side Rendered Locations</Text>
+      <Note>TIP: Disable javascript and reload the page</Note>
+      <div>
+        <QueryRenderer
+          query={query}
+          variables={variables}
+          onResponse={(renderProps: ?LocationsQueryResponse) => {
+            return <LocationsList locations={renderProps?.locations} />;
+          }}
+          ssrData={props.ssrData}
+        />
+      </div>
+    </LayoutBlock>
   );
 }
-
-const styles = sx.create({
-  hr: {
-    borderWidth: '0.5px',
-    margin: 'var(--space-medium) 0',
-  },
-});

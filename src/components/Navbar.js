@@ -1,8 +1,8 @@
 // @flow
 
+import Icon from '@adeira/icons';
 import { useState, useEffect, type ComponentType, type Node } from 'react';
 import sx from '@adeira/sx';
-import { MdMenu } from 'react-icons/md';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
 
@@ -79,7 +79,7 @@ function Navbar() {
             type="button"
             onClick={() => setShow((show) => !show)}
           >
-            <MdMenu color="var(--text-color)" />
+            <Icon name="menu_hamburger" />
           </button>
         </Media>
         <Media greaterThanOrEqual="desktop">
@@ -111,7 +111,7 @@ const styles = sx.create({
     maxHeight: '71px',
     overflow: 'hidden',
     transition: 'max-height 0.3s',
-    backgroundColor: 'var(--color-primary)',
+    backgroundColor: 'rgba(var(--sx-success-light))',
     padding: 'var(--space-small)',
     [tablet]: {
       padding: 'var(--space-x-large)',
@@ -159,7 +159,7 @@ const styles = sx.create({
     'fontSize': '1.8rem',
     'lineHeight': 1.333333,
     'marginInlineEnd': 24,
-    'color': 'var(--text-color)',
+    'color': 'rgba(var(--sx-foreground))',
     'fontWeight': 600,
     'cursor': 'pointer',
     'textDecoration': 'none',

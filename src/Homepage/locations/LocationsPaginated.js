@@ -1,9 +1,9 @@
 // @flow
 
+import { Button } from '@adeira/sx-design';
 import { type Node, useCallback } from 'react';
 import { graphql, usePaginationFragment } from '@adeira/relay';
 
-import Button from '../../components/Button';
 import Location from './Location';
 import LocationList from './LocationsList';
 import { type LocationsPaginatedRefetchQuery } from './__generated__/LocationsPaginatedRefetchQuery.graphql';
@@ -52,7 +52,8 @@ export default function LocationsPaginated(props: Props): Node {
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </LocationList>
-      <Button onClick={loadMore} disabled={!hasNext}>
+      <Button onClick={loadMore} isDisabled={!hasNext}>
+        {/* $FlowFixMe[incompatible-type]: Button children should be FBT */}
         Load more!
       </Button>
     </>

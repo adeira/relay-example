@@ -1,16 +1,17 @@
 // @flow
 
-import type { Node } from 'react';
+import { Note, SxDesignProvider } from '@adeira/sx-design';
 import sx from '@adeira/sx';
 import App from 'next/app';
 import Head from 'next/head';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import { RelayEnvironmentProvider } from '@adeira/relay';
+import type { Node } from 'react';
 
+import '../styles/app.css';
 import createRelayEnvironment from '../createRelayEnvironment';
 import Navbar from '../components/Navbar';
-import '../styles/app.css';
 import { tablet } from '../components/breakpoints';
 import { MediaContextProvider } from '../components/Media';
 
@@ -37,47 +38,42 @@ export default class MyApp extends App {
   render(): Node {
     const { Component, pageProps } = this.props;
     return (
-      <RelayEnvironmentProvider environment={createRelayEnvironment(undefined)}>
-        <Head>
-          <title>Relay Example</title>
-        </Head>
-        <header>
-          <Navbar />
-        </header>
-        <div className={styles('padMedium')}>
-          {__DEV__ ? (
-            <div className={styles('box')}>
-              TIP: Open a console to see what&apos;s going on behind the scenes.
+      <SxDesignProvider>
+        <RelayEnvironmentProvider environment={createRelayEnvironment(undefined)}>
+          <Head>
+            <title>Relay Example</title>
+          </Head>
+
+          <header>
+            <Navbar />
+          </header>
+
+          <div className={styles('padMedium')}>
+            {__DEV__ ? (
+              <Note>Open a console to see what&apos;s going on behind the scenes.</Note>
+            ) : (
+              <Note tint="warning">
+                It&apos;s better to clone this repository and try it in development mode so you can
+                see what&apos;s going on behind the scenes:{' '}
+                <a href="https://github.com/adeira/relay-example">
+                  https://github.com/adeira/relay-example
+                </a>
+              </Note>
+            )}
+
+            <div className={styles('marginTopSmall')}>
+              <MediaContextProvider>
+                <Component {...pageProps} />
+              </MediaContextProvider>
             </div>
-          ) : (
-            <div className={styles('box', 'boxWarning')}>
-              It&apos;s better to clone this repository and try it in development mode so you can
-              see what&apos;s going on behind the scenes:{' '}
-              <a href="https://github.com/adeira/relay-example">
-                https://github.com/adeira/relay-example
-              </a>
-            </div>
-          )}
-          <div className={styles('marginTopSmall')}>
-            <MediaContextProvider>
-              <Component {...pageProps} />
-            </MediaContextProvider>
           </div>
-        </div>
-      </RelayEnvironmentProvider>
+        </RelayEnvironmentProvider>
+      </SxDesignProvider>
     );
   }
 }
 
 const styles = sx.create({
-  box: {
-    backgroundColor: '#FFF8E1',
-    maxWidth: '100%',
-    padding: 'var(--space-small)',
-  },
-  boxWarning: {
-    backgroundColor: '#FFCA28',
-  },
   padMedium: {
     padding: 'var(--space-small)',
     [tablet]: {

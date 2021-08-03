@@ -1,11 +1,11 @@
 // @flow
 
+import Icon from '@adeira/icons';
+import { Button } from '@adeira/sx-design';
 import { useState, type Node } from 'react';
 import { graphql, useRefetchableFragment } from '@adeira/relay';
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import sx from '@adeira/sx';
 
-import Button from '../../components/Button';
 import Location from './Location';
 import LocationList from './LocationsList';
 import { type LocationsPaginatedBidirectionalRefetchQuery } from './__generated__/LocationsPaginatedBidirectionalRefetchQuery.graphql';
@@ -91,16 +91,18 @@ export default function LocationsPaginatedBidirectional(props: Props): Node {
       <div className={styles('buttonBox')}>
         <Button
           onClick={openPreviousPage}
-          disabled={!pageInfo.hasPreviousPage}
-          iconLeft={<MdChevronLeft color="var(--text-color)" size="16" />}
+          isDisabled={!pageInfo.hasPreviousPage}
+          prefix={<Icon name="chevron_left" />}
         >
+          {/* $FlowFixMe[incompatible-type]: Button children should be FBT */}
           Previous&nbsp;page
         </Button>
         <Button
           onClick={openNextPage}
-          disabled={!pageInfo.hasNextPage}
-          iconRight={<MdChevronRight color="var(--text-color)" size="16" />}
+          isDisabled={!pageInfo.hasNextPage}
+          suffix={<Icon name="chevron_right" />}
         >
+          {/* $FlowFixMe[incompatible-type]: Button children should be FBT */}
           Next&nbsp;page
         </Button>
       </div>

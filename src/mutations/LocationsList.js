@@ -1,12 +1,12 @@
 // @flow
 
+import { Text } from '@adeira/sx-design';
 import type { Node } from 'react';
 import { graphql, useFragment } from '@adeira/relay';
 import { TransitionGroup } from 'react-transition-group';
 import sx from '@adeira/sx';
 
 import FadeIn from './FadeIn';
-import Heading from '../components/Heading';
 import LocationsForm from './RangeAdd/LocationsForm';
 import { tablet } from '../components/breakpoints';
 import type { LocationsListSimple$key } from './__generated__/LocationsListSimple.graphql';
@@ -40,7 +40,7 @@ export default function LocationsList(props: Props): Node {
         <LocationsForm connectionId={data.locations?.__id ?? ''} />
       </div>
       <div>
-        <Heading level={3}>My favorite locations</Heading>
+        <Text as="h3">My favorite locations</Text>
         <TransitionGroup component={null} className="location-list">
           {data.locations?.edges?.map((edge) => (
             <FadeIn key={edge?.node?.id} timeout={320}>

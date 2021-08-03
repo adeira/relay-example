@@ -3,6 +3,7 @@
  * @jest-environment jsdom
  */
 
+import { SxDesignProvider } from '@adeira/sx-design';
 import { createMockEnvironment, MockPayloadGenerator } from 'relay-test-utils';
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { RelayEnvironmentProvider } from '@adeira/relay';
@@ -34,9 +35,11 @@ const edges = [
 ];
 
 const TestRenderer = () => (
-  <RelayEnvironmentProvider environment={environment}>
-    <RangeAdd />
-  </RelayEnvironmentProvider>
+  <SxDesignProvider>
+    <RelayEnvironmentProvider environment={environment}>
+      <RangeAdd />
+    </RelayEnvironmentProvider>
+  </SxDesignProvider>
 );
 
 it('shows city names in the list', () => {

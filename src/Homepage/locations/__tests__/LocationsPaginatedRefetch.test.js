@@ -1,6 +1,10 @@
-// @flow
+/**
+ * @flow
+ * @jest-environment jsdom
+ */
 
 import { graphql, QueryRenderer } from '@adeira/relay';
+import { SxDesignProvider } from '@adeira/sx-design';
 import { create, act } from 'react-test-renderer';
 import { createMockEnvironment, MockPayloadGenerator } from 'relay-test-utils';
 
@@ -13,16 +17,18 @@ beforeEach(() => {
 });
 
 const TestRenderer = () => (
-  <QueryRenderer
-    environment={environment}
-    query={graphql`
-      query LocationsPaginatedRefetchTestQuery @relay_test_operation {
-        ...LocationsPaginatedRefetch
-      }
-    `}
-    variables={{}}
-    onResponse={(renderProps) => <LocationsPaginatedRefetch data={renderProps} />}
-  />
+  <SxDesignProvider>
+    <QueryRenderer
+      environment={environment}
+      query={graphql`
+        query LocationsPaginatedRefetchTestQuery @relay_test_operation {
+          ...LocationsPaginatedRefetch
+        }
+      `}
+      variables={{}}
+      onResponse={(renderProps) => <LocationsPaginatedRefetch data={renderProps} />}
+    />
+  </SxDesignProvider>
 );
 
 it('refetches data', () => {
@@ -62,10 +68,10 @@ it('refetches data', () => {
     }),
   );
 
-  const oslo = wrapper.root.findByProps({ dataTest: 'location-Oslo' });
+  const oslo = wrapper.root.findByProps({ ['data-testid']: 'location-Oslo' });
   expect(oslo).toBeDefined();
 
-  const loadMore = wrapper.root.findByProps({ dataTest: 'loadMore' });
+  const loadMore = wrapper.root.findByProps({ ['data-testid']: 'loadMore' });
   act(() => {
     loadMore.props.onClick();
 
@@ -90,6 +96,6 @@ it('refetches data', () => {
     );
   });
 
-  const prague = wrapper.root.findByProps({ dataTest: 'location-Prague' });
+  const prague = wrapper.root.findByProps({ ['data-testid']: 'location-Prague' });
   expect(prague).toBeDefined();
 });

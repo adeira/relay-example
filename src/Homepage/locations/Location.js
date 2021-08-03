@@ -1,11 +1,11 @@
 // @flow
 
+import { Text } from '@adeira/sx-design';
 import type { Node } from 'react';
 import { graphql, useFragment } from '@adeira/relay';
 import sx from '@adeira/sx';
 import Image from 'next/image';
 
-import Text from '../../components/Text';
 import type { Location$key } from './__generated__/Location.graphql';
 
 type Props = {
@@ -43,7 +43,7 @@ export default function Location(props: Props): Node {
           height="24"
           width="24"
         />
-        <Text dataTest={`location-${name}`} size="small">
+        <Text data-testid={`location-${name}`} as="small">
           {name}
         </Text>
       </div>

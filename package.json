@@ -8,10 +8,12 @@
     "@adeira/fixtures-tester": "^1.1.0",
     "@adeira/graphql-global-id": "^2.0.0",
     "@adeira/graphql-relay": "^0.3.0",
+    "@adeira/icons": "^1.0.0",
     "@adeira/js": "^2.1.0",
     "@adeira/monorepo-utils": "^0.11.0",
     "@adeira/relay": "^3.2.4",
     "@adeira/sx": "^0.27.0",
+    "@adeira/sx-design": "^0.15.0",
     "@artsy/fresnel": "^1.9.0",
     "apollo-server-micro": "^3.1.2",
     "cors": "^2.8.5",
@@ -24,7 +26,6 @@
     "nprogress": "^0.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-icons": "^4.2.0",
     "react-transition-group": "^4.4.2"
   },
   "devDependencies": {

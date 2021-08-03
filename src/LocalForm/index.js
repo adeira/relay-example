@@ -1,5 +1,6 @@
 // @flow
 
+import { LayoutBlock, Text } from '@adeira/sx-design';
 import { useEffect, type Node } from 'react';
 import {
   commitLocalUpdate,
@@ -12,8 +13,6 @@ import { generateClientID } from 'relay-runtime'; // eslint-disable-line import/
 import sx from '@adeira/sx';
 
 import type { LocalFormQueryResponse } from './__generated__/LocalFormQuery.graphql';
-import Heading from '../components/Heading';
-import Text from '../components/Text';
 import TextInput from '../components/TextInput';
 // We are overwriting here the application env context and replacing it with our custom local env.
 const environment = createLocalEnvironment();
@@ -76,15 +75,13 @@ export default function LocalForm(): Node {
   });
 
   return (
-    <div>
-      <Heading level={1}>Persisted form</Heading>
-      <Text size="small">
+    <LayoutBlock spacing="large">
+      <Text as="h1">Persisted form</Text>
+      <Text>
         This example shows how Relay local schema can be used with form inputs. As a bonus, values
         are persisted into the LocalStorage so anything you typed should &quot;survive&quot; page
         reload.
       </Text>
-
-      <hr className={styles('separator')} />
 
       <LocalQueryRenderer
         environment={environment}
@@ -102,15 +99,11 @@ export default function LocalForm(): Node {
         `}
         onResponse={handleResponse}
       />
-    </div>
+    </LayoutBlock>
   );
 }
 
 const styles = sx.create({
-  separator: {
-    borderWidth: '0.5px',
-    margin: 'var(--space-medium) 0',
-  },
   formContainer: {
     display: 'flex',
     flexDirection: 'column',
