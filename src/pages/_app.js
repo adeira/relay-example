@@ -4,8 +4,6 @@ import { ErrorBoundary, Note, SxDesignProvider } from '@adeira/sx-design';
 import sx from '@adeira/sx';
 import App from 'next/app';
 import Head from 'next/head';
-import Router from 'next/router';
-import NProgress from 'nprogress';
 import { RelayEnvironmentProvider } from '@adeira/relay';
 import type { Node } from 'react';
 
@@ -15,25 +13,6 @@ import Navbar from '../components/Navbar';
 import { MediaContextProvider } from '../components/Media';
 
 export default class MyApp extends App {
-  componentDidMount: () => void = () => {
-    Router.events.on('routeChangeStart', this.handleRouteChangeStart);
-    Router.events.on('routeChangeComplete', this.handleRouteChangeComplete);
-    Router.events.on('routeChangeError', this.handleRouteChangeComplete);
-  };
-
-  componentWillUnmount: () => void = () => {
-    Router.events.off('routeChangeStart', this.handleRouteChangeStart);
-  };
-
-  handleRouteChangeStart: (url: string) => void = (url: string) => {
-    console.log(`Loading: ${url}`); // eslint-disable-line no-console
-    NProgress.start();
-  };
-
-  handleRouteChangeComplete: () => void = () => {
-    NProgress.done();
-  };
-
   render(): Node {
     const { Component, pageProps } = this.props;
     return (
