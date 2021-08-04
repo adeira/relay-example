@@ -1,10 +1,9 @@
 // @flow
 
 import Icon from '@adeira/icons';
-import { Button } from '@adeira/sx-design';
+import { Button, LayoutBlock, LayoutInline } from '@adeira/sx-design';
 import { useState, type Node } from 'react';
 import { graphql, useRefetchableFragment } from '@adeira/relay';
-import sx from '@adeira/sx';
 
 import Location from './Location';
 import LocationList from './LocationsList';
@@ -82,13 +81,14 @@ export default function LocationsPaginatedBidirectional(props: Props): Node {
 
   const edges = data.locations?.edges ?? [];
   return (
-    <>
+    <LayoutBlock>
       <LocationList start={start}>
         {edges.map((edge) => (
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </LocationList>
-      <div className={styles('buttonBox')}>
+
+      <LayoutInline>
         <Button
           onClick={openPreviousPage}
           isDisabled={!pageInfo.hasPreviousPage}
@@ -96,6 +96,7 @@ export default function LocationsPaginatedBidirectional(props: Props): Node {
         >
           Previous&nbsp;page
         </Button>
+
         <Button
           onClick={openNextPage}
           isDisabled={!pageInfo.hasNextPage}
@@ -103,14 +104,7 @@ export default function LocationsPaginatedBidirectional(props: Props): Node {
         >
           Next&nbsp;page
         </Button>
-      </div>
-    </>
+      </LayoutInline>
+    </LayoutBlock>
   );
 }
-
-const styles = sx.create({
-  buttonBox: {
-    display: 'flex',
-    gap: 'var(--space-small)',
-  },
-});

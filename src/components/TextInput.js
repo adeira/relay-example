@@ -29,7 +29,7 @@ const styles = sx.create({
     'width': '100%',
     'lineHeight': 1.15,
     'fontWeight': 600,
-    'padding': 'var(--space-small)',
+    'padding': 'var(--sx-spacing-small)',
     'border': '1px solid rgba(0, 0, 0, 0.33)',
     'borderRadius': 'var(--sx-radius)',
     ':focus': {

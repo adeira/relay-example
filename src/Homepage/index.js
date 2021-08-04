@@ -1,6 +1,6 @@
 // @flow
 
-import { Text } from '@adeira/sx-design';
+import { Text, Link } from '@adeira/sx-design';
 import { Suspense, type Node } from 'react';
 import { graphql, QueryRenderer } from '@adeira/relay';
 import sx from '@adeira/sx';
@@ -13,17 +13,17 @@ import type { HomepageQueryResponse } from './__generated__/HomepageQuery.graphq
 
 function Demo(props) {
   return (
-    <>
+    <div>
       <Text as="h2">{props.title}</Text>
       {/* $FlowFixMe[incompatible-type]: SX Design currently doesn't allow other than textual children */}
       <Text as="small">
         See:{' '}
-        <a rel="noreferrer" target="_blank" href={props.link}>
+        <Link href={props.link} target="_blank">
           {props.linkTitle}
-        </a>
+        </Link>
       </Text>
       <Suspense fallback={<div>loading...</div>}>{props.component}</Suspense>
-    </>
+    </div>
   );
 }
 
@@ -32,32 +32,26 @@ const ITEMS_COUNT = 20; // change me
 function renderQueryRendererResponse(props: HomepageQueryResponse) {
   return (
     <div className={styles('container')}>
-      <div className="column">
-        <Demo
-          title="Bi-directional pagination"
-          link="https://relay.dev/docs/api-reference/use-refetchable-fragment/"
-          linkTitle="useRefetchableFragment"
-          component={<LocationsPaginatedBidirectional data={props} itemsCount={ITEMS_COUNT} />}
-        />
-      </div>
+      <Demo
+        title="Bi-directional pagination"
+        link="https://relay.dev/docs/api-reference/use-refetchable-fragment/"
+        linkTitle="useRefetchableFragment"
+        component={<LocationsPaginatedBidirectional data={props} itemsCount={ITEMS_COUNT} />}
+      />
 
-      <div className="column">
-        <Demo
-          title="Incremental pagination 1"
-          link="https://relay.dev/docs/api-reference/use-refetchable-fragment/"
-          linkTitle="useRefetchableFragment"
-          component={<LocationsPaginatedRefetch data={props} />}
-        />
-      </div>
+      <Demo
+        title="Incremental pagination 1"
+        link="https://relay.dev/docs/api-reference/use-refetchable-fragment/"
+        linkTitle="useRefetchableFragment"
+        component={<LocationsPaginatedRefetch data={props} />}
+      />
 
-      <div className="column">
-        <Demo
-          title="Incremental pagination 2"
-          link="https://relay.dev/docs/api-reference/use-pagination-fragment/"
-          linkTitle="usePaginationFragment"
-          component={<LocationsPaginated data={props} />}
-        />
-      </div>
+      <Demo
+        title="Incremental pagination 2"
+        link="https://relay.dev/docs/api-reference/use-pagination-fragment/"
+        linkTitle="usePaginationFragment"
+        component={<LocationsPaginated data={props} />}
+      />
     </div>
   );
 }

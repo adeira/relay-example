@@ -1,6 +1,6 @@
 // @flow
 
-import { Button } from '@adeira/sx-design';
+import { Button, LayoutBlock, LayoutInline } from '@adeira/sx-design';
 import { type Node, useCallback } from 'react';
 import { graphql, usePaginationFragment } from '@adeira/relay';
 
@@ -46,15 +46,18 @@ export default function LocationsPaginated(props: Props): Node {
   const edges = data.incrementalPagination2?.edges ?? [];
 
   return (
-    <>
+    <LayoutBlock>
       <LocationList>
         {edges.map((edge) => (
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </LocationList>
-      <Button onClick={loadMore} isDisabled={!hasNext}>
-        Load more!
-      </Button>
-    </>
+
+      <LayoutInline>
+        <Button onClick={loadMore} isDisabled={!hasNext}>
+          Load more!
+        </Button>
+      </LayoutInline>
+    </LayoutBlock>
   );
 }

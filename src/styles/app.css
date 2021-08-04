@@ -2,20 +2,10 @@
 @import './nprogress.css';
 @import '../mutations/FadeIn.css';
 
-:root {
-  /* Spacing */
-  --space-x-small: 0.6rem;
-  --space-small: 1.2rem;
-  --space-medium: 1.6rem;
-  --space-large: 2rem;
-  --space-x-large: 2.4rem;
-}
-
 html {
   font-size: 62.5%;
 }
 
 body {
-  font-family: Roboto, sans-serif;
   font-size: 1.6rem;
 }

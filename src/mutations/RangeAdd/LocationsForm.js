@@ -129,6 +129,6 @@ const styles = sx.create({
   formContainer: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 'var(--space-small)',
+    gap: 'var(--sx-spacing-small)',
   },
 });

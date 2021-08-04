@@ -1,6 +1,6 @@
 // @flow
 
-import { Text } from '@adeira/sx-design';
+import { LayoutInline, Text } from '@adeira/sx-design';
 import type { Node } from 'react';
 import { graphql, useFragment } from '@adeira/relay';
 import sx from '@adeira/sx';
@@ -35,7 +35,7 @@ export default function Location(props: Props): Node {
   const countryName = location.country?.name ?? '';
   return (
     <li className={styles('li')} data-count={props.dataCount}>
-      <div className={styles('box')}>
+      <LayoutInline>
         <Image
           loading="lazy"
           src={location.countryFlagURL}
@@ -46,17 +46,12 @@ export default function Location(props: Props): Node {
         <Text data-testid={`location-${name}`} as="small">
           {name}
         </Text>
-      </div>
+      </LayoutInline>
     </li>
   );
 }
 
 const styles = sx.create({
-  box: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px', // Works in edge, chrome and firefox, but should be ok for this app
-  },
   li: {
     'position': 'relative',
     '::before': {

@@ -1,6 +1,6 @@
 // @flow
 
-import { Button } from '@adeira/sx-design';
+import { Button, LayoutBlock, LayoutInline } from '@adeira/sx-design';
 import { type Node, useCallback } from 'react';
 import { graphql, useRefetchableFragment } from '@adeira/relay';
 
@@ -57,15 +57,18 @@ export default function LocationsPaginatedRefetch(props: Props): Node {
 
   const edges = data.incrementalPagination?.edges ?? [];
   return (
-    <>
+    <LayoutBlock>
       <LocationList>
         {edges.map((edge) => (
           <Location key={edge?.node?.id} location={edge?.node} />
         ))}
       </LocationList>
-      <Button data-testid="loadMore" onClick={loadMore} isDisabled={!hasNextPage}>
-        Load more!
-      </Button>
-    </>
+
+      <LayoutInline>
+        <Button data-testid="loadMore" onClick={loadMore} isDisabled={!hasNextPage}>
+          Load more!
+        </Button>
+      </LayoutInline>
+    </LayoutBlock>
   );
 }

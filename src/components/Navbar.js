@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
 
 import cssStyles from './Navbar.module.css';
-import { tablet, desktop } from './breakpoints';
+import { desktop } from './breakpoints';
 import { Media } from './Media';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -112,10 +112,7 @@ const styles = sx.create({
     overflow: 'hidden',
     transition: 'max-height 0.3s',
     backgroundColor: 'rgba(var(--sx-success-light))',
-    padding: 'var(--space-small)',
-    [tablet]: {
-      padding: 'var(--space-x-large)',
-    },
+    padding: 'var(--sx-spacing-large)',
   },
   navExpanded: {
     maxHeight: '210px',

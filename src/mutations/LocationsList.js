@@ -60,7 +60,7 @@ export default function LocationsList(props: Props): Node {
 const styles = sx.create({
   grid: {
     display: 'grid',
-    gap: 'var(--space-x-large)',
+    gap: 'var(--sx-spacing-large)',
     gridTemplateColumns: '1fr',
     [tablet]: {
       gridTemplateColumns: 'repeat(2,minmax(auto,1fr))',
