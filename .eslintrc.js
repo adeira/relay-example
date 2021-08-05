@@ -10,6 +10,10 @@ module.exports = {
   env: {
     browser: true,
   },
+  extends: [
+    '@adeira/eslint-config/strict', // preset with almost everything
+    '@adeira/eslint-config/next', // additional Next.js rules
+  ],
   rules: {
     'import/no-extraneous-dependencies': [
       ERROR,
