@@ -23,10 +23,6 @@ export default class MyDocument extends Document {
     return (
       <html lang="en-US">
         <Head>
-          <link
-            href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700&display=optional"
-            rel="stylesheet"
-          />
           <link rel="icon" href="https://adeira.dev/img/favicon.ico" />
           <style dangerouslySetInnerHTML={{ __html: mediaStyles }} />
         </Head>
