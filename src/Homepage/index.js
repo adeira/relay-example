@@ -15,7 +15,6 @@ function Demo(props) {
   return (
     <div>
       <Text as="h2">{props.title}</Text>
-      {/* $FlowFixMe[incompatible-type]: SX Design currently doesn't allow other than textual children */}
       <Text as="small">
         See:{' '}
         <Link href={props.link} target="_blank">

@@ -1,7 +1,9 @@
 // @flow
 
 import Icon from '@adeira/icons';
-import { useState, useEffect, type ComponentType, type Node } from 'react';
+import { LayoutInline, Text, Link as SxLink } from '@adeira/sx-design';
+import { useRouter } from 'next/router';
+import { useState, useEffect, useRef, forwardRef, type Node } from 'react';
 import sx from '@adeira/sx';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
@@ -10,46 +12,62 @@ import cssStyles from './Navbar.module.css';
 import { desktop } from './breakpoints';
 import { Media } from './Media';
 
-/* eslint-disable jsx-a11y/anchor-is-valid */
-// Next.js does this automatically (https://nextjs.org/docs/api-reference/next/link)
+const NavbarLink = forwardRef(
+  (
+    props: {
+      +children: Node,
+      +href: string,
+      +onClick?: () => void,
+      +size?: 24,
+      +isActive?: boolean,
+    },
+    ref,
+  ) => {
+    const router = useRouter();
+    const isActive = router.pathname === props.href;
 
-type Props = {
-  +onClick?: () => void,
-};
+    return (
+      <Text backgroundRef={ref} size={props.size}>
+        <Link href={props.href} passHref={true}>
+          <SxLink
+            href={props.href}
+            onClick={props.onClick}
+            isActive={props.isActive ?? isActive}
+            xstyle={styles.navbarLink}
+          >
+            {props.children}
+          </SxLink>
+        </Link>
+      </Text>
+    );
+  },
+);
 
-function NavLinks({ onClick }: Props): Node {
+const NavbarLinks = forwardRef((props: { +onClick?: () => void }, ref): Node => {
+  const { onClick } = props;
   return (
-    <div className={styles('navLinkWrapper')}>
-      <Link href="/">
-        <a onClick={onClick} className={styles('link')}>
-          Pagination
-        </a>
-      </Link>
-      <Link href="/polling">
-        <a onClick={onClick} className={styles('link')}>
-          Polling
-        </a>
-      </Link>
-      <Link href="/local-form">
-        <a onClick={onClick} className={styles('link')}>
-          Local schema
-        </a>
-      </Link>
-      <Link href="/ssr">
-        <a onClick={onClick} className={styles('link')}>
-          Server side rendering
-        </a>
-      </Link>
-      <Link href="/mutations/range-add">
-        <a onClick={onClick} className={styles('link')}>
-          Range add mutation
-        </a>
-      </Link>
-    </div>
+    <>
+      <NavbarLink ref={ref} href="/" onClick={onClick}>
+        Pagination
+      </NavbarLink>
+      <NavbarLink ref={ref} href="/polling" onClick={onClick}>
+        Polling
+      </NavbarLink>
+      <NavbarLink ref={ref} href="/local-form" onClick={onClick}>
+        Local schema
+      </NavbarLink>
+      <NavbarLink ref={ref} href="/ssr" onClick={onClick}>
+        Server side rendering
+      </NavbarLink>
+      <NavbarLink ref={ref} href="/mutations/range-add" onClick={onClick}>
+        Range add mutation
+      </NavbarLink>
+    </>
   );
-}
+});
 
-function Navbar() {
+export default function Navbar(): Node {
+  const bgRef = useRef(null);
   const [show, setShow] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -67,11 +85,12 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className={styles('nav', show && showMenu && 'navExpanded')}>
+    <nav ref={bgRef} className={styles('nav', show && showMenu && 'navExpanded')}>
       <div className={styles('navInner')}>
-        <Link href="/">
-          <a className={styles('link')}>Relay Example</a>
-        </Link>
+        <NavbarLink ref={bgRef} href="/" size={24} isActive={true}>
+          Adeira Relay Example
+        </NavbarLink>
+
         <Media lessThan="desktop">
           <button
             aria-label="Menu"
@@ -83,9 +102,12 @@ function Navbar() {
           </button>
         </Media>
         <Media greaterThanOrEqual="desktop">
-          <NavLinks />
+          <LayoutInline spacing="large">
+            <NavbarLinks ref={bgRef} />
+          </LayoutInline>
         </Media>
       </div>
+
       <CSSTransition
         classNames={{
           enter: cssStyles['Navbar__links-enter'],
@@ -98,7 +120,7 @@ function Navbar() {
         timeout={200}
       >
         <div className={styles('navLinkContainer')}>
-          <NavLinks onClick={() => setShow(false)} />
+          <NavbarLinks ref={bgRef} onClick={() => setShow(false)} />
         </div>
       </CSSTransition>
     </nav>
@@ -111,7 +133,7 @@ const styles = sx.create({
     maxHeight: '71px',
     overflow: 'hidden',
     transition: 'max-height 0.3s',
-    backgroundColor: 'rgba(var(--sx-success-light))',
+    backgroundColor: 'rgba(var(--sx-success))',
     padding: 'var(--sx-spacing-large)',
   },
   navExpanded: {
@@ -152,22 +174,8 @@ const styles = sx.create({
       position: 'absolute',
     },
   },
-  link: {
-    'fontSize': '1.8rem',
-    'lineHeight': 1.333333,
-    'marginInlineEnd': 24,
-    'color': 'rgba(var(--sx-foreground))',
-    'fontWeight': 600,
-    'cursor': 'pointer',
-    'textDecoration': 'none',
-    ':hover': {
-      textDecoration: 'underline',
-    },
-    ':focus': {
-      textDecoration: 'underline',
-      outline: 'none',
-    },
+  navbarLink: {
+    // Links in the menu should inherit colors of the parent:
+    color: 'inherit',
   },
 });
-
-export default (Navbar: ComponentType<Props>);
