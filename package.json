@@ -20,7 +20,7 @@
     "date-fns": "^2.23.0",
     "graphql": "^15.5.1",
     "micro": "^9.3.4",
-    "next": "^11.0.1",
+    "next": "^11.1.0",
     "next-plugin-custom-babel-config": "^1.0.4",
     "next-transpile-modules": "^8.0.0",
     "react": "^17.0.2",
