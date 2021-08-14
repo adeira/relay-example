@@ -11,7 +11,7 @@
     "@adeira/icons": "^1.0.0",
     "@adeira/js": "^2.1.0",
     "@adeira/monorepo-utils": "^0.11.0",
-    "@adeira/relay": "^3.2.4",
+    "@adeira/relay": "^3.3.0",
     "@adeira/sx": "^0.27.0",
     "@adeira/sx-design": "^0.16.0",
     "@artsy/fresnel": "^1.9.0",
