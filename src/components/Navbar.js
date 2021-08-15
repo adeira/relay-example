@@ -3,7 +3,7 @@
 import Icon from '@adeira/icons';
 import { LayoutInline, Text, Link as SxLink } from '@adeira/sx-design';
 import { useRouter } from 'next/router';
-import { useState, useEffect, useRef, forwardRef, type Node } from 'react';
+import { useState, useEffect, type Node } from 'react';
 import sx from '@adeira/sx';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
@@ -12,62 +12,56 @@ import cssStyles from './Navbar.module.css';
 import { desktop } from './breakpoints';
 import { Media } from './Media';
 
-const NavbarLink = forwardRef(
-  (
-    props: {
-      +children: Node,
-      +href: string,
-      +onClick?: () => void,
-      +size?: 24,
-      +isActive?: boolean,
-    },
-    ref,
-  ) => {
-    const router = useRouter();
-    const isActive = router.pathname === props.href;
+function NavbarLink(props: {
+  +children: Node,
+  +href: string,
+  +onClick?: () => void,
+  +size?: 24,
+  +isActive?: boolean,
+}) {
+  const router = useRouter();
+  const isActive = router.pathname === props.href;
 
-    return (
-      <Text backgroundRef={ref} size={props.size}>
-        <Link href={props.href} passHref={true}>
-          <SxLink
-            href={props.href}
-            onClick={props.onClick}
-            isActive={props.isActive ?? isActive}
-            xstyle={styles.navbarLink}
-          >
-            {props.children}
-          </SxLink>
-        </Link>
-      </Text>
-    );
-  },
-);
+  return (
+    <Text size={props.size}>
+      <Link href={props.href} passHref={true}>
+        <SxLink
+          href={props.href}
+          onClick={props.onClick}
+          isActive={props.isActive ?? isActive}
+          xstyle={styles.navbarLink}
+        >
+          {props.children}
+        </SxLink>
+      </Link>
+    </Text>
+  );
+}
 
-const NavbarLinks = forwardRef((props: { +onClick?: () => void }, ref): Node => {
+function NavbarLinks(props: { +onClick?: () => void }): Node {
   const { onClick } = props;
   return (
     <>
-      <NavbarLink ref={ref} href="/" onClick={onClick}>
+      <NavbarLink href="/" onClick={onClick}>
         Pagination
       </NavbarLink>
-      <NavbarLink ref={ref} href="/polling" onClick={onClick}>
+      <NavbarLink href="/polling" onClick={onClick}>
         Polling
       </NavbarLink>
-      <NavbarLink ref={ref} href="/local-form" onClick={onClick}>
+      <NavbarLink href="/local-form" onClick={onClick}>
         Local schema
       </NavbarLink>
-      <NavbarLink ref={ref} href="/ssr" onClick={onClick}>
+      <NavbarLink href="/ssr" onClick={onClick}>
         Server side rendering
       </NavbarLink>
-      <NavbarLink ref={ref} href="/mutations/range-add" onClick={onClick}>
+      <NavbarLink href="/mutations/range-add" onClick={onClick}>
         Range add mutation
       </NavbarLink>
     </>
   );
-});
+}
 
 export default function Navbar(): Node {
-  const bgRef = useRef(null);
   const [show, setShow] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -85,9 +79,9 @@ export default function Navbar(): Node {
   }, []);
 
   return (
-    <nav ref={bgRef} className={styles('nav', show && showMenu && 'navExpanded')}>
+    <nav className={styles('nav', show && showMenu && 'navExpanded')}>
       <div className={styles('navInner')}>
-        <NavbarLink ref={bgRef} href="/" size={24} isActive={true}>
+        <NavbarLink href="/" size={24} isActive={true}>
           Adeira Relay Example
         </NavbarLink>
 
@@ -103,7 +97,7 @@ export default function Navbar(): Node {
         </Media>
         <Media greaterThanOrEqual="desktop">
           <LayoutInline spacing="large">
-            <NavbarLinks ref={bgRef} />
+            <NavbarLinks />
           </LayoutInline>
         </Media>
       </div>
@@ -120,7 +114,7 @@ export default function Navbar(): Node {
         timeout={200}
       >
         <div className={styles('navLinkContainer')}>
-          <NavbarLinks ref={bgRef} onClick={() => setShow(false)} />
+          <NavbarLinks onClick={() => setShow(false)} />
         </div>
       </CSSTransition>
     </nav>
@@ -134,6 +128,7 @@ const styles = sx.create({
     overflow: 'hidden',
     transition: 'max-height 0.3s',
     backgroundColor: 'rgba(var(--sx-success))',
+    color: 'rgba(var(--sx-background))',
     padding: 'var(--sx-spacing-large)',
   },
   navExpanded: {
