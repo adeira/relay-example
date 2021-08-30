@@ -17,7 +17,7 @@ module.exports = (withCustomBabelConfigFile(
     babelConfigFile: path.join(
       __dirname,
       'babel.config.js', // @x-shipit-enable
-      // @x-shipit-disable: '.babelrc',
+      // @x-shipit-disable: '.babelrc.js',
     ),
     webpack: (config) => {
       config.module.rules.push({
