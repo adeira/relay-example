@@ -1,6 +1,6 @@
 // @flow
 
-import { useState, type Node } from 'react';
+import { useState, type Node, useCallback } from 'react';
 import { graphql, QueryRenderer } from '@adeira/relay';
 import { isBrowser } from '@adeira/js';
 
@@ -20,27 +20,30 @@ export default function Polling(): Node {
     setAbTest(Math.random() >= 0.5);
   }, 2500);
 
-  function renderPollingResponse({ currency }: PollingQueryResponse) {
-    if (!currency) {
-      return null;
-    }
+  const renderPollingResponse = useCallback(
+    ({ currency }: PollingQueryResponse) => {
+      if (!currency) {
+        return null;
+      }
 
-    const { code, rate, format } = currency;
-    const now = new Date().toString();
+      const { code, rate, format } = currency;
+      const now = new Date().toString();
 
-    return (
-      <div title={`Last update: ${now}`}>
-        {abTestEnabled && format != null && rate != null ? (
-          <>
-            Current <em>{code}</em> currency rate: {format.replace('__price__', String(rate))}{' '}
-            (compared to EUR)
-          </>
-        ) : (
-          <>Current currency rate: {rate} (compared to EUR)</>
-        )}
-      </div>
-    );
-  }
+      return (
+        <div title={`Last update: ${now}`}>
+          {abTestEnabled && format != null && rate != null ? (
+            <>
+              Current <em>{code}</em> currency rate: {format.replace('__price__', String(rate))}{' '}
+              (compared to EUR)
+            </>
+          ) : (
+            <>Current currency rate: {rate} (compared to EUR)</>
+          )}
+        </div>
+      );
+    },
+    [abTestEnabled],
+  );
 
   return (
     <QueryRenderer

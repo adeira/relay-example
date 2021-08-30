@@ -2,7 +2,7 @@
 
 import Icon from '@adeira/icons';
 import { Button, LayoutBlock, LayoutInline } from '@adeira/sx-design';
-import { useState, type Node } from 'react';
+import { useState, useCallback, type Node } from 'react';
 import { graphql, useRefetchableFragment } from '@adeira/relay';
 
 import Location from './Location';
@@ -51,35 +51,39 @@ export default function LocationsPaginatedBidirectional(props: Props): Node {
   );
 
   const pageInfo = data.locations?.pageInfo;
-  if (!pageInfo) {
-    return null; // or some failure placeholder
-  }
-
-  function handlePageChange(args: { before?: ?string, after?: ?string }, callback: () => void) {
-    refetch(
-      {
-        first: args.after != null ? props.itemsCount : null,
-        after: args.after,
-        last: args.before != null ? props.itemsCount : null,
-        before: args.before,
-      },
-      { onComplete: () => callback() },
-    );
-  }
-
-  function openPreviousPage() {
-    handlePageChange({ before: pageInfo.startCursor }, () =>
-      setStart((start) => start - props.itemsCount),
-    );
-  }
-
-  function openNextPage() {
-    handlePageChange({ after: pageInfo.endCursor }, () =>
-      setStart((start) => start + props.itemsCount),
-    );
-  }
-
   const edges = data.locations?.edges ?? [];
+
+  const handlePageChange = useCallback(
+    (args: { before?: ?string, after?: ?string }, callback: () => void) => {
+      refetch(
+        {
+          first: args.after != null ? props.itemsCount : null,
+          after: args.after,
+          last: args.before != null ? props.itemsCount : null,
+          before: args.before,
+        },
+        { onComplete: () => callback() },
+      );
+    },
+    [props.itemsCount, refetch],
+  );
+
+  const openPreviousPage = useCallback(() => {
+    if (pageInfo != null) {
+      handlePageChange({ before: pageInfo.startCursor }, () =>
+        setStart((start) => start - props.itemsCount),
+      );
+    }
+  }, [handlePageChange, pageInfo, props.itemsCount]);
+
+  const openNextPage = useCallback(() => {
+    if (pageInfo != null) {
+      handlePageChange({ after: pageInfo.endCursor }, () =>
+        setStart((start) => start + props.itemsCount),
+      );
+    }
+  }, [handlePageChange, pageInfo, props.itemsCount]);
+
   return (
     <LayoutBlock>
       <LocationList start={start}>
@@ -91,7 +95,7 @@ export default function LocationsPaginatedBidirectional(props: Props): Node {
       <LayoutInline>
         <Button
           onClick={openPreviousPage}
-          isDisabled={!pageInfo.hasPreviousPage}
+          isDisabled={!pageInfo?.hasPreviousPage}
           prefix={<Icon name="chevron_left" />}
         >
           Previous&nbsp;page
@@ -99,7 +103,7 @@ export default function LocationsPaginatedBidirectional(props: Props): Node {
 
         <Button
           onClick={openNextPage}
-          isDisabled={!pageInfo.hasNextPage}
+          isDisabled={!pageInfo?.hasNextPage}
           suffix={<Icon name="chevron_right" />}
         >
           Next&nbsp;page
