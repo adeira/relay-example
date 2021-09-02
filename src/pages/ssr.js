@@ -16,10 +16,11 @@ function Ssr(props: Props): Node {
 
 Ssr.getInitialProps = async function (): Promise<{ +ssrData: any }> {
   const environment = createRelayEnvironment(undefined);
-  await fetchQuery(environment, query, variables);
-  const ssrData = environment.getStore().getSource().toJSON();
+  await fetchQuery(environment, query, variables).toPromise();
 
-  return { ssrData };
+  return {
+    ssrData: environment.getStore().getSource().toJSON(),
+  };
 };
 
 export default Ssr;
