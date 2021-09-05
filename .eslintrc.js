@@ -32,4 +32,9 @@ module.exports = {
       },
     ],
   },
+  settings: {
+    next: {
+      rootDir: __dirname, // https://nextjs.org/docs/basic-features/eslint#rootdir
+    },
+  },
 };
