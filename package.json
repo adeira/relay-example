@@ -14,7 +14,7 @@
     "@adeira/relay": "^4.0.0",
     "@adeira/sx": "^0.28.0",
     "@adeira/sx-design": "^0.19.0",
-    "@artsy/fresnel": "^1.9.0",
+    "@artsy/fresnel": "^3.0.1",
     "apollo-server-micro": "^3.3.0",
     "cors": "^2.8.5",
     "date-fns": "^2.24.0",
