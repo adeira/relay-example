@@ -28,7 +28,7 @@
     "react-transition-group": "^4.4.2"
   },
   "devDependencies": {
-    "@adeira/babel-preset-adeira": "^3.0.0",
+    "@adeira/babel-preset-adeira": "^4.0.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.0",
     "babel-jest": "^27.2.1",
