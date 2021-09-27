@@ -9,7 +9,7 @@
     "@adeira/graphql-global-id": "^2.0.0",
     "@adeira/graphql-relay": "^0.3.0",
     "@adeira/icons": "^1.0.0",
-    "@adeira/js": "^2.1.0",
+    "@adeira/js": "^2.1.1",
     "@adeira/monorepo-utils": "^0.11.0",
     "@adeira/relay": "^4.0.0",
     "@adeira/sx": "^0.28.0",
