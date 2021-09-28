@@ -115,8 +115,7 @@ export default (function LocationsForm(props: Props) {
               { label: 'Country', value: 'COUNTRY' },
             ]}
           />
-          {/* $FlowFixMe[prop-missing]: SX Design by default requires `onClick` callback but it's actually not needed in this case */}
-          <Button isDisabled={loading} type="submit">
+          <Button isDisabled={loading} type="submit" onClick={() => {}}>
             Submit
           </Button>
         </div>
