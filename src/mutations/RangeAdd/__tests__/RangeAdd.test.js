@@ -5,7 +5,8 @@
 
 import { SxDesignProvider } from '@adeira/sx-design';
 import { createMockEnvironment, MockPayloadGenerator } from 'relay-test-utils';
-import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
+import { render, screen, waitFor, act } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { RelayEnvironmentProvider } from '@adeira/relay';
 
 import RangeAdd from '../RangeAdd';
@@ -72,11 +73,11 @@ it('adds a location to the connection', async () => {
   const nameInput = screen.getByPlaceholderText('name');
   const select = screen.getByRole('combobox', { name: /type/i });
 
-  fireEvent.change(idInput, { target: { value: 'OCD' } });
-  fireEvent.change(nameInput, { target: { value: 'Prague' } });
-  fireEvent.change(select, { target: { value: 'CITY' } });
+  userEvent.type(idInput, 'OCD');
+  userEvent.type(nameInput, 'Prague');
+  userEvent.selectOptions(select, ['CITY']);
 
-  fireEvent.click(screen.getByRole('button', { name: /submit/i }));
+  userEvent.click(screen.getByRole('button', { name: /submit/i }));
 
   const operation = await waitFor(() => environment.mock.getMostRecentOperation());
 

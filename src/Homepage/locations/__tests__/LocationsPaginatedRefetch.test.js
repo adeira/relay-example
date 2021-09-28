@@ -31,7 +31,7 @@ const TestRenderer = () => (
   </SxDesignProvider>
 );
 
-it('refetches data', () => {
+it('refetches data', async () => {
   const wrapper = create(<TestRenderer />);
 
   environment.mock.resolveMostRecentOperation((operation) =>
@@ -68,10 +68,10 @@ it('refetches data', () => {
     }),
   );
 
-  const oslo = wrapper.root.findByProps({ ['data-testid']: 'location-Oslo' });
+  const oslo = await wrapper.root.findByProps({ ['data-testid']: 'location-Oslo' });
   expect(oslo).toBeDefined();
 
-  const loadMore = wrapper.root.findByProps({ ['data-testid']: 'loadMore' });
+  const loadMore = await wrapper.root.findByProps({ ['data-testid']: 'loadMore' });
   act(() => {
     loadMore.props.onClick();
 
@@ -96,6 +96,6 @@ it('refetches data', () => {
     );
   });
 
-  const prague = wrapper.root.findByProps({ ['data-testid']: 'location-Prague' });
+  const prague = await wrapper.root.findByProps({ ['data-testid']: 'location-Prague' });
   expect(prague).toBeDefined();
 });
