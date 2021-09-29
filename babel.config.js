@@ -21,7 +21,18 @@ module.exports = function (api /*: ApiType */) /*: BabelConfig */ {
   api.cache.forever();
 
   return {
-    presets: ['@adeira/babel-preset-adeira', 'next/babel'],
+    presets: [
+      [
+        '@adeira/babel-preset-adeira',
+        {
+          target:
+            process.env.NODE_ENV === 'test'
+              ? 'js' // Jest doesn't support ES6 modules by default.
+              : 'js-esm', // To support dynamic `import(…)` for `@adeira/icons`.
+        },
+      ],
+      'next/babel',
+    ],
     // For some unknown reason, we have to specify here the `class-properties` Babel plugin explicitly
     // even though it's already part of `@adeira/babel-preset-adeira`. Seems like `next/babel` preset
     // is somehow interfering with our preset because removing it fixes the issue as well.

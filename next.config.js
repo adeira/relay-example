@@ -30,5 +30,8 @@ module.exports = (withCustomBabelConfigFile(
     eslint: {
       ignoreDuringBuilds: true,
     },
+    experimental: {
+      esmExternals: 'loose',
+    },
   }),
 ) /*: any */);
