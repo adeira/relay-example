@@ -15,6 +15,7 @@
     "@adeira/sx": "^0.28.0",
     "@adeira/sx-design": "^0.19.0",
     "@artsy/fresnel": "^3.0.2",
+    "@next/bundle-analyzer": "^11.1.2",
     "apollo-server-micro": "^3.3.0",
     "cors": "^2.8.5",
     "date-fns": "^2.24.0",
@@ -43,6 +44,7 @@
     "start": "next dev",
     "start-production": "next start",
     "build": "next build",
+    "build-analyze": "ANALYZE=true next build",
     "relay": "adeira-relay-compiler",
     "schema": "adeira-fetch-schema --resource=https://relay-example.adeira.dev/api/graphql"
   }
