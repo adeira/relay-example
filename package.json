@@ -13,7 +13,7 @@
     "@adeira/monorepo-utils": "^0.11.0",
     "@adeira/relay": "^4.0.0",
     "@adeira/sx": "^0.28.0",
-    "@adeira/sx-design": "^0.21.0",
+    "@adeira/sx-design": "^0.21.1",
     "@artsy/fresnel": "^3.0.2",
     "@next/bundle-analyzer": "^11.1.2",
     "apollo-server-micro": "^3.4.0",
