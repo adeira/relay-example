@@ -19,7 +19,7 @@
     "apollo-server-micro": "^3.4.0",
     "cors": "^2.8.5",
     "date-fns": "^2.25.0",
-    "graphql": "^15.7.1",
+    "graphql": "^15.7.2",
     "micro": "^9.3.4",
     "next": "^11.1.2",
     "next-compose-plugins": "^2.2.1",
@@ -36,7 +36,7 @@
     "@testing-library/user-event": "^13.5.0",
     "babel-jest": "^27.3.1",
     "flow-bin": "^0.162.1",
-    "graphql": "^15.7.1",
+    "graphql": "^15.7.2",
     "jest": "^27.3.1",
     "react-test-renderer": "^17.0.2",
     "relay-test-utils": "^12.0.0"
