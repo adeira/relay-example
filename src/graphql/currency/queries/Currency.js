@@ -10,6 +10,9 @@ export default {
     'Detail of a currency. Please note: This is not real data, only Math.random() is return',
   args: {
     code: {
+      /* $FlowFixMe[value-as-type] This comment suppresses an error when
+       * upgrading Flow to version 0.164.0. To see the error delete this
+       * comment and run Flow. */
       type: (new GraphQLNonNull(GraphQLString): GraphQLNonNull<GraphQLScalarType>),
       description: 'The currency code',
     },
