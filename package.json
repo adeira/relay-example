@@ -18,7 +18,7 @@
     "@next/bundle-analyzer": "^12.0.4",
     "apollo-server-micro": "^3.5.0",
     "cors": "^2.8.5",
-    "date-fns": "^2.25.0",
+    "date-fns": "^2.26.0",
     "graphql": "^15.7.2",
     "micro": "^9.3.4",
     "next": "^12.0.4",
