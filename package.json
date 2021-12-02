@@ -37,7 +37,7 @@
     "babel-jest": "^27.4.2",
     "flow-bin": "^0.165.1",
     "graphql": "^15.7.2",
-    "jest": "^27.4.0",
+    "jest": "^27.4.3",
     "react-test-renderer": "^17.0.2",
     "relay-test-utils": "^12.0.0"
   },
