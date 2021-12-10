@@ -34,7 +34,7 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
-    "babel-jest": "^27.4.2",
+    "babel-jest": "^27.4.4",
     "flow-bin": "^0.166.1",
     "graphql": "^15.8.0",
     "jest": "^27.4.4",
