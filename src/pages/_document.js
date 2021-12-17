@@ -1,7 +1,8 @@
 // @flow
 
 import type { Node, Element } from 'react';
-import Document, { Head, Main, NextScript, type DocumentContext } from 'next/document';
+// $FlowFixMe[missing-export]
+import Document, { Html, Head, Main, NextScript, type DocumentContext } from 'next/document';
 import sx from '@adeira/sx';
 
 import { mediaStyles } from '../components/Media';
@@ -21,7 +22,7 @@ export default class MyDocument extends Document {
 
   render(): Element<'html'> {
     return (
-      <html lang="en-US">
+      <Html lang="en-US">
         <Head>
           <link rel="icon" href="https://adeira.dev/img/favicon.ico" />
           <style dangerouslySetInnerHTML={{ __html: mediaStyles }} />
@@ -30,7 +31,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
