@@ -46,6 +46,6 @@
     "start-production": "next start",
     "build": "next build",
     "build-analyze": "ANALYZE=true next build",
-    "schema": "adeira-fetch-schema --resource=https://relay-example.adeira.dev/api/graphql"
+    "schema": "adeira-fetch-schema --resource=https://relay-example.vercel.app/api/graphql"
   }
 }
