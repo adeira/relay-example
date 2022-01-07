@@ -35,7 +35,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "babel-jest": "^27.4.6",
-    "flow-bin": "^0.168.0",
+    "flow-bin": "^0.169.0",
     "graphql": "^15.8.0",
     "jest": "^27.4.7",
     "react-test-renderer": "^17.0.2",
