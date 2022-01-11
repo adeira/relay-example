@@ -2,13 +2,15 @@
 
 import { LayoutBlock, Note, Text } from '@adeira/sx-design';
 import type { Node } from 'react';
-import { graphql, type RecordMap, type GraphQLTaggedNode } from '@adeira/relay';
+import { graphql, type RecordMap } from '@adeira/relay';
 
 import LocationsList from './LocationsList';
 import QueryRenderer from '../SSRQueryRenderer';
-import type { LocationsQueryResponse } from './__generated__/LocationsQuery.graphql';
+import LocationsQueryRelay, {
+  type LocationsQueryResponse,
+} from './__generated__/LocationsQuery.graphql';
 
-export const query: GraphQLTaggedNode = graphql`
+export const query: typeof LocationsQueryRelay = graphql`
   query LocationsQuery($first: Int!) {
     locations(first: $first) {
       ...LocationsList
