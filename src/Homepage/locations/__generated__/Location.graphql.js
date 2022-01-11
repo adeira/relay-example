@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<5920ad3cff998bc85311b9181520ade6>>
+ * @generated SignedSource<<2a726d915dabe9847ae37e1102fed56e>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -15,11 +15,11 @@ import type { Fragment, ReaderFragment } from 'relay-runtime';
 import type { FragmentType } from "relay-runtime";
 declare export opaque type Location$fragmentType: FragmentType;
 export type Location$ref = Location$fragmentType;
-export type Location$data = {|
-  +name: ?string,
+export type Location$data = ?{|
+  +name: string,
   +countryFlagURL: ?string,
-  +country: ?{|
-    +name: ?string,
+  +country: {|
+    +name: string,
   |},
   +$fragmentType: Location$fragmentType,
 |};
@@ -45,7 +45,12 @@ return {
   "metadata": null,
   "name": "Location",
   "selections": [
-    (v0/*: any*/),
+    {
+      "kind": "RequiredField",
+      "field": (v0/*: any*/),
+      "action": "LOG",
+      "path": "name"
+    },
     {
       "alias": null,
       "args": null,
@@ -54,16 +59,26 @@ return {
       "storageKey": null
     },
     {
-      "alias": null,
-      "args": null,
-      "concreteType": "LocationArea",
-      "kind": "LinkedField",
-      "name": "country",
-      "plural": false,
-      "selections": [
-        (v0/*: any*/)
-      ],
-      "storageKey": null
+      "kind": "RequiredField",
+      "field": {
+        "alias": null,
+        "args": null,
+        "concreteType": "LocationArea",
+        "kind": "LinkedField",
+        "name": "country",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "RequiredField",
+            "field": (v0/*: any*/),
+            "action": "LOG",
+            "path": "country.name"
+          }
+        ],
+        "storageKey": null
+      },
+      "action": "LOG",
+      "path": "country"
     }
   ],
   "type": "Location",
@@ -72,7 +87,7 @@ return {
 })();
 
 if (__DEV__) {
-  (node/*: any*/).hash = "58584a7e6bd090556fbbb1e258ca704e";
+  (node/*: any*/).hash = "478842e5148519824b223a54796a654f";
 }
 
 module.exports = ((node/*: any*/)/*: Fragment<

@@ -17,10 +17,10 @@ export default function Location(props: Props): Node {
   const location = useFragment(
     graphql`
       fragment Location on Location {
-        name
+        name @required(action: LOG)
         countryFlagURL
-        country {
-          name
+        country @required(action: LOG) {
+          name @required(action: LOG)
         }
       }
     `,
@@ -31,20 +31,18 @@ export default function Location(props: Props): Node {
     return null; // or some failure placeholder
   }
 
-  const name = location.name ?? '';
-  const countryName = location.country?.name ?? '';
   return (
     <li className={styles('li')} data-count={props.dataCount}>
       <LayoutInline>
         <Image
           loading="lazy"
           src={location.countryFlagURL}
-          alt={`${countryName} flag`}
+          alt={`${location.country.name} flag`}
           height="24"
           width="24"
         />
-        <Text data-testid={`location-${name}`} as="small">
-          {name}
+        <Text data-testid={`location-${location.name}`} as="small">
+          {location.name}
         </Text>
       </LayoutInline>
     </li>
