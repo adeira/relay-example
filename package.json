@@ -13,7 +13,7 @@
     "@adeira/sx": "^0.28.0",
     "@adeira/sx-design": "^0.22.0",
     "@artsy/fresnel": "^3.2.1",
-    "@next/bundle-analyzer": "^12.0.7",
+    "@next/bundle-analyzer": "^12.0.8",
     "apollo-server-micro": "^3.6.1",
     "cors": "^2.8.5",
     "graphql": "^15.8.0",
