@@ -36,7 +36,7 @@
     "graphql": "^15.8.0",
     "jest": "^27.4.7",
     "react-test-renderer": "^17.0.2",
-    "relay-test-utils": "^13.0.1"
+    "relay-test-utils": "^13.0.2"
   },
   "scripts": {
     "start": "next dev",
