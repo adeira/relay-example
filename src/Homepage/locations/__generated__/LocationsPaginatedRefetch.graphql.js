@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<74f35973474f43dd1046761aef5e6c1a>>
+ * @generated SignedSource<<ef90d262b31e7191771b33d40e55eaf3>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -15,7 +15,6 @@ import type { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 type Location$fragmentType = any;
 import type { FragmentType } from "relay-runtime";
 declare export opaque type LocationsPaginatedRefetch$fragmentType: FragmentType;
-export type LocationsPaginatedRefetch$ref = LocationsPaginatedRefetch$fragmentType;
 type LocationsPaginatedRefetchRefetchQuery$variables = any;
 export type LocationsPaginatedRefetch$data = {|
   +incrementalPagination: ?{|
@@ -32,7 +31,6 @@ export type LocationsPaginatedRefetch$data = {|
   |},
   +$fragmentType: LocationsPaginatedRefetch$fragmentType,
 |};
-export type LocationsPaginatedRefetch = LocationsPaginatedRefetch$data;
 export type LocationsPaginatedRefetch$key = {
   +$data?: LocationsPaginatedRefetch$data,
   +$fragmentSpreads: LocationsPaginatedRefetch$fragmentType,

@@ -5,7 +5,7 @@ import { graphql, QueryRenderer } from '@adeira/relay';
 import { isBrowser } from '@adeira/js';
 
 import useInterval from './useInterval';
-import type { PollingQueryResponse } from './__generated__/PollingQuery.graphql';
+import type { PollingQuery$data } from './__generated__/PollingQuery.graphql';
 
 export default function Polling(): Node {
   const [abTestEnabled, setAbTest] = useState(false);
@@ -21,7 +21,7 @@ export default function Polling(): Node {
   }, 2500);
 
   const renderPollingResponse = useCallback(
-    ({ currency }: PollingQueryResponse) => {
+    ({ currency }: PollingQuery$data) => {
       if (!currency) {
         return null;
       }

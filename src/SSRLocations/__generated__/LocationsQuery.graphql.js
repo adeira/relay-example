@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<37e36ba196c445ba954063303b0bff09>>
+ * @generated SignedSource<<d04e413616b39b0f2dd4cdf15c13d158>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -16,15 +16,13 @@ type LocationsList$fragmentType = any;
 export type LocationsQuery$variables = {|
   first: number,
 |};
-export type LocationsQueryVariables = LocationsQuery$variables;
 export type LocationsQuery$data = {|
   +locations: ?{|
     +$fragmentSpreads: LocationsList$fragmentType,
   |},
 |};
-export type LocationsQueryResponse = LocationsQuery$data;
 export type LocationsQuery = {|
-  variables: LocationsQueryVariables,
+  variables: LocationsQuery$variables,
   response: LocationsQuery$data,
 |};
 */

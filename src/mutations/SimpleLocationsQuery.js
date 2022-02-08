@@ -4,7 +4,7 @@ import type { ComponentType } from 'react';
 import { QueryRenderer, graphql } from '@adeira/relay';
 
 import LocationsList from './LocationsList';
-import type { SimpleLocationsQueryResponse } from './__generated__/SimpleLocationsQuery.graphql';
+import type { SimpleLocationsQuery$data } from './__generated__/SimpleLocationsQuery.graphql';
 
 type Props = {};
 
@@ -16,7 +16,7 @@ export default (function LocationsQuery() {
           ...LocationsListSimple
         }
       `}
-      onResponse={(data: SimpleLocationsQueryResponse) => <LocationsList data={data} />}
+      onResponse={(data: SimpleLocationsQuery$data) => <LocationsList data={data} />}
     />
   );
 }: ComponentType<Props>);

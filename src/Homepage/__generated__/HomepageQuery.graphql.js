@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<71bc2dc7e2027124c6ca3c2e8b9dbd07>>
+ * @generated SignedSource<<41da80a717ef2ac8efa9e5da3790ab1b>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -18,13 +18,11 @@ type LocationsPaginatedRefetch$fragmentType = any;
 export type HomepageQuery$variables = {|
   count: number,
 |};
-export type HomepageQueryVariables = HomepageQuery$variables;
 export type HomepageQuery$data = {|
   +$fragmentSpreads: LocationsPaginatedBidirectional$fragmentType & LocationsPaginatedRefetch$fragmentType & LocationsPaginated$fragmentType,
 |};
-export type HomepageQueryResponse = HomepageQuery$data;
 export type HomepageQuery = {|
-  variables: HomepageQueryVariables,
+  variables: HomepageQuery$variables,
   response: HomepageQuery$data,
 |};
 */

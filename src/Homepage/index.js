@@ -9,7 +9,7 @@ import LocationsPaginatedBidirectional from './locations/LocationsPaginatedBidir
 import LocationsPaginatedRefetch from './locations/LocationsPaginatedRefetch';
 import LocationsPaginated from './locations/LocationsPaginated';
 import { desktop } from '../components/breakpoints';
-import type { HomepageQueryResponse } from './__generated__/HomepageQuery.graphql';
+import type { HomepageQuery$data } from './__generated__/HomepageQuery.graphql';
 
 function Demo(props) {
   return (
@@ -28,7 +28,7 @@ function Demo(props) {
 
 const ITEMS_COUNT = 20; // change me
 
-function renderQueryRendererResponse(props: HomepageQueryResponse) {
+function renderQueryRendererResponse(props: HomepageQuery$data) {
   return (
     <div className={styles('container')}>
       <Demo

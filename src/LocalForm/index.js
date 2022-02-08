@@ -12,7 +12,7 @@ import {
 import { generateClientID } from 'relay-runtime'; // eslint-disable-line import/no-extraneous-dependencies
 import sx from '@adeira/sx';
 
-import type { LocalFormQueryResponse } from './__generated__/LocalFormQuery.graphql';
+import type { LocalFormQuery$data } from './__generated__/LocalFormQuery.graphql';
 import TextInput from '../components/TextInput';
 // We are overwriting here the application env context and replacing it with our custom local env.
 const environment = createLocalEnvironment();
@@ -50,7 +50,7 @@ function persist(data: LocalData) {
   });
 }
 
-function handleResponse(rendererProps: LocalFormQueryResponse) {
+function handleResponse(rendererProps: LocalFormQuery$data) {
   return (
     <div className={styles('formContainer')}>
       <TextInput

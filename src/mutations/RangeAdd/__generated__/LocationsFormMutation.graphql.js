@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9b4509f08a8d70fc5fc148400bbdce59>>
+ * @generated SignedSource<<28c4fe01994c01721c995aedac80a9cf>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -22,7 +22,6 @@ export type LocationsFormMutation$variables = {|
   location: AddLocationInput,
   connections: $ReadOnlyArray<string>,
 |};
-export type LocationsFormMutationVariables = LocationsFormMutation$variables;
 export type LocationsFormMutation$data = {|
   +addLocation: ?{|
     +__typename: string,
@@ -37,9 +36,8 @@ export type LocationsFormMutation$data = {|
     |},
   |},
 |};
-export type LocationsFormMutationResponse = LocationsFormMutation$data;
 export type LocationsFormMutation = {|
-  variables: LocationsFormMutationVariables,
+  variables: LocationsFormMutation$variables,
   response: LocationsFormMutation$data,
 |};
 */

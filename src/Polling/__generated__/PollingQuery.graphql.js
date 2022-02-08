@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<eb074780c522c261a8723bb94c0a5476>>
+ * @generated SignedSource<<ec9b2bbf0ff557fb969144f830536197>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -15,7 +15,6 @@ import type { ConcreteRequest, Query } from 'relay-runtime';
 export type PollingQuery$variables = {|
   abTestEnabled: boolean,
 |};
-export type PollingQueryVariables = PollingQuery$variables;
 export type PollingQuery$data = {|
   +currency: ?{|
     +rate: ?number,
@@ -23,9 +22,8 @@ export type PollingQuery$data = {|
     +format?: ?string,
   |},
 |};
-export type PollingQueryResponse = PollingQuery$data;
 export type PollingQuery = {|
-  variables: PollingQueryVariables,
+  variables: PollingQuery$variables,
   response: PollingQuery$data,
 |};
 */

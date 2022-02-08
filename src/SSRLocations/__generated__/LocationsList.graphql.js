@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<910ace3beaad3855a9b7e218fd93fc07>>
+ * @generated SignedSource<<35d08cb4f776ca1bba39e08db3083608>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -15,7 +15,6 @@ import type { Fragment, ReaderFragment } from 'relay-runtime';
 type LocationListItem$fragmentType = any;
 import type { FragmentType } from "relay-runtime";
 declare export opaque type LocationsList$fragmentType: FragmentType;
-export type LocationsList$ref = LocationsList$fragmentType;
 export type LocationsList$data = {|
   +edges: ?$ReadOnlyArray<?{|
     +node: ?{|
@@ -25,7 +24,6 @@ export type LocationsList$data = {|
   |}>,
   +$fragmentType: LocationsList$fragmentType,
 |};
-export type LocationsList = LocationsList$data;
 export type LocationsList$key = {
   +$data?: LocationsList$data,
   +$fragmentSpreads: LocationsList$fragmentType,

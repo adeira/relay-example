@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9b61fde2bc1e0d64fad79b8a7f6c8c5d>>
+ * @generated SignedSource<<19cf7f5266650bc1bd66c2f49a041c33>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -14,13 +14,11 @@
 import type { ConcreteRequest, Query } from 'relay-runtime';
 type LocationsListSimple$fragmentType = any;
 export type SimpleLocationsQuery$variables = {||};
-export type SimpleLocationsQueryVariables = SimpleLocationsQuery$variables;
 export type SimpleLocationsQuery$data = {|
   +$fragmentSpreads: LocationsListSimple$fragmentType,
 |};
-export type SimpleLocationsQueryResponse = SimpleLocationsQuery$data;
 export type SimpleLocationsQuery = {|
-  variables: SimpleLocationsQueryVariables,
+  variables: SimpleLocationsQuery$variables,
   response: SimpleLocationsQuery$data,
 |};
 */

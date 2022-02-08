@@ -7,7 +7,7 @@ import { graphql, type RecordMap } from '@adeira/relay';
 import LocationsList from './LocationsList';
 import QueryRenderer from '../SSRQueryRenderer';
 import LocationsQueryRelay, {
-  type LocationsQueryResponse,
+  type LocationsQuery$data,
 } from './__generated__/LocationsQuery.graphql';
 
 export const query: typeof LocationsQueryRelay = graphql`
@@ -35,7 +35,7 @@ export default function LocationsQuery(props: Props): Node {
         <QueryRenderer
           query={query}
           variables={variables}
-          onResponse={(renderProps: ?LocationsQueryResponse) => {
+          onResponse={(renderProps: ?LocationsQuery$data) => {
             return <LocationsList locations={renderProps?.locations} />;
           }}
           ssrData={props.ssrData}

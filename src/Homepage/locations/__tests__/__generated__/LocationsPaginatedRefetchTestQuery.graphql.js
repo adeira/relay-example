@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<fbdc126a76bebf1b37c7dcc4e117e876>>
+ * @generated SignedSource<<7723dda80c8c8348d90c5261d7666851>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -14,13 +14,11 @@
 import type { ConcreteRequest, Query } from 'relay-runtime';
 type LocationsPaginatedRefetch$fragmentType = any;
 export type LocationsPaginatedRefetchTestQuery$variables = {||};
-export type LocationsPaginatedRefetchTestQueryVariables = LocationsPaginatedRefetchTestQuery$variables;
 export type LocationsPaginatedRefetchTestQuery$data = {|
   +$fragmentSpreads: LocationsPaginatedRefetch$fragmentType,
 |};
-export type LocationsPaginatedRefetchTestQueryResponse = LocationsPaginatedRefetchTestQuery$data;
 export type LocationsPaginatedRefetchTestQuery = {|
-  variables: LocationsPaginatedRefetchTestQueryVariables,
+  variables: LocationsPaginatedRefetchTestQuery$variables,
   response: LocationsPaginatedRefetchTestQuery$data,
 |};
 */

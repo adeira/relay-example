@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6b9fb065c42af9b640a1a45a9b68a55e>>
+ * @generated SignedSource<<21cba5c72b38d104940c608a729a33f0>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -13,7 +13,6 @@
 /*::
 import type { ConcreteRequest, Query } from 'relay-runtime';
 export type LocalFormQuery$variables = {||};
-export type LocalFormQueryVariables = LocalFormQuery$variables;
 export type LocalFormQuery$data = {|
   +__typename: string,
   +localForm: ?{|
@@ -21,9 +20,8 @@ export type LocalFormQuery$data = {|
     +message: ?string,
   |},
 |};
-export type LocalFormQueryResponse = LocalFormQuery$data;
 export type LocalFormQuery = {|
-  variables: LocalFormQueryVariables,
+  variables: LocalFormQuery$variables,
   response: LocalFormQuery$data,
 |};
 */
