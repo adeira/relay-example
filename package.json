@@ -12,7 +12,7 @@
     "@adeira/relay": "^5.1.0",
     "@adeira/sx": "^0.28.0",
     "@adeira/sx-design": "^0.23.0",
-    "@artsy/fresnel": "^3.2.2",
+    "@artsy/fresnel": "^3.3.0",
     "@next/bundle-analyzer": "^12.0.10",
     "apollo-server-micro": "^3.6.3",
     "cors": "^2.8.5",
