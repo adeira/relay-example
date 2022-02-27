@@ -6,6 +6,7 @@ import { graphql, useFragment } from '@adeira/relay';
 import { TransitionGroup } from 'react-transition-group';
 import sx from '@adeira/sx';
 
+// eslint-disable-next-line n/file-extension-in-import -- https://github.com/weiran-zsd/eslint-plugin-node/issues/11
 import FadeIn from './FadeIn';
 import LocationsForm from './RangeAdd/LocationsForm';
 import { tablet } from '../components/breakpoints';
