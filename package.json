@@ -11,7 +11,7 @@
     "@adeira/js": "^2.1.1",
     "@adeira/relay": "^5.1.0",
     "@adeira/sx": "^0.29.0",
-    "@adeira/sx-design": "^0.23.0",
+    "@adeira/sx-design": "^0.24.0",
     "@artsy/fresnel": "^3.4.0",
     "@next/bundle-analyzer": "^12.1.0",
     "apollo-server-micro": "^3.6.3",
