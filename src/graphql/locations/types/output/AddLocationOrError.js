@@ -1,4 +1,4 @@
-// @flow strict-local
+// @flow
 
 import { GraphQLUnionType } from 'graphql';
 
@@ -21,8 +21,8 @@ export default (new GraphQLUnionType({
   types: [AddLocationError, AddLocationResponse],
   resolveType: (value) => {
     if (value instanceof ValidLocationResponse) {
-      return AddLocationResponse;
+      return AddLocationResponse.name;
     }
-    return AddLocationError;
+    return AddLocationError.name;
   },
-}): GraphQLUnionType);
+}): typeof GraphQLUnionType);

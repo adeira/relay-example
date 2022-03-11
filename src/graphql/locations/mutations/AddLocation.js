@@ -1,5 +1,8 @@
 // @flow strict-local
 
+/* $FlowFixMe[untyped-import] This comment suppresses an error when upgrading
+ * GraphQL to version 16.x. To see the error delete this comment and run Flow.
+ */
 import { GraphQLNonNull } from 'graphql';
 
 import AddLocationInput from '../types/input/AddLocationInput';
@@ -15,10 +18,9 @@ export default {
   type: AddLocationOrError,
   description: 'Add a new location',
   args: {
-    /* $FlowFixMe[value-as-type] This comment suppresses an error when
-     * upgrading Flow to version 0.164.0. To see the error delete this comment
-     * and run Flow. */
-    location: { type: (GraphQLNonNull(AddLocationInput): GraphQLNonNull<typeof AddLocationInput>) },
+    location: {
+      type: (new GraphQLNonNull(AddLocationInput): GraphQLNonNull<typeof AddLocationInput>),
+    },
   },
   resolve: (_: mixed, { location }: Args): ValidLocationResponse | string => {
     if (location.name === '' || location.locationId.length !== 3) {

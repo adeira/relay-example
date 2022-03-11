@@ -28,4 +28,7 @@ export default (new GraphQLObjectType({
       type: GraphQLFloat,
     },
   }),
+  /* $FlowFixMe[value-as-type] This comment suppresses an error when upgrading
+   * GraphQL to version 16.x. To see the error delete this comment and run Flow.
+   */
 }): GraphQLObjectType);

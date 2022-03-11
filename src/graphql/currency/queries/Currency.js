@@ -1,5 +1,8 @@
 // @flow
 
+/* $FlowFixMe[untyped-type-import] This comment suppresses an error when
+ * upgrading GraphQL to version 16.x. To see the error delete this comment and
+ * run Flow. */
 import { GraphQLNonNull, GraphQLString, type GraphQLScalarType } from 'graphql';
 
 import CurrencyType, { type TSource } from '../types/output/Currency';

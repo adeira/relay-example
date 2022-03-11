@@ -1,5 +1,8 @@
 // @flow strict-local
 
+/* $FlowFixMe[untyped-import] This comment suppresses an error when upgrading
+ * GraphQL to version 16.x. To see the error delete this comment and run Flow.
+ */
 import { GraphQLObjectType } from 'graphql';
 
 import locations from './locations/queries/Locations';
@@ -12,4 +15,7 @@ export default (new GraphQLObjectType({
     currency,
     locations,
   },
+  /* $FlowFixMe[value-as-type] This comment suppresses an error when upgrading
+   * GraphQL to version 16.x. To see the error delete this comment and run Flow.
+   */
 }): GraphQLObjectType);

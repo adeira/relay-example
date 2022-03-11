@@ -7,5 +7,9 @@ import schema from '../Schema';
 type AnyObject = { +[key: string]: mixed, ... };
 
 export default function executeTestQuery(query: string, variables: ?AnyObject): Promise<AnyObject> {
-  return graphql(schema, query, null, null, variables);
+  return graphql({
+    schema,
+    source: query,
+    variableValues: variables,
+  });
 }
