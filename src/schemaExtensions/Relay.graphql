@@ -1,0 +1,1 @@
+directive @live_query(polling_interval: Int) on QUERY

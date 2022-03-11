@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<4db2caa54a090367b0454024f7f5c501>>
+ * @generated SignedSource<<8666b5c5eb77ac8f3e7f34ba101e1bb7>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -12,14 +12,10 @@
 
 /*::
 import type { ConcreteRequest, Query } from 'relay-runtime';
-export type PollingQuery$variables = {|
-  abTestEnabled: boolean,
-|};
-export type PollingQuery$data = {|
-  +currency: ?{|
-    +rate: ?number,
-    +code?: ?string,
-    +format?: ?string,
+export type PollingQuery$variables = {||};
+export type PollingQuery$data = ?{|
+  +currency: {|
+    +rate: number,
   |},
 |};
 export type PollingQuery = {|
@@ -31,65 +27,46 @@ export type PollingQuery = {|
 var node/*: ConcreteRequest*/ = (function(){
 var v0 = [
   {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "abTestEnabled"
-  }
-],
-v1 = [
-  {
     "kind": "Literal",
     "name": "code",
     "value": "usd"
   }
 ],
-v2 = {
+v1 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "rate",
   "storageKey": null
-},
-v3 = {
-  "condition": "abTestEnabled",
-  "kind": "Condition",
-  "passingValue": true,
-  "selections": [
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "code",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "format",
-      "storageKey": null
-    }
-  ]
 };
 return {
   "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
     "name": "PollingQuery",
     "selections": [
       {
-        "alias": null,
-        "args": (v1/*: any*/),
-        "concreteType": "Currency",
-        "kind": "LinkedField",
-        "name": "currency",
-        "plural": false,
-        "selections": [
-          (v2/*: any*/),
-          (v3/*: any*/)
-        ],
-        "storageKey": "currency(code:\"usd\")"
+        "kind": "RequiredField",
+        "field": {
+          "alias": null,
+          "args": (v0/*: any*/),
+          "concreteType": "Currency",
+          "kind": "LinkedField",
+          "name": "currency",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "RequiredField",
+              "field": (v1/*: any*/),
+              "action": "LOG",
+              "path": "currency.rate"
+            }
+          ],
+          "storageKey": "currency(code:\"usd\")"
+        },
+        "action": "LOG",
+        "path": "currency"
       }
     ],
     "type": "RootQuery",
@@ -97,20 +74,19 @@ return {
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [],
     "kind": "Operation",
     "name": "PollingQuery",
     "selections": [
       {
         "alias": null,
-        "args": (v1/*: any*/),
+        "args": (v0/*: any*/),
         "concreteType": "Currency",
         "kind": "LinkedField",
         "name": "currency",
         "plural": false,
         "selections": [
-          (v2/*: any*/),
-          (v3/*: any*/),
+          (v1/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -124,18 +100,22 @@ return {
     ]
   },
   "params": {
-    "cacheID": "f58374fd603c39d824dd8378305483cd",
+    "cacheID": "0ea3afbf569853cf58ab863e84ee10a6",
     "id": null,
-    "metadata": {},
+    "metadata": {
+      "live": {
+        "polling_interval": 500
+      }
+    },
     "name": "PollingQuery",
     "operationKind": "query",
-    "text": "query PollingQuery(\n  $abTestEnabled: Boolean!\n) {\n  currency(code: \"usd\") {\n    rate\n    code @include(if: $abTestEnabled)\n    format @include(if: $abTestEnabled)\n    id\n  }\n}\n"
+    "text": "query PollingQuery {\n  currency(code: \"usd\") {\n    rate\n    id\n  }\n}\n"
   }
 };
 })();
 
 if (__DEV__) {
-  (node/*: any*/).hash = "4fe8e121396058d93ef63050a2f5b555";
+  (node/*: any*/).hash = "c9b7aac5ed69c8452f1a5e4fb34141aa";
 }
 
 module.exports = ((node/*: any*/)/*: Query<
