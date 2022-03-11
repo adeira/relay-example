@@ -9,7 +9,7 @@
     "@adeira/graphql-relay": "^0.3.0",
     "@adeira/icons": "^1.0.1",
     "@adeira/js": "^2.1.1",
-    "@adeira/relay": "^5.1.0",
+    "@adeira/relay": "^5.2.0",
     "@adeira/sx": "^0.29.0",
     "@adeira/sx-design": "^0.24.0",
     "apollo-server-micro": "^3.6.4",
