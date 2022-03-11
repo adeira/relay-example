@@ -2,8 +2,8 @@
 
 import type { Node } from 'react';
 
-import Homepage from '../Homepage';
+import LocalForm from '../src/LocalForm';
 
 export default function Root(): Node {
-  return <Homepage />;
+  return <LocalForm />;
 }

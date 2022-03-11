@@ -7,10 +7,10 @@ import Head from 'next/head';
 import { RelayEnvironmentProvider } from '@adeira/relay';
 import type { Node } from 'react';
 
-import '../styles/app.css';
-import createRelayEnvironment from '../createRelayEnvironment';
-import Navbar from '../components/Navbar';
-import { MediaContextProvider } from '../components/Media';
+import '../src/styles/app.css';
+import createRelayEnvironment from '../src/createRelayEnvironment';
+import Navbar from '../src/components/Navbar';
+import { MediaContextProvider } from '../src/components/Media';
 
 export default class MyApp extends App {
   render(): Node {

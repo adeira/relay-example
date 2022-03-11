@@ -4,7 +4,7 @@ import { ApolloServer } from 'apollo-server-micro';
 import Cors from 'cors';
 import { IncomingMessage, ServerResponse } from 'http';
 
-import schema from '../../graphql/Schema';
+import schema from '../../src/graphql/Schema';
 
 function initMiddleware(middleware) {
   return (req, res) =>

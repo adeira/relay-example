@@ -3,8 +3,8 @@
 import type { Node } from 'react';
 import { fetchQuery, type RecordMap } from '@adeira/relay';
 
-import createRelayEnvironment from '../createRelayEnvironment';
-import LocationsQuery, { query, variables } from '../SSRLocations/LocationsQuery';
+import createRelayEnvironment from '../src/createRelayEnvironment';
+import LocationsQuery, { query, variables } from '../src/SSRLocations/LocationsQuery';
 
 type Props = {
   +ssrData: RecordMap,

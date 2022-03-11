@@ -2,8 +2,8 @@
 
 import type { Node } from 'react';
 
-import LocalForm from '../LocalForm';
+import Polling from '../src/Polling';
 
 export default function Root(): Node {
-  return <LocalForm />;
+  return <Polling />;
 }

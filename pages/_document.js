@@ -5,7 +5,7 @@ import type { Node, Element } from 'react';
 import Document, { Html, Head, Main, NextScript, type DocumentContext } from 'next/document';
 import sx from '@adeira/sx';
 
-import { mediaStyles } from '../components/Media';
+import { mediaStyles } from '../src/components/Media';
 
 type RenderPageResult = {
   +html: string,

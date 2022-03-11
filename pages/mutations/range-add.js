@@ -3,7 +3,7 @@
 import { LayoutBlock, Text } from '@adeira/sx-design';
 import type { Node } from 'react';
 
-import RangeAddExample from '../../mutations/RangeAdd/RangeAdd';
+import RangeAddExample from '../../src/mutations/RangeAdd/RangeAdd';
 
 export default function RangeAdd(): Node {
   return (
