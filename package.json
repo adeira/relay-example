@@ -12,8 +12,6 @@
     "@adeira/relay": "^5.1.0",
     "@adeira/sx": "^0.29.0",
     "@adeira/sx-design": "^0.24.0",
-    "@artsy/fresnel": "^3.4.0",
-    "@next/bundle-analyzer": "^12.1.0",
     "apollo-server-micro": "^3.6.4",
     "cors": "^2.8.5",
     "graphql": "^15.8.0",
@@ -23,8 +21,7 @@
     "next-plugin-custom-babel-config": "^1.0.5",
     "next-transpile-modules": "^9.0.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-transition-group": "^4.4.2"
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@adeira/babel-preset-adeira": "^4.0.0",

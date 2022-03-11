@@ -5,8 +5,6 @@ import type { Node, Element } from 'react';
 import Document, { Html, Head, Main, NextScript, type DocumentContext } from 'next/document';
 import sx from '@adeira/sx';
 
-import { mediaStyles } from '../src/components/Media';
-
 type RenderPageResult = {
   +html: string,
   +head?: $ReadOnlyArray<Node | null>,
@@ -25,7 +23,6 @@ export default class MyDocument extends Document {
       <Html lang="en-US">
         <Head>
           <link rel="icon" href="https://adeira.dev/img/favicon.ico" />
-          <style dangerouslySetInnerHTML={{ __html: mediaStyles }} />
         </Head>
         <body>
           <Main />

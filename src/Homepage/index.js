@@ -8,7 +8,6 @@ import sx from '@adeira/sx';
 import LocationsPaginatedBidirectional from './locations/LocationsPaginatedBidirectional';
 import LocationsPaginatedRefetch from './locations/LocationsPaginatedRefetch';
 import LocationsPaginated from './locations/LocationsPaginated';
-import { desktop } from '../components/breakpoints';
 import type { HomepageQuery$data } from './__generated__/HomepageQuery.graphql';
 
 function Demo(props) {
@@ -80,8 +79,5 @@ const styles = sx.create({
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
     gap: 16,
-    [desktop]: {
-      gridTemplateColumns: 'repeat(3, 1fr)',
-    },
   },
 });

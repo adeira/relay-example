@@ -3,14 +3,10 @@
 const path = require('path');
 const withTranspileModules = require('next-transpile-modules');
 const withCustomBabelConfigFile = require('next-plugin-custom-babel-config');
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
 const withPlugins = require('next-compose-plugins');
 
 module.exports = (withPlugins(
   [
-    withBundleAnalyzer,
     withCustomBabelConfigFile,
     withTranspileModules([
       '@adeira/css-colors',

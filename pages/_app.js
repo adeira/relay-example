@@ -10,7 +10,6 @@ import type { Node } from 'react';
 import '../src/styles/app.css';
 import createRelayEnvironment from '../src/createRelayEnvironment';
 import Navbar from '../src/components/Navbar';
-import { MediaContextProvider } from '../src/components/Media';
 
 export default class MyApp extends App {
   render(): Node {
@@ -29,7 +28,9 @@ export default class MyApp extends App {
 
             <div className={styles('padMedium')}>
               {__DEV__ ? (
-                <Note>Open a console to see what&apos;s going on behind the scenes.</Note>
+                <Note tint="warning">
+                  Open a console to see what&apos;s going on behind the scenes.
+                </Note>
               ) : (
                 <Note tint="warning">
                   It&apos;s better to clone this repository and try it in development mode so you
@@ -41,9 +42,7 @@ export default class MyApp extends App {
               )}
 
               <div className={styles('marginTopSmall')}>
-                <MediaContextProvider>
-                  <Component {...pageProps} />
-                </MediaContextProvider>
+                <Component {...pageProps} />
               </div>
             </div>
           </RelayEnvironmentProvider>
