@@ -8,13 +8,23 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 const withPlugins = require('next-compose-plugins');
 
-// @x-shipit-disable: const getTranspileWorkspaces = require('./scripts/getTranspileWorkspaces');
-
-// @x-shipit-disable: const transpileWorkspaces = getTranspileWorkspaces();
-const transpileWorkspaces = []; // @x-shipit-enable
-
 module.exports = (withPlugins(
-  [withBundleAnalyzer, withCustomBabelConfigFile, withTranspileModules(transpileWorkspaces)],
+  [
+    withBundleAnalyzer,
+    withCustomBabelConfigFile,
+    withTranspileModules([
+      '@adeira/css-colors',
+      '@adeira/fetch',
+      '@adeira/graphql-global-id',
+      '@adeira/graphql-relay',
+      '@adeira/icons',
+      '@adeira/js',
+      '@adeira/murmur-hash',
+      '@adeira/relay',
+      '@adeira/sx',
+      '@adeira/sx-design',
+    ]),
+  ],
   {
     images: {
       domains: ['images.kiwi.com'],
