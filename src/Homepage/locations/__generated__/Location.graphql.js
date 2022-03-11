@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f642fe8ec0f0f9e7d70e438388b4ff48>>
+ * @generated SignedSource<<afdcac1de4803e672fa7d8de86a5d7db>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -17,7 +17,7 @@ declare export opaque type Location$fragmentType: FragmentType;
 export type Location$data = ?{|
   +name: string,
   +countryFlagURL: ?string,
-  +country: {|
+  +country: ?{|
     +name: string,
   |},
   +$fragmentType: Location$fragmentType,
@@ -57,26 +57,21 @@ return {
       "storageKey": null
     },
     {
-      "kind": "RequiredField",
-      "field": {
-        "alias": null,
-        "args": null,
-        "concreteType": "LocationArea",
-        "kind": "LinkedField",
-        "name": "country",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "RequiredField",
-            "field": (v0/*: any*/),
-            "action": "LOG",
-            "path": "country.name"
-          }
-        ],
-        "storageKey": null
-      },
-      "action": "LOG",
-      "path": "country"
+      "alias": null,
+      "args": null,
+      "concreteType": "LocationArea",
+      "kind": "LinkedField",
+      "name": "country",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "RequiredField",
+          "field": (v0/*: any*/),
+          "action": "LOG",
+          "path": "country.name"
+        }
+      ],
+      "storageKey": null
     }
   ],
   "type": "Location",
@@ -85,7 +80,7 @@ return {
 })();
 
 if (__DEV__) {
-  (node/*: any*/).hash = "478842e5148519824b223a54796a654f";
+  (node/*: any*/).hash = "9e0578670d216b8c9b0a40aa1ef5d561";
 }
 
 module.exports = ((node/*: any*/)/*: Fragment<

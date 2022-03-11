@@ -10,6 +10,7 @@ type Args = {
   +location: LocationInput,
   ...
 };
+
 export default {
   type: AddLocationOrError,
   description: 'Add a new location',

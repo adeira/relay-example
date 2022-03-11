@@ -16,11 +16,11 @@ export default function Polling(): Node {
           }
         }
       `}
-      onResponse={({ currency }: PollingQuery$data) => {
+      onResponse={(data: PollingQuery$data) => {
         return (
           <>
             <div>
-              Current currency rate: <strong>{currency.rate}</strong>
+              Current currency rate: <strong>{data?.currency.rate}</strong>
             </div>
             <div>Last update: {new Date().toString()}</div>
           </>

@@ -7,7 +7,7 @@ import { graphql, useRefetchableFragment } from '@adeira/relay';
 
 import Location from './Location';
 import LocationList from './LocationsList';
-import { type LocationsPaginatedBidirectionalRefetchQuery } from './__generated__/LocationsPaginatedBidirectionalRefetchQuery.graphql';
+import type { LocationsPaginatedBidirectionalRefetchQuery } from './__generated__/LocationsPaginatedBidirectionalRefetchQuery.graphql';
 import type { LocationsPaginatedBidirectional$key } from './__generated__/LocationsPaginatedBidirectional.graphql';
 
 type Props = {

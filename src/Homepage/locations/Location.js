@@ -19,7 +19,7 @@ export default function Location(props: Props): Node {
       fragment Location on Location {
         name @required(action: LOG)
         countryFlagURL
-        country @required(action: LOG) {
+        country {
           name @required(action: LOG)
         }
       }
@@ -37,7 +37,7 @@ export default function Location(props: Props): Node {
         <Image
           loading="lazy"
           src={location.countryFlagURL}
-          alt={`${location.country.name} flag`}
+          alt={`${location.country?.name ?? 'a'} flag`}
           height="24"
           width="24"
         />
