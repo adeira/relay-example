@@ -12,7 +12,7 @@
     "@adeira/relay": "^5.2.0",
     "@adeira/sx": "^0.29.1",
     "@adeira/sx-design": "^0.24.0",
-    "apollo-server-micro": "^3.6.6",
+    "apollo-server-micro": "^3.6.7",
     "cors": "^2.8.5",
     "graphql": "^16.3.0",
     "micro": "^9.3.4",
