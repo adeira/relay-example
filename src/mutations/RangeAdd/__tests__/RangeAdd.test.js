@@ -73,11 +73,11 @@ it('adds a location to the connection', async () => {
   const nameInput = screen.getByPlaceholderText('name');
   const select = screen.getByRole('combobox', { name: /type/i });
 
-  userEvent.type(idInput, 'OCD');
-  userEvent.type(nameInput, 'Prague');
-  userEvent.selectOptions(select, ['CITY']);
+  await userEvent.type(idInput, 'OCD');
+  await userEvent.type(nameInput, 'Prague');
+  await userEvent.selectOptions(select, ['CITY']);
 
-  userEvent.click(screen.getByRole('button', { name: /submit/i }));
+  await userEvent.click(screen.getByRole('button', { name: /submit/i }));
 
   const operation = await waitFor(() => environment.mock.getMostRecentOperation());
 
